@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _Lodash from 'lodash';
+import Header from './Header';
 import Filters from './Filters';
 import Collection from './Collection';
 import Results from './Results';
 import Download from './Download';
 import Instructions from './Instructions';
+import CuratedSetsSection from './CuratedSetsSection';
+import Footer from './Footer';
 
 
 export default class App extends Component {
@@ -19,7 +22,8 @@ export default class App extends Component {
       value: 'candy',
       preSelectedImages: [],
       selectedImages: [],
-      imageURL: ""
+      imageURL: "",
+      CuratedSets: [],
 
     };
 
@@ -42,8 +46,6 @@ export default class App extends Component {
   }
 
   handleDropdownSubmit(event) {
-    this.setState({displayArtResultInfo: {"display": "none"}})
-    this.setState({displayIntroMessage: {"display": "none"}})
     this.cooperHewittSearchByTagFromAPI()
     event.preventDefault();
     console.log("this.state.value is:", this.state.value)
@@ -97,7 +99,7 @@ export default class App extends Component {
   render() {
   return (
     <div className="App">
-      <h1 className="header">meeting background maker</h1>
+      <Header />
       <Filters handleDropdownChange={this.handleDropdownChange}
                handleDropdownSubmit={this.handleDropdownSubmit}
                parent_state={this.state}
@@ -108,6 +110,8 @@ export default class App extends Component {
       <Collection selectedImages={this.state.selectedImages}/>
       <Download />
       <Instructions />
+      <CuratedSetsSection />
+      <Footer />
     </div>
   );
 }

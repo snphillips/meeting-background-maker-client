@@ -3,13 +3,6 @@ import './index.css';
 
 
 export default class Results extends React.Component {
-  // constructor(props) {
-  //   super(props);
-
-  //  // "this" binding
-
-  // }
-
 
 
   render() {
@@ -29,10 +22,12 @@ export default class Results extends React.Component {
 
                         <div className="image-card">
 
-                          <img className="background-img"
+                          <a href={item.url}>
+                            <img className="background-img"
                                src={item.images[0].b.url}
                                alt={item.title}
                               />
+                          </a>
                               <p>{item.title}</p>
                               <button>Add to collection</button>
 

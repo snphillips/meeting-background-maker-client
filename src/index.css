@@ -12,11 +12,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #000;
   margin: 3rem;
+  /*background-image: url("/images/clearning-fields-francesco-simeti.jpg");*/
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+p {
+  color: #fff;
 }
 
 .header {
