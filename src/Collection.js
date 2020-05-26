@@ -1,13 +1,49 @@
 import React from 'react';
-import './App.css';
-import './index.css'
+import './index.css';
 
-function Collection() {
-  return (
-    <div className="component">
-      <div className="collection">(user's collection)</div>
-    </div>
+
+export default class collection extends React.Component {
+
+
+  render() {
+
+    return (
+      <section className="component">
+
+          <div className="selected-images-gallery">
+
+                 {this.props.selectedImages.map( item => {
+
+                    let imageIndex = this.props.selectedImages.indexOf(item)
+                    console.log("imageIndex as we build the gallery:", imageIndex)
+
+
+                      return(
+
+                        <div className="image-card">
+
+                          <img className="background-img"
+                               src={item.images[0].b.url}
+                               alt={item.title}
+                              />
+                              <p>{item.title}</p>
+                              <button>Add to collection</button>
+
+                        </div>
+                        )
+
+                       })
+                 }
+
+        </div>
+
+
+    </section>
   );
+  }
+
+
+
+
 }
 
-export default Collection;

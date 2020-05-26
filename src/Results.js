@@ -33,6 +33,8 @@ export default class Results extends React.Component {
                                src={item.images[0].b.url}
                                alt={item.title}
                               />
+                              <p>{item.title}</p>
+                              <button>Add to collection</button>
 
                         </div>
                         )

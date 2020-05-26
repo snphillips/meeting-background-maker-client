@@ -19,12 +19,13 @@ export default class Filters extends Component {
         <option className="dropdown-item-style" value="sidewall">sidewall</option>
         <option className="dropdown-item-style" value="floor">floor</option>
         <option className="dropdown-item-style" value="graphic design">graphic design</option>
-        <option className="dropdown-item-style" value="art deco">art deco</option>
-        <option className="dropdown-item-style" value="art nouveau">art nouveau</option>
+        <option className="dropdown-item-style" value="pattern">pattern</option>
+        <option className="dropdown-item-style" value="wall covering">wall covering</option>
         <option className="dropdown-item-style" value="wallpaper">wallpaper</option>
-        <option className="dropdown-item-style" value="circular">circular</option>
-        <option className="dropdown-item-style" value="geometric">geometric</option>
+        <option className="dropdown-item-style" value="wall hanging">wall hanging</option>
         <option className="dropdown-item-style" value="textile design">textile desgin</option>
+        <option className="dropdown-item-style" value="domestic interior">domestic interior</option>
+        <option className="dropdown-item-style" value="carpet">carpet</option>
 
       </select>
 

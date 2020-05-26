@@ -105,7 +105,7 @@ export default class App extends Component {
       <Results parentState={this.state}
                preSelectedImages={this.state.preSelectedImages}
                />
-      <Collection />
+      <Collection selectedImages={this.state.selectedImages}/>
       <Download />
       <Instructions />
     </div>
