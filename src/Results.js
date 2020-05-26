@@ -1,14 +1,55 @@
 import React from 'react';
-import './App.css';
-import './index.css'
+import './index.css';
 
-function Results() {
-  return (
-    <div className="component">
-      <p>click on the below images to add to your gallery</p>
-      <div className="results">(results)</div>
-    </div>
+
+export default class Results extends React.Component {
+  // constructor(props) {
+  //   super(props);
+
+  //  // "this" binding
+
+  // }
+
+
+
+  render() {
+
+    return (
+      <section className="component">
+
+          <div className="gallery">
+
+
+                 {this.props.preSelectedImages.map( item => {
+
+                    let imageIndex = this.props.preSelectedImages.indexOf(item)
+                    console.log("imageIndex as we build the gallery:", imageIndex)
+
+
+                      return(
+
+                        <div className="image-card">
+
+                          <img className="art-img"
+                               src={item.link}
+                               alt={item.title}
+                              />
+
+                        </div>
+                        )
+
+                       })
+                 }
+
+        </div>
+
+
+    </section>
   );
+  }
+
+
+
+
 }
 
-export default Results;

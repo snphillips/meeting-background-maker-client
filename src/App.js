@@ -16,7 +16,9 @@ export default class App extends Component {
       loading: false, // the loading spinner
       // serverSource: 'https://art-thief.herokuapp.com/searchbytag',
       // serverSource: 'http://localhost:3000/searchbytag',
-      value: 'candy'
+      value: 'candy',
+      preSelectedImages: [],
+      selectedImages: []
 
     };
 
@@ -76,6 +78,7 @@ export default class App extends Component {
         this.setState({itemInfo: response.data.objects[0].label_text})
         this.setState({learnMoreURL: response.data.objects[0].url})
         this.setState({displayArtResultInfo: {"display": "block"}})
+        this.setState({preSelectedImages: response.data.objects})
       })
       .catch(function (error) {
         console.log(error);
@@ -98,7 +101,8 @@ export default class App extends Component {
                handleDropdownSubmit={this.handleDropdownSubmit}
                parent_state={this.state}
                />
-      <Results />
+      <Results preSelectedImages={this.state.preSelectedImages}
+               />
       <Collection />
       <Download />
       <Instructions />
