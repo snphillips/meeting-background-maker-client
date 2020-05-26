@@ -18,7 +18,8 @@ export default class App extends Component {
       // serverSource: 'http://localhost:3000/searchbytag',
       value: 'candy',
       preSelectedImages: [],
-      selectedImages: []
+      selectedImages: [],
+      imageURL: ""
 
     };
 
@@ -69,15 +70,15 @@ export default class App extends Component {
 
         console.log(`The search value is:`, this.state.value, `and there are`, (response.data.objects).length, `objects.`)
 
-        this.setState({loading: false});
-        this.setState({displayPlaceholderImage: {"display": "none"}})
+        // this.setState({loading: false});
+        // this.setState({displayPlaceholderImage: {"display": "none"}})
         this.setState({displayArtResultImage: {"display": "block"}})
         this.setState({imageURL: response.data.objects[0].images[0].z.url})
-        this.setState({itemTitle: response.data.objects[0].title})
-        this.setState({itemMedium: response.data.objects[0].medium})
-        this.setState({itemInfo: response.data.objects[0].label_text})
-        this.setState({learnMoreURL: response.data.objects[0].url})
-        this.setState({displayArtResultInfo: {"display": "block"}})
+        // this.setState({itemTitle: response.data.objects[0].title})
+        // this.setState({itemMedium: response.data.objects[0].medium})
+        // this.setState({itemInfo: response.data.objects[0].label_text})
+        // this.setState({learnMoreURL: response.data.objects[0].url})
+        // this.setState({displayArtResultInfo: {"display": "block"}})
         this.setState({preSelectedImages: response.data.objects})
       })
       .catch(function (error) {
@@ -101,7 +102,8 @@ export default class App extends Component {
                handleDropdownSubmit={this.handleDropdownSubmit}
                parent_state={this.state}
                />
-      <Results preSelectedImages={this.state.preSelectedImages}
+      <Results parentState={this.state}
+               preSelectedImages={this.state.preSelectedImages}
                />
       <Collection />
       <Download />

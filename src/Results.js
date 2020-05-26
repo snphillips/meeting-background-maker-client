@@ -17,8 +17,7 @@ export default class Results extends React.Component {
     return (
       <section className="component">
 
-          <div className="gallery">
-
+          <div className="pre-selected-images-gallery">
 
                  {this.props.preSelectedImages.map( item => {
 
@@ -30,8 +29,8 @@ export default class Results extends React.Component {
 
                         <div className="image-card">
 
-                          <img className="art-img"
-                               src={item.link}
+                          <img className="background-img"
+                               src={item.images[0].b.url}
                                alt={item.title}
                               />
 
