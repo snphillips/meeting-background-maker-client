@@ -1,3 +1,8 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +10,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #000;
+  margin: 3rem;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.header {
+  color: #fff;
+  font-family: 'Carter One', sans-serif;
+}
+
+.component {
+  border: 1px solid #fff;
+  color: #fff;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.filter {
+
+}
+
+.collection {
+
+}
+
+.download {
+
 }
