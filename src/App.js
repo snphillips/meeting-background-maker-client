@@ -17,9 +17,10 @@ export default class App extends Component {
 
     this.state = {
       loading: false, // the loading spinner
+      // loading: true, // the loading spinner
       // serverSource: 'https://art-thief.herokuapp.com/searchbytag',
       // serverSource: 'http://localhost:3000/searchbytag',
-      value: 'candy',
+      value: 'sidewall',
       preSelectedImages: [],
       selectedImages: [],
       imageURL: "",
@@ -55,7 +56,7 @@ export default class App extends Component {
 
 
   cooperHewittSearchByTagFromAPI() {
-    // this.setState({loading: true})
+    this.setState({loading: true})
 
     // ${this.state.value} is whatever keyword the user chooses from the dropdown menu
     // The "response" does the following:
@@ -72,7 +73,7 @@ export default class App extends Component {
 
         console.log(`The search value is:`, this.state.value, `and there are`, (response.data.objects).length, `objects.`)
 
-        // this.setState({loading: false});
+        this.setState({loading: false});
         // this.setState({displayPlaceholderImage: {"display": "none"}})
         this.setState({displayArtResultImage: {"display": "block"}})
         this.setState({imageURL: response.data.objects[0].images[0].z.url})
@@ -103,6 +104,7 @@ export default class App extends Component {
       <Filters handleDropdownChange={this.handleDropdownChange}
                handleDropdownSubmit={this.handleDropdownSubmit}
                parent_state={this.state}
+               loading={this.state.loading}
                />
       <Results parentState={this.state}
                preSelectedImages={this.state.preSelectedImages}

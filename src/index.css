@@ -25,8 +25,18 @@ p {
 }
 
 .header {
-  color: #fff;
   font-family: 'Carter One', sans-serif;
+  font-size: 5rem;
+  line-height: .7;
+  text-transform: uppercase;
+  padding-top: 10px;
+}
+
+.clip-text {
+ color: #fff;
+ -webkit-text-fill-color: transparent;
+ background: url("/images/scenic-wallpaper.png") repeat;
+ -webkit-background-clip: text;
 }
 
 .component {

@@ -3,8 +3,9 @@ import React from 'react';
 function Header() {
   return (
     <div>
-      <h1 className="header">meeting background maker</h1>
-      <p>This app lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum interdum varius. Aliquam a magna condimentum, dictum nisi ut, varius augue.</p>
+      <div className="header clip-text">meeting background maker</div>
+      <p>Hide your shameful apartment from your cowokers, colleauges and students by generating cool backgrounds for your online meetings.</p>
+      <p>All source images are from the Cooper Hewitt Museum's archive.</p>
     </div>
   );
 }
