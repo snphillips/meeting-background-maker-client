@@ -1,5 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  /*font-family: 'Carter One', sans-serif;*/
 
 
 
@@ -20,13 +22,18 @@ code {
     monospace;
 }
 
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
 p {
   color: #fff;
 }
 
 .header {
-  font-family: 'Carter One', sans-serif;
-  font-size: 5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 7rem;
   line-height: .7;
   text-transform: uppercase;
   padding-top: 10px;
@@ -44,6 +51,20 @@ p {
   color: #fff;
   margin-bottom: 2rem;
   padding: 1rem;
+}
+
+button {
+  background-color: #000;
+  border: 2px solid #fff;
+  color: white;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 .filter {

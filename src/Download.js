@@ -6,7 +6,9 @@ function Download() {
     <div className="component">
       <div className="download">Download this collection to your hard drive.</div>
 
-        <a href="/meeting-backgrounds/arches.jpeg" download="arhces.jpeg">Download</a>
+        <button>
+          <a href="/meeting-backgrounds/arches.jpeg" download="arhces.jpeg">Download</a>
+        </button>
 
     </div>
   );

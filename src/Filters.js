@@ -24,10 +24,12 @@ export default class Filters extends Component {
 
       </select>
 
-      <input type="submit"
-             className="button"
-             id="submit-button"
-             value="submit" />
+
+        <input type="submit"
+               className="button"
+               id="submit-button"
+               value="submit" />
+
 
 
     </form>
