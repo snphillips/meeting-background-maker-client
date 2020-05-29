@@ -4,10 +4,16 @@ import './index.css';
 function Download() {
   return (
     <div className="component">
+
+      <div className="download-set-placehodler">
+        <p>No image sets to download</p>
+      </div>
+
+
       <div className="download">Download this collection to your hard drive.</div>
 
         <button>
-          <a href="/meeting-backgrounds/arches.jpeg" download="arhces.jpeg">Download</a>
+          <a href="/meeting-backgrounds/arches.jpeg" download="arches.jpeg">Download</a>
         </button>
 
     </div>

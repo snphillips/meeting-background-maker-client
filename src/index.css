@@ -32,6 +32,10 @@ p {
   color: #fff;
 }
 
+.item-title {
+  margin: 5px 0;
+}
+
 .header {
   font-family: 'Work Sans', sans-serif;
   font-size: 6rem;

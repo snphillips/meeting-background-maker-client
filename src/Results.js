@@ -10,6 +10,10 @@ export default class Results extends React.Component {
     return (
       <section className="component">
 
+          <div className="filter-results-placehodler">
+            <p>No images yet.</p>
+          </div>
+
           <div className="pre-selected-images-gallery">
 
                  {this.props.preSelectedImages.map( item => {
@@ -30,8 +34,13 @@ export default class Results extends React.Component {
                                alt={item.title}
                               />
                           </a>
-                              <p>{item.title}</p>
-                              <button className="add-collection-button">Add to collection</button>
+                              <p className="item-title">{item.title}</p>
+
+                              <button className="add-collection-button"
+                                      onClick={this.props.addToCollection}
+                                      >
+                                        Add to collection
+                              </button>
 
                         </div>
                         )

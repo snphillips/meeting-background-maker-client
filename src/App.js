@@ -20,6 +20,9 @@ export default class App extends Component {
       // serverSource: 'https://art-thief.herokuapp.com/searchbytag',
       // serverSource: 'http://localhost:3000/searchbytag',
       loading: false, // the loading spinner
+      filterResultsPlacehodler: true, // the loading spinner
+      selectedImagesPlacehodler: true, // the loading spinner
+      downloadSetPlacehodler: true, // the loading spinner
       value: 'sidewall',
       preSelectedImages: [],
       selectedImages: [],
@@ -35,6 +38,7 @@ export default class App extends Component {
     this.removeBlacklistedImages = this.removeBlacklistedImages.bind(this);
     this.removeSkinnyImages = this.removeSkinnyImages.bind(this);
     this.rotatePortraitImages = this.rotatePortraitImages.bind(this);
+    this.addToCollection = this.addToCollection.bind(this);
   }
 
 // ***********************************
@@ -150,6 +154,11 @@ export default class App extends Component {
   }
 
 
+  addToCollection(event) {
+    console.log("Add image to collection")
+  }
+
+
 
 
 
@@ -174,6 +183,7 @@ export default class App extends Component {
                />
       <Results parentState={this.state}
                preSelectedImages={this.state.preSelectedImages}
+               addToCollection={this.addToCollection}
                />
       <Collection selectedImages={this.state.selectedImages}/>
       <Download />
