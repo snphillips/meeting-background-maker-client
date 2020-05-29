@@ -93,7 +93,7 @@ input:hover {
 .clip-text {
  color: #fff;
  -webkit-text-fill-color: transparent;
- background: url("/images/scenic-wallpaper.png") repeat;
+ /*background: url("/images/scenic-wallpaper.png") repeat;*/
  -webkit-background-clip: text;
 }
 
