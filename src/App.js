@@ -26,7 +26,7 @@ export default class App extends Component {
       value: 'sidewall',
       preSelectedImages: [],
       selectedImages: [],
-      backgroundImages:["aeron-chair.jpg", "cube1981.png", "enterprise-wallpaper-1938-50.png", "league-woman-voters.png", "leopard-of-my-own1967.png"]
+      backgroundImages:["aeron-chair.jpg", "cube1981.png", "enterprise-wallpaper-1938-50.png", "league-woman-voters.png", "leopard-of-my-own1967.png", "penn-wallpaper-mills-pink.png", "scenic-wallpaper.png", "sidewall-1955-yellow-squiggles.png", "sidewall1928.png"]
       // curatedSets: [],
       // imageURL: "",
 
@@ -162,14 +162,14 @@ export default class App extends Component {
 
 
   shuffleBackgroundClipTextImage() {
+    console.log("Shuffling background clip image")
     let randomNumber = Math.floor(Math.random() * 10);
     let randomImage = this.state.backgroundImages[randomNumber];
     console.log("randomImage is:", randomImage, "randomNumber is:", randomNumber)
-    let backgroundImage = document.querySelector(".clip-text").style.setProperty("background", `url("/images/` + randomImage + `")` )
-    console.log("Shuffling Background image")
-
-
-
+    document.querySelector(".clip-text").style.setProperty("background", `url("/images/` + randomImage + `")` )
+    document.querySelector(".clip-text").style.setProperty("color", "#fff;")
+    document.querySelector(".clip-text").style.setProperty("-webkit-text-fill-color", "transparent")
+    document.querySelector(".clip-text").style.setProperty("-webkit-background-clip", "text")
   }
 
 

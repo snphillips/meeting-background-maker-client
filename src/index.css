@@ -83,7 +83,7 @@ input:hover {
 /*==========================*/
 .header {
   font-family: 'Work Sans', sans-serif;
-  font-size: 6rem;
+  font-size: 7rem;
   line-height: .6;
   text-transform: uppercase;
   padding: 10px 0;
@@ -91,10 +91,10 @@ input:hover {
 }
 
 .clip-text {
- color: #fff;
+/* color: #fff;
  -webkit-text-fill-color: transparent;
- /*background: url("/images/scenic-wallpaper.png") repeat;*/
- -webkit-background-clip: text;
+ background: url("/images/scenic-wallpaper.png") repeat;
+ -webkit-background-clip: text;*/
 }
 
 
