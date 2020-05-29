@@ -16,11 +16,16 @@ export default class Filters extends Component {
               >
 
         <option className="dropdown-item-style" value="accountants">choose search keyword</option>
-        <option className="dropdown-item-style" value="sidewall">sidewall 83</option>
+        <option className="dropdown-item-style" value="spectrum">spectrum 8</option>
         <option className="dropdown-item-style" value="carpet design">carpet design 9</option>
-        <option className="dropdown-item-style" value="wallcovering">wallcovering 93</option>
         <option className="dropdown-item-style" value="wallpaper">wallpaper 21</option>
+        <option className="dropdown-item-style" value="abstract">abstract</option>
+        <option className="dropdown-item-style" value="gardens">gardens 41</option>
+        <option className="dropdown-item-style" value="textile">textile 44</option>
+        <option className="dropdown-item-style" value="modernism">modernism 59</option>
         <option className="dropdown-item-style" value="textile design">textile design 79</option>
+        <option className="dropdown-item-style" value="sidewall">sidewall 83</option>
+        <option className="dropdown-item-style" value="wallcovering">wallcovering 93</option>
 
       </select>
 

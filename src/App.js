@@ -39,6 +39,7 @@ export default class App extends Component {
     this.removeSkinnyImages = this.removeSkinnyImages.bind(this);
     this.rotatePortraitImages = this.rotatePortraitImages.bind(this);
     this.addToCollection = this.addToCollection.bind(this);
+    this.shuffleBackgroundClipTextImage = this.shuffleBackgroundClipTextImage.bind(this);
   }
 
 // ***********************************
@@ -156,6 +157,19 @@ export default class App extends Component {
 
   addToCollection(event) {
     console.log("Add image to collection")
+  }
+
+
+  shuffleBackgroundClipTextImage() {
+    console.log("Shuffling Background image")
+
+  }
+
+
+
+
+  componentDidMount() {
+    this.shuffleBackgroundClipTextImage()
   }
 
 

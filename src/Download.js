@@ -10,10 +10,9 @@ function Download() {
       </div>
 
 
-      <div className="download">Download this collection to your hard drive.</div>
 
         <button>
-          <a href="/meeting-backgrounds/arches.jpeg" download="arches.jpeg">Download</a>
+          <a href="/meeting-backgrounds/arches.jpeg" download="arches.jpeg">Download Collection</a>
         </button>
 
     </div>
@@ -27,3 +26,5 @@ export default Download;
 
 
         // need to zip the folder of images before user can download the folder
+
+      // <div className="download">Download Collection</div>
