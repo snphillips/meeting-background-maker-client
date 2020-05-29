@@ -14,8 +14,10 @@ export default class Results extends React.Component {
 
                  {this.props.preSelectedImages.map( item => {
 
+
+                    // not really using this but it's helpful for tracking
                     let imageIndex = this.props.preSelectedImages.indexOf(item)
-                    console.log("imageIndex as we build the gallery:", imageIndex)
+                    console.log("imageIndex as gallery built:", imageIndex)
 
 
                       return(
@@ -29,7 +31,7 @@ export default class Results extends React.Component {
                               />
                           </a>
                               <p>{item.title}</p>
-                              <button>Add to collection</button>
+                              <button className="add-collection-button">Add to collection</button>
 
                         </div>
                         )

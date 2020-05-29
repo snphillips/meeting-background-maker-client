@@ -15,10 +15,10 @@ export default class Filters extends Component {
               onChange={this.props.handleDropdownChange}
               >
 
-        <option value="sidewall">choose search keyword</option>
-        <option className="dropdown-item-style" value="sidewall">sidewall 90</option>
+        <option className="dropdown-item-style" value="accountants">choose search keyword</option>
+        <option className="dropdown-item-style" value="sidewall">sidewall 83</option>
         <option className="dropdown-item-style" value="carpet design">carpet design 9</option>
-        <option className="dropdown-item-style" value="wallcovering">wallcovering 94</option>
+        <option className="dropdown-item-style" value="wallcovering">wallcovering 93</option>
         <option className="dropdown-item-style" value="wallpaper">wallpaper 21</option>
         <option className="dropdown-item-style" value="textile design">textile design 79</option>
 

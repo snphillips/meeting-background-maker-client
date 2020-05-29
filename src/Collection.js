@@ -10,6 +10,12 @@ export default class collection extends React.Component {
     return (
       <section className="component">
 
+        <h2>Your selected images:</h2>
+
+          <div className="selected-image-placehodler">
+            <p>No selected images yet</p>
+          </div>
+
           <div className="selected-images-gallery">
 
                  {this.props.selectedImages.map( item => {
@@ -27,7 +33,6 @@ export default class collection extends React.Component {
                                alt={item.title}
                               />
                               <p>{item.title}</p>
-                              <button>Add to collection</button>
 
                         </div>
                         )
