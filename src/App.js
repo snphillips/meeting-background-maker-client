@@ -156,6 +156,8 @@ export default class App extends Component {
 
   addToCollection(event) {
     console.log("Add image to collection")
+    this.state.selectedImages.push("hello")
+    console.log("this.state.selectedImages", this.state.selectedImages)
   }
 
 
@@ -166,9 +168,11 @@ export default class App extends Component {
     let randomImage = backgroundImages[randomNumber];
     console.log("randomImage is:", randomImage, "randomNumber is:", randomNumber)
     document.querySelector(".clip-text").style.setProperty("background", `url("/images/` + randomImage + `")` )
+    document.querySelector("body").style.setProperty("background", `url("/images/` + randomImage + `")` )
     document.querySelector(".clip-text").style.setProperty("color", "#fff;")
     document.querySelector(".clip-text").style.setProperty("-webkit-text-fill-color", "transparent")
     document.querySelector(".clip-text").style.setProperty("-webkit-background-clip", "text")
+    // document.querySelector(".header").style.textShadow = "2px 2px 2px #fff";
   }
 
 
@@ -194,7 +198,7 @@ export default class App extends Component {
 
   render() {
   return (
-    <div className="App">
+    <div className="App app-container">
       <Header />
       <Filters handleDropdownChange={this.handleDropdownChange}
                handleDropdownSubmit={this.handleDropdownSubmit}
