@@ -18,102 +18,27 @@ export default class Filters extends Component {
 
       <section className="filter-button-section">
 
+       {searchTerms.map( item => {
 
-        <input onChange={this.props.handleChange}
-               onSubmit={this.props.handleSubmit}
-               type="submit"
-               className="button"
-               id="submit-button"
-               value="spectrum" />
+          console.log("button name:", item)
 
-        <input onChange={this.props.handleChange}
-               onSubmit={this.props.handleSubmit}
-               type="submit"
-               className="button"
-               id="submit-button"
-               value="carpet design" />
+            return(
 
-        <input onChange={this.props.handleChange}
-               onSubmit={this.props.handleSubmit}
-               type="submit"
-               className="button"
-               id="submit-button"
-               value="wallpaper" />
+              <form ref="form"
+                    value={this.props.parent_state.value}
+                    onSubmit={this.props.handleSubmit}
+                    >
+                <button type="submit"
+                        value="1980s"
+                        onChange={this.props.handleChange}
+                        >
+                        {item}
+                </button>
+              </form>
+              )
 
-        <input onChange={this.props.handleChange}
-               onSubmit={this.props.handleSubmit}
-               type="submit"
-               className="button"
-               id="submit-button"
-               value="abstract" />
-
-        <input onChange={this.props.handleChange}
-               onSubmit={this.props.handleSubmit}
-               type="submit"
-               className="button"
-               id="submit-button"
-               value="gardens" />
-
-        <input onChange={this.props.handleChange}
-               onSubmit={this.props.handleSubmit}
-               type="submit"
-               className="button"
-               id="submit-button"
-               value="textile" />
-
-        <input onChange={this.props.handleChange}
-               onSubmit={this.props.handleSubmit}
-               type="submit"
-               className="button"
-               id="submit-button"
-               value="modernism" />
-
-        <input onChange={this.props.handleChange}
-               onSubmit={this.props.handleSubmit}
-               type="submit"
-               className="button"
-               id="submit-button"
-               value="textile design" />
-
-        <input onChange={this.props.handleChange}
-               onSubmit={this.props.handleSubmit}
-               type="submit"
-               className="button"
-               id="submit-button"
-               value="sidewall" />
-
-        <input onChange={this.props.handleChange}
-               onSubmit={this.props.handleSubmit}
-               type="submit"
-               className="button"
-               id="submit-button"
-               value="wallcovering" />
-
-        <input onChange={this.props.handleChange}
-               onSubmit={this.props.handleSubmit}
-               type="submit"
-               className="button"
-               id="submit-button"
-               value="1980s" />
-
-
-
-
-
-        <form ref="form"
-              value={this.props.parent_state.value}
-              onSubmit={this.props.handleSubmit}
-              >
-          <button type="submit"
-                  value="1980s"
-                  onChange={this.props.handleChange}
-                  >
-                  1980s
-          </button>
-       </form>
-
-
-
+             })
+       }
 
       <span className="spinner-container">
         <LoadingSpinner loading={this.props.loading} />
@@ -127,16 +52,5 @@ export default class Filters extends Component {
     );
   }
 }
-
-
-
-              // value={this.props.parent_state.value}
-              // onChange={this.props.handleChange}
-
-
-
-
-
-
 
 
