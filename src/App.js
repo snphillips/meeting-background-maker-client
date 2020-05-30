@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import _Lodash from 'lodash';
 import Header from './Header';
-// import Filters from './Filters';
+import Filters from './Filters';
 import FiltersNew from './FiltersNew';
 import Collection from './Collection';
 import Results from './Results';
@@ -25,13 +25,13 @@ export default class App extends Component {
       filterResultsPlacehodler: true, // the loading spinner
       selectedImagesPlacehodler: true, // the loading spinner
       downloadSetPlacehodler: true, // the loading spinner
-      value: 'sidewall',
+      value: 'smoking',
       preSelectedImages: [],
       selectedImages: []
     };
 
     // This binding is necessary to make `this` work in the callback
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.finesseImages = this.finesseImages.bind(this);
     this.removeBlacklistedImages = this.removeBlacklistedImages.bind(this);
@@ -45,20 +45,12 @@ export default class App extends Component {
 // End of constructor
 // ***********************************
 
- //  ==================================
- //  dropdown menu. First the user chooses
- //  a value/search tag in the Change event,
- //  then they Submit that value.
- //  ==================================
-  handleChange(event) {
-    this.setState({value: event.target.value});
-    console.log("handleChange(event) this.state.value is:", this.state.value)
-  }
-
   handleSubmit(event) {
-    this.cooperHewittSearchByTagFromAPI()
-    event.preventDefault();
+    this.setState({value: event.target.value}, () => {
+      this.cooperHewittSearchByTagFromAPI()
+    });
     console.log("handleSubmit(event) this.state.value is:", this.state.value)
+    event.preventDefault();
   }
 
 
@@ -194,17 +186,11 @@ export default class App extends Component {
 
 
 
-
-
-
-
-
   render() {
   return (
     <div className="App app-container">
       <Header />
-      <FiltersNew handleChange={this.handleChange}
-                  handleSubmit={this.handleSubmit}
+      <FiltersNew handleSubmit={this.handleSubmit}
                   parent_state={this.state}
                   loading={this.state.loading}
                   />
@@ -222,9 +208,3 @@ export default class App extends Component {
 }
 }
 
-
-      // <Filters handleChange={this.handleChange}
-      //          handleSubmit={this.handleSubmit}
-      //          parent_state={this.state}
-      //          loading={this.state.loading}
-      //          />

@@ -20,9 +20,8 @@ export default class Results extends React.Component {
 
 
                     // not really using this but it's helpful for tracking
-                    let imageIndex = this.props.preSelectedImages.indexOf(item)
-                    console.log("imageIndex as gallery built:", imageIndex)
-
+                    // let imageIndex = this.props.preSelectedImages.indexOf(item)
+                    // console.log("imageIndex as gallery built:", imageIndex)
 
                       return(
 

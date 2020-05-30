@@ -20,21 +20,23 @@ export default class Filters extends Component {
 
        {searchTerms.map( item => {
 
-          console.log("button name:", item)
+          // console.log("button value:", item)
 
             return(
 
-              <form ref="form"
-                    value={this.props.parent_state.value}
-                    onSubmit={this.props.handleSubmit}
-                    >
                 <button type="submit"
-                        value="1980s"
-                        onChange={this.props.handleChange}
+                        value={item}
+                        onMouseOver={ (event) => {
+                          console.log("button value is:", event.target.value)
+                        }}
+                        onClick={ (event) => {
+                          console.log("button value is:", event.target.value)
+                          this.props.handleSubmit(event)
+                        }}
                         >
                         {item}
                 </button>
-              </form>
+
               )
 
              })
