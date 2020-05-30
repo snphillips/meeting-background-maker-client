@@ -38,6 +38,8 @@ a:hover {
 
 p {
   color: #fff;
+  /*color: #ffefbf;*/
+  font-weight: 500;
 }
 
 .item-title {
@@ -88,6 +90,11 @@ h1 {
 /*==============================
 dropdown menu(select) & submit(input)
 ================================*/
+.filters-component {
+  display: flex;
+  flex-direction: row;
+}
+
 form {
   display: inline-block;
 }
@@ -179,7 +186,7 @@ Results
 }
 
 .background-img {
-  max-width: 300px;
+  max-width: 250px;
 }
 
 .download {

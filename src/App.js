@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import _Lodash from 'lodash';
 import Header from './Header';
-import Filters from './Filters';
+// import Filters from './Filters';
+import FiltersNew from './FiltersNew';
 import Collection from './Collection';
 import Results from './Results';
 import Download from './Download';
@@ -30,8 +31,8 @@ export default class App extends Component {
     };
 
     // This binding is necessary to make `this` work in the callback
-    this.handleDropdownChange = this.handleDropdownChange.bind(this);
-    this.handleDropdownSubmit = this.handleDropdownSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.finesseImages = this.finesseImages.bind(this);
     this.removeBlacklistedImages = this.removeBlacklistedImages.bind(this);
     this.removeSkinnyImages = this.removeSkinnyImages.bind(this);
@@ -49,14 +50,15 @@ export default class App extends Component {
  //  a value/search tag in the Change event,
  //  then they Submit that value.
  //  ==================================
-  handleDropdownChange(event) {
+  handleChange(event) {
     this.setState({value: event.target.value});
+    console.log("handleChange(event) this.state.value is:", this.state.value)
   }
 
-  handleDropdownSubmit(event) {
+  handleSubmit(event) {
     this.cooperHewittSearchByTagFromAPI()
     event.preventDefault();
-    console.log("this.state.value is:", this.state.value)
+    console.log("handleSubmit(event) this.state.value is:", this.state.value)
   }
 
 
@@ -82,6 +84,7 @@ export default class App extends Component {
         console.log(`The search value is:`, this.state.value, `There are`, (response.data.objects).length, `objects BEFORE finessing.`)
         // stop the loading spinner
         this.setState({loading: false});
+        this.shuffleBackgroundClipTextImage()
         this.setState({preSelectedImages: response.data.objects}, () => {
           this.finesseImages( () => {
             console.log(`There are`, (response.data.objects).length, `objects after finessing.`)
@@ -200,11 +203,11 @@ export default class App extends Component {
   return (
     <div className="App app-container">
       <Header />
-      <Filters handleDropdownChange={this.handleDropdownChange}
-               handleDropdownSubmit={this.handleDropdownSubmit}
-               parent_state={this.state}
-               loading={this.state.loading}
-               />
+      <FiltersNew handleChange={this.handleChange}
+                  handleSubmit={this.handleSubmit}
+                  parent_state={this.state}
+                  loading={this.state.loading}
+                  />
       <Results parentState={this.state}
                preSelectedImages={this.state.preSelectedImages}
                addToCollection={this.addToCollection}
@@ -218,3 +221,10 @@ export default class App extends Component {
   );
 }
 }
+
+
+      // <Filters handleChange={this.handleChange}
+      //          handleSubmit={this.handleSubmit}
+      //          parent_state={this.state}
+      //          loading={this.state.loading}
+      //          />

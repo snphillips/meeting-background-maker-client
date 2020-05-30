@@ -26,6 +26,7 @@ export default class Filters extends Component {
         <option className="dropdown-item-style" value="textile design">textile design 79</option>
         <option className="dropdown-item-style" value="sidewall">sidewall 83</option>
         <option className="dropdown-item-style" value="wallcovering">wallcovering 93</option>
+        <option className="dropdown-item-style" value="1980s">1980s 146</option>
 
       </select>
 
