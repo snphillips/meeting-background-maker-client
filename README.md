@@ -2,5 +2,5 @@
 
 (companion to Meeting Background Maker Server)
 
-# Getting Started
+### Getting Started
 
