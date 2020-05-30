@@ -1,4 +1,4 @@
-## Meeting Background Maker Client
+## Meeting Background Maker - Client
 
 (companion to Meeting Background Maker Server)
 
