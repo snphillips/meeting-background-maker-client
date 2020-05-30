@@ -117,3 +117,60 @@ input:hover {
 .download {
 
 }
+
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  /*flex-direction: column;*/
+}
+
+.image-card {
+  cursor: pointer;
+  text-align: left;
+  flex-grow: 1;
+  width: 30%;
+  max-width: 400px;
+  padding: .75rem;
+}
+
+
+/*=========================
+Media Queries - small computer
+==========================*/
+@media (max-width: 1000px) {
+
+  .image-card {
+    width: 30%;
+  }
+
+ }
+
+
+/*=========================
+Media Queries - tablets
+2 column gallery
+==========================*/
+@media (max-width: 700px) {
+
+  .image-card {
+    width: 50%;
+  }
+
+}
+
+/*=========================
+Media Queries - phones
+1 column gallery
+/*==========================*/
+@media (max-width: 415px) {
+
+  .image-card {
+    width: 100%;
+    padding: .25rem 0;
+    margin-right: unset;
+    margin-bottom: .5rem;
+  }
+
+
+ }

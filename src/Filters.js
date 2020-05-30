@@ -46,10 +46,3 @@ export default class Filters extends Component {
   }
 }
 
-
-        // <option className="dropdown-item-style" value="graphic designers">graphic designers</option>
-        // <option className="dropdown-item-style" value="industrial design">industrial design</option>
-        // <option className="dropdown-item-style" value="intricate">intricate</option>
-        // <option className="dropdown-item-style" value="modernism">modernism</option>
-        // <option className="dropdown-item-style" value="posters">floral</option>
-        // <option className="dropdown-item-style" value="simple">simple</option>

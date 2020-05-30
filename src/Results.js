@@ -14,7 +14,7 @@ export default class Results extends React.Component {
             <p>No images yet.</p>
           </div>
 
-          <div className="pre-selected-images-gallery">
+          <div className="pre-selected-images-gallery results">
 
                  {this.props.preSelectedImages.map( item => {
 
@@ -32,9 +32,11 @@ export default class Results extends React.Component {
                             <img className="background-img"
                                src={item.images[0].b.url}
                                alt={item.title}
+
                               />
                           </a>
                               <p className="item-title">{item.title}</p>
+                              <p className="item-title">{item.id}</p>
 
                               <button className="add-collection-button"
                                       onClick={this.props.addToCollection}
@@ -55,8 +57,9 @@ export default class Results extends React.Component {
   );
   }
 
-
-
-
 }
+
+
+
+
 

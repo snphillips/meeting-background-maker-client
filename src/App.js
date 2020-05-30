@@ -10,6 +10,7 @@ import Instructions from './Instructions';
 import CuratedSetsSection from './CuratedSetsSection';
 import Footer from './Footer';
 import blacklist from './blacklist';
+import backgroundImages from './backgroundImages';
 
 
 export default class App extends Component {
@@ -25,11 +26,7 @@ export default class App extends Component {
       downloadSetPlacehodler: true, // the loading spinner
       value: 'sidewall',
       preSelectedImages: [],
-      selectedImages: [],
-      backgroundImages:["aeron-chair.jpg", "cube1981.png", "enterprise-wallpaper-1938-50.png", "league-woman-voters.png", "leopard-of-my-own1967.png", "penn-wallpaper-mills-pink.png", "scenic-wallpaper.png", "sidewall-1955-yellow-squiggles.png", "sidewall1928.png"]
-      // curatedSets: [],
-      // imageURL: "",
-
+      selectedImages: []
     };
 
     // This binding is necessary to make `this` work in the callback
@@ -75,7 +72,7 @@ export default class App extends Component {
     // 2) removes the placeholder image
     // 3) returns a random item (image, title, description & link url)
     // axios.get(`https://art-thief.herokuapp.com/searchbytag/`+`${this.state.value}`)
-    axios.get(`http://localhost:3001/searchbytag/`+`${this.state.value}`)
+    axios.get(`http://localhost:3001/searchbytag/`+ this.state.value)
       .then( (response) => {
 
         // Using the _Lodash library to first shuffle the response array,
@@ -109,31 +106,32 @@ export default class App extends Component {
   removeBlacklistedImages() {
 
 
-    let imageArray = this.state.preSelectedImages
+    // let imageArray = this.state.preSelectedImages
 
-    function compare(imageArray, blacklist){
-      // let filteredImageArray = [];
+    // function compare(imageArray, blacklist){
+    //   // let filteredImageArray = [];
 
-      imageArray.forEach( (item) => {
+    //   imageArray.forEach( (item) => {
 
-        console.log("item id:", item.id)
+    //     console.log("item id:", item.id)
 
-        blacklist.forEach( (blacklistItem) => {
+    //     blacklist.forEach( (blacklistItem) => {
 
-          if (item.id === blacklistItem) {
-            console.log("items are the same. Pop it out.")
-            imageArray.pop()
-            console.log("imageArray.length", this.imageArray.length)
+    //       if (item.id === blacklistItem) {
+    //         console.log("items are the same. Pop it out.")
+    //         imageArray.pop()
+    //         console.log("imageArray.length", this.imageArray.length)
 
-          } else {
-            console.log("Image not in reject list. Image passes.")
-          }
-        })
-      })
-      return imageArray;
-    }
+    //       } else {
+    //         console.log("Image not in reject list. Image passes.")
+    //       }
+    //     })
+    //   })
+    //   return imageArray;
+    // }
 
-    console.log("removeBlacklistedImages()")
+    // console.log("removeBlacklistedImages()")
+    // compare()
   }
 
   // images that are too thin, should be removed
@@ -162,9 +160,10 @@ export default class App extends Component {
 
 
   shuffleBackgroundClipTextImage() {
-    console.log("Shuffling background clip image")
-    let randomNumber = Math.floor(Math.random() * 10);
-    let randomImage = this.state.backgroundImages[randomNumber];
+    let arrayLength = backgroundImages.length - 1
+    console.log(arrayLength)
+    let randomNumber = Math.floor(Math.random() * arrayLength);
+    let randomImage = backgroundImages[randomNumber];
     console.log("randomImage is:", randomImage, "randomNumber is:", randomNumber)
     document.querySelector(".clip-text").style.setProperty("background", `url("/images/` + randomImage + `")` )
     document.querySelector(".clip-text").style.setProperty("color", "#fff;")
