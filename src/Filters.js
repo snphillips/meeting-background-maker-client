@@ -8,12 +8,12 @@ export default class Filters extends Component {
     return (
 
     <div className="component">
+
       <form onSubmit={this.props.handleDropdownSubmit}>
 
       <select id="tag"
               value={this.props.parent_state.value}
-              onChange={this.props.handleDropdownChange}
-              >
+              onChange={this.props.handleDropdownChange}>
 
         <option className="dropdown-item-style" value="accountants">choose search keyword</option>
         <option className="dropdown-item-style" value="spectrum">spectrum 8</option>
@@ -34,12 +34,12 @@ export default class Filters extends Component {
                className="button"
                id="submit-button"
                value="submit" />
-
-
-
     </form>
 
-    <LoadingSpinner loading={this.props.loading} />
+    <span className="spinner-container">
+      <LoadingSpinner loading={this.props.loading} />
+    </span>
+
     </div>
 
     );

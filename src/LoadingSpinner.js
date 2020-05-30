@@ -6,8 +6,7 @@ import { BeatLoader } from 'react-spinners';
 const override = css`
     display: block;
     margin: 0 auto;
-    border-color: red;
-`;
+    border-color: red;`;
 
 
 

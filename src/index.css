@@ -55,6 +55,11 @@ h2 {
   padding: 1rem;
 }
 
+form {
+  display: inline-block;
+}
+
+
 button,
 input {
   color: #fff !important;
@@ -76,6 +81,10 @@ button:hover,
 input:hover {
   color: #000 !important;
   background-color: #fff;
+}
+
+.spinner-container {
+  display: inline-block;
 }
 
 /*==========================*/
