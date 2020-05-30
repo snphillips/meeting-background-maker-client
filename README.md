@@ -5,12 +5,17 @@
 ### Getting Started
 
 clone this repo:
- `git clone `
+
+ `git clone https://github.com/snphillips/meeting-background-maker-client.git`
+ 
 run npm to install all the dependencies
+
 `npm install`
-navigate into the 
-to start the server:
+
+Start the server:
+
 `npm start`
+
 your browser should open to http://localhost:3000/
 voila!
 
