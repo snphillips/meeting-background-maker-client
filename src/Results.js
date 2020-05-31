@@ -10,7 +10,7 @@ export default class Results extends React.Component {
     return (
       <section className="component">
 
-          <div className="results-placehodler">
+          <div className="results-placeholder">
             <p>No images yet.</p>
           </div>
 

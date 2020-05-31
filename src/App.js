@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import _Lodash from 'lodash';
 import Header from './Header';
-import Filters from './Filters';
+// import Filters from './Filters';
 import FiltersNew from './FiltersNew';
 import Collection from './Collection';
 import Results from './Results';
@@ -12,6 +12,7 @@ import CuratedSetsSection from './CuratedSetsSection';
 import Footer from './Footer';
 import blacklist from './blacklist';
 import backgroundImages from './backgroundImages';
+import SelectedImages from './SelectedImages';
 
 
 export default class App extends Component {
@@ -22,9 +23,9 @@ export default class App extends Component {
       // serverSource: 'https://art-thief.herokuapp.com/searchbytag',
       // serverSource: 'http://localhost:3000/searchbytag',
       loading: false, // the loading spinner
-      filterResultsPlacehodler: true, // the loading spinner
-      selectedImagesPlacehodler: true, // the loading spinner
-      downloadSetPlacehodler: true, // the loading spinner
+      filterResultsPlaceholder: true, // the loading spinner
+      selectedImagesPlaceholder: true, // the loading spinner
+      downloadSetPlaceholder: true, // the loading spinner
       value: 'smoking',
       preSelectedImages: [],
       selectedImages: []
@@ -39,8 +40,8 @@ export default class App extends Component {
     this.rotatePortraitImages = this.rotatePortraitImages.bind(this);
     this.addToCollection = this.addToCollection.bind(this);
     this.shuffleBackgroundClipTextImage = this.shuffleBackgroundClipTextImage.bind(this);
-    this.toggleFilterResultsPlacehodler = this.toggleFilterResultsPlacehodler.bind(this);
-    this.toggleSelectedImagesPlacehodler = this.toggleSelectedImagesPlacehodler.bind(this);
+    this.hideFilterResultsPlaceholder = this.hideFilterResultsPlaceholder.bind(this);
+    this.hideSelectedImagesPlaceholder = this.hideSelectedImagesPlaceholder.bind(this);
   }
 
 // ***********************************
@@ -51,7 +52,6 @@ export default class App extends Component {
     this.setState({value: event.target.value}, () => {
       this.cooperHewittSearchByTagFromAPI()
     });
-    console.log("handleSubmit(event) this.state.value is:", this.state.value)
     event.preventDefault();
   }
 
@@ -83,7 +83,7 @@ export default class App extends Component {
           this.finesseImages( () => {
             console.log(`There are`, (response.data.objects).length, `objects after finessing.`)
           })
-        this.toggleFilterResultsPlacehodler()
+        this.hideFilterResultsPlaceholder()
         })
       })
       .catch(function (error) {
@@ -160,21 +160,22 @@ export default class App extends Component {
 
 
 
-toggleFilterResultsPlacehodler() {
-  if (this.state.filterResultsPlacehodler === true ) {
+hideFilterResultsPlaceholder() {
+  if (this.state.filterResultsPlaceholder === true ) {
     console.log("placeholder display none")
-    this.setState({filterResultsPlacehodler: false})
-    document.querySelector(".results-placehodler").style.display = "none";
-  } else {
-    document.querySelector(".results-placehodler").style.display = "block";
+    this.setState({filterResultsPlaceholder: false})
+    document.querySelector(".results-placeholder").style.display = "none";
   }
 };
 
-toggleSelectedImagesPlacehodler() {
-  console.log("toggleSelectedResultsPlacehodler()")
+
+hideSelectedImagesPlaceholder() {
+  if (this.state.filterResultsPlaceholder === true ) {
+    console.log("placeholder display none")
+    this.setState({selectedImagesPlaceholder: false})
+    document.querySelector(".selected-images-placehodler").style.display = "none";
+  }
 };
-
-
 
 
 
@@ -213,8 +214,11 @@ toggleSelectedImagesPlacehodler() {
       <Results parentState={this.state}
                preSelectedImages={this.state.preSelectedImages}
                addToCollection={this.addToCollection}
+               hideFilterResultsPlacehodler={this.hideFilterResultsPlacehodler}
                />
-      <Collection selectedImages={this.state.selectedImages}/>
+      <SelectedImages selectedImages={this.state.selectedImages}
+                      hideSelectedImagesPlaceholder={this.state.hideSelectedImagesPlaceholder}
+                      />
       <Download />
       <Instructions />
       <CuratedSetsSection />
