@@ -39,6 +39,8 @@ export default class App extends Component {
     this.rotatePortraitImages = this.rotatePortraitImages.bind(this);
     this.addToCollection = this.addToCollection.bind(this);
     this.shuffleBackgroundClipTextImage = this.shuffleBackgroundClipTextImage.bind(this);
+    this.toggleFilterResultsPlacehodler = this.toggleFilterResultsPlacehodler.bind(this);
+    this.toggleSelectedImagesPlacehodler = this.toggleSelectedImagesPlacehodler.bind(this);
   }
 
 // ***********************************
@@ -81,6 +83,7 @@ export default class App extends Component {
           this.finesseImages( () => {
             console.log(`There are`, (response.data.objects).length, `objects after finessing.`)
           })
+        this.toggleFilterResultsPlacehodler()
         })
       })
       .catch(function (error) {
@@ -139,21 +142,44 @@ export default class App extends Component {
       // if ( item[0] ) {
       //   imageArray.pop
       })
-
-
-  }
+  };
 
   // portrait images should be rotated 90 degrees to be Landscape
   rotatePortraitImages() {
     console.log("rotatePortraitImages()")
-  }
+  };
 
 
   addToCollection(event) {
     console.log("Add image to collection")
     this.state.selectedImages.push("hello")
     console.log("this.state.selectedImages", this.state.selectedImages)
+  };
+
+
+
+
+
+toggleFilterResultsPlacehodler() {
+  if (this.state.filterResultsPlacehodler === true ) {
+    console.log("placeholder display none")
+    this.setState({filterResultsPlacehodler: false})
+    document.querySelector(".results-placehodler").style.display = "none";
+  } else {
+    document.querySelector(".results-placehodler").style.display = "block";
   }
+};
+
+toggleSelectedImagesPlacehodler() {
+  console.log("toggleSelectedResultsPlacehodler()")
+};
+
+
+
+
+
+
+
 
 
   shuffleBackgroundClipTextImage() {
@@ -170,19 +196,9 @@ export default class App extends Component {
     // document.querySelector(".header").style.textShadow = "2px 2px 2px #fff";
   }
 
-
-
-
   componentDidMount() {
     this.shuffleBackgroundClipTextImage()
   }
-
-
-
-
-
-
-
 
 
 
