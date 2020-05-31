@@ -31,14 +31,17 @@ export default class Results extends React.Component {
                             <img className="background-img"
                                src={item.images[0].b.url}
                                alt={item.title}
-
                               />
                           </a>
                               <p className="item-title">{item.title}</p>
                               <p className="item-title">{item.id}</p>
 
-                              <button className="add-collection-button"
-                                      onClick={this.props.addToCollection}
+                              <button type="submit"
+                                      value={item}
+                                      onClick={ (event) => {
+                                        console.log("button value is:", item)
+                                        this.props.handleAddToCollectionSubmit(item)
+                                      }}
                                       >
                                         Add to collection
                               </button>

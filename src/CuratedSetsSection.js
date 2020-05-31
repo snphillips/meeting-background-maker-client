@@ -13,10 +13,6 @@ export default class CuratedSetsSection extends React.Component {
 
         <h2>Curated Sets:</h2>
 
-          <div className="selected-image-placehodler">
-            <p>No selected images yet</p>
-          </div>
-
       </section>
   );
   }

@@ -11,8 +11,8 @@ export default class Filters extends Component {
     <div className="filters-component">
 
       <section className="app-description">
-        <p>Hide your shameful apartment from your cowokers, colleauges and students by generating cool backgrounds for your online meetings.</p>
-        <p>All source images are from the Cooper Hewitt Museum's archive.</p>
+        <p>Hide your shameful apartment from your colleauges and students by generating backgrounds for your online meetings.</p>
+        <p>All images are sourced from the Cooper Hewitt Museum's archive.</p>
       </section>
 
 
@@ -26,12 +26,9 @@ export default class Filters extends Component {
 
                 <button type="submit"
                         value={item}
-                        onMouseOver={ (event) => {
-                          console.log("button value is:", event.target.value)
-                        }}
                         onClick={ (event) => {
                           console.log("button value is:", event.target.value)
-                          this.props.handleSubmit(event)
+                          this.props.handleFilterSubmit(event)
                         }}
                         >
                         {item}

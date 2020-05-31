@@ -23,9 +23,9 @@ export default class App extends Component {
       // serverSource: 'https://art-thief.herokuapp.com/searchbytag',
       // serverSource: 'http://localhost:3000/searchbytag',
       loading: false, // the loading spinner
-      filterResultsPlaceholder: true, // the loading spinner
-      selectedImagesPlaceholder: true, // the loading spinner
-      downloadSetPlaceholder: true, // the loading spinner
+      filterResultsPlaceholder: true,
+      selectedImagesPlaceholder: true,
+      downloadSetPlaceholder: true,
       value: 'smoking',
       preSelectedImages: [],
       selectedImages: []
@@ -33,12 +33,12 @@ export default class App extends Component {
 
     // This binding is necessary to make `this` work in the callback
     // this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFilterSubmit = this.handleFilterSubmit.bind(this);
+    this.handleAddToCollectionSubmit = this.handleAddToCollectionSubmit.bind(this);
     this.finesseImages = this.finesseImages.bind(this);
     this.removeBlacklistedImages = this.removeBlacklistedImages.bind(this);
     this.removeSkinnyImages = this.removeSkinnyImages.bind(this);
     this.rotatePortraitImages = this.rotatePortraitImages.bind(this);
-    this.addToCollection = this.addToCollection.bind(this);
     this.shuffleBackgroundClipTextImage = this.shuffleBackgroundClipTextImage.bind(this);
     this.hideFilterResultsPlaceholder = this.hideFilterResultsPlaceholder.bind(this);
     this.hideSelectedImagesPlaceholder = this.hideSelectedImagesPlaceholder.bind(this);
@@ -48,12 +48,28 @@ export default class App extends Component {
 // End of constructor
 // ***********************************
 
-  handleSubmit(event) {
+  handleFilterSubmit(event) {
     this.setState({value: event.target.value}, () => {
       this.cooperHewittSearchByTagFromAPI()
     });
     event.preventDefault();
   }
+
+
+  handleAddToCollectionSubmit(item) {
+
+
+    this.state.selectedImages.push(item)
+
+    console.log("event.target.value",item)
+    console.log("this.state.selectedImages", this.state.selectedImages)
+    console.log("this.state.selectedImages[0].id", this.state.selectedImages[0].id)
+
+    // event.preventDefault();
+    // After adding to collection, selected images appear in "selected images"
+    // this.updateSelectedImages()
+    this.hideSelectedImagesPlaceholder()
+  };
 
 
 
@@ -78,6 +94,7 @@ export default class App extends Component {
         console.log(`The search value is:`, this.state.value, `There are`, (response.data.objects).length, `objects BEFORE finessing.`)
         // stop the loading spinner
         this.setState({loading: false});
+        // having some fun and chaning the background
         this.shuffleBackgroundClipTextImage()
         this.setState({preSelectedImages: response.data.objects}, () => {
           this.finesseImages( () => {
@@ -150,32 +167,28 @@ export default class App extends Component {
   };
 
 
-  addToCollection(event) {
-    console.log("Add image to collection")
-    this.state.selectedImages.push("hello")
-    console.log("this.state.selectedImages", this.state.selectedImages)
+
+
+  hideFilterResultsPlaceholder() {
+    if (this.state.filterResultsPlaceholder === true ) {
+      console.log("placeholder display none")
+      this.setState({filterResultsPlaceholder: false})
+      document.querySelector(".results-placeholder").style.display = "none";
+    }
   };
 
 
+  hideSelectedImagesPlaceholder() {
+    if (this.state.selectedImagesPlaceholder === true ) {
+      this.setState({selectedImagesPlaceholder: false})
+      console.log("placeholder display none")
+      document.querySelector(".selected-images-placeholder").style.display = "none";
+    }
+  };
 
-
-
-hideFilterResultsPlaceholder() {
-  if (this.state.filterResultsPlaceholder === true ) {
-    console.log("placeholder display none")
-    this.setState({filterResultsPlaceholder: false})
-    document.querySelector(".results-placeholder").style.display = "none";
+  updateSelectedImages() {
+    console.log("updateSelectedImages()")
   }
-};
-
-
-hideSelectedImagesPlaceholder() {
-  if (this.state.filterResultsPlaceholder === true ) {
-    console.log("placeholder display none")
-    this.setState({selectedImagesPlaceholder: false})
-    document.querySelector(".selected-images-placehodler").style.display = "none";
-  }
-};
 
 
 
@@ -207,13 +220,13 @@ hideSelectedImagesPlaceholder() {
   return (
     <div className="App app-container">
       <Header />
-      <FiltersNew handleSubmit={this.handleSubmit}
+      <FiltersNew handleFilterSubmit={this.handleFilterSubmit}
                   parent_state={this.state}
                   loading={this.state.loading}
                   />
       <Results parentState={this.state}
                preSelectedImages={this.state.preSelectedImages}
-               addToCollection={this.addToCollection}
+               handleAddToCollectionSubmit={this.handleAddToCollectionSubmit}
                hideFilterResultsPlacehodler={this.hideFilterResultsPlacehodler}
                />
       <SelectedImages selectedImages={this.state.selectedImages}

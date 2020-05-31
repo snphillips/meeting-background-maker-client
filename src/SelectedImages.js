@@ -12,16 +12,13 @@ export default class selectedImages extends React.Component {
 
         <h2>Your selected images:</h2>
 
-          <div className="selected-images-placehodler">
-            <p>No selected images yet</p>
+          <div className="selected-images-placeholder">
+            <p>No selected images</p>
           </div>
 
           <div className="selected-images-gallery">
 
                  {this.props.selectedImages.map( item => {
-
-                    let imageIndex = this.props.selectedImages.indexOf(item)
-                    console.log("imageIndex as we build the gallery:", imageIndex)
 
 
                       return(
