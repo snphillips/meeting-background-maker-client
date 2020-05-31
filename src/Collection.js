@@ -16,7 +16,7 @@ export default class collection extends React.Component {
             <p>No selected images yet</p>
           </div>
 
-          <div className="selected-images-gallery">
+          <div className="selected-images-gallery results">
 
                  {this.props.selectedImages.map( item => {
 

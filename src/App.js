@@ -158,19 +158,20 @@ export default class App extends Component {
 
   // a function to remove preselected bad images
   removeBlacklistedImages() {
-
+    console.log("removing blacklisted items from collection")
+    let selectedImagesArray = this.state.selectedImages
+    this.setState({selectedImages: selectedImagesArray } )
   }
 
   // images that are too thin, should be removed
   removeSkinnyImages() {
-    // console.log("removeSkinnyImages()")
-    let imageArray = this.state.preSelectedImages
-
-    imageArray.map(item => {
-      // console.log("item dims are:", item.dimensions_raw)
-      // if ( item[0] ) {
-      //   imageArray.pop
-      })
+    // console.log("removing skinny objects")
+    // let selectedImagesArray = this.state.selectedImages
+    // // using the _Lodash library to remove skinny items from the
+    // // array of selected images
+    // // https://lodash.com/docs/#reject
+    // selectedImagesArray = _Lodash.reject(selectedImagesArray, (theObject) => { return (theObject.id === item.id); } )
+    // this.setState({selectedImages: selectedImagesArray } )
   };
 
   // portrait images should be rotated 90 degrees to be Landscape
@@ -197,15 +198,6 @@ export default class App extends Component {
       document.querySelector(".selected-images-placeholder").style.display = "none";
     }
   };
-
-  updateSelectedImages() {
-    // console.log("updateSelectedImages()")
-  }
-
-
-
-
-
 
 
   shuffleBackgroundClipTextImage() {
