@@ -60,27 +60,20 @@ export default class App extends Component {
 
   handleAddToCollectionSubmit(item) {
     console.log("add to collection")
-    this.state.selectedImages.push(item)
+    let selectedImageArray = this.state.selectedImages
+    selectedImageArray.push(item)
     this.hideSelectedImagesPlaceholder()
-    this.forceUpdate();
-    // this.setState({selectedImages: items } )
+    this.setState({selectedImages: selectedImageArray } )
   };
 
   handleRemoveFromCollectionSubmit(item) {
-
-    console.log("removing this item from collection: ",
-     item.title, "array length:", this.state.selectedImages.length)
-    let items = this.state.selectedImages
-    console.log(item)
-    console.log(items)
-
-    // debugger
-    items = _Lodash.reject(items, (theObject) => { return (theObject.id === item.id); } )
-    this.setState({selectedImages: items } )
-    // console.log(items)
-    // this.forceUpdate( () => {
-    //   console.log("this.state.selectedImages.length", this.state.selectedImages.length)
-    // });
+    console.log("removing this item from collection: ", item.title)
+    let selectedImagesArray = this.state.selectedImages
+    // using the _Lodash library to remove the item from the
+    // array of selected images
+    // https://lodash.com/docs/#reject
+    selectedImagesArray = _Lodash.reject(selectedImagesArray, (theObject) => { return (theObject.id === item.id); } )
+    this.setState({selectedImages: selectedImagesArray } )
   };
 
 
