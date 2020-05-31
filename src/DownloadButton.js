@@ -6,7 +6,7 @@ export default class DownloadButton extends React.Component {
   super(props);
 
   this.state = {
-    buttonTextValue: 'Download Selected Images'
+    buttonTextValue: 'Download Set of Selected Images'
   };
 
 

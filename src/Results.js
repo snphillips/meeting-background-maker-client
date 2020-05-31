@@ -7,7 +7,7 @@ export default class Results extends React.Component {
   super(props);
 
   this.state = {
-    buttonTextValue: 'Add to collection'
+
   };
 
   // This binding is necessary to make `this` work in the callback
@@ -18,7 +18,6 @@ export default class Results extends React.Component {
 // ***********************************
 // End of constructor
 // ***********************************
-
 
   render() {
 
@@ -45,8 +44,8 @@ export default class Results extends React.Component {
 
                           <a href={item.url}>
                             <img className="background-img"
-                               src={item.images[0].b.url}
-                               alt={item.title}
+                                 src={item.images[0].b.url}
+                                 alt={item.title}
                               />
                           </a>
                               <p className="item-title">{item.title}</p>
@@ -58,10 +57,9 @@ export default class Results extends React.Component {
                                       onClick={ (event) => {
                                         console.log("button value is:", item, item.id)
                                         this.props.handleAddToCollectionSubmit(item)
-                                        this.setState({buttonTextValue: "in collection"})
                                       }}
                                       >
-                                        {this.state.buttonTextValue}
+                                        {this.props.whichButton(item)}
                               </button>
 
                         </div>

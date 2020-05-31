@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import _Lodash from 'lodash';
+import _Lodash from 'lodash';
 import Header from './Header';
 // import Filters from './Filters';
 import FiltersNew from './FiltersNew';
-import Collection from './Collection';
 import Results from './Results';
 // import Download from './Download';
 import DownloadButton from './DownloadButton';
@@ -44,6 +43,7 @@ export default class App extends Component {
     this.shuffleBackgroundClipTextImage = this.shuffleBackgroundClipTextImage.bind(this);
     this.hideFilterResultsPlaceholder = this.hideFilterResultsPlaceholder.bind(this);
     this.hideSelectedImagesPlaceholder = this.hideSelectedImagesPlaceholder.bind(this);
+    this.whichButton = this.whichButton.bind(this);
   }
 
 // ***********************************
@@ -59,18 +59,31 @@ export default class App extends Component {
 
 
   handleAddToCollectionSubmit(item) {
-
-
     this.state.selectedImages.push(item)
 
-    console.log("event.target.value",item)
-    console.log("this.state.selectedImages", this.state.selectedImages)
+    // console.log("event.target.value",item)
+    // console.log("this.state.selectedImages", this.state.selectedImages)
 
     // event.preventDefault();
     this.hideSelectedImagesPlaceholder()
-    // Is the best way to force a rerender
+    // Is the best way to force a rerender?
     this.forceUpdate();
   };
+
+
+  whichButton(item) {
+    console.log("pineapple whichButton()", item)
+    console.log("pineapple this.selectedImages", this.state.selectedImages)
+
+    // using _Lodash to really quickly check to see if the button
+    // belongs to an item that the user has selected or not
+    // https://lodash.com/docs/#includes
+    if ( _Lodash.includes(this.state.selectedImages, item) ) {
+      return "in collection"
+    } else {
+      return "add to collection"
+    }
+  }
 
 
 
@@ -229,6 +242,7 @@ export default class App extends Component {
                preSelectedImages={this.state.preSelectedImages}
                handleAddToCollectionSubmit={this.handleAddToCollectionSubmit}
                hideFilterResultsPlacehodler={this.hideFilterResultsPlacehodler}
+               whichButton={this.whichButton}
                />
       <SelectedImages selectedImages={this.state.selectedImages}
                       hideSelectedImagesPlaceholder={this.state.hideSelectedImagesPlaceholder}
