@@ -1,8 +1,12 @@
 import React from 'react';
 import './index.css';
 
-function Download() {
-  return (
+export default class Download extends React.Component {
+
+
+  render() {
+
+    return (
     <div className="component">
 
       <div className="download-set-placehodler">
@@ -12,19 +16,15 @@ function Download() {
 
 
         <button>
-          <a href="/meeting-backgrounds/arches.jpeg" download="arches.jpeg">Download Collection</a>
+          <a href="/meeting-backgrounds/arches.jpeg"
+             download="arches.jpeg">
+               Download Selected Images
+          </a>
         </button>
 
     </div>
   );
 }
 
-export default Download;
+}
 
-
-        // <a href="/meeting-backgrounds.zip" download="meeting-backgrounds.zip">Download</a>
-
-
-        // need to zip the folder of images before user can download the folder
-
-      // <div className="download">Download Collection</div>

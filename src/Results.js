@@ -52,8 +52,7 @@ export default class Results extends React.Component {
                               <p className="item-title">{item.title}</p>
                               <p className="item-title">{item.id}</p>
 
-                              <button
-                                      type="submit"
+                              <button type="submit"
                                       value={item}
 
                                       onClick={ (event) => {

@@ -6,7 +6,8 @@ import Header from './Header';
 import FiltersNew from './FiltersNew';
 import Collection from './Collection';
 import Results from './Results';
-import Download from './Download';
+// import Download from './Download';
+import DownloadButton from './DownloadButton';
 import Instructions from './Instructions';
 import CuratedSetsSection from './CuratedSetsSection';
 import Footer from './Footer';
@@ -28,7 +29,8 @@ export default class App extends Component {
       downloadSetPlaceholder: true,
       value: 'smoking',
       preSelectedImages: [],
-      selectedImages: []
+      selectedImages: [],
+
     };
 
     // This binding is necessary to make `this` work in the callback
@@ -231,7 +233,7 @@ export default class App extends Component {
       <SelectedImages selectedImages={this.state.selectedImages}
                       hideSelectedImagesPlaceholder={this.state.hideSelectedImagesPlaceholder}
                       />
-      <Download />
+      <DownloadButton />
       <Instructions />
       <CuratedSetsSection />
       <Footer />
