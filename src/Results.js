@@ -3,6 +3,21 @@ import './index.css';
 
 
 export default class Results extends React.Component {
+  constructor(props) {
+  super(props);
+
+  this.state = {
+    buttonTextValue: 'Add to collection'
+  };
+
+  // This binding is necessary to make `this` work in the callback
+  // this.handleChange = this.handleChange.bind(this);
+
+}
+
+// ***********************************
+// End of constructor
+// ***********************************
 
 
   render() {
@@ -25,7 +40,8 @@ export default class Results extends React.Component {
 
                       return(
 
-                        <div className="image-card">
+                        <div key={item.id}
+                             className="image-card">
 
                           <a href={item.url}>
                             <img className="background-img"
@@ -36,14 +52,17 @@ export default class Results extends React.Component {
                               <p className="item-title">{item.title}</p>
                               <p className="item-title">{item.id}</p>
 
-                              <button type="submit"
+                              <button
+                                      type="submit"
                                       value={item}
+
                                       onClick={ (event) => {
-                                        console.log("button value is:", item)
+                                        console.log("button value is:", item, item.id)
                                         this.props.handleAddToCollectionSubmit(item)
+                                        this.setState({buttonTextValue: "in collection"})
                                       }}
                                       >
-                                        Add to collection
+                                        {this.state.buttonTextValue}
                               </button>
 
                         </div>

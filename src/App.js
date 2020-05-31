@@ -63,12 +63,11 @@ export default class App extends Component {
 
     console.log("event.target.value",item)
     console.log("this.state.selectedImages", this.state.selectedImages)
-    console.log("this.state.selectedImages[0].id", this.state.selectedImages[0].id)
 
     // event.preventDefault();
-    // After adding to collection, selected images appear in "selected images"
-    // this.updateSelectedImages()
     this.hideSelectedImagesPlaceholder()
+    // Is the best way to force a rerender
+    this.forceUpdate();
   };
 
 

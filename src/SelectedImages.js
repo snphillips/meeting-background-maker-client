@@ -23,7 +23,9 @@ export default class selectedImages extends React.Component {
 
                       return(
 
-                        <div className="image-card">
+                        <div className="image-card"
+                             key={item.id}
+                             >
 
                           <img className="background-img"
                                src={item.images[0].b.url}
