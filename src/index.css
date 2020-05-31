@@ -96,7 +96,6 @@ form {
   display: inline-block;
 }
 
-
 select,
 button,
 input {
@@ -145,8 +144,11 @@ Results
   /*flex-direction: column;*/
 }
 
-.image-card {
+img {
   cursor: pointer;
+}
+
+.image-card {
   text-align: left;
   flex-grow: 1;
   width: 30%;
@@ -159,7 +161,7 @@ Results
   margin-bottom: 1rem;
 }
 
-.results-button-in-collection {
+.results-button-remove-from-collection {
   color: #000;
   background: #efefef;
 }

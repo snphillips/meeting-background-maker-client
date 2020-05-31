@@ -36,6 +36,7 @@ export default class App extends Component {
     // this.handleChange = this.handleChange.bind(this);
     this.handleFilterSubmit = this.handleFilterSubmit.bind(this);
     this.handleAddToCollectionSubmit = this.handleAddToCollectionSubmit.bind(this);
+    this.handleRemoveFromCollectionSubmit = this.handleRemoveFromCollectionSubmit.bind(this);
     this.finesseImages = this.finesseImages.bind(this);
     this.removeBlacklistedImages = this.removeBlacklistedImages.bind(this);
     this.removeSkinnyImages = this.removeSkinnyImages.bind(this);
@@ -57,17 +58,29 @@ export default class App extends Component {
     event.preventDefault();
   }
 
-
   handleAddToCollectionSubmit(item) {
+    console.log("add to collection")
     this.state.selectedImages.push(item)
-
-    // console.log("event.target.value",item)
-    // console.log("this.state.selectedImages", this.state.selectedImages)
-
-    // event.preventDefault();
     this.hideSelectedImagesPlaceholder()
-    // Is the best way to force a rerender?
     this.forceUpdate();
+    // this.setState({selectedImages: items } )
+  };
+
+  handleRemoveFromCollectionSubmit(item) {
+
+    console.log("removing this item from collection: ",
+     item.title, "array length:", this.state.selectedImages.length)
+    let items = this.state.selectedImages
+    console.log(item)
+    console.log(items)
+
+    // debugger
+    items = _Lodash.reject(items, (theObject) => { return (theObject.id === item.id); } )
+    this.setState({selectedImages: items } )
+    // console.log(items)
+    // this.forceUpdate( () => {
+    //   console.log("this.state.selectedImages.length", this.state.selectedImages.length)
+    // });
   };
 
 
@@ -78,25 +91,27 @@ export default class App extends Component {
     let buttonResult = ""
 
     if ( _Lodash.includes(this.state.selectedImages, item) ) {
+
       buttonResult =
+
       (<button type="submit"
-              value={item}
-              className="results-button-in-collection"
-              onClick={ (event) => {
+               value={item}
+               className="results-button-remove-from-collection"
+               onClick={ (event) => {
                         console.log("button value is:", item, item.id)
-                        this.handleAddToCollectionSubmit(item)
-                      }}> in collection
+                        this.handleRemoveFromCollectionSubmit(item)
+                      }}> remove from collection
       </button>)
 
     } else {
       buttonResult =
       (<button type="submit"
-                    value={item}
-                    className="results-button-add-to-collection"
-                    onClick={ (event) => {
-                              console.log("button value is:", item, item.id)
-                              this.handleAddToCollectionSubmit(item)
-                    }}> add to collection
+               value={item}
+               className="results-button-add-to-collection"
+               onClick={ (event) => {
+                  console.log("button value is:", item, item.id)
+                  this.handleAddToCollectionSubmit(item)
+                  }}> add to collection
       </button>)
     }
     return(buttonResult)
@@ -155,7 +170,7 @@ export default class App extends Component {
 
   // images that are too thin, should be removed
   removeSkinnyImages() {
-    console.log("removeSkinnyImages()")
+    // console.log("removeSkinnyImages()")
     let imageArray = this.state.preSelectedImages
 
     imageArray.map(item => {
@@ -167,7 +182,7 @@ export default class App extends Component {
 
   // portrait images should be rotated 90 degrees to be Landscape
   rotatePortraitImages() {
-    console.log("rotatePortraitImages()")
+    // console.log("rotatePortraitImages()")
   };
 
 
@@ -175,7 +190,7 @@ export default class App extends Component {
 
   hideFilterResultsPlaceholder() {
     if (this.state.filterResultsPlaceholder === true ) {
-      console.log("placeholder display none")
+      // console.log("placeholder display none")
       this.setState({filterResultsPlaceholder: false})
       document.querySelector(".results-placeholder").style.display = "none";
     }
@@ -185,13 +200,13 @@ export default class App extends Component {
   hideSelectedImagesPlaceholder() {
     if (this.state.selectedImagesPlaceholder === true ) {
       this.setState({selectedImagesPlaceholder: false})
-      console.log("placeholder display none")
+      // console.log("placeholder display none")
       document.querySelector(".selected-images-placeholder").style.display = "none";
     }
   };
 
   updateSelectedImages() {
-    console.log("updateSelectedImages()")
+    // console.log("updateSelectedImages()")
   }
 
 
@@ -230,7 +245,8 @@ export default class App extends Component {
                   />
       <Results parentState={this.state}
                preSelectedImages={this.state.preSelectedImages}
-               handleAddToCollectionSubmit={this.handleAddToCollectionSubmit}
+               // handleAddToCollectionSubmit={this.handleAddToCollectionSubmit}
+               // handleRemoveFromCollectionSubmit={this.handleRemoveFromCollectionSubmit}
                hideFilterResultsPlacehodler={this.hideFilterResultsPlacehodler}
                whichButton={this.whichButton}
                />
