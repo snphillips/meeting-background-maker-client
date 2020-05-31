@@ -72,18 +72,35 @@ export default class App extends Component {
 
 
   whichButton(item) {
-    console.log("pineapple whichButton()", item)
-    console.log("pineapple this.selectedImages", this.state.selectedImages)
-
-    // using _Lodash to really quickly check to see if the button
+    // using the _Lodash library to quickly check if the button
     // belongs to an item that the user has selected or not
     // https://lodash.com/docs/#includes
+    let buttonResult = ""
+
     if ( _Lodash.includes(this.state.selectedImages, item) ) {
-      return "in collection"
+      buttonResult =
+      (<button type="submit"
+              value={item}
+              className="results-button-in-collection"
+              onClick={ (event) => {
+                        console.log("button value is:", item, item.id)
+                        this.handleAddToCollectionSubmit(item)
+                      }}> in collection
+      </button>)
+
     } else {
-      return "add to collection"
+      buttonResult =
+      (<button type="submit"
+                    value={item}
+                    className="results-button-add-to-collection"
+                    onClick={ (event) => {
+                              console.log("button value is:", item, item.id)
+                              this.handleAddToCollectionSubmit(item)
+                    }}> add to collection
+      </button>)
     }
-  }
+    return(buttonResult)
+  };
 
 
 
@@ -134,33 +151,6 @@ export default class App extends Component {
   // a function to remove preselected bad images
   removeBlacklistedImages() {
 
-
-    // let imageArray = this.state.preSelectedImages
-
-    // function compare(imageArray, blacklist){
-    //   // let filteredImageArray = [];
-
-    //   imageArray.forEach( (item) => {
-
-    //     console.log("item id:", item.id)
-
-    //     blacklist.forEach( (blacklistItem) => {
-
-    //       if (item.id === blacklistItem) {
-    //         console.log("items are the same. Pop it out.")
-    //         imageArray.pop()
-    //         console.log("imageArray.length", this.imageArray.length)
-
-    //       } else {
-    //         console.log("Image not in reject list. Image passes.")
-    //       }
-    //     })
-    //   })
-    //   return imageArray;
-    // }
-
-    // console.log("removeBlacklistedImages()")
-    // compare()
   }
 
   // images that are too thin, should be removed

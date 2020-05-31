@@ -51,16 +51,9 @@ export default class Results extends React.Component {
                               <p className="item-title">{item.title}</p>
                               <p className="item-title">{item.id}</p>
 
-                              <button type="submit"
-                                      value={item}
 
-                                      onClick={ (event) => {
-                                        console.log("button value is:", item, item.id)
-                                        this.props.handleAddToCollectionSubmit(item)
-                                      }}
-                                      >
-                                        {this.props.whichButton(item)}
-                              </button>
+                            {this.props.whichButton(item)}
+
 
                         </div>
                         )

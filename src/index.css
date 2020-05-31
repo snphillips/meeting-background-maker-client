@@ -85,7 +85,7 @@ h1.header {
 
 
 /*==============================
-dropdown menu(select) & submit(input)
+filter buttons
 ================================*/
 .filters-component {
   display: flex;
@@ -100,10 +100,9 @@ form {
 select,
 button,
 input {
-  color: #efefef !important;
-  background-color: #000;
+  color: #efefef;
+  background: #000;
   border: 2px solid #efefef;
-  color: white;
   padding: 6px 12px;
   text-align: center;
   text-decoration: none;
@@ -140,8 +139,6 @@ Results
   display: block;
 }
 
-
-
 .results {
   display: flex;
   flex-wrap: wrap;
@@ -157,8 +154,19 @@ Results
   padding: .75rem;
 }
 
-.add-collection-button {
+.results-button-in-collection,
+.results-button-add-to-collection {
   margin-bottom: 1rem;
+}
+
+.results-button-in-collection {
+  color: #000;
+  background: #efefef;
+}
+
+.results-button-add-to-collection {
+  color: #efefef;
+  background: #000;
 }
 
 .filter {
