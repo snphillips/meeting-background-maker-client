@@ -6,11 +6,8 @@ export default class DownloadButton extends React.Component {
   super(props);
 
   this.state = {
-    buttonTextValue: 'Download Set of Selected Images'
+
   };
-
-
-
 }
 
 
@@ -18,13 +15,13 @@ export default class DownloadButton extends React.Component {
   render() {
 
     return (
-    <div className="component"
-         id="download-button-component">
+
+    <div class="download-button-component">
 
         <button>
           <a href="/meeting-backgrounds/arches.jpeg"
              download="arches.jpeg">
-               {this.state.buttonTextValue}
+               Download Set of Selected Images
           </a>
         </button>
 

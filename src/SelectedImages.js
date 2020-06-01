@@ -1,4 +1,5 @@
 import React from 'react';
+import DownloadButton from './DownloadButton'
 import './index.css';
 
 
@@ -12,6 +13,7 @@ export default class selectedImages extends React.Component {
                id="selected-images-component">
 
         <h2>Your selected images:</h2>
+        <DownloadButton />
 
           <div className="selected-images-gallery">
 
@@ -37,6 +39,7 @@ export default class selectedImages extends React.Component {
                  }
 
         </div>
+        <DownloadButton />
 
 
     </section>
@@ -44,7 +47,6 @@ export default class selectedImages extends React.Component {
   }
 
 
-
-
 }
+
 

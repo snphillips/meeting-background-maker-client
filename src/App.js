@@ -5,7 +5,7 @@ import Header from './Header';
 import Filters from './Filters';
 import Results from './Results';
 // import Download from './Download';
-import DownloadButton from './DownloadButton';
+// import DownloadButton from './DownloadButton';
 import Instructions from './Instructions';
 import CuratedSetsSection from './CuratedSetsSection';
 import Footer from './Footer';
@@ -24,6 +24,7 @@ export default class App extends Component {
       loading: false, // the loading spinner
       filterResultsComponent: false,
       selectedImagesComponent: false,
+      downloadButtonComponent: false,
       downloadSetComponent: true,
       value: 'smoking',
       preSelectedImages: [],
@@ -63,6 +64,7 @@ export default class App extends Component {
     selectedImageArray.push(item)
     this.revealSelectedImagesComponent()
     this.setState({selectedImages: selectedImageArray } )
+    this.revealDownloadButtonComponent()
   };
 
   handleRemoveFromCollectionSubmit(item) {
@@ -241,8 +243,10 @@ export default class App extends Component {
   };
 
   revealDownloadButtonComponent() {
-    this.setState({selectedImagesComponent: true})
-    document.querySelector("#selected-images-component").style.display = "block";
+    if (this.state.selectedImages.length > 0) {
+      this.setState({downloadButtonComponent: true})
+      document.querySelector(".download-button-component").style.display = "block";
+    }
   };
 
 
@@ -285,7 +289,6 @@ export default class App extends Component {
       <SelectedImages selectedImages={this.state.selectedImages}
                       revealSelectedImagesComponent={this.state.revealSelectedImagesComponent}
                       />
-      <DownloadButton />
       <CuratedSetsSection />
       <Instructions />
       <Footer />
@@ -294,3 +297,4 @@ export default class App extends Component {
 }
 }
 
+      // <DownloadButton />

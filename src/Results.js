@@ -25,6 +25,8 @@ export default class Results extends React.Component {
       <section className="component"
                id="results-component">
 
+          <h2>Search Results</h2>
+
           <div className="pre-selected-images-gallery results">
 
                  {this.props.preSelectedImages.map( item => {
