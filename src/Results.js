@@ -22,11 +22,8 @@ export default class Results extends React.Component {
   render() {
 
     return (
-      <section className="component">
-
-          <div className="results-placeholder">
-            <p>No images yet.</p>
-          </div>
+      <section className="component"
+               id="results-component">
 
           <div className="pre-selected-images-gallery results">
 
@@ -39,13 +36,16 @@ export default class Results extends React.Component {
 
                       return(
 
+
+
                         <div key={item.id}
                              className="image-card">
 
                           <a href={item.url}>
-                            <img className="background-img"
+                            <img className="result-img"
                                  src={item.images[0].b.url}
                                  alt={item.title}
+                                 // onLoad={this.props.removeSkinnyImages}
                               />
                           </a>
                               <p className="item-title">{item.title}</p>

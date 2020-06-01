@@ -134,8 +134,8 @@ input:hover {
 /*==============================
 Results
 ================================*/
-.results-placeholder {
-  display: block;
+#results-component{
+  display: none;
 }
 
 .pre-selected-images-gallery,
@@ -147,6 +147,10 @@ Results
 
 img {
   cursor: pointer;
+}
+
+.rotate-image {
+  transform: 90deg;
 }
 
 .image-card {
@@ -180,7 +184,7 @@ img {
 
 }
 
-.background-img {
+.result-img {
   max-width: 250px;
 }
 
@@ -191,8 +195,8 @@ img {
 /*==============================
 Selected Images
 ================================*/
-.selected-images-placeholder {
-  display: block;
+#selected-images-component {
+  display: none;
 }
 
 

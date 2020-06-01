@@ -8,13 +8,10 @@ export default class selectedImages extends React.Component {
   render() {
 
     return (
-      <section className="component">
+      <section className="component"
+               id="selected-images-component">
 
         <h2>Your selected images:</h2>
-
-          <div className="selected-images-placeholder">
-            <p>No selected images</p>
-          </div>
 
           <div className="selected-images-gallery">
 

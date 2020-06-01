@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // the spinner in an npm package
 import { css } from "@emotion/core";
 import LoadingSpinner from './LoadingSpinner';
-import searchTerms from './searchTerms';
+import filterTerms from './filterTerms';
 
 export default class Filters extends Component {
   render() {
@@ -18,7 +18,7 @@ export default class Filters extends Component {
 
       <section className="filter-button-section">
 
-       {searchTerms.map( item => {
+       {filterTerms.map( item => {
 
           // console.log("button value:", item)
 

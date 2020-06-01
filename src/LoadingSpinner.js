@@ -8,9 +8,7 @@ const override = css`
     margin: 0 auto;
     border-color: red;`;
 
-
-
-console.log("spinner")
+// console.log("spinner")
 
 export default class LoadingSpinner extends React.Component {
 

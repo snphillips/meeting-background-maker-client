@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import _Lodash from 'lodash';
 import Header from './Header';
-// import Filters from './Filters';
-import FiltersNew from './FiltersNew';
+import Filters from './Filters';
 import Results from './Results';
 // import Download from './Download';
 import DownloadButton from './DownloadButton';
@@ -23,9 +22,9 @@ export default class App extends Component {
       // serverSource: 'https://art-thief.herokuapp.com/searchbytag',
       // serverSource: 'http://localhost:3000/searchbytag',
       loading: false, // the loading spinner
-      filterResultsPlaceholder: true,
-      selectedImagesPlaceholder: true,
-      downloadSetPlaceholder: true,
+      filterResultsComponent: false,
+      selectedImagesComponent: false,
+      downloadSetComponent: true,
       value: 'smoking',
       preSelectedImages: [],
       selectedImages: [],
@@ -40,10 +39,10 @@ export default class App extends Component {
     this.finesseImages = this.finesseImages.bind(this);
     this.removeBlacklistedImages = this.removeBlacklistedImages.bind(this);
     this.removeSkinnyImages = this.removeSkinnyImages.bind(this);
-    this.rotatePortraitImages = this.rotatePortraitImages.bind(this);
+    // this.rotatePortraitImages = this.rotatePortraitImages.bind(this);
     this.shuffleBackgroundClipTextImage = this.shuffleBackgroundClipTextImage.bind(this);
-    this.hideFilterResultsPlaceholder = this.hideFilterResultsPlaceholder.bind(this);
-    this.hideSelectedImagesPlaceholder = this.hideSelectedImagesPlaceholder.bind(this);
+    this.revealFilterResultsComponent = this.revealFilterResultsComponent.bind(this);
+    this.revealSelectedImagesComponent = this.revealSelectedImagesComponent.bind(this);
     this.whichButton = this.whichButton.bind(this);
   }
 
@@ -62,7 +61,7 @@ export default class App extends Component {
     console.log("add to collection")
     let selectedImageArray = this.state.selectedImages
     selectedImageArray.push(item)
-    this.hideSelectedImagesPlaceholder()
+    this.revealSelectedImagesComponent()
     this.setState({selectedImages: selectedImageArray } )
   };
 
@@ -137,9 +136,9 @@ export default class App extends Component {
         this.shuffleBackgroundClipTextImage()
         this.setState({preSelectedImages: response.data.objects}, () => {
           this.finesseImages( () => {
-            console.log(`There are`, (response.data.objects).length, `objects after finessing.`)
+            // console.log(`There are`, (response.data.objects).length, `objects after finessing.`)
           })
-        this.hideFilterResultsPlaceholder()
+        this.revealFilterResultsComponent()
         })
       })
       .catch(function (error) {
@@ -151,61 +150,105 @@ export default class App extends Component {
   finesseImages() {
     this.removeBlacklistedImages()
     this.removeSkinnyImages()
-    this.rotatePortraitImages()
-    console.log("finesseImages()")
+    // this.rotatePortraitImages()
+    // console.log("finesseImages()")
   }
 
 
   // a function to remove preselected bad images
   removeBlacklistedImages() {
-    console.log("removing blacklisted items from collection")
-    let selectedImagesArray = this.state.selectedImages
-    this.setState({selectedImages: selectedImagesArray } )
+
+    // let preSelectedImagesArray = this.state.preSelectedImages
+    // console.log("remove blacklisted items from collection", preSelectedImagesArray)
+
+
+    // preSelectedImagesArray.forEach( (object) => {
+    //   console.log("object.id to check against blacklist:", object.id)
+
+    //   blacklist.forEach( (item) => {
+
+    //     console.log("item.blacklist for: ", item.filterTerm, item.blacklistId)
+
+    //     if (item.blacklistId == object.id) {
+    //       console.log("same. kick out!")
+    //       _Lodash.remove(preSelectedImagesArray, object)
+    //     }
+    //   });
+
+    // this.setState({preSelectedImages: preSelectedImagesArray})
+    // });
   }
 
+
+
+  // // images that are too thin, should be removed
+  // removeSkinnyImages() {
+  //   // console.log("removing skinny objects")
+  //   // let selectedImagesArray = this.state.selectedImages
+  //   // // using the _Lodash library to remove skinny items from the
+  //   // // array of selected images
+  //   // // https://lodash.com/docs/#reject
+  //   // selectedImagesArray = _Lodash.reject(selectedImagesArray, (theObject) => { return (theObject.id === item.id); } )
+  //   // this.setState({selectedImages: selectedImagesArray } )
+  // };
+
+
+  // ==================================
   // images that are too thin, should be removed
+  // note: must focus on rendered image, not reported dims
+  // ==================================
   removeSkinnyImages() {
-    // console.log("removing skinny objects")
-    // let selectedImagesArray = this.state.selectedImages
-    // // using the _Lodash library to remove skinny items from the
-    // // array of selected images
-    // // https://lodash.com/docs/#reject
-    // selectedImagesArray = _Lodash.reject(selectedImagesArray, (theObject) => { return (theObject.id === item.id); } )
-    // this.setState({selectedImages: selectedImagesArray } )
+    // let renderedImg = document.querySelector('.result-img');
+
+    // let width = renderedImg.naturalWidth;
+    // let height = renderedImg.naturalHeight;
+
+    // console.log(renderedImg, " is being evaluated for skinniness")
+
+    //   if ((renderedImg.naturalHeight > renderedImg.naturalWidth) &&
+    //       (renderedImg.naturalHeight / renderedImg.naturalWidth) > 3) {
+    //     console.log("This is a skinny PORTRAIT image, REMOVE!!!!!!!!!!")
+    //   }
+    //   else if ((renderedImg.naturalWidth > renderedImg.naturalHeight) &&
+    //            (renderedImg.naturalWidth / renderedImg.naturalHeight) > 3) {
+    //     console.log("This is a skinny LANDSCAPE image, REMOVE!!!!!!!!!!!!!!!!")
+    //   }
+
   };
 
+  // ==================================
   // portrait images should be rotated 90 degrees to be Landscape
-  rotatePortraitImages() {
-    // console.log("rotatePortraitImages()")
+  // ==================================
+  // rotatePortraitImages() {
+  //   console.log(objects.title, " is being evaluated for height & length")
+
+  //   if (objects.dimensions_raw.height[0] > this.dimensions_raw.width[0]) {
+  //       console.log(this.title, "is a portrait image. It must be rotated")
+  //       document.querySelector(".result-img").classList.add("rotate-image");
+  //     }
+
+  // };
+
+
+  revealFilterResultsComponent() {
+    this.setState({filterResultsComponent: true})
+    document.querySelector("#results-component").style.display = "block";
   };
 
 
-
-
-  hideFilterResultsPlaceholder() {
-    if (this.state.filterResultsPlaceholder === true ) {
-      // console.log("placeholder display none")
-      this.setState({filterResultsPlaceholder: false})
-      document.querySelector(".results-placeholder").style.display = "none";
-    }
+  revealSelectedImagesComponent() {
+    this.setState({selectedImagesComponent: true})
+    document.querySelector("#selected-images-component").style.display = "block";
   };
 
-
-  hideSelectedImagesPlaceholder() {
-    if (this.state.selectedImagesPlaceholder === true ) {
-      this.setState({selectedImagesPlaceholder: false})
-      // console.log("placeholder display none")
-      document.querySelector(".selected-images-placeholder").style.display = "none";
-    }
-  };
 
 
   shuffleBackgroundClipTextImage() {
     let arrayLength = backgroundImages.length - 1
-    console.log(arrayLength)
+    // console.log(arrayLength)
     let randomNumber = Math.floor(Math.random() * arrayLength);
     let randomImage = backgroundImages[randomNumber];
-    console.log("randomImage is:", randomImage, "randomNumber is:", randomNumber)
+    // console.log("randomImage is:", randomImage, "randomNumber is:", randomNumber)
     document.querySelector(".clip-text").style.setProperty("background", `url("/images/` + randomImage + `")` )
     document.querySelector("body").style.setProperty("background", `url("/images/` + randomImage + `")` )
     document.querySelector(".clip-text").style.setProperty("color", "#fff;")
@@ -224,19 +267,19 @@ export default class App extends Component {
   return (
     <div className="App app-container">
       <Header />
-      <FiltersNew handleFilterSubmit={this.handleFilterSubmit}
+      <Filters handleFilterSubmit={this.handleFilterSubmit}
                   parent_state={this.state}
                   loading={this.state.loading}
                   />
       <Results parentState={this.state}
                preSelectedImages={this.state.preSelectedImages}
-               // handleAddToCollectionSubmit={this.handleAddToCollectionSubmit}
-               // handleRemoveFromCollectionSubmit={this.handleRemoveFromCollectionSubmit}
-               hideFilterResultsPlacehodler={this.hideFilterResultsPlacehodler}
+               revealFilterResultsPlacehodler={this.revealFilterResultsPlacehodler}
                whichButton={this.whichButton}
+               rotatePortraitImages={this.rotatePortraitImages}
+               removeSkinnyImages={this.removeSkinnyImages}
                />
       <SelectedImages selectedImages={this.state.selectedImages}
-                      hideSelectedImagesPlaceholder={this.state.hideSelectedImagesPlaceholder}
+                      revealSelectedImagesComponent={this.state.revealSelectedImagesComponent}
                       />
       <DownloadButton />
       <Instructions />
