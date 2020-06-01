@@ -134,8 +134,9 @@ input:hover {
 /*==============================
 Results
 ================================*/
+
 #results-component{
-  display: none;
+  display: none; /* will be changed to block in app.js" */
 }
 
 .pre-selected-images-gallery,
@@ -184,12 +185,23 @@ img {
 
 }
 
-.result-img {
+.result-img,
+.selected-img {
   max-width: 250px;
 }
 
 .download {
 
+}
+
+
+
+
+/*==============================
+Download Button
+================================*/
+#download-button-component {
+  display: none;
 }
 
 /*==============================

@@ -235,8 +235,12 @@ export default class App extends Component {
     document.querySelector("#results-component").style.display = "block";
   };
 
-
   revealSelectedImagesComponent() {
+    this.setState({selectedImagesComponent: true})
+    document.querySelector("#selected-images-component").style.display = "block";
+  };
+
+  revealDownloadButtonComponent() {
     this.setState({selectedImagesComponent: true})
     document.querySelector("#selected-images-component").style.display = "block";
   };
@@ -282,8 +286,8 @@ export default class App extends Component {
                       revealSelectedImagesComponent={this.state.revealSelectedImagesComponent}
                       />
       <DownloadButton />
-      <Instructions />
       <CuratedSetsSection />
+      <Instructions />
       <Footer />
     </div>
   );

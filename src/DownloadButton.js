@@ -18,7 +18,8 @@ export default class DownloadButton extends React.Component {
   render() {
 
     return (
-    <div className="component">
+    <div className="component"
+         id="download-button-component">
 
         <button>
           <a href="/meeting-backgrounds/arches.jpeg"

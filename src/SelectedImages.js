@@ -24,7 +24,7 @@ export default class selectedImages extends React.Component {
                              key={item.id}
                              >
 
-                          <img className="background-img"
+                          <img className="selected-img"
                                src={item.images[0].b.url}
                                alt={item.title}
                               />
