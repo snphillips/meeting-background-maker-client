@@ -11,7 +11,7 @@ export default class Filters extends Component {
     <div className="filters-component">
 
       <section className="app-description">
-        <p>Hide your shameful apartment from your colleauges and students by generating backgrounds for your online meetings.</p>
+        <p>Hide your living space from your colleauges by generating backgrounds for your online meetings.</p>
         <p>All images are sourced from the Cooper Hewitt Museum's archive.</p>
       </section>
 
@@ -29,16 +29,11 @@ export default class Filters extends Component {
                         value={item}
                         onClick={ (event) => {
                           console.log("button value is:", event.target.value)
-                          this.props.handleFilterSubmit(event)
-                        }}
-                        >
-                        {item}
+                          this.props.handleFilterSubmit(event)}}>
+                         {item}
                 </button>
-
-              )
-
-             })
-       }
+            )
+        })}
 
       <span className="spinner-container">
         <LoadingSpinner loading={this.props.loading} />

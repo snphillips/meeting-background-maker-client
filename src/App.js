@@ -7,7 +7,7 @@ import Results from './Results';
 // import Download from './Download';
 // import DownloadButton from './DownloadButton';
 import Instructions from './Instructions';
-import CuratedSetsSection from './CuratedSetsSection';
+import CuratedSetsComponent from './CuratedSetsComponent';
 import Footer from './Footer';
 import blacklist from './blacklist';
 import backgroundImages from './backgroundImages';
@@ -113,7 +113,6 @@ export default class App extends Component {
 
 
 
-
   cooperHewittSearchByTagFromAPI() {
     // start the loading spinner
     this.setState({loading: true})
@@ -131,14 +130,14 @@ export default class App extends Component {
         // so that returning users have a novel experience
         // response.data.objects = _Lodash.shuffle(response.data.objects)
 
-        console.log(`The search value is:`, this.state.value, `There are`, (response.data.objects).length, `objects BEFORE finessing.`)
+        console.log(`The search value is:`, this.state.value, `There are`, (response.data).length, `objects BEFORE finessing.`)
         // stop the loading spinner
         this.setState({loading: false});
         // having some fun and chaning the background
         this.shuffleBackgroundClipTextImage()
-        this.setState({preSelectedImages: response.data.objects}, () => {
+        this.setState({preSelectedImages: response.data}, () => {
           this.finesseImages( () => {
-            // console.log(`There are`, (response.data.objects).length, `objects after finessing.`)
+            // console.log(`There are`, (response.data).length, `objects after finessing.`)
           })
         this.revealFilterResultsComponent()
         })
@@ -182,41 +181,42 @@ export default class App extends Component {
   }
 
 
-
-  // // images that are too thin, should be removed
-  // removeSkinnyImages() {
-  //   // console.log("removing skinny objects")
-  //   // let selectedImagesArray = this.state.selectedImages
-  //   // // using the _Lodash library to remove skinny items from the
-  //   // // array of selected images
-  //   // // https://lodash.com/docs/#reject
-  //   // selectedImagesArray = _Lodash.reject(selectedImagesArray, (theObject) => { return (theObject.id === item.id); } )
-  //   // this.setState({selectedImages: selectedImagesArray } )
-  // };
-
-
   // ==================================
   // images that are too thin, should be removed
   // note: must focus on rendered image, not reported dims
   // ==================================
-  removeSkinnyImages() {
-    // let renderedImg = document.querySelector('.result-img');
 
-    // let width = renderedImg.naturalWidth;
-    // let height = renderedImg.naturalHeight;
 
-    // console.log(renderedImg, " is being evaluated for skinniness")
+    // let array = this.state.preSelectedImages
 
-    //   if ((renderedImg.naturalHeight > renderedImg.naturalWidth) &&
-    //       (renderedImg.naturalHeight / renderedImg.naturalWidth) > 3) {
-    //     console.log("This is a skinny PORTRAIT image, REMOVE!!!!!!!!!!")
-    //   }
-    //   else if ((renderedImg.naturalWidth > renderedImg.naturalHeight) &&
-    //            (renderedImg.naturalWidth / renderedImg.naturalHeight) > 3) {
-    //     console.log("This is a skinny LANDSCAPE image, REMOVE!!!!!!!!!!!!!!!!")
-    //   }
+    // array.forEach(myFunction);
 
-  };
+    removeSkinnyImages(item) {
+
+      // // console.log(this.state.preSelectedImages[0].images[0].b.url)
+      // let naturalImg = this.state.preSelectedImages[3]
+
+      // naturalImg.src = naturalImg.images[3].b.url;
+
+      // let width = naturalImg.naturalWidth;
+      // let height = naturalImg.naturalHeight;
+
+      // console.log(naturalImg, " is being evaluated for skinniness. width: ", width, "height: ", height)
+
+      //   if ((naturalImg.naturalHeight > naturalImg.naturalWidth) &&
+      //       (naturalImg.naturalHeight / naturalImg.naturalWidth) > 3) {
+      //     console.log("This is a skinny PORTRAIT image, REMOVE.")
+      //   }
+      //   else if ((naturalImg.naturalWidth > naturalImg.naturalHeight) &&
+      //            (naturalImg.naturalWidth / naturalImg.naturalHeight) > 3) {
+      //     console.log("This is a skinny LANDSCAPE image, REMOVE.")
+      //   } else {
+      //     console.log("This image is not skinny. It can stay.")
+      //   }
+
+      };
+
+
 
   // ==================================
   // portrait images should be rotated 90 degrees to be Landscape
@@ -245,7 +245,7 @@ export default class App extends Component {
   revealDownloadButtonComponent() {
     if (this.state.selectedImages.length > 0) {
       this.setState({downloadButtonComponent: true})
-      document.querySelector(".download-button-component").style.display = "block";
+      document.querySelector(".download-button").style.display = "block";
     }
   };
 
@@ -276,9 +276,9 @@ export default class App extends Component {
     <div className="App app-container">
       <Header />
       <Filters handleFilterSubmit={this.handleFilterSubmit}
-                  parent_state={this.state}
-                  loading={this.state.loading}
-                  />
+               parent_state={this.state}
+               loading={this.state.loading}
+                />
       <Results parentState={this.state}
                preSelectedImages={this.state.preSelectedImages}
                revealFilterResultsPlacehodler={this.revealFilterResultsPlacehodler}
@@ -289,7 +289,7 @@ export default class App extends Component {
       <SelectedImages selectedImages={this.state.selectedImages}
                       revealSelectedImagesComponent={this.state.revealSelectedImagesComponent}
                       />
-      <CuratedSetsSection />
+      <CuratedSetsComponent />
       <Instructions />
       <Footer />
     </div>

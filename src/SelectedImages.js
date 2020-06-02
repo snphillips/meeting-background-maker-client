@@ -12,8 +12,8 @@ export default class selectedImages extends React.Component {
       <section className="component"
                id="selected-images-component">
 
-        <h2>Your selected images:</h2>
-        <DownloadButton />
+        <h2>Your selected images</h2>
+
 
           <div className="selected-images-gallery">
 

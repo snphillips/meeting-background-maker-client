@@ -19,6 +19,8 @@ body {
 .app-container {
   background-color: #000;
   padding: 2rem;
+  height: 100%;
+  min-height: 89vh;
 }
 
 code {
@@ -40,6 +42,7 @@ p {
   color: #efefef;
   /*color: #ffefbf;*/
   font-weight: 500;
+  line-height: 1.2;
 }
 
 .item-title {
@@ -48,21 +51,20 @@ p {
 
 
 h2 {
-  color: #000;
-  background: #efefef;
+  color: #efefef;
+  background: #000;
   display: block;
   text-align: center;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.4rem;
+  font-size: 2rem;
   margin: .5rem 0;
-  padding: .5rem;
 }
 
 .component {
-  border: 1px solid #efefef;
+  border: 2px solid #efefef;
   color: #fff;
   margin-bottom: 2rem;
-  padding: 1rem;
+  padding-bottom: 1rem;
 }
 
 
@@ -78,7 +80,7 @@ h1.header {
   margin: 0;
   max-width: 100%;
   font-family: 'Work Sans', sans-serif;
-  font-size: 7rem;
+  font-size: 6rem;
   line-height: .6;
   text-transform: uppercase;
   padding: 10px 0;
@@ -87,14 +89,20 @@ h1.header {
 }
 
 
-
+/*==============================
+app description
+================================*/
+.app-description {
+  margin-right: 1rem;
+}
 
 /*==============================
 filter buttons
 ================================*/
-.filters-component {
+  .filters-component {
   display: flex;
   flex-direction: row;
+  margin-bottom: 2rem;
 }
 
 form {
@@ -112,7 +120,7 @@ input {
   text-decoration: none;
   display: inline-block;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   margin: 4px 2px;
   cursor: pointer;
   transition: .3s;
@@ -205,8 +213,13 @@ img {
 /*==============================
 Download Button
 ================================*/
-.download-button-component {
+.download-button {
   display: none;
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  width: 97%;
+  margin: 0 auto;
 }
 
 /*==============================

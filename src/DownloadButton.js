@@ -16,16 +16,15 @@ export default class DownloadButton extends React.Component {
 
     return (
 
-    <div class="download-button-component">
+    <button className="download-button">
 
-        <button>
           <a href="/meeting-backgrounds/arches.jpeg"
              download="arches.jpeg">
                Download Set of Selected Images
           </a>
-        </button>
 
-    </div>
+
+    </button>
   );
 }
 
