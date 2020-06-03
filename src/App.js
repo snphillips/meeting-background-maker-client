@@ -4,8 +4,6 @@ import _Lodash from 'lodash';
 import Header from './Header';
 import Filters from './Filters';
 import Results from './Results';
-// import Download from './Download';
-// import DownloadButton from './DownloadButton';
 import Instructions from './Instructions';
 import CuratedSetsComponent from './CuratedSetsComponent';
 import Footer from './Footer';
@@ -37,10 +35,6 @@ export default class App extends Component {
     this.handleFilterSubmit = this.handleFilterSubmit.bind(this);
     this.handleAddToCollectionSubmit = this.handleAddToCollectionSubmit.bind(this);
     this.handleRemoveFromCollectionSubmit = this.handleRemoveFromCollectionSubmit.bind(this);
-    this.finesseImages = this.finesseImages.bind(this);
-    this.removeBlacklistedImages = this.removeBlacklistedImages.bind(this);
-    this.removeSkinnyImages = this.removeSkinnyImages.bind(this);
-    // this.rotatePortraitImages = this.rotatePortraitImages.bind(this);
     this.shuffleBackgroundClipTextImage = this.shuffleBackgroundClipTextImage.bind(this);
     this.revealFilterResultsComponent = this.revealFilterResultsComponent.bind(this);
     this.revealSelectedImagesComponent = this.revealSelectedImagesComponent.bind(this);
@@ -125,38 +119,23 @@ export default class App extends Component {
     // axios.get(`https://art-thief.herokuapp.com/searchbytag/`+`${this.state.value}`)
     axios.get(`http://localhost:3001/searchbytag/`+ this.state.value)
       .then( (response) => {
-
-        // Using the _Lodash library to first shuffle the response array,
-        // so that returning users have a novel experience
-        // response.data.objects = _Lodash.shuffle(response.data.objects)
-
-        console.log(`The search value is:`, this.state.value, `There are`, (response.data).length, `objects BEFORE finessing.`)
+        console.log(`The search value is:`, this.state.value, `There are`, (response.data).length, `objects.`)
         // stop the loading spinner
         this.setState({loading: false});
-        // having some fun and chaning the background
+        // having some fun and changing the background
         this.shuffleBackgroundClipTextImage()
-        this.setState({preSelectedImages: response.data}, () => {
-          this.finesseImages( () => {
-            // console.log(`There are`, (response.data).length, `objects after finessing.`)
-          })
+        // set the state of preSelectedImage with the response from the server
+        this.setState({preSelectedImages: response.data})
+        // show the component that displays results
         this.revealFilterResultsComponent()
-        })
       })
       .catch(function (error) {
         console.log(error);
       });
   };
 
-  // perform a bunch of functions to clean up the arrays
-  finesseImages() {
-    this.removeBlacklistedImages()
-    this.removeSkinnyImages()
-    // this.rotatePortraitImages()
-    // console.log("finesseImages()")
-  }
 
 
-  // a function to remove preselected bad images
   removeBlacklistedImages() {
 
     // let preSelectedImagesArray = this.state.preSelectedImages
@@ -179,57 +158,6 @@ export default class App extends Component {
     // this.setState({preSelectedImages: preSelectedImagesArray})
     // });
   }
-
-
-  // ==================================
-  // images that are too thin, should be removed
-  // note: must focus on rendered image, not reported dims
-  // ==================================
-
-
-    // let array = this.state.preSelectedImages
-
-    // array.forEach(myFunction);
-
-    removeSkinnyImages(item) {
-
-      // // console.log(this.state.preSelectedImages[0].images[0].b.url)
-      // let naturalImg = this.state.preSelectedImages[3]
-
-      // naturalImg.src = naturalImg.images[3].b.url;
-
-      // let width = naturalImg.naturalWidth;
-      // let height = naturalImg.naturalHeight;
-
-      // console.log(naturalImg, " is being evaluated for skinniness. width: ", width, "height: ", height)
-
-      //   if ((naturalImg.naturalHeight > naturalImg.naturalWidth) &&
-      //       (naturalImg.naturalHeight / naturalImg.naturalWidth) > 3) {
-      //     console.log("This is a skinny PORTRAIT image, REMOVE.")
-      //   }
-      //   else if ((naturalImg.naturalWidth > naturalImg.naturalHeight) &&
-      //            (naturalImg.naturalWidth / naturalImg.naturalHeight) > 3) {
-      //     console.log("This is a skinny LANDSCAPE image, REMOVE.")
-      //   } else {
-      //     console.log("This image is not skinny. It can stay.")
-      //   }
-
-      };
-
-
-
-  // ==================================
-  // portrait images should be rotated 90 degrees to be Landscape
-  // ==================================
-  // rotatePortraitImages() {
-  //   console.log(objects.title, " is being evaluated for height & length")
-
-  //   if (objects.dimensions_raw.height[0] > this.dimensions_raw.width[0]) {
-  //       console.log(this.title, "is a portrait image. It must be rotated")
-  //       document.querySelector(".result-img").classList.add("rotate-image");
-  //     }
-
-  // };
 
 
   revealFilterResultsComponent() {
