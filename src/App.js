@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Jimp from 'jimp';
 import _Lodash from 'lodash';
 import Header from './Header';
 import Filters from './Filters';
@@ -39,6 +40,8 @@ export default class App extends Component {
     this.revealFilterResultsComponent = this.revealFilterResultsComponent.bind(this);
     this.revealSelectedImagesComponent = this.revealSelectedImagesComponent.bind(this);
     this.whichButton = this.whichButton.bind(this);
+    this.rotatePortrait = this.rotatePortrait.bind(this);
+    this.skinnyGottaGo = this.skinnyGottaGo.bind(this);
   }
 
 // ***********************************
@@ -119,48 +122,108 @@ export default class App extends Component {
     // axios.get(`https://art-thief.herokuapp.com/searchbytag/`+`${this.state.value}`)
     axios.get(`http://localhost:3001/searchbytag/`+ this.state.value)
       .then( (response) => {
-        console.log(`The search value is:`, this.state.value, `There are`, (response.data).length, `objects.`)
-        // stop the loading spinner
-        this.setState({loading: false});
         // having some fun and changing the background
         this.shuffleBackgroundClipTextImage()
+        // console.log(`The search value is:`, this.state.value, `There are`, (response.data).length, `images.`)
+        console.log(`1) The search value is:`, this.state.value, "response length is:", (response.data).length )
         // set the state of preSelectedImage with the response from the server
         this.setState({preSelectedImages: response.data})
+        this.rotatePortrait()
+        this.skinnyGottaGo()
+        console.log("4) AFTER Manipulation preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+        // stop the loading spinner
+        this.setState({loading: false});
         // show the component that displays results
         this.revealFilterResultsComponent()
       })
       .catch(function (error) {
         console.log(error);
       });
+
   };
 
 
 
-  removeBlacklistedImages() {
 
-    // let preSelectedImagesArray = this.state.preSelectedImages
-    // console.log("remove blacklisted items from collection", preSelectedImagesArray)
+        rotatePortrait() {
+          let preSelectedImages = this.state.preSelectedImages
+          // console.log("rotatePortrait() preSelectedImages are:", preSelectedImages, preSelectedImages.length)
+
+          preSelectedImages.forEach( (item) => {
+
+             let imageUrl = item.images[0].b.url
+
+              Jimp.read(imageUrl)
+
+              .then( (meetingBackground) => {
+                let width = meetingBackground.bitmap.width
+                let height = meetingBackground.bitmap.height
+                // console.log("jimp meetingBackground item: ", meetingBackground)
+                // console.log("2)", item.id, "width: ", width, "height: ", height)
 
 
-    // preSelectedImagesArray.forEach( (object) => {
-    //   console.log("object.id to check against blacklist:", object.id)
+                if (height > width) {
+                  console.log("2)", item.id, "PORTRAIT image, ROTATE 90 degrees.")
+                  // return meetingBackground
+                  // .rotate( 90 )
+                  // .write("../meeting-background-maker-client/public/meeting-backgrounds/jimp-rotate.jpg")
+                }
+                else if (width > height) {
+                  console.log("2)", item.id, "landscape image. Leave as is.")
+                } else {
+                  console.log("2)", item.id, "square image. Leave as is.")
+                }
+            })
+          })
+        }
 
-    //   blacklist.forEach( (item) => {
 
-    //     console.log("item.blacklist for: ", item.filterTerm, item.blacklistId)
 
-    //     if (item.blacklistId == object.id) {
-    //       console.log("same. kick out!")
-    //       _Lodash.remove(preSelectedImagesArray, object)
-    //     }
-    //   });
+        skinnyGottaGo() {
+          let preSelectedImages = this.state.preSelectedImages
+          console.log("3) BEFORE skinnyGottaGo() preSelectedImages are:", preSelectedImages, preSelectedImages.length)
+          preSelectedImages.forEach( (item) => {
 
-    // this.setState({preSelectedImages: preSelectedImagesArray})
-    // });
-  }
+             let imageUrl = item.images[0].b.url
+
+            Jimp.read(imageUrl, (err, meetingBackground) => {
+              if (err) throw err;
+
+              let width = meetingBackground.bitmap.width
+              let height = meetingBackground.bitmap.height
+
+
+              if ( (height > width) && ((height / width) > 2) ) {
+                console.log("4)", item.id, "SKINNY PORTRAIT, REMOVE!")
+                let newArray = _Lodash.without(this.state.preSelectedImages, item)
+                this.setState({preSelectedImages: newArray}, () => {
+                  console.log("5) AFTER skinnyGottaGo() preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+                })
+              }
+              else if ( (width > height) && ((width / height) > 2) ) {
+                console.log("4)", item.id, "SKINNY LANDSCAPE, REMOVE!")
+                let newArray = _Lodash.without(this.state.preSelectedImages, item)
+                this.setState({preSelectedImages: newArray}, () => {
+                  console.log("5) AFTER skinnyGottaGo() preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+                })
+              }
+              else {
+                console.log("4)", item.id, "Not skinny. It can stay.")
+              }
+            })
+          })
+
+        }
+
+
+
+
+
+
 
 
   revealFilterResultsComponent() {
+    console.log("revealing the search results component")
     this.setState({filterResultsComponent: true})
     document.querySelector("#results-component").style.display = "block";
   };
@@ -211,8 +274,8 @@ export default class App extends Component {
                preSelectedImages={this.state.preSelectedImages}
                revealFilterResultsPlacehodler={this.revealFilterResultsPlacehodler}
                whichButton={this.whichButton}
-               rotatePortraitImages={this.rotatePortraitImages}
-               removeSkinnyImages={this.removeSkinnyImages}
+               // rotatePortraitImages={this.rotatePortraitImages}
+               // removeSkinnyImages={this.removeSkinnyImages}
                />
       <SelectedImages selectedImages={this.state.selectedImages}
                       revealSelectedImagesComponent={this.state.revealSelectedImagesComponent}

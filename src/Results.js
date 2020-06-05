@@ -31,6 +31,8 @@ export default class Results extends React.Component {
 
                  {this.props.preSelectedImages.map( item => {
 
+                  // console.log("hi from results.js. Item is:", item)
+
 
                     // not really using this but it's helpful for tracking
                     // let imageIndex = this.props.preSelectedImages.indexOf(item)
