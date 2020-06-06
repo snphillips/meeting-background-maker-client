@@ -45,10 +45,6 @@ p {
   line-height: 1.2;
 }
 
-.item-title {
-  margin: 5px 0;
-}
-
 
 h2 {
   color: #efefef;
@@ -72,11 +68,30 @@ h2 {
   text-align: left;
   width: 30%;
   max-width: 400px;
-  padding: .75rem;
   border: 1px solid white;
   margin: 1rem;
+  padding: .75rem;
 }
 
+button {
+  display: block;
+  margin: .5rem auto;
+  color: #efefef;
+  background: #000;
+  border: 2px solid #efefef;
+  padding: 6px 12px;
+  text-align: center !important;
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+button:hover {
+  color: #000 !important;
+  background-color: #efefef;
+}
 
 /*==========================*/
 /* Header */
@@ -119,32 +134,16 @@ form {
   display: inline-block;
 }
 
-select,
-button,
-input {
-  color: #efefef;
-  background: #000;
-  border: 2px solid #efefef;
-  padding: 6px 12px;
-  text-align: center;
-  text-decoration: none;
+
+button.filter-button {
   display: inline-block;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 18px;
   margin: 4px 2px;
-  cursor: pointer;
-  transition: .3s;
 }
 
-button:hover,
-input:hover {
-  color: #000 !important;
-  background-color: #efefef;
-}
 
-input:hover {
+/*input:hover {
   background-color: rgba(0,0,0,.8);
-}
+}*/
 
 button.active {
   color: #000;
@@ -177,10 +176,17 @@ Results
 
 img {
   cursor: pointer;
+  width: 100%;
+  /*max-width: 400px;*/
 }
 
 .rotate-image {
   transform: 90deg;
+}
+
+.item-title {
+  margin: 5px 0;
+  font-size: .9rem;
 }
 
 .results-button-in-collection,
@@ -292,7 +298,7 @@ Media Queries - tablets
   }
 
   .card {
-    width: 50%;
+    /*width: 50%;*/
   }
 
 }

@@ -25,7 +25,7 @@ export default class Filters extends Component {
             return(
 
                 <button key={item.id}
-                        className=""
+                        className="filter-button"
                         type="submit"
                         value={item}
                         onClick={ (event) => {

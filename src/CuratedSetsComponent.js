@@ -31,14 +31,14 @@ export default class CuratedSetsComponent extends Component {
                     >
 
                 <div key=""
-                        className="curated-set-label"
-                        type="download"
-                        value='{item.setName}'
-                        onClick={ (event) => {
-                          console.log("button value is:", event.target.value)
-                          // this.props.handleFilterSubmit(event)
-                        }}>
-                         {item.setName}
+                    className="curated-set-label"
+                    type="download"
+                    value='{item.setName}'
+                    onClick={ (event) => {
+                      console.log("button value is:", event.target.value)
+                      // this.props.handleFilterSubmit(event)
+                    }}>
+                     {item.setName}
                 </div>
 
                 <button key=""
