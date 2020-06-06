@@ -25,11 +25,13 @@ export default class Filters extends Component {
             return(
 
                 <button key={item.id}
+                        className=""
                         type="submit"
                         value={item}
                         onClick={ (event) => {
                           console.log("button value is:", event.target.value)
-                          this.props.handleFilterSubmit(event)}}>
+                          this.props.handleFilterSubmit(event)
+                        }}>
                          {item}
                 </button>
             )

@@ -1,33 +1,36 @@
-        skinnyGottaGo() {
 
-          let preSelectedImages = this.state.preSelectedImages
-            // console.log("snake jazz", preSelectedImages )
+skinnyGottaGo() {
+  let preSelectedImages = this.state.preSelectedImages
+  console.log("3) BEFORE skinnyGottaGo() preSelectedImages are:", preSelectedImages, preSelectedImages.length)
+  preSelectedImages.forEach( (item) => {
 
-          preSelectedImages.forEach( (object) => {
+     let imageUrl = item.images[0].b.url
 
-            let imageUrl = object.images[0].b.url
+    Jimp.read(imageUrl, (err, meetingBackground) => {
+      if (err) throw err;
 
-            Jimp.read(imageUrl, (err, meetingBackground) => {
-              if (err) throw err;
+      let width = meetingBackground.bitmap.width
+      let height = meetingBackground.bitmap.height
 
-              let width = meetingBackground.bitmap.width
-              let height = meetingBackground.bitmap.height
-              console.log(object.id, "width: ", width, "height: ", height)
 
-              console.log("snek", object.images[0].b.url)
-
-              if ( (height > width) && ((height / width) > 2.5) ) {
-                _Lodash.remove(this.state.preSelectedImages, object)
-                console.log("2)", object.id, "Skinny PORTRAIT, REMOVE!")
-              }
-              else if ( (width > height) && ((width / height) > 2.5) ) {
-                _Lodash.remove(this.state.preSelectedImages, object)
-                console.log("2)", object.id, "Skinny LANDSCAPE, REMOVE!")
-              }
-              else {
-                console.log("2)", object.id, "Not skinny. It can stay.")
-              }
-            })
-
-          })
+      if ( (height > width) && ((height / width) > 2) ) {
+        console.log("4)", item.id, "SKINNY PORTRAIT, REMOVE!")
+        let newArray = _Lodash.without(this.state.preSelectedImages, item)
+        this.setState({preSelectedImages: newArray}, () => {
+          console.log("5) AFTER skinnyGottaGo() preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+        })
       }
+      else if ( (width > height) && ((width / height) > 2) ) {
+        console.log("4)", item.id, "SKINNY LANDSCAPE, REMOVE!")
+        let newArray = _Lodash.without(this.state.preSelectedImages, item)
+        this.setState({preSelectedImages: newArray}, () => {
+          console.log("5) AFTER skinnyGottaGo() preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+        })
+      }
+      else {
+        console.log("4)", item.id, "Not skinny. It can stay.")
+      }
+    })
+  })
+
+}

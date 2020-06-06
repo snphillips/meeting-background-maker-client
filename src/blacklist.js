@@ -27,7 +27,7 @@ const blacklist = [
    },
    {
      filterTerm: "textile",
-     blacklistId: []
+     blacklistId: ["69155173", "69155177", "18102761", "18640337", "18640289", "69193915"]
    },
    {
      filterTerm: "modernism",

@@ -83,7 +83,7 @@ h1.header {
   font-size: 6rem;
   line-height: .6;
   text-transform: uppercase;
-  padding: 10px 0;
+  padding: .5rem 0 2rem;
   letter-spacing: -6px;
   /*text-shadow: 2px 2px 0 #fff;*/
 }
@@ -136,6 +136,12 @@ input:hover {
   background-color: rgba(0,0,0,.8);
 }
 
+button.active {
+  color: #000;
+  background: #efefef;
+  border: 2px solid #efefef;
+}
+
 .spinner-container {
   display: inline-block;
 }
@@ -183,6 +189,11 @@ img {
 .results-button-remove-from-collection {
   color: #000;
   background: #efefef;
+}
+
+.results-button-remove-from-collection:hover {
+  color: #efefef !important;
+  background: #000;
 }
 
 .results-button-add-to-collection {

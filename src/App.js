@@ -8,7 +8,7 @@ import Results from './Results';
 import Instructions from './Instructions';
 import CuratedSetsComponent from './CuratedSetsComponent';
 import Footer from './Footer';
-import blacklist from './blacklist';
+import blacklistArray from './blacklistArray';
 import backgroundImages from './backgroundImages';
 import SelectedImages from './SelectedImages';
 
@@ -28,6 +28,7 @@ export default class App extends Component {
       value: 'smoking',
       preSelectedImages: [],
       selectedImages: [],
+      blacklist: blacklistArray,
 
     };
 
@@ -40,8 +41,9 @@ export default class App extends Component {
     this.revealFilterResultsComponent = this.revealFilterResultsComponent.bind(this);
     this.revealSelectedImagesComponent = this.revealSelectedImagesComponent.bind(this);
     this.whichButton = this.whichButton.bind(this);
-    this.rotatePortrait = this.rotatePortrait.bind(this);
-    this.skinnyGottaGo = this.skinnyGottaGo.bind(this);
+    // this.rotatePortrait = this.rotatePortrait.bind(this);
+    // this.skinnyGottaGo = this.skinnyGottaGo.bind(this);
+    this.removeBlacklist = this.removeBlacklist.bind(this);
   }
 
 // ***********************************
@@ -128,7 +130,8 @@ export default class App extends Component {
         console.log(`1) The search value is:`, this.state.value, "response length is:", (response.data).length )
         // set the state of preSelectedImage with the response from the server
         this.setState({preSelectedImages: response.data})
-        this.rotatePortrait()
+        this.removeBlacklist()
+        // this.rotatePortrait()
         this.skinnyGottaGo()
         console.log("4) AFTER Manipulation preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
         // stop the loading spinner
@@ -143,83 +146,103 @@ export default class App extends Component {
   };
 
 
+removeBlacklist(blacklistArray) {
+
+  // console.log("snake jazz", this.state.blacklist)
+
+  let preSelectedImages = this.state.preSelectedImages
+
+  preSelectedImages.forEach( (item) => {
+
+    // let blacklist = ["1108749941", "1108749939", "1108749913", "18805771", "18388543", "18711607", "69155057", "1159162409", "18639863", '554917247', '874387565']
+
+    this.state.blacklist.forEach( (blacklistItem) => {
+
+      if (item.id === blacklistItem) {
+        console.log("Item matches blacklist. Kick it out.", item.id, "!===",blacklistItem)
+
+        let newArray = _Lodash.without(this.state.preSelectedImages, item)
+        this.setState({preSelectedImages: newArray}, () => {
+          // console.log("AFTER removeBlacklist() preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+        })
+      } else  {
+        // console.log("Does not match blacklist.", item.id, "!===", blacklistItem)
+      }
+    })
+  })
+}
 
 
-        rotatePortrait() {
-          let preSelectedImages = this.state.preSelectedImages
-          // console.log("rotatePortrait() preSelectedImages are:", preSelectedImages, preSelectedImages.length)
 
-          preSelectedImages.forEach( (item) => {
+rotatePortrait() {
+  let preSelectedImages = this.state.preSelectedImages
+  // console.log("rotatePortrait() preSelectedImages are:", preSelectedImages, preSelectedImages.length)
 
-             let imageUrl = item.images[0].b.url
+  preSelectedImages.forEach( (item) => {
 
-              Jimp.read(imageUrl)
+     let imageUrl = item.images[0].b.url
 
-              .then( (meetingBackground) => {
-                let width = meetingBackground.bitmap.width
-                let height = meetingBackground.bitmap.height
-                // console.log("jimp meetingBackground item: ", meetingBackground)
-                // console.log("2)", item.id, "width: ", width, "height: ", height)
+      Jimp.read(imageUrl)
+
+      .then( (meetingBackground) => {
+        let width = meetingBackground.bitmap.width
+        let height = meetingBackground.bitmap.height
+        // console.log("jimp meetingBackground item: ", meetingBackground)
+        // console.log("2)", item.id, "width: ", width, "height: ", height)
 
 
-                if (height > width) {
-                  console.log("2)", item.id, "PORTRAIT image, ROTATE 90 degrees.")
-                  // return meetingBackground
-                  // .rotate( 90 )
-                  // .write("../meeting-background-maker-client/public/meeting-backgrounds/jimp-rotate.jpg")
-                }
-                else if (width > height) {
-                  console.log("2)", item.id, "landscape image. Leave as is.")
-                } else {
-                  console.log("2)", item.id, "square image. Leave as is.")
-                }
-            })
-          })
+        if (height > width) {
+          console.log("2)", item.id, "PORTRAIT image, ROTATE 90 degrees.")
+          // return meetingBackground
+          // .rotate( 90 )
+          // .write("../meeting-background-maker-client/public/meeting-backgrounds/jimp-rotate.jpg")
         }
-
-
-
-        skinnyGottaGo() {
-          let preSelectedImages = this.state.preSelectedImages
-          console.log("3) BEFORE skinnyGottaGo() preSelectedImages are:", preSelectedImages, preSelectedImages.length)
-          preSelectedImages.forEach( (item) => {
-
-             let imageUrl = item.images[0].b.url
-
-            Jimp.read(imageUrl, (err, meetingBackground) => {
-              if (err) throw err;
-
-              let width = meetingBackground.bitmap.width
-              let height = meetingBackground.bitmap.height
-
-
-              if ( (height > width) && ((height / width) > 2) ) {
-                console.log("4)", item.id, "SKINNY PORTRAIT, REMOVE!")
-                let newArray = _Lodash.without(this.state.preSelectedImages, item)
-                this.setState({preSelectedImages: newArray}, () => {
-                  console.log("5) AFTER skinnyGottaGo() preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
-                })
-              }
-              else if ( (width > height) && ((width / height) > 2) ) {
-                console.log("4)", item.id, "SKINNY LANDSCAPE, REMOVE!")
-                let newArray = _Lodash.without(this.state.preSelectedImages, item)
-                this.setState({preSelectedImages: newArray}, () => {
-                  console.log("5) AFTER skinnyGottaGo() preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
-                })
-              }
-              else {
-                console.log("4)", item.id, "Not skinny. It can stay.")
-              }
-            })
-          })
-
+        else if (width > height) {
+          console.log("2)", item.id, "landscape image. Leave as is.")
+        } else {
+          console.log("2)", item.id, "square image. Leave as is.")
         }
+    })
+  })
+}
 
 
 
+skinnyGottaGo() {
+  let preSelectedImages = this.state.preSelectedImages
+  console.log("3) BEFORE skinnyGottaGo() preSelectedImages are:", preSelectedImages, preSelectedImages.length)
+  preSelectedImages.forEach( (item) => {
+
+     let imageUrl = item.images[0].b.url
+
+    Jimp.read(imageUrl, (err, meetingBackground) => {
+      if (err) throw err;
+
+      let width = meetingBackground.bitmap.width
+      let height = meetingBackground.bitmap.height
 
 
+      if ( (height > width) && ((height / width) > 2) ) {
+        console.log("4)", item.id, "SKINNY PORTRAIT, REMOVE!")
+        let newArray = _Lodash.without(this.state.preSelectedImages, item)
+        this.setState({preSelectedImages: newArray}, () => {
+          console.log("5) AFTER skinnyGottaGo() preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+        })
+      }
+      else if ( (width > height) && ((width / height) > 2) ) {
+        console.log("4)", item.id, "SKINNY LANDSCAPE, REMOVE!")
+        let newArray = _Lodash.without(this.state.preSelectedImages, item)
+        this.setState({preSelectedImages: newArray}, () => {
+          console.log("5) AFTER skinnyGottaGo() preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+        })
+      }
+      else {
+        console.log("4)", item.id, "Not skinny. It can stay.")
+      }
+    })
+  })
 
+}
 
 
   revealFilterResultsComponent() {
