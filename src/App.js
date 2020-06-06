@@ -12,6 +12,14 @@ import blacklistArray from './blacklistArray';
 import backgroundImages from './backgroundImages';
 import SelectedImages from './SelectedImages';
 
+// Curated Sets
+// let curatedSets = require('./curatedSets.js').default;
+let cocktailHour = require('./CuratedSets/cocktailHour.js').default;
+let gardenParty = require('./CuratedSets/gardenParty.js').default;
+let hermanMillarPicnic = require('./CuratedSets/hermanMillarPicnic.js').default;
+let photoMural = require('./CuratedSets/photoMural.js').default;
+let wallpaperThatKills = require('./CuratedSets/wallpaperThatKills.js').default;
+
 
 export default class App extends Component {
   constructor(props) {
@@ -25,11 +33,11 @@ export default class App extends Component {
       selectedImagesComponent: false,
       downloadButtonComponent: false,
       downloadSetComponent: true,
-      value: 'smoking',
+      value: 'dots',
       preSelectedImages: [],
       selectedImages: [],
       blacklist: blacklistArray,
-
+      curatedSets: [ cocktailHour, gardenParty, hermanMillarPicnic, photoMural, wallpaperThatKills]
     };
 
     // This binding is necessary to make `this` work in the callback
@@ -44,6 +52,7 @@ export default class App extends Component {
     // this.rotatePortrait = this.rotatePortrait.bind(this);
     // this.skinnyGottaGo = this.skinnyGottaGo.bind(this);
     this.removeBlacklist = this.removeBlacklist.bind(this);
+
   }
 
 // ***********************************
@@ -279,8 +288,15 @@ skinnyGottaGo() {
     // document.querySelector(".header").style.textShadow = "2px 2px 2px #fff";
   }
 
+
+
+
+
+
+
   componentDidMount() {
     this.shuffleBackgroundClipTextImage()
+
   }
 
 
@@ -303,7 +319,9 @@ skinnyGottaGo() {
       <SelectedImages selectedImages={this.state.selectedImages}
                       revealSelectedImagesComponent={this.state.revealSelectedImagesComponent}
                       />
-      <CuratedSetsComponent />
+     <CuratedSetsComponent parentState={this.state}
+                           curatedSets={this.state.curatedSets}
+                           />
       <Instructions />
       <Footer />
     </div>
@@ -311,4 +329,9 @@ skinnyGottaGo() {
 }
 }
 
+                            // cocktailHour={this.props.cocktailHour}
+                            // gardenParty={this.props.gardenParty}
+                            // hermanMillarPicnic={this.props.hermanMillarPicnic}
+                            // photoMural={this.props.photoMural}
+                            // wallpaperThatKills={this.props.wallpaperThatKills}
       // <DownloadButton />

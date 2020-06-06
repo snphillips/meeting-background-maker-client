@@ -1,20 +1,18 @@
 
-
-
-let cocktailHour = {
-  setName: "Cocktail Hour",
+let gardenParty = {
+  setName: "Garden Party",
   images:[
     {
-      id: '18758381',
-      title: "POSTER, HERMAN MILLER SUMMER PICNIC, JULY 28, 1984, 1984",
-      url: "https://collection.cooperhewitt.org/objects/18758381/",
-      imageURL: "https://images.collection.cooperhewitt.org/44526_9fb441bdf5d95f61_b.jpg",
+      id: '136300661',
+      title: "Sidewall, Bloom, 2015",
+      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132611917/",
+      imageURL: "https://images.collection.cooperhewitt.org/221332_72430cf94a181603_b.jpg",
     },
     {
-      id: '18617399',
-      title: "POSTER, SUMMER PICNIC, 1976, 1976",
-      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132629863/",
-      imageURL: "https://images.collection.cooperhewitt.org/80018_e92dbc123ee3a473_b.jpg",
+      id: '18460071',
+      title: `Drawing, Cartoon for wallpaper and chintz: - "Roxbury", 1955`,
+      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132611939/",
+      imageURL: "https://images.collection.cooperhewitt.org/269788_842db921431311f4_b.jpg",
     },
     {
       id: '',
@@ -78,5 +76,5 @@ let cocktailHour = {
     }]
   }
 
-  export default cocktailHour
 
+export default gardenParty

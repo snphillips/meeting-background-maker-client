@@ -1,81 +1,80 @@
 
-const photomural = {
+const photoMural = {
   "setName": "Photomural",
-  "includeingallery": true,
   "images":[
     {
-      "id": '',
-      "title": "",
-      "imageurl": "",
-      "url": "",
+      "id": '18797535',
+      "title": "Sample Book, Decor Photowalls, 1975",
+      "url": "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
+      "imageurl": "https://images.collection.cooperhewitt.org/296081_1746631c1ea4afff_b.jpg",
     },
     {
       "id": '',
       "title": "",
-      "imageurl": "",
       "url": "",
+      "imageurl": "",
     },
     {
       "id": '',
       "title": "",
-      "imageurl": "",
       "url": "",
+      "imageurl": "",
     },
     {
       "id": '',
       "title": "",
-      "imageurl": "",
       "url": "",
+      "imageurl": "",
     },
     {
       "id": '',
       "title": "",
-      "imageurl": "",
       "url": "",
+      "imageurl": "",
     },
     {
       "id": '',
       "title": "",
-      "imageurl": "",
       "url": "",
+      "imageurl": "",
     },
         {
       "id": '',
       "title": "",
-      "imageurl": "",
       "url": "",
+      "imageurl": "",
     },
     {
       "id": '',
       "title": "",
-      "imageurl": "",
       "url": "",
+      "imageurl": "",
     },
     {
       "id": '',
       "title": "",
-      "imageurl": "",
       "url": "",
+      "imageurl": "",
     },
     {
       "id": '',
       "title": "",
-      "imageurl": "",
       "url": "",
+      "imageurl": "",
     },
     {
       "id": '',
       "title": "",
-      "imageurl": "",
       "url": "",
+      "imageurl": "",
     },
     {
       "id": '',
       "title": "",
-      "imageurl": "",
       "url": "",
+      "imageurl": "",
     }]
   }
 
 
-export default photomural
+export default photoMural

@@ -41,7 +41,7 @@ export default class Results extends React.Component {
                       return(
 
                         <div key={item.id}
-                             className="image-card">
+                             className="image-card card">
 
                           <a href={item.url}>
                             <img className="result-img"

@@ -64,7 +64,17 @@ h2 {
   border: 2px solid #efefef;
   color: #fff;
   margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
+}
+
+
+.card {
+  text-align: left;
+  width: 30%;
+  max-width: 400px;
+  padding: .75rem;
+  border: 1px solid white;
+  margin: 1rem;
 }
 
 
@@ -99,7 +109,7 @@ app description
 /*==============================
 filter buttons
 ================================*/
-  .filters-component {
+.filters-component {
   display: flex;
   flex-direction: row;
   margin-bottom: 2rem;
@@ -173,14 +183,6 @@ img {
   transform: 90deg;
 }
 
-.image-card {
-  text-align: left;
-  flex-grow: 1;
-  width: 30%;
-  max-width: 400px;
-  padding: .75rem;
-}
-
 .results-button-in-collection,
 .results-button-add-to-collection {
   margin-bottom: 1rem;
@@ -241,6 +243,25 @@ Selected Images
 }
 
 
+/*==============================
+Curated Sets
+================================*/
+#curated-sets-list{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.curated-set-card {
+
+}
+
+.curated-set-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
 
 
 /*=========================
@@ -248,7 +269,7 @@ Media Queries - small computer
 ==========================*/
 @media (max-width: 1000px) {
 
-  .image-card {
+  .card {
     width: 30%;
   }
 
@@ -270,7 +291,7 @@ Media Queries - tablets
     flex-direction: column;
   }
 
-  .image-card {
+  .card {
     width: 50%;
   }
 
@@ -283,7 +304,7 @@ Media Queries - phones
 @media (max-width: 415px) {
 
 
-  .image-card {
+  .card {
     width: 100%;
     padding: .25rem 0;
     margin-right: unset;

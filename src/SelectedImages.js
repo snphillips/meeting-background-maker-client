@@ -22,7 +22,7 @@ export default class selectedImages extends React.Component {
 
                       return(
 
-                        <div className="image-card"
+                        <div className="image-card card"
                              key={item.id}
                              >
 
