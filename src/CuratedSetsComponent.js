@@ -34,7 +34,7 @@ export default class CuratedSetsComponent extends Component {
                 <div key={item.setName + "label"}
                      className="curated-set-label"
                      type="download"
-                     value='{item.setName}'
+                     value={item.setName}
                      onClick={ (event) => {
                       console.log("button value is:", event.target.value)
                       // this.props.handleFilterSubmit(event)
@@ -53,10 +53,25 @@ export default class CuratedSetsComponent extends Component {
                     />
                 </a>
 
-                <button key={item.setName + "button"}
-                        className="curated-set-button"
+                <button key={item.setName + "view-allbutton"}
+                        className="curated-set-view-all-button"
+                        type=""
+                        value={item.setName}
+                        onClick={ (event) => {
+                          console.log("view images in set:", event.target.value)
+                          // this.props.handleFilterSubmit(event)
+                        }}>
+
+                  <a href=""
+                     download="155203_a42ace55852a053a_b.jpg">
+                       view all images in set
+                  </a>
+                </button>
+
+                <button key={item.setName + "downlad-button"}
+                        className="curated-set-download-button"
                         type="download"
-                        value='{item.setName}'
+                        value={item.setName}
                         onClick={ (event) => {
                           console.log("download:", event.target.value)
                           // this.props.handleFilterSubmit(event)
