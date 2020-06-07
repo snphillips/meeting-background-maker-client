@@ -42,7 +42,8 @@ export default class App extends Component {
       preSelectedImages: [],
       selectedImages: [],
       blacklist: blacklistArray,
-      curatedSets: [ cocktailHour, colorTheory, gardenParty, gourmet, hermanMillarPicnic, photoMural, wallpaperThatKills]
+      curatedSets: [ cocktailHour, colorTheory, gardenParty, gourmet, hermanMillarPicnic, photoMural, wallpaperThatKills],
+      selectedCuratedSet: ''
     };
 
     // This binding is necessary to make `this` work in the callback
@@ -298,18 +299,30 @@ skinnyGottaGo() {
 
 
 
- zipDownloadFolderCuratedSet() {
-  let folderName = 'cocktailHour' + '.zip'
+ zipDownloadFolderCuratedSet(value, index) {
+  console.log("downloading curated image set with value of: ", value, index)
+  console.log("spongebob", this.state.curatedSets[index])
+  let desiredCuratedSet = value
+
+  let selectedCuratedSet = this.state.curatedSets[index].images
+  // value is the name of the selected curated list
+  let folderName = value
   let zip = new JSZip();
-  zip.file("Hello.txt", "Hello World\n");
+  // zip.file("Hello.txt", "Hello World\n");
   // let imgFolder = zip.folder("cocktailHour");
-  zip.file("155203_a42ace55852a053a_b.jpg", this.imgData, {base64: true});
+
+  selectedCuratedSet.forEach( (thing) => {
+    zip.file(thing.imageURL, this.imgData, {base64: true});
+  })
+
+
   zip.generateAsync({type:"blob"})
   .then(function(content) {
       // Using npm library FileSaver.js
       saveAs(content, folderName);
   });
  }
+
 
 zipDownloadFolderSelectedImages() {
   console.log("downloading selected images: ", this.state.selectedImages)
@@ -321,7 +334,6 @@ zipDownloadFolderSelectedImages() {
 
   selectedImages.forEach( (image) => {
     imgFolder.file(image.images[0].b.url, this.imgData, {base64: true});
-
   })
 
   zip.generateAsync({type:"blob"})
