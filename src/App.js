@@ -16,6 +16,7 @@ import SelectedImages from './SelectedImages';
 // let curatedSets = require('./curatedSets.js').default;
 let cocktailHour = require('./CuratedSets/cocktailHour.js').default;
 let gardenParty = require('./CuratedSets/gardenParty.js').default;
+let gourmet = require('./CuratedSets/gourmet.js').default;
 let hermanMillarPicnic = require('./CuratedSets/hermanMillarPicnic.js').default;
 let photoMural = require('./CuratedSets/photoMural.js').default;
 let wallpaperThatKills = require('./CuratedSets/wallpaperThatKills.js').default;
@@ -37,7 +38,7 @@ export default class App extends Component {
       preSelectedImages: [],
       selectedImages: [],
       blacklist: blacklistArray,
-      curatedSets: [ cocktailHour, gardenParty, hermanMillarPicnic, photoMural, wallpaperThatKills]
+      curatedSets: [ cocktailHour, gardenParty, gourmet, hermanMillarPicnic, photoMural, wallpaperThatKills]
     };
 
     // This binding is necessary to make `this` work in the callback
