@@ -57,8 +57,8 @@ export default class App extends Component {
     // this.rotatePortrait = this.rotatePortrait.bind(this);
     // this.skinnyGottaGo = this.skinnyGottaGo.bind(this);
     this.removeBlacklist = this.removeBlacklist.bind(this);
-    this.zipDownloadFolder = this.zipDownloadFolder.bind(this);
-    this.zipDownloadFolder2 = this.zipDownloadFolder2.bind(this);
+    this.zipDownloadFolderCuratedSet = this.zipDownloadFolderCuratedSet.bind(this);
+    this.zipDownloadFolderSelectedImages = this.zipDownloadFolderSelectedImages.bind(this);
 
   }
 
@@ -298,28 +298,32 @@ skinnyGottaGo() {
 
 
 
- zipDownloadFolder() {
-  // let JSZip = require("jszip");
-  // let zip = new JSZip();
-  // // let imgFolder = zip.folder("./meeting-backgrounds/cocktailHour");
-  // let imgFolder = zip.folder("/cocktailHour");
-  // imgFolder.file("155203_a42ace55852a053a_b.jpg", this.imgData, {base64: true});
-  // imgFolder.file("39571_f51cbee0bcf81169_b.jpg", this.imgData, {base64: true});
-  // imgFolder.file("48840_d6c6f3959b1afbc9_b.jpg", this.imgData, {base64: true});
-  // zip.generateAsync({type:"base64"})
-  // .then(function (content) {
-  //    window.location.href="data:application/zip;base64," + content;
-  //    // this.saveAs(content, "example.zip");
-  // });
- }
-
-
- zipDownloadFolder2() {
+ zipDownloadFolderCuratedSet() {
   let folderName = 'cocktailHour' + '.zip'
   let zip = new JSZip();
   zip.file("Hello.txt", "Hello World\n");
   // let imgFolder = zip.folder("cocktailHour");
   zip.file("155203_a42ace55852a053a_b.jpg", this.imgData, {base64: true});
+  zip.generateAsync({type:"blob"})
+  .then(function(content) {
+      // Using npm library FileSaver.js
+      saveAs(content, folderName);
+  });
+ }
+
+zipDownloadFolderSelectedImages() {
+  console.log("downloading selected images: ", this.state.selectedImages)
+  let selectedImages = this.state.selectedImages
+  let folderName = 'meeting-backgrounds'
+  let zip = new JSZip();
+  // zip.file("Hello.txt", "Hello World\n");
+  let imgFolder = zip.folder("meeting-backgrounds");
+
+  selectedImages.forEach( (image) => {
+    imgFolder.file(image.images[0].b.url, this.imgData, {base64: true});
+
+  })
+
   zip.generateAsync({type:"blob"})
   .then(function(content) {
       // Using npm library FileSaver.js
@@ -339,8 +343,8 @@ skinnyGottaGo() {
 
   componentDidMount() {
     this.shuffleBackgroundClipTextImage()
-    this.zipDownloadFolder()
-    this.zipDownloadFolder2()
+    // this.zipDownloadFolderCuratedSet()
+    // this.zipDownloadFolderSelectedImages()
   }
 
 
@@ -362,10 +366,11 @@ skinnyGottaGo() {
                />
       <SelectedImages selectedImages={this.state.selectedImages}
                       revealSelectedImagesComponent={this.state.revealSelectedImagesComponent}
+                      zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
                       />
      <CuratedSetsComponent parentState={this.state}
                            curatedSets={this.state.curatedSets}
-                           zipDownloadFolder={this.zipDownloadFolder}
+                           zipDownloadFolderCuratedSet={this.zipDownloadFolderCuratedSet}
                            />
       <Instructions />
       <Footer />

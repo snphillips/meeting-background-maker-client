@@ -17,7 +17,7 @@ export default class selectedImages extends React.Component {
 
           <div className="selected-images-gallery">
 
-                 {this.props.selectedImages.map( item => {
+                 {this.props.selectedImages.map( (item, index) => {
 
 
                       return(
@@ -40,13 +40,13 @@ export default class selectedImages extends React.Component {
 
         </div>
 
-        <button className="download-button">
-
-          <a href={"/meeting-backgrounds/" + "cocktailHour/"}
-             download="arches.jpeg">
-               Download Set of Selected Images
-          </a>
-
+        <button className="download-button"
+                value=""
+                onClick={ (event) => {
+                  console.log("download selected images")
+                  this.props.zipDownloadFolderSelectedImages()
+                }}>
+                Download Set of Selected Images
        </button>
 
 
@@ -57,5 +57,16 @@ export default class selectedImages extends React.Component {
 
 }
 
-        // <DownloadButton />
+
+
+       // <button className="download-button">
+
+         // <a href={"/meeting-backgrounds/" + "cocktailHour/"}
+           //  download="arches.jpeg">
+             //  Download Set of Selected Images
+      //    </a>
+
+    //   </button>
+
+
 

@@ -18,14 +18,15 @@ export default class Filters extends Component {
 
       <section className="filter-button-section">
 
-       {filterTerms.map( item => {
+       {filterTerms.map( (item, index) => {
 
           // console.log("button value:", item)
 
             return(
 
-                <button key={item.id}
+                <button key={index}
                         className="filter-button"
+                        id={"filter-button-" + item}
                         type="submit"
                         value={item}
                         onClick={ (event) => {

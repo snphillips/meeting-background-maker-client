@@ -8,7 +8,7 @@ export default class CuratedSetsComponent extends Component {
   render() {
 
     let curatedSetsArray = this.props.curatedSets
-    console.log("curatedSetsArray:", curatedSetsArray)
+    // console.log("curatedSetsArray:", curatedSetsArray)
 
     return (
 
