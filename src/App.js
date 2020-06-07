@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Jimp from 'jimp';
+// import JSzip from 'jszip';
+import { saveAs } from 'file-saver';
 import _Lodash from 'lodash';
 import Header from './Header';
 import Filters from './Filters';
@@ -11,6 +13,7 @@ import Footer from './Footer';
 import blacklistArray from './blacklistArray';
 import backgroundImages from './backgroundImages';
 import SelectedImages from './SelectedImages';
+var JSZip = require("jszip");
 
 // Curated Sets
 // let curatedSets = require('./curatedSets.js').default;
@@ -54,6 +57,8 @@ export default class App extends Component {
     // this.rotatePortrait = this.rotatePortrait.bind(this);
     // this.skinnyGottaGo = this.skinnyGottaGo.bind(this);
     this.removeBlacklist = this.removeBlacklist.bind(this);
+    this.zipDownloadFolder = this.zipDownloadFolder.bind(this);
+    this.zipDownloadFolder2 = this.zipDownloadFolder2.bind(this);
 
   }
 
@@ -293,12 +298,49 @@ skinnyGottaGo() {
 
 
 
+ zipDownloadFolder() {
+  // let JSZip = require("jszip");
+  // let zip = new JSZip();
+  // // let imgFolder = zip.folder("./meeting-backgrounds/cocktailHour");
+  // let imgFolder = zip.folder("/cocktailHour");
+  // imgFolder.file("155203_a42ace55852a053a_b.jpg", this.imgData, {base64: true});
+  // imgFolder.file("39571_f51cbee0bcf81169_b.jpg", this.imgData, {base64: true});
+  // imgFolder.file("48840_d6c6f3959b1afbc9_b.jpg", this.imgData, {base64: true});
+  // zip.generateAsync({type:"base64"})
+  // .then(function (content) {
+  //    window.location.href="data:application/zip;base64," + content;
+  //    // this.saveAs(content, "example.zip");
+  // });
+ }
+
+
+ zipDownloadFolder2() {
+  let folderName = 'cocktailHour' + '.zip'
+  let zip = new JSZip();
+  zip.file("Hello.txt", "Hello World\n");
+  // let imgFolder = zip.folder("cocktailHour");
+  zip.file("155203_a42ace55852a053a_b.jpg", this.imgData, {base64: true});
+  zip.generateAsync({type:"blob"})
+  .then(function(content) {
+      // Using npm library FileSaver.js
+      saveAs(content, folderName);
+  });
+ }
+
+
+
+
+
+
+
+
 
 
 
   componentDidMount() {
     this.shuffleBackgroundClipTextImage()
-
+    this.zipDownloadFolder()
+    this.zipDownloadFolder2()
   }
 
 
@@ -323,6 +365,7 @@ skinnyGottaGo() {
                       />
      <CuratedSetsComponent parentState={this.state}
                            curatedSets={this.state.curatedSets}
+                           zipDownloadFolder={this.zipDownloadFolder}
                            />
       <Instructions />
       <Footer />
