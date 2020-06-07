@@ -1,5 +1,5 @@
 import React from 'react';
-import DownloadButton from './DownloadButton'
+// import DownloadButton from './DownloadButton'
 import './index.css';
 
 
@@ -39,7 +39,15 @@ export default class selectedImages extends React.Component {
                  }
 
         </div>
-        <DownloadButton />
+
+        <button className="download-button">
+
+          <a href={"/meeting-backgrounds/" + "cocktailHour/"}
+             download="arches.jpeg">
+               Download Set of Selected Images
+          </a>
+
+       </button>
 
 
     </section>
@@ -49,4 +57,5 @@ export default class selectedImages extends React.Component {
 
 }
 
+        // <DownloadButton />
 

@@ -61,7 +61,11 @@ export default class CuratedSetsComponent extends Component {
                           console.log("download:", event.target.value)
                           // this.props.handleFilterSubmit(event)
                         }}>
-                         download image set
+
+                  <a href={"/meeting-backgrounds/" + item.setName + "/" + "155203_a42ace55852a053a_b.jpg"}
+                     download="155203_a42ace55852a053a_b.jpg">
+                       download image set
+                  </a>
                 </button>
 
               </div>
