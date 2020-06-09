@@ -8,7 +8,8 @@ export default class CuratedSetsComponent extends Component {
   render() {
 
     let curatedSetsArray = this.props.curatedSets
-    // console.log("curatedSetsArray:", curatedSetsArray)
+    console.log("curatedSetsArray:", curatedSetsArray)
+
 
     return (
 
@@ -42,13 +43,14 @@ export default class CuratedSetsComponent extends Component {
                      {item.setName}
                 </div>
 
-                <a href={item.images[0].url}>
-                  <img className="curated-list-img"
+
+                <a>
+                  <img className="curated-list-img-cover"
                        src={item.images[0].imageURL}
                        alt={item.images[0].title}
                        onClick={ (event) => {
                         console.log(item.images[0].imageURL)
-
+                        this.props.viewCuratedSetImages()
                        }}
                     />
                 </a>
@@ -59,12 +61,11 @@ export default class CuratedSetsComponent extends Component {
                         value={item.setName}
                         onClick={ (event) => {
                           console.log("view images in set:", event.target.value)
-                          // this.props.handleFilterSubmit(event)
+                          this.props.viewCuratedSetImages()
                         }}>
 
-                  <a href=""
-                     download="155203_a42ace55852a053a_b.jpg">
-                       view all images in set
+                  <a>
+                    view images in set
                   </a>
                 </button>
 

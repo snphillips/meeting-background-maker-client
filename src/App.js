@@ -60,6 +60,7 @@ export default class App extends Component {
     this.removeBlacklist = this.removeBlacklist.bind(this);
     this.zipDownloadFolderCuratedSet = this.zipDownloadFolderCuratedSet.bind(this);
     this.zipDownloadFolderSelectedImages = this.zipDownloadFolderSelectedImages.bind(this);
+    this.viewCuratedSetImages = this.viewCuratedSetImages.bind(this);
 
   }
 
@@ -147,9 +148,9 @@ export default class App extends Component {
         console.log(`1) The search value is:`, this.state.value, "response length is:", (response.data).length )
         // set the state of preSelectedImage with the response from the server
         this.setState({preSelectedImages: response.data})
-        this.removeBlacklist()
+        // this.removeBlacklist()
         // this.rotatePortrait()
-        this.skinnyGottaGo()
+        // this.skinnyGottaGo()
         console.log("4) AFTER Manipulation preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
         // stop the loading spinner
         this.setState({loading: false});
@@ -284,10 +285,9 @@ skinnyGottaGo() {
 
   shuffleBackgroundClipTextImage() {
     let arrayLength = backgroundImages.length - 1
-    // console.log(arrayLength)
     let randomNumber = Math.floor(Math.random() * arrayLength);
     let randomImage = backgroundImages[randomNumber];
-    // console.log("randomImage is:", randomImage, "randomNumber is:", randomNumber)
+
     document.querySelector(".clip-text").style.setProperty("background", `url("/images/` + randomImage + `")` )
     document.querySelector("body").style.setProperty("background", `url("/images/` + randomImage + `")` )
     document.querySelector(".clip-text").style.setProperty("color", "#fff;")
@@ -305,16 +305,14 @@ skinnyGottaGo() {
   let desiredCuratedSet = value
 
   let selectedCuratedSet = this.state.curatedSets[index].images
+
   // value is the name of the selected curated list
   let folderName = value
   let zip = new JSZip();
-  // zip.file("Hello.txt", "Hello World\n");
-  // let imgFolder = zip.folder("cocktailHour");
 
   selectedCuratedSet.forEach( (thing) => {
     zip.file(thing.imageURL, this.imgData, {base64: true});
   })
-
 
   zip.generateAsync({type:"blob"})
   .then(function(content) {
@@ -342,6 +340,33 @@ zipDownloadFolderSelectedImages() {
       saveAs(content, folderName);
   });
  }
+
+
+ viewCuratedSetImages() {
+  //do this now
+  console.log("reveal curated image set", this.state.curatedSets)
+
+    let curatedSetsArray = this.state.curatedSets
+    let selectedCuratedSet = ''
+
+    curatedSetsArray.map( (item, index) => {
+
+    console.log("item.images[index].title:", item.images[0].title)
+    // let curatedSetsArrayImages = this.props.curatedSets[index].images
+
+    return(
+
+        <a href={item.images[0].url}>
+          <img className="curated-list-img"
+               src={item.images[0].imageURL}
+               alt={item.images[0].title}
+            />
+        </a>
+    )
+
+    })
+
+}
 
 
 
@@ -383,6 +408,7 @@ zipDownloadFolderSelectedImages() {
      <CuratedSetsComponent parentState={this.state}
                            curatedSets={this.state.curatedSets}
                            zipDownloadFolderCuratedSet={this.zipDownloadFolderCuratedSet}
+                           viewCuratedSetImages={this.viewCuratedSetImages}
                            />
       <Instructions />
       <Footer />
