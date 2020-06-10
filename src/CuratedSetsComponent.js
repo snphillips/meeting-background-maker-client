@@ -48,20 +48,28 @@ export default class CuratedSetsComponent extends Component {
                   <img className="curated-list-img-cover"
                        src={item.images[0].imageURL}
                        alt={item.images[0].title}
+                       value={index}
                        onClick={ (event) => {
-                        console.log(item.images[0].imageURL)
-                        this.props.viewCuratedSetImages()
+                        // console.log("view images in set:", item.setName)
+                        this.props.viewCuratedSetImages(item.setName, index)
                        }}
                     />
                 </a>
 
+
+                <div id="curated-list-image-gallery">
+
+                </div>
+
+
+
                 <button key={item.setName + "view-allbutton"}
                         className="curated-set-view-all-button"
                         type=""
-                        value={item.setName}
+                        value={index}
                         onClick={ (event) => {
-                          console.log("view images in set:", event.target.value)
-                          this.props.viewCuratedSetImages()
+                          // console.log("view images in set:", item.setName)
+                          this.props.viewCuratedSetImages(item.setName, index)
                         }}>
 
                   <a>

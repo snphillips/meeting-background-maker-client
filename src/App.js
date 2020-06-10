@@ -342,26 +342,28 @@ zipDownloadFolderSelectedImages() {
  }
 
 
- viewCuratedSetImages() {
-  //do this now
-  console.log("reveal curated image set", this.state.curatedSets)
+ viewCuratedSetImages(value, index) {
 
-    let curatedSetsArray = this.state.curatedSets
-    let selectedCuratedSet = ''
+  let selectedCuratedSet = this.state.curatedSets[index]
+  console.log("selectedCuratedSet:", selectedCuratedSet)
+  let selectedCuratedSetImages = selectedCuratedSet.images
+  console.log("selectedCuratedSetImages:", selectedCuratedSetImages)
 
-    curatedSetsArray.map( (item, index) => {
+    selectedCuratedSetImages.forEach( (item, index) => {
 
-    console.log("item.images[index].title:", item.images[0].title)
+    console.log("selectedCuratedSetImage:", item)
     // let curatedSetsArrayImages = this.props.curatedSets[index].images
 
     return(
 
-        <a href={item.images[0].url}>
-          <img className="curated-list-img"
-               src={item.images[0].imageURL}
-               alt={item.images[0].title}
+        <div>
+          <a href={item.url}>
+            <img className="curated-list-img"
+               src={item.imageURL}
+               alt={item.title}
             />
-        </a>
+          </a>
+        </div>
     )
 
     })
