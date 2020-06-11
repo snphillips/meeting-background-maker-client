@@ -51,10 +51,6 @@ export default class CuratedSetsComponent extends Component {
                        src={item.images[0].imageURL}
                        alt={item.images[0].title}
                        value={index}
-                       // onClick={ (event) => {
-                       //  // console.log("view images in set:", item.setName)
-                       //  this.props.generateCuratedSetImages(item.setName, index)
-                       // }}
                     />
                 </a>
 
@@ -72,7 +68,7 @@ export default class CuratedSetsComponent extends Component {
                         value={index}
                         onClick={ (event) => {
                           // console.log("view images in set:", item.setName)
-                          this.props.viewCuratedSetImages(item.setName, index)
+                          this.props.toggleCuratedSetImages(item.setName, index)
                         }}>
 
                   <a>

@@ -13,7 +13,7 @@ import Footer from './Footer';
 import blacklistArray from './blacklistArray';
 import backgroundImages from './backgroundImages';
 import SelectedImages from './SelectedImages';
-var JSZip = require("jszip");
+let JSZip = require("jszip");
 
 // Curated Sets
 // let curatedSets = require('./curatedSets.js').default;
@@ -21,7 +21,7 @@ let cocktailHour = require('./CuratedSets/cocktailHour.js').default;
 let colorTheory = require('./CuratedSets/colorTheory.js').default;
 let gardenParty = require('./CuratedSets/gardenParty.js').default;
 let gourmet = require('./CuratedSets/gourmet.js').default;
-let hermanMillarPicnic = require('./CuratedSets/hermanMillarPicnic.js').default;
+let hermanMillerPicnic = require('./CuratedSets/hermanMillerPicnic.js').default;
 let photoMural = require('./CuratedSets/photoMural.js').default;
 let wallpaperThatKills = require('./CuratedSets/wallpaperThatKills.js').default;
 
@@ -42,7 +42,7 @@ export default class App extends Component {
       preSelectedImages: [],
       selectedImages: [],
       blacklist: blacklistArray,
-      curatedSets: [ cocktailHour, colorTheory, gardenParty, gourmet, hermanMillarPicnic, photoMural, wallpaperThatKills],
+      curatedSets: [ cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, wallpaperThatKills],
       // selectedCuratedSet: ''
     };
 
@@ -60,6 +60,7 @@ export default class App extends Component {
     this.removeBlacklist = this.removeBlacklist.bind(this);
     this.zipDownloadFolderCuratedSet = this.zipDownloadFolderCuratedSet.bind(this);
     this.zipDownloadFolderSelectedImages = this.zipDownloadFolderSelectedImages.bind(this);
+    this.toggleCuratedSetImages = this.toggleCuratedSetImages.bind(this);
   }
 
 // ***********************************
@@ -340,6 +341,12 @@ zipDownloadFolderSelectedImages() {
  }
 
 
+ toggleCuratedSetImages(index){
+  console.log("toggle curated set images for: ", index)
+  // {this.state.imagesRevealed ? 'Hide details' : 'Show details'}
+ }
+
+
 
 
 
@@ -373,7 +380,7 @@ zipDownloadFolderSelectedImages() {
      <CuratedSetsComponent parentState={this.state}
                            zipDownloadFolderCuratedSet={this.zipDownloadFolderCuratedSet}
                            curatedSets={this.state.curatedSets}
-                           // generateCuratedSetImages={this.generateCuratedSetImages}
+                           toggleCuratedSetImages={this.toggleCuratedSetImages}
                            />
       <Instructions />
       <Footer />
@@ -382,9 +389,3 @@ zipDownloadFolderSelectedImages() {
 }
 }
 
-                            // cocktailHour={this.props.cocktailHour}
-                            // gardenParty={this.props.gardenParty}
-                            // hermanMillarPicnic={this.props.hermanMillarPicnic}
-                            // photoMural={this.props.photoMural}
-                            // wallpaperThatKills={this.props.wallpaperThatKills}
-      // <DownloadButton />

@@ -38,43 +38,43 @@ let cocktailHour = {
       id: '18680713',
       title: "Drawing, Design for Corner Serving Table, 1900–05",
       url: "https://collection.cooperhewitt.org/objects/18680713/",
-      imageURL: "",
+      imageURL: "https://images.collection.cooperhewitt.org/155203_a42ace55852a053a_b.jpg",
     },
     {
       id: '18680713',
       title: "Drawing, Design for Corner Serving Table, 1900–05",
       url: "https://collection.cooperhewitt.org/objects/18680713/",
-      imageURL: "",
+      imageURL: "https://images.collection.cooperhewitt.org/155203_a42ace55852a053a_b.jpg",
     },
     {
       id: '18680713',
       title: "Drawing, Design for Corner Serving Table, 1900–05",
       url: "https://collection.cooperhewitt.org/objects/18680713/",
-      imageURL: "",
+      imageURL: "https://images.collection.cooperhewitt.org/155203_a42ace55852a053a_b.jpg",
     },
     {
       id: '18680713',
       title: "Drawing, Design for Corner Serving Table, 1900–05",
       url: "https://collection.cooperhewitt.org/objects/18680713/",
-      imageURL: "",
+      imageURL: "https://images.collection.cooperhewitt.org/155203_a42ace55852a053a_b.jpg",
     },
     {
       id: '18680713',
       title: "Drawing, Design for Corner Serving Table, 1900–05",
       url: "https://collection.cooperhewitt.org/objects/18680713/",
-      imageURL: "",
+      imageURL: "https://images.collection.cooperhewitt.org/155203_a42ace55852a053a_b.jpg",
     },
     {
       id: '18680713',
       title: "Drawing, Design for Corner Serving Table, 1900–05",
       url: "https://collection.cooperhewitt.org/objects/18680713/",
-      imageURL: "",
+      imageURL: "https://images.collection.cooperhewitt.org/155203_a42ace55852a053a_b.jpg",
     },
     {
       id: '18680713',
       title: "Drawing, Design for Corner Serving Table, 1900–05",
       url: "https://collection.cooperhewitt.org/objects/18680713/",
-      imageURL: "",
+      imageURL: "https://images.collection.cooperhewitt.org/155203_a42ace55852a053a_b.jpg",
     }
     ]
   }
