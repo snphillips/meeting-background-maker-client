@@ -43,7 +43,7 @@ export default class App extends Component {
       selectedImages: [],
       blacklist: blacklistArray,
       curatedSets: [ cocktailHour, colorTheory, gardenParty, gourmet, hermanMillarPicnic, photoMural, wallpaperThatKills],
-      selectedCuratedSet: ''
+      // selectedCuratedSet: ''
     };
 
     // This binding is necessary to make `this` work in the callback
@@ -60,8 +60,6 @@ export default class App extends Component {
     this.removeBlacklist = this.removeBlacklist.bind(this);
     this.zipDownloadFolderCuratedSet = this.zipDownloadFolderCuratedSet.bind(this);
     this.zipDownloadFolderSelectedImages = this.zipDownloadFolderSelectedImages.bind(this);
-    this.viewCuratedSetImages = this.viewCuratedSetImages.bind(this);
-
   }
 
 // ***********************************
@@ -302,7 +300,7 @@ skinnyGottaGo() {
  zipDownloadFolderCuratedSet(value, index) {
   console.log("downloading curated image set with value of: ", value, index)
   console.log("spongebob", this.state.curatedSets[index])
-  let desiredCuratedSet = value
+  // let desiredCuratedSet = value
 
   let selectedCuratedSet = this.state.curatedSets[index].images
 
@@ -342,41 +340,6 @@ zipDownloadFolderSelectedImages() {
  }
 
 
- viewCuratedSetImages(value, index) {
-
-  let selectedCuratedSet = this.state.curatedSets[index]
-  console.log("selectedCuratedSet:", selectedCuratedSet)
-  let selectedCuratedSetImages = selectedCuratedSet.images
-  console.log("selectedCuratedSetImages:", selectedCuratedSetImages)
-
-    selectedCuratedSetImages.forEach( (item, index) => {
-
-    console.log("selectedCuratedSetImage:", item)
-    // let curatedSetsArrayImages = this.props.curatedSets[index].images
-
-    return(
-
-        <div>
-          <a href={item.url}>
-            <img className="curated-list-img"
-               src={item.imageURL}
-               alt={item.title}
-            />
-          </a>
-        </div>
-    )
-
-    })
-
-}
-
-
-
-
-
-
-
-
 
 
 
@@ -408,9 +371,9 @@ zipDownloadFolderSelectedImages() {
                       zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
                       />
      <CuratedSetsComponent parentState={this.state}
-                           curatedSets={this.state.curatedSets}
                            zipDownloadFolderCuratedSet={this.zipDownloadFolderCuratedSet}
-                           viewCuratedSetImages={this.viewCuratedSetImages}
+                           curatedSets={this.state.curatedSets}
+                           // generateCuratedSetImages={this.generateCuratedSetImages}
                            />
       <Instructions />
       <Footer />

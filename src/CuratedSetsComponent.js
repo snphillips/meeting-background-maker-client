@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
+import CuratedSetsImageGallery from './CuratedSetsImageGallery';
 
 
 export default class CuratedSetsComponent extends Component {
@@ -8,7 +9,7 @@ export default class CuratedSetsComponent extends Component {
   render() {
 
     let curatedSetsArray = this.props.curatedSets
-    console.log("curatedSetsArray:", curatedSetsArray)
+    console.log("curatedSetsArray in CuratedSetsComponent:", curatedSetsArray)
 
 
     return (
@@ -23,7 +24,8 @@ export default class CuratedSetsComponent extends Component {
 
           {curatedSetsArray.map( (item, index) => {
 
-          // console.log("button value:", item)
+
+          console.log("button value:", item)
 
             return(
 
@@ -49,17 +51,18 @@ export default class CuratedSetsComponent extends Component {
                        src={item.images[0].imageURL}
                        alt={item.images[0].title}
                        value={index}
-                       onClick={ (event) => {
-                        // console.log("view images in set:", item.setName)
-                        this.props.viewCuratedSetImages(item.setName, index)
-                       }}
+                       // onClick={ (event) => {
+                       //  // console.log("view images in set:", item.setName)
+                       //  this.props.generateCuratedSetImages(item.setName, index)
+                       // }}
                     />
                 </a>
 
 
-                <div id="curated-list-image-gallery">
-
-                </div>
+                <CuratedSetsImageGallery parentState={this.state}
+                                         curatedSetsArray={curatedSetsArray}
+                                         index={index}
+                                         />
 
 
 
@@ -106,7 +109,7 @@ export default class CuratedSetsComponent extends Component {
 }
 
 
-                  // <a href={"/meeting-backgrounds/" + item.setName + "/" + "155203_a42ace55852a053a_b.jpg"}
-                  //    download="155203_a42ace55852a053a_b.jpg">
-                  //      download image set
-                  // </a>
+
+
+                // <CuratedSetsImageGallery curatedSets={this.state.curatedSets}
+                //                          index={this.props.index} />

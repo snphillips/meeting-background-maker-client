@@ -40,42 +40,43 @@ let cocktailHour = {
       url: "https://collection.cooperhewitt.org/objects/18680713/",
       imageURL: "",
     },
-        {
-      id: '',
-      title: "",
-      url: "",
+    {
+      id: '18680713',
+      title: "Drawing, Design for Corner Serving Table, 1900–05",
+      url: "https://collection.cooperhewitt.org/objects/18680713/",
       imageURL: "",
     },
     {
-      id: '',
-      title: "",
-      url: "",
+      id: '18680713',
+      title: "Drawing, Design for Corner Serving Table, 1900–05",
+      url: "https://collection.cooperhewitt.org/objects/18680713/",
       imageURL: "",
     },
     {
-      id: '',
-      title: "",
-      url: "",
+      id: '18680713',
+      title: "Drawing, Design for Corner Serving Table, 1900–05",
+      url: "https://collection.cooperhewitt.org/objects/18680713/",
       imageURL: "",
     },
     {
-      id: '',
-      title: "",
-      url: "",
+      id: '18680713',
+      title: "Drawing, Design for Corner Serving Table, 1900–05",
+      url: "https://collection.cooperhewitt.org/objects/18680713/",
       imageURL: "",
     },
     {
-      id: '',
-      title: "",
-      url: "",
+      id: '18680713',
+      title: "Drawing, Design for Corner Serving Table, 1900–05",
+      url: "https://collection.cooperhewitt.org/objects/18680713/",
       imageURL: "",
     },
     {
-      id: '',
-      title: "",
-      url: "",
+      id: '18680713',
+      title: "Drawing, Design for Corner Serving Table, 1900–05",
+      url: "https://collection.cooperhewitt.org/objects/18680713/",
       imageURL: "",
-    }]
+    }
+    ]
   }
 
   export default cocktailHour
