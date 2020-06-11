@@ -20,18 +20,14 @@ export default class CuratedSetsImageGallery extends Component {
         let thisCuratedSet = this.props.curatedSetsArray[index]
         let allTheSetImages = thisCuratedSet.images
         console.log("this.props.curatedSetsArray pineapple:", allTheSetImages)
-        console.log("index pineapple:", index)
+        console.log("index:", index)
 
       return (
 
-
-
         <div className="curated-images-gallery">
 
-             hello snake jazz
 
-
-              {allTheSetImages.forEach( (item) => {
+              {allTheSetImages.map( (item) => {
 
                 console.log("allTheSetImages item.id:", item.id)
                 console.log("allTheSetImages item.title:", item.title)
@@ -41,7 +37,6 @@ export default class CuratedSetsImageGallery extends Component {
                 return(
 
                     <div>
-                      snake jazz
                       <a href={item.url}>
                         <img className="curated-list-img"
                              src={item.imageURL}
