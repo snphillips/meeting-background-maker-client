@@ -1,7 +1,5 @@
 
-
-
-let cocktailHour = {
+const cocktailHour = {
   setName: "Cocktail Hour",
   images:[
     {
@@ -19,61 +17,61 @@ let cocktailHour = {
     {
       id: '',
       title: "",
-      url: "",
+      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132629863/",
       imageURL: "",
     },
     {
       id: '',
       title: "",
-      url: "",
+      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132629863/",
       imageURL: "",
     },
     {
       id: '',
       title: "",
-      url: "",
+      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132629863/",
       imageURL: "",
     },
     {
       id: '',
       title: "",
-      url: "",
+      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132629863/",
       imageURL: "",
     },
         {
       id: '',
       title: "",
-      url: "",
+      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132629863/",
       imageURL: "",
     },
     {
       id: '',
       title: "",
-      url: "",
+      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132629863/",
       imageURL: "",
     },
     {
       id: '',
       title: "",
-      url: "",
+      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132629863/",
       imageURL: "",
     },
     {
       id: '',
       title: "",
-      url: "",
+      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132629863/",
       imageURL: "",
     },
     {
       id: '',
       title: "",
-      url: "",
+      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132629863/",
       imageURL: "",
     },
     {
       id: '',
       title: "",
-      url: "",
+      url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132629863/",
       imageURL: "",
     }]
   }

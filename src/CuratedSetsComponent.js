@@ -4,9 +4,31 @@ import CuratedSetsImageGallery from './CuratedSetsImageGallery';
 
 
 export default class CuratedSetsComponent extends Component {
+    constructor(props) {
+    super(props);
+
+    this.state = {
+      imagesRevealed: true
+    };
+
+
+    // This binding is necessary to make `this` work in the callback
+    // this.toggleCuratedSetImages = this.toggleCuratedSetImages.bind(this);
+
+
+  }
+
+
+
+     // toggleCuratedSetImages(index){
+     //  console.log("toggle curated set images for: ", index)
+     //  // {this.state.imagesRevealed ? 'Hide details' : 'Show details'}
+     // }
+
 
 
   render() {
+
 
     let curatedSetsArray = this.props.curatedSets
     console.log("curatedSetsArray in CuratedSetsComponent:", curatedSetsArray)
@@ -25,34 +47,29 @@ export default class CuratedSetsComponent extends Component {
           {curatedSetsArray.map( (item, index) => {
 
 
-          console.log("button value:", item)
+          console.log("Lemur!!! curatedSetsArray[0].images[0].imageURL:", curatedSetsArray[0].images[0].imageURL)
+          // console.log("Zebra!!!", item.setName, "first image url", item.images[0].imageURL)
 
             return(
 
-              <div key={item.setName + "card"}
+              <div key={index + "-card"}
                    className="curated-set-card card"
                    value={item.setName}
                     >
 
-                <div key={item.setName + "label"}
+                <div key={index + "-label"}
                      className="curated-set-label"
-                     type="download"
                      value={item.setName}
                      onClick={ (event) => {
-                      console.log("button value is:", event.target.value)
+                      console.log("button value is:",  event.target.value)
                       // this.props.handleFilterSubmit(event)
                     }}>
                      {item.setName}
                 </div>
 
 
-                <a>
-                  <img className="curated-list-img-cover"
-                       src={item.images[0].imageURL}
-                       alt={item.images[0].title}
-                       value={index}
-                    />
-                </a>
+
+
 
 
                 <CuratedSetsImageGallery parentState={this.state}
@@ -62,19 +79,6 @@ export default class CuratedSetsComponent extends Component {
 
 
 
-                <button key={item.setName + "view-allbutton"}
-                        className="curated-set-view-all-button"
-                        type=""
-                        value={index}
-                        onClick={ (event) => {
-                          // console.log("view images in set:", item.setName)
-                          this.props.toggleCuratedSetImages(item.setName, index)
-                        }}>
-
-                  <a>
-                    view images in set
-                  </a>
-                </button>
 
                 <button key={item.setName + "downlad-button"}
                         className="curated-set-download-button"
@@ -107,5 +111,22 @@ export default class CuratedSetsComponent extends Component {
 
 
 
-                // <CuratedSetsImageGallery curatedSets={this.state.curatedSets}
-                //                          index={this.props.index} />
+                 // <img className="curated-list-img-cover"
+                 //      src={item.images[0].imageURL}
+                 //      alt={item.images[0].title}
+                 //      value={index}
+                 //   />
+
+                // <button key={item.setName + "view-allbutton"}
+                //         className="curated-set-view-all-button"
+                //         type=""
+                //         value={index}
+                //         onClick={ (event) => {
+                //           // console.log("view images in set:", item.setName)
+                //           // this.props.toggleCuratedSetImages(item.setName, index)
+                //         }}>
+
+                //   <a>
+                //     view images in set
+                //   </a>
+                // </button>
