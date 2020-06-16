@@ -95,7 +95,7 @@ export default class App extends Component {
 
 
   whichButton(item) {
-    // using the _Lodash library to quickly check if the button
+    // using the _Lodash library to efficiently check if the button
     // belongs to an item that the user has selected or not
     // https://lodash.com/docs/#includes
     let buttonResult = ""

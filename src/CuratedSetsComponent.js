@@ -47,8 +47,7 @@ export default class CuratedSetsComponent extends Component {
           {curatedSetsArray.map( (item, index) => {
 
 
-          console.log("Lemur!!! curatedSetsArray[0].images[0].imageURL:", curatedSetsArray[0].images[0].imageURL)
-          // console.log("Zebra!!!", item.setName, "first image url", item.images[0].imageURL)
+          // console.log("curatedSetsArray[0].images[0].imageURL:", curatedSetsArray[0].images[0].imageURL)
 
             return(
 
@@ -68,8 +67,8 @@ export default class CuratedSetsComponent extends Component {
                 </div>
 
 
-
-
+                <img src={item.images[0].imageURL}
+                     class="curated-set-cover-image" />
 
 
                 <CuratedSetsImageGallery parentState={this.state}

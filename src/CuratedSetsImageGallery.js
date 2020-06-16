@@ -7,7 +7,8 @@ export default class CuratedSetsImageGallery extends Component {
     super(props);
 
     this.state = {
-      imagesRevealed: false
+      imagesRevealed: false,
+      viewButtonMessage: "view images in set"
     };
 
 
@@ -19,6 +20,7 @@ export default class CuratedSetsImageGallery extends Component {
       console.log("toggle curated set images for: ", set, index)
       {this.state.imagesRevealed ? this.setState({imagesRevealed: false}) : this.setState({imagesRevealed: true})}
       console.log("this.state.imagesRevealed is ", this.state.imagesRevealed)
+      {this.state.imagesRevealed ? this.setState({viewButtonMessage: "view images in set"}) : this.setState({viewButtonMessage: "hide images in set"})}
      }
 
 
@@ -68,12 +70,13 @@ export default class CuratedSetsImageGallery extends Component {
                             className="curated-set-view-all-button"
                             type=""
                             value={index}
-                            onMouseOver={ (event, index) => {
+                            onClick={ (event, index) => {
                               // console.log("view images in set:", item.setName)
                               this.toggleCuratedSetImages(thisCuratedSet, index)
                             }}>
 
-                            view images in set
+
+                            {this.state.viewButtonMessage}
 
                     </button>
 
