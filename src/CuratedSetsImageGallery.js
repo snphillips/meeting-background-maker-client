@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './index.css';
+// import './index.css';
+import _Lodash from 'lodash';
 
 
 export default class CuratedSetsImageGallery extends Component {
@@ -30,10 +31,8 @@ export default class CuratedSetsImageGallery extends Component {
         let index = this.props.index
         let thisCuratedSet = this.props.curatedSetsArray[index]
         let allTheSetImages = thisCuratedSet.images
-        // removing first item from array b/c the cover is the first image
-        // allTheSetImages.shift();
-        // console.log("this.props.curatedSetsArray:", allTheSetImages)
-        // console.log("index:", index)
+        let allTheSetImagesMinusCover = _Lodash.drop(allTheSetImages, 1)
+
 
       return (
 
@@ -42,7 +41,7 @@ export default class CuratedSetsImageGallery extends Component {
               >
 
 
-              {allTheSetImages.map( (item, index) => {
+              {allTheSetImagesMinusCover.map( (item, index) => {
 
                 // console.log("allTheSetImages item.id:", item.id)
                 // console.log("allTheSetImages item.title:", item.title)
@@ -52,14 +51,19 @@ export default class CuratedSetsImageGallery extends Component {
                 return(
 
                     <div key={index}
-                         id={index + "-image-gallery"}
-                         style={{display: this.state.imagesRevealed ? 'block': 'none'}}>
+                         id={"-curated-image-" + index}
+                         style={{display: this.state.imagesRevealed ? 'block': 'none'}}
+                         >
+
                       <a href={item.url}>
+
                         <img className="curated-list-img"
                              src={item.imageURL}
                              alt={item.title}
                         />
+
                       </a>
+
                     </div>
                 )
 
@@ -73,6 +77,7 @@ export default class CuratedSetsImageGallery extends Component {
                             onClick={ (event, index) => {
                               // console.log("view images in set:", item.setName)
                               this.toggleCuratedSetImages(thisCuratedSet, index)
+                              let imagesRevealed = this.state.imagesRevealed
                             }}>
 
 

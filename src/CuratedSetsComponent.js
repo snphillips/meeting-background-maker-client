@@ -8,23 +8,13 @@ export default class CuratedSetsComponent extends Component {
     super(props);
 
     this.state = {
-      imagesRevealed: true
+
     };
 
 
     // This binding is necessary to make `this` work in the callback
-    // this.toggleCuratedSetImages = this.toggleCuratedSetImages.bind(this);
-
 
   }
-
-
-
-     // toggleCuratedSetImages(index){
-     //  console.log("toggle curated set images for: ", index)
-     //  // {this.state.imagesRevealed ? 'Hide details' : 'Show details'}
-     // }
-
 
 
   render() {
@@ -68,15 +58,15 @@ export default class CuratedSetsComponent extends Component {
 
 
                 <img src={item.images[0].imageURL}
-                     class="curated-set-cover-image" />
+                     id={"curated-set-cover-image-" + index}
+                     className="curated-set-cover-image"
+                     />
 
 
                 <CuratedSetsImageGallery parentState={this.state}
                                          curatedSetsArray={curatedSetsArray}
                                          index={index}
                                          />
-
-
 
 
                 <button key={item.setName + "downlad-button"}
@@ -107,25 +97,3 @@ export default class CuratedSetsComponent extends Component {
 
 }
 
-
-
-
-                 // <img className="curated-list-img-cover"
-                 //      src={item.images[0].imageURL}
-                 //      alt={item.images[0].title}
-                 //      value={index}
-                 //   />
-
-                // <button key={item.setName + "view-allbutton"}
-                //         className="curated-set-view-all-button"
-                //         type=""
-                //         value={index}
-                //         onClick={ (event) => {
-                //           // console.log("view images in set:", item.setName)
-                //           // this.props.toggleCuratedSetImages(item.setName, index)
-                //         }}>
-
-                //   <a>
-                //     view images in set
-                //   </a>
-                // </button>
