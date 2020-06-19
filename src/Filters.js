@@ -11,7 +11,7 @@ export default class Filters extends Component {
     <div className="filters-component">
 
       <section className="app-description">
-        <p>Generate backgrounds for your online meetings.</p>
+        <p>Generate backgrounds for video meetings.</p>
         <p>All images are sourced from the Cooper Hewitt Museum's archive.</p>
       </section>
 

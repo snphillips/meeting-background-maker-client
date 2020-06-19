@@ -36,8 +36,11 @@ export default class CuratedSetsImageGallery extends Component {
 
       return (
 
-        <div className="curated-images-gallery"
+       <div>
+        <section className="curated-images-gallery"
              id={"curated-set-gallery-" + index}
+             style={{maxHeight: this.state.imagesRevealed ? '2000px': 0}}
+             // style={{transition: 'all .9s ease-in-out;'}}
               >
 
 
@@ -52,7 +55,7 @@ export default class CuratedSetsImageGallery extends Component {
 
                     <div key={index}
                          id={"-curated-image-" + index}
-                         style={{display: this.state.imagesRevealed ? 'block': 'none'}}
+                         // style={{display: this.state.imagesRevealed ? 'block': 'none'}}
                          >
 
                       <a href={item.url}>
@@ -69,13 +72,16 @@ export default class CuratedSetsImageGallery extends Component {
 
               })}
 
+        </section>
                     <button key={index + "-view-allbutton"}
                             id={thisCuratedSet + "-view-allbutton"}
                             className="curated-set-view-all-button"
                             type=""
                             value={index}
+                            onMouseOver={ (event, index) => {
+                              console.log("view images in set:", thisCuratedSet.setName)
+                            }}
                             onClick={ (event, index) => {
-                              // console.log("view images in set:", item.setName)
                               this.toggleCuratedSetImages(thisCuratedSet, index)
                               let imagesRevealed = this.state.imagesRevealed
                             }}>

@@ -21,10 +21,10 @@ const colorTheory = {
       imageURL: "https://images.collection.cooperhewitt.org/338789_3d7846d2f98bf96e_b.jpg"
     },
     {
-      id: '18797535',
-      title: "Book, The Theory of Color in itls Relation to art and art industry, 1876",
-      url: "https://collection.cooperhewitt.org/objects/1108749881/",
-      imageURL: "https://images.collection.cooperhewitt.org/338813_44ed18207fa7b431_b.jpg"
+      id: '18433055',
+      title: "Color Wheel, 1936–37; Hilaire Hiler (1898 – 1966);",
+      url: "https://collection.cooperhewitt.org/objects/18433055/",
+      imageURL: "https://images.collection.cooperhewitt.org/334806_c6c42896d509be27_b.jpg"
     }
     ]
   }

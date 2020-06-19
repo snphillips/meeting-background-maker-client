@@ -268,15 +268,24 @@ Curated Sets
   text-align: center;
 }
 
+.curated-images-gallery {
+  /*height: 0;*/
+  overflow: hidden;
+  transition: all .3s ease-in-out;
+}
+
+
+
 
 
 /*=========================
 Media Queries - small computer
+3 column gallery
 ==========================*/
 @media (max-width: 1000px) {
 
   .card {
-    width: 30%;
+    width: 40%;
   }
 
  }
