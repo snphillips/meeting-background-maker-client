@@ -237,7 +237,6 @@ Download Button
   text-align: center;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 18px;
-  width: 97%;
   margin: 0 auto;
 }
 
@@ -271,7 +270,7 @@ Curated Sets
 .curated-images-gallery {
   /*height: 0;*/
   overflow: hidden;
-  transition: all .3s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 
 

@@ -39,8 +39,7 @@ export default class CuratedSetsImageGallery extends Component {
        <div>
         <section className="curated-images-gallery"
              id={"curated-set-gallery-" + index}
-             style={{maxHeight: this.state.imagesRevealed ? '2000px': 0}}
-             // style={{transition: 'all .9s ease-in-out;'}}
+             style={{maxHeight: this.state.imagesRevealed ? '4000px': 0}}
               >
 
 
