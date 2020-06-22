@@ -63,14 +63,29 @@ h2 {
   padding: 1rem;
 }
 
+.image-grid {
+  /*display: grid;*/
+  /* 5 colums, all the same width */
+  /*grid-template-columns: auto auto auto auto auto;*/
+  /*grid-template-rows: repeat(auto-fit);*/
+  /*grid-auto-flow: row;*/
+  /*grid-template-rows: auto;*/
+  columns: 300px 5;
+  column-gap: 20px;
+}
+
 
 .card {
   text-align: left;
-  width: 30%;
-  max-width: 400px;
   border: 1px solid white;
   margin: 1rem;
   padding: .75rem;
+  /* */
+  /*align-self: stretch;*/
+  /*display: flex;*/
+  /*align-items: center;*/
+  break-inside: avoid-column;
+  margin-bottom: 1rem;
 }
 
 button {
@@ -167,12 +182,11 @@ Results
   display: none; /* will be changed to block in app.js" */
 }
 
-.pre-selected-images-gallery,
+/*.pre-selected-images-gallery,
 .selected-images-gallery {
   display: flex;
   flex-wrap: wrap;
-  /*flex-direction: column;*/
-}
+}*/
 
 img {
   cursor: pointer;
@@ -219,7 +233,7 @@ img {
 
 .result-img,
 .selected-img {
-  max-width: 250px;
+  /*max-width: 250px;*/
 }
 
 .download {
@@ -251,12 +265,11 @@ Selected Images
 /*==============================
 Curated Sets
 ================================*/
-#curated-sets-list{
+/*#curated-sets-list{
   display: flex;
   flex-wrap: wrap;
-
 }
-
+*/
 .curated-set-card {
 
 }
@@ -268,12 +281,35 @@ Curated Sets
 }
 
 .curated-images-gallery {
-  /*height: 0;*/
+  max-height: 0;
   overflow: hidden;
   transition: all .5s ease-in-out;
 }
 
+.curated-image {
+  display: inline-block;
 
+}
+
+
+/*=========================
+Media Queries - computer
+4 column gallery
+==========================*/
+@media (max-width: 1400px) {
+
+.image-grid {
+  /*display: grid;*/
+  /* 4 colums, all the same width */
+  /*grid-template-columns: auto auto auto auto;*/
+  /*grid-template-rows: auto;*/
+}
+
+.card {
+    /*width: 40%;*/
+  }
+
+ }
 
 
 
@@ -283,8 +319,15 @@ Media Queries - small computer
 ==========================*/
 @media (max-width: 1000px) {
 
-  .card {
-    width: 40%;
+.image-grid {
+  /*display: grid;*/
+  /* 3 colums, all the same width */
+  /*grid-template-columns: auto auto auto;*/
+  /*grid-template-rows: auto;*/
+}
+
+.card {
+    /*width: 40%;*/
   }
 
  }
@@ -305,6 +348,12 @@ Media Queries - tablets
     flex-direction: column;
   }
 
+  .image-grid {
+    /*display: grid;*/
+    /* 2 colums, all the same width */
+    /*grid-template-columns: auto auto;*/
+  }
+
   .card {
     /*width: 50%;*/
   }
@@ -317,9 +366,14 @@ Media Queries - phones
 /*==========================*/
 @media (max-width: 415px) {
 
+  .image-grid {
+    /*display: grid;*/
+    /* 1 colum, automatically calculate width */
+    /*grid-template-columns: auto;*/
+  }
 
   .card {
-    width: 100%;
+    /*width: 100%;*/
     padding: .25rem 0;
     margin-right: unset;
     margin-bottom: .5rem;

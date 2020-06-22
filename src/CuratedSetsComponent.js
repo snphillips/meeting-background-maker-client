@@ -32,7 +32,8 @@ export default class CuratedSetsComponent extends Component {
 
         <h2>Curated Sets</h2>
 
-        <div id="curated-sets-list">
+        <div id="curated-sets-list"
+             className="image-grid" >
 
 
           {curatedSetsArray.map( (item, index) => {

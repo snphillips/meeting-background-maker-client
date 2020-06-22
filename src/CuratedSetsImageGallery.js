@@ -38,9 +38,9 @@ export default class CuratedSetsImageGallery extends Component {
 
        <div>
         <section className="curated-images-gallery"
-             id={"curated-set-gallery-" + index}
-             style={{maxHeight: this.state.imagesRevealed ? '4000px': 0}}
-              >
+                 id={"curated-set-gallery-" + index}
+                 style={{maxHeight: this.state.imagesRevealed ? '4000px': 0}}
+                 >
 
 
               {allTheSetImagesMinusCover.map( (item, index) => {
@@ -54,6 +54,7 @@ export default class CuratedSetsImageGallery extends Component {
 
                     <div key={index}
                          id={"-curated-image-" + index}
+                         class="curated-image"
                          // style={{display: this.state.imagesRevealed ? 'block': 'none'}}
                          >
 
@@ -78,7 +79,7 @@ export default class CuratedSetsImageGallery extends Component {
                             type=""
                             value={index}
                             onMouseOver={ (event, index) => {
-                              console.log("view images in set:", thisCuratedSet.setName)
+                              // console.log("view images in set:", thisCuratedSet.setName)
                             }}
                             onClick={ (event, index) => {
                               this.toggleCuratedSetImages(thisCuratedSet, index)

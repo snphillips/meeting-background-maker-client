@@ -144,13 +144,13 @@ export default class App extends Component {
         // having some fun and changing the background
         this.shuffleBackgroundClipTextImage()
         // console.log(`The search value is:`, this.state.value, `There are`, (response.data).length, `images.`)
-        console.log(`1) The search value is:`, this.state.value, "response length is:", (response.data).length )
+        // console.log(`1) The search value is:`, this.state.value, "response length is:", (response.data).length )
         // set the state of preSelectedImage with the response from the server
         this.setState({preSelectedImages: response.data})
         // this.removeBlacklist()
         // this.rotatePortrait()
         // this.skinnyGottaGo()
-        console.log("4) AFTER Manipulation preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+        // console.log("4) AFTER Manipulation preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
         // stop the loading spinner
         this.setState({loading: false});
         // show the component that displays results

@@ -9,13 +9,16 @@ export default class selectedImages extends React.Component {
   render() {
 
     return (
-      <section className="component"
-               id="selected-images-component">
+
+      <div className="component"
+           id="selected-images-component">
+
+        <section>
 
         <h2>Your selected images</h2>
 
 
-          <div className="selected-images-gallery">
+          <div className="selected-images-gallery image-grid">
 
                  {this.props.selectedImages.map( (item, index) => {
 
@@ -40,6 +43,8 @@ export default class selectedImages extends React.Component {
 
         </div>
 
+      </section>
+
         <button className="download-button"
                 value=""
                 onClick={ (event) => {
@@ -48,9 +53,7 @@ export default class selectedImages extends React.Component {
                 }}>
                 Download Set of Selected Images
        </button>
-
-
-    </section>
+    </div>
   );
   }
 
