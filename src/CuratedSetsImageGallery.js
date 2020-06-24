@@ -19,9 +19,9 @@ export default class CuratedSetsImageGallery extends Component {
 
      toggleCuratedSetImages(set, index){
       console.log("toggle curated set images for: ", set, index)
-      {this.state.imagesRevealed ? this.setState({imagesRevealed: false}) : this.setState({imagesRevealed: true})}
+      this.state.imagesRevealed ? this.setState({imagesRevealed: false}) : this.setState({imagesRevealed: true})
       console.log("this.state.imagesRevealed is ", this.state.imagesRevealed)
-      {this.state.imagesRevealed ? this.setState({viewButtonMessage: "view images in set"}) : this.setState({viewButtonMessage: "hide images in set"})}
+      this.state.imagesRevealed ? this.setState({viewButtonMessage: "view images in set"}) : this.setState({viewButtonMessage: "hide images in set"})
      }
 
 
@@ -54,7 +54,7 @@ export default class CuratedSetsImageGallery extends Component {
 
                     <div key={index}
                          id={"-curated-image-" + index}
-                         class="curated-image"
+                         className="curated-image"
                          // style={{display: this.state.imagesRevealed ? 'block': 'none'}}
                          >
 
@@ -83,7 +83,7 @@ export default class CuratedSetsImageGallery extends Component {
                             }}
                             onClick={ (event, index) => {
                               this.toggleCuratedSetImages(thisCuratedSet, index)
-                              let imagesRevealed = this.state.imagesRevealed
+                              // let imagesRevealed = this.state.imagesRevealed
                             }}>
 
 

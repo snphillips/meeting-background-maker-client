@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Jimp from 'jimp';
+// import Jimp from 'jimp';
 // import JSzip from 'jszip';
 import { saveAs } from 'file-saver';
 import _Lodash from 'lodash';
@@ -32,7 +32,7 @@ export default class App extends Component {
 
     this.state = {
       // serverSource: 'https://art-thief.herokuapp.com/searchbytag',
-      // serverSource: 'http://localhost:3000/searchbytag',
+      serverSource: 'http://localhost:3001/searchbytag/',
       loading: false, // the loading spinner
       filterResultsComponent: false,
       selectedImagesComponent: false,
@@ -52,12 +52,9 @@ export default class App extends Component {
     this.handleAddToCollectionSubmit = this.handleAddToCollectionSubmit.bind(this);
     this.handleRemoveFromCollectionSubmit = this.handleRemoveFromCollectionSubmit.bind(this);
     this.shuffleBackgroundClipTextImage = this.shuffleBackgroundClipTextImage.bind(this);
-    this.revealFilterResultsComponent = this.revealFilterResultsComponent.bind(this);
-    this.revealSelectedImagesComponent = this.revealSelectedImagesComponent.bind(this);
+    this.toggleFilterResultsComponent = this.toggleFilterResultsComponent.bind(this);
+    this.toggleSelectedImagesComponent = this.toggleSelectedImagesComponent.bind(this);
     this.whichButton = this.whichButton.bind(this);
-    // this.rotatePortrait = this.rotatePortrait.bind(this);
-    // this.skinnyGottaGo = this.skinnyGottaGo.bind(this);
-    this.removeBlacklist = this.removeBlacklist.bind(this);
     this.zipDownloadFolderCuratedSet = this.zipDownloadFolderCuratedSet.bind(this);
     this.zipDownloadFolderSelectedImages = this.zipDownloadFolderSelectedImages.bind(this);
     this.toggleCuratedSetImages = this.toggleCuratedSetImages.bind(this);
@@ -102,6 +99,7 @@ export default class App extends Component {
 
     if ( _Lodash.includes(this.state.selectedImages, item) ) {
 
+      // could this be a switch statement?
       buttonResult =
 
       (<button type="submit"
@@ -139,7 +137,7 @@ export default class App extends Component {
     // 2) removes the placeholder image
     // 3) returns a random item (image, title, description & link url)
     // axios.get(`https://art-thief.herokuapp.com/searchbytag/`+`${this.state.value}`)
-    axios.get(`http://localhost:3001/searchbytag/`+ this.state.value)
+    axios.get(this.state.serverSource + this.state.value)
       .then( (response) => {
         // having some fun and changing the background
         this.shuffleBackgroundClipTextImage()
@@ -154,7 +152,9 @@ export default class App extends Component {
         // stop the loading spinner
         this.setState({loading: false});
         // show the component that displays results
-        this.revealFilterResultsComponent()
+        this.setState({filterResultsComponent: true}, () => {
+          this.toggleFilterResultsComponent()
+        })
       })
       .catch(function (error) {
         console.log(error);
@@ -163,117 +163,17 @@ export default class App extends Component {
   };
 
 
-removeBlacklist(blacklistArray) {
-
-  // console.log("snake jazz", this.state.blacklist)
-
-  let preSelectedImages = this.state.preSelectedImages
-
-  preSelectedImages.forEach( (item) => {
-
-    // let blacklist = ["1108749941", "1108749939", "1108749913", "18805771", "18388543", "18711607", "69155057", "1159162409", "18639863", '554917247', '874387565']
-
-    this.state.blacklist.forEach( (blacklistItem) => {
-
-      if (item.id === blacklistItem) {
-        console.log("Item matches blacklist. Kick it out.", item.id, "!===",blacklistItem)
-
-        let newArray = _Lodash.without(this.state.preSelectedImages, item)
-        this.setState({preSelectedImages: newArray}, () => {
-          // console.log("AFTER removeBlacklist() preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
-        })
-      } else  {
-        // console.log("Does not match blacklist.", item.id, "!===", blacklistItem)
-      }
-    })
-  })
-}
-
-
-
-rotatePortrait() {
-  let preSelectedImages = this.state.preSelectedImages
-  // console.log("rotatePortrait() preSelectedImages are:", preSelectedImages, preSelectedImages.length)
-
-  preSelectedImages.forEach( (item) => {
-
-     let imageUrl = item.images[0].b.url
-
-      Jimp.read(imageUrl)
-
-      .then( (meetingBackground) => {
-        let width = meetingBackground.bitmap.width
-        let height = meetingBackground.bitmap.height
-        // console.log("jimp meetingBackground item: ", meetingBackground)
-        // console.log("2)", item.id, "width: ", width, "height: ", height)
-
-
-        if (height > width) {
-          console.log("2)", item.id, "PORTRAIT image, ROTATE 90 degrees.")
-          // return meetingBackground
-          // .rotate( 90 )
-          // .write("../meeting-background-maker-client/public/meeting-backgrounds/jimp-rotate.jpg")
-        }
-        else if (width > height) {
-          console.log("2)", item.id, "landscape image. Leave as is.")
-        } else {
-          console.log("2)", item.id, "square image. Leave as is.")
-        }
-    })
-  })
-}
-
-
-
-skinnyGottaGo() {
-  let preSelectedImages = this.state.preSelectedImages
-  console.log("3) BEFORE skinnyGottaGo() preSelectedImages are:", preSelectedImages, preSelectedImages.length)
-  preSelectedImages.forEach( (item) => {
-
-     let imageUrl = item.images[0].b.url
-
-    Jimp.read(imageUrl, (err, meetingBackground) => {
-      if (err) throw err;
-
-      let width = meetingBackground.bitmap.width
-      let height = meetingBackground.bitmap.height
-
-
-      if ( (height > width) && ((height / width) > 2) ) {
-        console.log("4)", item.id, "SKINNY PORTRAIT, REMOVE!")
-        let newArray = _Lodash.without(this.state.preSelectedImages, item)
-        this.setState({preSelectedImages: newArray}, () => {
-          console.log("5) AFTER skinnyGottaGo() preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
-        })
-      }
-      else if ( (width > height) && ((width / height) > 2) ) {
-        console.log("4)", item.id, "SKINNY LANDSCAPE, REMOVE!")
-        let newArray = _Lodash.without(this.state.preSelectedImages, item)
-        this.setState({preSelectedImages: newArray}, () => {
-          console.log("5) AFTER skinnyGottaGo() preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
-        })
-      }
-      else {
-        console.log("4)", item.id, "Not skinny. It can stay.")
-      }
-    })
-  })
-
-}
-
-
-  revealFilterResultsComponent() {
-    console.log("revealing the search results component")
-    this.setState({filterResultsComponent: true})
-    document.querySelector("#results-component").style.display = "block";
+  toggleFilterResultsComponent() {
+    console.log("toggle the search results component")
+    this.state.filterResultsComponent ? (document.querySelector("#results-component").style.display = "block") : (document.querySelector("#results-component").style.display = "none")
   };
 
-  revealSelectedImagesComponent() {
+  toggleSelectedImagesComponent() {
     this.setState({selectedImagesComponent: true})
     document.querySelector("#selected-images-component").style.display = "block";
   };
 
-  revealDownloadButtonComponent() {
+  toggleDownloadButtonComponent() {
     if (this.state.selectedImages.length > 0) {
       this.setState({downloadButtonComponent: true})
       document.querySelector(".download-button").style.display = "block";
@@ -368,13 +268,11 @@ zipDownloadFolderSelectedImages() {
                 />
       <Results parentState={this.state}
                preSelectedImages={this.state.preSelectedImages}
-               revealFilterResultsPlacehodler={this.revealFilterResultsPlacehodler}
+               toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
                whichButton={this.whichButton}
-               // rotatePortraitImages={this.rotatePortraitImages}
-               // removeSkinnyImages={this.removeSkinnyImages}
                />
       <SelectedImages selectedImages={this.state.selectedImages}
-                      revealSelectedImagesComponent={this.state.revealSelectedImagesComponent}
+                      toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
                       zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
                       />
      <CuratedSetsComponent parentState={this.state}

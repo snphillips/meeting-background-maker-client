@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// the spinner in an npm package
+import filterTerms from './filterTerms';
+// the spinner is an npm package that also uses @emotion
 import { css } from "@emotion/core";
 import LoadingSpinner from './LoadingSpinner';
-import filterTerms from './filterTerms';
 
 export default class Filters extends Component {
   render() {

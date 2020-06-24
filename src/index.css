@@ -77,7 +77,6 @@ h2 {
 
 .card {
   text-align: left;
-  border: 1px solid white;
   margin: 1rem;
   padding: .75rem;
   /* */
@@ -206,6 +205,7 @@ img {
 .results-button-in-collection,
 .results-button-add-to-collection {
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 .results-button-remove-from-collection {
