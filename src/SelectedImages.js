@@ -59,17 +59,3 @@ export default class selectedImages extends React.Component {
 
 
 }
-
-
-
-       // <button className="download-button">
-
-         // <a href={"/meeting-backgrounds/" + "cocktailHour/"}
-           //  download="arches.jpeg">
-             //  Download Set of Selected Images
-      //    </a>
-
-    //   </button>
-
-
-

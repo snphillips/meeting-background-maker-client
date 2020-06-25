@@ -21,7 +21,7 @@ export default class CuratedSetsComponent extends Component {
 
 
     let curatedSetsArray = this.props.curatedSets
-    console.log("curatedSetsArray in CuratedSetsComponent:", curatedSetsArray)
+    // console.log("curatedSetsArray in CuratedSetsComponent:", curatedSetsArray)
 
 
 

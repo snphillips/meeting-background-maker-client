@@ -1,6 +1,6 @@
 
 
-const blacklistArray = [
+const removalListArray = [
   "1108749941",
   "1108749939",
   "18805771",
@@ -39,5 +39,5 @@ const blacklistArray = [
   "18386219"
 ]
 
-export default blacklistArray;
+export default removalListArray;
 

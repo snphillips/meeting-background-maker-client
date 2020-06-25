@@ -10,7 +10,7 @@ import Results from './Results';
 import Instructions from './Instructions';
 import CuratedSetsComponent from './CuratedSetsComponent';
 import Footer from './Footer';
-import blacklistArray from './blacklistArray';
+import removalListArray from './removalListArray';
 import backgroundImages from './backgroundImages';
 import SelectedImages from './SelectedImages';
 let JSZip = require("jszip");
@@ -41,7 +41,7 @@ export default class App extends Component {
       value: 'dots',
       preSelectedImages: [],
       selectedImages: [],
-      blacklist: blacklistArray,
+      removalList: removalListArray,
       curatedSets: [ cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, wallpaperThatKills],
       // selectedCuratedSet: ''
     };
@@ -75,9 +75,12 @@ export default class App extends Component {
     console.log("add to collection")
     let selectedImageArray = this.state.selectedImages
     selectedImageArray.push(item)
-    this.revealSelectedImagesComponent()
     this.setState({selectedImages: selectedImageArray } )
-    this.revealDownloadButtonComponent()
+    this.toggleDownloadButtonComponent()
+
+    this.setState({selectedImagesComponent: true}, () => {
+      this.toggleSelectedImagesComponent()
+    })
   };
 
   handleRemoveFromCollectionSubmit(item) {
@@ -169,8 +172,8 @@ export default class App extends Component {
   };
 
   toggleSelectedImagesComponent() {
-    this.setState({selectedImagesComponent: true})
-    document.querySelector("#selected-images-component").style.display = "block";
+    console.log("selected images component true or false: ", this.state.selectedImagesComponent)
+    this.state.selectedImagesComponent ? (document.querySelector("#selected-images-component").style.display = "block") : (document.querySelector("#selected-images-component").style.display = "none")
   };
 
   toggleDownloadButtonComponent() {

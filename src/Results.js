@@ -33,7 +33,6 @@ export default class Results extends React.Component {
 
                   // console.log("hi from results.js. Item is:", item)
 
-
                     // not really using this but it's helpful for tracking
                     // let imageIndex = this.props.preSelectedImages.indexOf(item)
                     // console.log("imageIndex as gallery built:", imageIndex)
@@ -47,7 +46,6 @@ export default class Results extends React.Component {
                             <img className="result-img"
                                  src={item.images[0].b.url}
                                  alt={item.title}
-                                 onLoad={this.props.removeSkinnyImages}
                               />
                           </a>
                               <p className="item-title">{item.title}</p>
