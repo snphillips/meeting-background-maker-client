@@ -19,7 +19,7 @@ body {
 
 .app-container {
   background-color: #000;
-  padding: 2rem;
+  padding: 1rem;
   height: 100%;
   min-height: 89vh;
 }
@@ -62,7 +62,7 @@ h2 {
   border: 2px solid #efefef;
   color: #fff;
   margin-bottom: 2rem;
-  padding: 1rem;
+  /*padding: 1rem;*/
 }
 
 .image-grid {
@@ -72,8 +72,8 @@ h2 {
   /*grid-template-rows: repeat(auto-fit);*/
   /*grid-auto-flow: row;*/
   /*grid-template-rows: auto;*/
-  columns: 300px 5;
-  column-gap: 20px;
+  columns: 260px;
+  grid-column-gap: 0;
 }
 
 
@@ -254,6 +254,7 @@ Download Button
   font-family: 'Bebas Neue', sans-serif;
   font-size: 18px;
   margin: 0 auto;
+  width: 100%;
 }
 
 /*==============================
@@ -273,7 +274,7 @@ Curated Sets
 }
 */
 .curated-set-card {
-
+  /*border: 2px solid white;*/
 }
 
 .curated-set-label {
@@ -291,6 +292,11 @@ Curated Sets
 .curated-image {
   display: inline-block;
 
+}
+
+button.curated-set-view-all-button,
+button.curated-set-download-button {
+  width: 100%;
 }
 
 

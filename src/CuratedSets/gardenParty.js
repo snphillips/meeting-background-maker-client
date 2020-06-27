@@ -9,6 +9,24 @@ const gardenParty = {
       imageURL: "https://images.collection.cooperhewitt.org/153842_3e4b4a720b5c58e4_b.jpg"
     },
     {
+      id: '18370265',
+      title: "Sidewall, Branching Floral, ca. 1940;",
+      url: "https://collection.cooperhewitt.org/objects/18370265/",
+      imageURL: "https://images.collection.cooperhewitt.org/238779_5f241b9cc2a7f16e_b.jpg"
+    },
+    {
+      id: '18419481',
+      title: "Drawing, Floral design for printed textiles; Designed by Louis-Albert DuBois (Swiss, 1752–1818);",
+      url: "https://collection.cooperhewitt.org/objects/18419481/",
+      imageURL: "https://images.collection.cooperhewitt.org/118564_b0c09e00ed12555d_b.jpg"
+    },
+    {
+      id: '18631587',
+      title: "Drawing, Textile Design: Alpenveilchen (Cyclamen); ",
+      url: "https://collection.cooperhewitt.org/objects/18631587/",
+      imageURL: "https://images.collection.cooperhewitt.org/50654_c29f858a086dfb0b_b.jpg"
+    },
+    {
       id: '18460071',
       title: "Drawing, Cartoon for wallpaper and chintz: - Roxbury, 1955",
       url: "https://collection.cooperhewitt.org/objects/132611939/",
@@ -51,34 +69,10 @@ const gardenParty = {
       imageURL: "https://images.collection.cooperhewitt.org/283338_92351ffd3e8469cc_b.jpg"
     },
     {
-      id: '18471351',
-      title: 'Sample Book, Justema Wallpatterns, 1968',
-      url: "https://collection.cooperhewitt.org/objects/18471351/with-image-283223/",
-      imageURL: 'https://images.collection.cooperhewitt.org/283223_6f92450a74ea96c8_b.jpg'
-    },
-    {
       id: '18383471',
       title: "Sidewall - Floral (France), 1904;",
       url: "https://collection.cooperhewitt.org/objects/18383471/",
       imageURL: "https://images.collection.cooperhewitt.org/261559_7ec62975277a7e11_b.jpg"
-    },
-    {
-      id: '18370265',
-      title: "Sidewall, Branching Floral, ca. 1940;",
-      url: "https://collection.cooperhewitt.org/objects/18370265/",
-      imageURL: "https://images.collection.cooperhewitt.org/238779_5f241b9cc2a7f16e_b.jpg"
-    },
-    {
-      id: '18419481',
-      title: "Drawing, Floral design for printed textiles; Designed by Louis-Albert DuBois (Swiss, 1752–1818);",
-      url: "https://collection.cooperhewitt.org/objects/18419481/",
-      imageURL: "https://images.collection.cooperhewitt.org/118564_b0c09e00ed12555d_b.jpg"
-    },
-    {
-      id: '18631587',
-      title: "Drawing, Textile Design: Alpenveilchen (Cyclamen); ",
-      url: "https://collection.cooperhewitt.org/objects/18631587/",
-      imageURL: "https://images.collection.cooperhewitt.org/50654_c29f858a086dfb0b_b.jpg"
     }
     ]
   }

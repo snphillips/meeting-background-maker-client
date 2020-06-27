@@ -101,20 +101,3 @@ export default class CuratedSetsComponent extends Component {
 
 }
 
-
-                // <button key={index}
-                //         id={index + "-view-allbutton"}
-                //         className="curated-set-view-all-button"
-                //         type=""
-                //         value={index}
-                //         onClick={ (event, index) => {
-                //           // console.log("view images in set:", item.setName)
-                //           let thisCuratedSet = this.props.curatedSetsArray[index]
-                //           this.toggleCuratedSetImages(thisCuratedSet, index)
-                //           let imagesRevealed = this.state.imagesRevealed
-                //         }}>
-
-
-                //   {this.state.viewButtonMessage}
-
-                // </button>

@@ -41,7 +41,7 @@ export default class App extends Component {
       preSelectedImages: [],
       selectedImages: [],
       removalList: removalListArray,
-      curatedSets: [ cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, wallpaperThatKills],
+      curatedSets: [ cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural],
       // selectedCuratedSet: ''
     };
 
@@ -196,9 +196,10 @@ export default class App extends Component {
 
 
 
+// Using the JSZip library
  zipDownloadFolderCuratedSet(value, index) {
   console.log("downloading curated image set with value of: ", value, index)
-  console.log("spongebob", this.state.curatedSets[index])
+  console.log("this.state.curatedSets[index]", this.state.curatedSets[index])
   // let desiredCuratedSet = value
 
   let selectedCuratedSet = this.state.curatedSets[index].images
@@ -218,7 +219,7 @@ export default class App extends Component {
   });
  }
 
-
+// Using the JSZip library
 zipDownloadFolderSelectedImages() {
   console.log("downloading selected images: ", this.state.selectedImages)
   let selectedImages = this.state.selectedImages
