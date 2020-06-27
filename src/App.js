@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import Jimp from 'jimp';
 // import JSzip from 'jszip';
 import { saveAs } from 'file-saver';
 import _Lodash from 'lodash';
@@ -34,9 +33,9 @@ export default class App extends Component {
       // serverSource: 'https://art-thief.herokuapp.com/searchbytag',
       serverSource: 'http://localhost:3001/searchbytag/',
       loading: false, // the loading spinner
-      filterResultsComponent: false,
-      selectedImagesComponent: false,
-      downloadButtonComponent: false,
+      displayFilterResults: false,
+      displaySelectedImages: false,
+      displayDownloadButton: false,
       downloadSetComponent: true,
       value: 'dots',
       preSelectedImages: [],
@@ -52,12 +51,11 @@ export default class App extends Component {
     this.handleAddToCollectionSubmit = this.handleAddToCollectionSubmit.bind(this);
     this.handleRemoveFromCollectionSubmit = this.handleRemoveFromCollectionSubmit.bind(this);
     this.shuffleBackgroundClipTextImage = this.shuffleBackgroundClipTextImage.bind(this);
-    this.toggleFilterResultsComponent = this.toggleFilterResultsComponent.bind(this);
-    this.toggleSelectedImagesComponent = this.toggleSelectedImagesComponent.bind(this);
     this.whichButton = this.whichButton.bind(this);
     this.zipDownloadFolderCuratedSet = this.zipDownloadFolderCuratedSet.bind(this);
     this.zipDownloadFolderSelectedImages = this.zipDownloadFolderSelectedImages.bind(this);
     this.toggleCuratedSetImages = this.toggleCuratedSetImages.bind(this);
+    this.toggleDisplayBlockOrNone = this.toggleDisplayBlockOrNone.bind(this);
   }
 
 // ***********************************
@@ -78,8 +76,8 @@ export default class App extends Component {
     this.setState({selectedImages: selectedImageArray } )
     this.toggleDownloadButtonComponent()
 
-    this.setState({selectedImagesComponent: true}, () => {
-      this.toggleSelectedImagesComponent()
+    this.setState({displaySelectedImages: true}, () => {
+      this.toggleDisplayBlockOrNone(this.state.displaySelectedImages, "#selected-images-component")
     })
   };
 
@@ -155,8 +153,8 @@ export default class App extends Component {
         // stop the loading spinner
         this.setState({loading: false});
         // show the component that displays results
-        this.setState({filterResultsComponent: true}, () => {
-          this.toggleFilterResultsComponent()
+        this.setState({displayFilterResults: true}, () => {
+          this.toggleDisplayBlockOrNone(this.state.displayFilterResults, "#results-component")
         })
       })
       .catch(function (error) {
@@ -166,19 +164,16 @@ export default class App extends Component {
   };
 
 
-  toggleFilterResultsComponent() {
-    console.log("toggle the search results component")
-    this.state.filterResultsComponent ? (document.querySelector("#results-component").style.display = "block") : (document.querySelector("#results-component").style.display = "none")
+  // Reusable Function
+  toggleDisplayBlockOrNone(toggleState, htmlSelector) {
+    console.log("toggle display block or none. toggleState: ", toggleState, "htmlSelector: ", htmlSelector)
+    toggleState ? (document.querySelector(htmlSelector).style.display = "block") : (document.querySelector(htmlSelector).style.display = "none")
   };
 
-  toggleSelectedImagesComponent() {
-    console.log("selected images component true or false: ", this.state.selectedImagesComponent)
-    this.state.selectedImagesComponent ? (document.querySelector("#selected-images-component").style.display = "block") : (document.querySelector("#selected-images-component").style.display = "none")
-  };
 
   toggleDownloadButtonComponent() {
     if (this.state.selectedImages.length > 0) {
-      this.setState({downloadButtonComponent: true})
+      this.setState({displayDownloadButton: true})
       document.querySelector(".download-button").style.display = "block";
     }
   };
