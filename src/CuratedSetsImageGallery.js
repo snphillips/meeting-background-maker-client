@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import _Lodash from 'lodash';
 
 
+
 export default class CuratedSetsImageGallery extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +62,8 @@ export default class CuratedSetsImageGallery extends Component {
                       <a href={item.url}>
 
                         <img className="curated-list-img"
-                             src={item.imageURL}
+                             // src={item.imageURL}
+                             src={item.localImageURL}
                              alt={item.title}
                         />
 

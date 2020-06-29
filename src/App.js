@@ -30,8 +30,6 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      // serverSource: 'https://art-thief.herokuapp.com/searchbytag',
-      serverSource: 'http://localhost:3001/searchbytag/',
       loading: false, // the loading spinner
       displayFilterResults: false,
       displaySelectedImages: false,
@@ -64,7 +62,7 @@ export default class App extends Component {
 
   handleFilterSubmit(event) {
     this.setState({value: event.target.value}, () => {
-      this.cooperHewittSearchByTagFromAPI()
+      this.searchByTag()
     });
     event.preventDefault();
   }
@@ -128,38 +126,24 @@ export default class App extends Component {
 
 
 
-  cooperHewittSearchByTagFromAPI() {
+  searchByTag() {
     // start the loading spinner
     this.setState({loading: true})
+    console.log("this.state.value is: ", this.state.value)
+    this.shuffleBackgroundClipTextImage()
 
     // ${this.state.value} is whatever keyword the user chooses from the dropdown menu
     // The "response" does the following:
     // 1) stops the loading spinner
-    // 2) removes the placeholder image
-    // 3) returns a random item (image, title, description & link url)
-    // axios.get(`https://art-thief.herokuapp.com/searchbytag/`+`${this.state.value}`)
-    axios.get(this.state.serverSource + this.state.value)
-      .then( (response) => {
-        // having some fun and changing the background
-        this.shuffleBackgroundClipTextImage()
-        // console.log(`The search value is:`, this.state.value, `There are`, (response.data).length, `images.`)
-        // console.log(`1) The search value is:`, this.state.value, "response length is:", (response.data).length )
-        // set the state of preSelectedImage with the response from the server
-        this.setState({preSelectedImages: response.data})
-        // this.removeBlacklist()
-        // this.rotatePortrait()
-        // this.skinnyGottaGo()
-        // console.log("4) AFTER Manipulation preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
-        // stop the loading spinner
-        this.setState({loading: false});
-        // show the component that displays results
-        this.setState({displayFilterResults: true}, () => {
-          this.toggleDisplayBlockOrNone(this.state.displayFilterResults, "#results-component")
-        })
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+
+    this.setState({preSelectedImages: this.state.value})
+
+    // stop the loading spinner
+    this.setState({loading: false});
+    // show the component that displays results
+    this.setState({displayFilterResults: true}, () => {
+      this.toggleDisplayBlockOrNone(this.state.displayFilterResults, "#results-component")
+    })
 
   };
 
