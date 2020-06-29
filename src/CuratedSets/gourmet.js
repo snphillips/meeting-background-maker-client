@@ -7,7 +7,7 @@ const gourmet = {
       title: "Postcard, Restaurant Florent: Time line/ food, 1988",
       url: "https://collection.cooperhewitt.org/objects/18644315/",
       imageURL: "https://images.collection.cooperhewitt.org/200236_bad6f56a37daeaa6_b.jpg",
-      localImageURL: "/meeting-backgrounds/curatedSets/gourmet/18644315"
+      localImageURL: "/meeting-backgrounds/curatedSets/gourmet/18644315.jpg"
 
     },
     {

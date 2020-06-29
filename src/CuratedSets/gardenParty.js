@@ -32,13 +32,6 @@ const gardenParty = {
       localImageURL: "/meeting-backgrounds/curatedSets/gardenParty/18631587.jpg"
     },
     {
-      id: '18460071',
-      title: "Drawing, Cartoon for wallpaper and chintz: - Roxbury, 1955",
-      url: "https://collection.cooperhewitt.org/objects/18460071/",
-      imageURL: "https://images.collection.cooperhewitt.org/269788_842db921431311f4_b.jpg",
-      localImageURL: "/meeting-backgrounds/curatedSets/gardenParty/335502_7a5877cde84063e2_b.jpg"
-    },
-    {
       id: '136300661',
       title: "Sidewall, Bloom, 2015",
       url: "https://collection.cooperhewitt.org/objects/136300661/",
