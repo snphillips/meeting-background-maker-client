@@ -1,4 +1,6 @@
 
+
+
 let hermanMillerPicnic = {
   setName: "Herman Millar Picnic",
   images:
@@ -6,23 +8,23 @@ let hermanMillerPicnic = {
     {
       id: '18617415',
       title: "Poster, Summer Picnic, 1971",
-      url: "https://collection.cooperhewitt.org/objects/132629851/",
+      url: "https://collection.cooperhewitt.org/objects/18617415/",
       imageURL: "https://images.collection.cooperhewitt.org/80024_022fd2e74d9d2d00_b.jpg",
       localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/18617415.jpg"
     },
     {
       id: '18617399',
       title: "Poster, Summer Picnic, 1976",
-      url: "https://collection.cooperhewitt.org/objects/132629863/",
+      url: "https://collection.cooperhewitt.org/objects/18617399/",
       imageURL: "https://images.collection.cooperhewitt.org/80018_e92dbc123ee3a473_b.jpg",
       localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/18617399.jpg"
     },
     {
-      id: '132629877',
+      id: '18617419',
       title: "Poster, Herman Miller, Summer Picnic, July 26, 1980, 1980",
-      url: "https://collection.cooperhewitt.org/objects/132629877/",
+      url: "https://collection.cooperhewitt.org/objects/18617419/",
       imageURL: "https://images.collection.cooperhewitt.org/80026_2799ffb21e8192f6_b.jpg",
-      localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/132629877.jpg"
+      localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/18617419.jpg"
     },
     {
       id: '18758375',
@@ -46,18 +48,18 @@ let hermanMillerPicnic = {
       localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/18758375.jpg"
     },
     {
-      id: '18758375',
+      id: '18758377',
       title: "Poster, Herman Miller Summer Picnic, 1985, 1985",
-      url: "https://collection.cooperhewitt.org/objects/132629871/",
+      url: "https://collection.cooperhewitt.org/objects/18758377/",
       imageURL: "https://images.collection.cooperhewitt.org/44524_61ca6424232817d6_b.jpg",
-      localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/18644315.jpg"
+      localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/18758377.jpg"
     },
     {
       id: '18758369',
       title: "Poster, Herman Miller Summer Picnic, 1989, 1989",
-      url: "https://collection.cooperhewitt.org/objects/132629867/",
+      url: "https://collection.cooperhewitt.org/objects/18758369/",
       imageURL: "https://images.collection.cooperhewitt.org/44520_a0adda28cbab8472_b.jpg",
-      localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/18644315.jpg"
+      localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/18758369.jpg"
     }
     ]
   }

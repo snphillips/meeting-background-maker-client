@@ -42,28 +42,28 @@ const photoMural = {
       title: "Sample Book, Decor Photowalls, 1975",
       url: "https://collection.cooperhewitt.org/objects/18797535/with-image-296073/",
       imageURL: "https://images.collection.cooperhewitt.org/296073_9d05eb7ff479a353_b.jpg",
-      localImageURL: "/meeting-backgrounds/curatedSets/photoMural/.jpg"
+      localImageURL: "/meeting-backgrounds/curatedSets/photoMural/296073_9d05eb7ff479a353_b.jpg"
     },
     {
       id: '18797535',
       title: "Sample Book, Decor Photowalls, 1975",
       url: "https://collection.cooperhewitt.org/objects/18797535/with-image-296091/",
       imageURL: "https://images.collection.cooperhewitt.org/296091_7a7eef26de874f7c_b.jpg",
-      localImageURL: "/meeting-backgrounds/curatedSets/photoMural/.jpg"
+      localImageURL: "/meeting-backgrounds/curatedSets/photoMural/296091_7a7eef26de874f7c_b.jpg"
     },
     {
       id: '18797537',
       title: "Sample Book, Decor Photowalls, 1975",
       url: "https://collection.cooperhewitt.org/objects/18797537/",
       imageURL: "https://images.collection.cooperhewitt.org/296034_517f6e0462712fc7_b.jpg",
-      localImageURL: "/meeting-backgrounds/curatedSets/photoMural/.jpg"
+      localImageURL: "/meeting-backgrounds/curatedSets/photoMural//296034_517f6e0462712fc7_b.jpg"
     },
     {
       id: '18797537',
       title: "Sample Book, Decor Photowalls, 1975",
       url: "https://collection.cooperhewitt.org/objects/18797537/with-image-296036/",
       imageURL: "https://images.collection.cooperhewitt.org/296036_06e62be099792c7f_b.jpg",
-     localImageURL: "/meeting-backgrounds/curatedSets/photoMural/.jpg"
+     localImageURL: "/meeting-backgrounds/curatedSets/photoMural/296036_06e62be099792c7f_b.jpg"
     }
     ]
   }
