@@ -12,7 +12,7 @@ Run npm to install all the dependencies:
 
 `npm install`
 
-Start the server:
+Start the React server:
 
 `npm start`
 
