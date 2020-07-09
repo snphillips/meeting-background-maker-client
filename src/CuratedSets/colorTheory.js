@@ -1,6 +1,7 @@
 
 const colorTheory = {
-  setName: "Color Theory",
+  setName: "color theory",
+  machineName: "cocktailHour",
   images:[
     {
       id: '1108749935',

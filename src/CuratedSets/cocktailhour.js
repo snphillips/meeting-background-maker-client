@@ -2,7 +2,8 @@
 
 
 let cocktailHour = {
-  setName: "Cocktail Hour",
+  setName: "cocktail hour",
+  machineName: "cocktailHour",
   images:[
     {
       id: '18458571',

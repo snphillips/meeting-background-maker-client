@@ -2,7 +2,8 @@
 
 
 let hermanMillerPicnic = {
-  setName: "Herman Millar Picnic",
+  setName: "herman millar picnic",
+  machineName: "hermanMillerPicnic",
   images:
   [
     {

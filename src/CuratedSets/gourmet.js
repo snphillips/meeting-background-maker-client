@@ -1,6 +1,7 @@
 
 const gourmet = {
-  setName: "Gourmet",
+  setName: "gourmet",
+  machineName: "gourmet",
   images:[
     {
       id: '18644315',

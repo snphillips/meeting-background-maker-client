@@ -1,6 +1,7 @@
 
 const photoMural = {
-  setName: "Photomural",
+  setName: "photo mural",
+  machineName: "photoMural",
   images:[
     {
       id: '18797535',

@@ -72,18 +72,20 @@ export default class CuratedSetsComponent extends Component {
                                          index={index}
                                          />
 
+                <a href= {"/meeting-backgrounds/curatedSets/" + item.machineName + ".zip"}  download >
 
-                <button key={item.setName + "downlad-button"}
-                        className="curated-set-download-button"
-                        type="download"
-                        value={item.setName}
-                        onClick={ (event) => {
-                          console.log("download selected images")
-                          this.props.zipDownloadFolderCuratedSet(item.setName, index)
-                        }}>
-                        download image set
+                  <button key={item.setName + "downlad-button"}
+                          className="curated-set-download-button"
+                          type="download"
+                          value={item.setName}
+                          onClick={ (event) => {
+                            console.log("download selected images")
+                            // this.props.zipDownloadFolderCuratedSet(item.setName, index)
+                          }}>
+                          download image set
 
-                </button>
+                  </button>
+                </a>
 
               </div>
             )
@@ -96,8 +98,8 @@ export default class CuratedSetsComponent extends Component {
   );
   }
 
-
-
+                // this works, but is hard-coded
+                // <a href= {"/meeting-backgrounds/curatedSets/" + "gourmet" + ".zip"}  download >
 
 }
 

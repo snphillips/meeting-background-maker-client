@@ -1,6 +1,7 @@
 
 const wallpaperThatKills = {
-  setName: "Wallpaper That Kills",
+  setName: "wallpaper that kills",
+  machineName:"wallpaperThatKills",
   images:[
     {
       id: '18797535',

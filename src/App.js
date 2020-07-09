@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import JSzip from 'jszip';
 import { saveAs } from 'file-saver';
 import _Lodash from 'lodash';
 import Header from './Header';
@@ -15,7 +14,6 @@ import SelectedImages from './SelectedImages';
 let JSZip = require("jszip");
 
 // Curated Sets
-// let curatedSets = require('./curatedSets.js').default;
 let cocktailHour = require('./CuratedSets/cocktailHour.js').default;
 let colorTheory = require('./CuratedSets/colorTheory.js').default;
 let gardenParty = require('./CuratedSets/gardenParty.js').default;
@@ -179,29 +177,53 @@ export default class App extends Component {
 
 
 
-
 // Using the JSZip library
  zipDownloadFolderCuratedSet(value, index) {
   console.log("downloading curated image set with value of: ", value, index)
   console.log("this.state.curatedSets[index]", this.state.curatedSets[index])
-  // let desiredCuratedSet = value
 
-  let selectedCuratedSet = this.state.curatedSets[index].images
 
-  // value is the name of the selected curated list
-  let folderName = value
-  let zip = new JSZip();
+/* Create a new instance of JSZip and a folder named 'collection' where*/
+/* we will be adding all of our files*/
+let zip = new JSZip();
+let folder = zip.folder(this.value);
 
-  selectedCuratedSet.forEach( (thing) => {
-    zip.file(thing.imageURL, this.imgData, {base64: true});
-  })
+/* Add the image to the folder */
+folder.file(`1159162379.jpg`);
 
-  zip.generateAsync({type:"blob"})
-  .then(function(content) {
-      // Using npm library FileSaver.js
-      saveAs(content, folderName);
-  });
+/* Generate a zip file asynchronously and trigger the download */
+folder.generateAsync({ type: "blob" }).then(content => saveAs(content, "files"));
  }
+
+
+
+
+
+
+
+// // Using the JSZip library
+//  zipDownloadFolderCuratedSet(value, index) {
+//   console.log("downloading curated image set with value of: ", value, index)
+//   console.log("this.state.curatedSets[index]", this.state.curatedSets[index])
+//   // let desiredCuratedSet = value
+
+//   let selectedCuratedSet = this.state.curatedSets[index].images
+
+
+//   // value is the name of the selected curated list
+//   let folderName = value
+//   let zip = new JSZip();
+
+//   selectedCuratedSet.forEach( (thing) => {
+//     zip.file(thing.localImageURL, this.imgData, {base64: true});
+//   })
+
+//   zip.generateAsync({type:"blob"})
+//      .then(function(content) {
+//       // Using npm library FileSaver.js
+//       saveAs(content, folderName);
+//   });
+//  }
 
 // Using the JSZip library
 zipDownloadFolderSelectedImages() {

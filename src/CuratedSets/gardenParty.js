@@ -1,6 +1,7 @@
 
 const gardenParty = {
-  setName: "Garden Party",
+  setName: "garden party",
+  machineName: "gardenParty",
   images:[
     {
       id: '18633659',
