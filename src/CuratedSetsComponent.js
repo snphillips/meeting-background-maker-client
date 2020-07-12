@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
 import CuratedSetsImageGallery from './CuratedSetsImageGallery';
+import Masonry from 'react-masonry-css'
 
 
 export default class CuratedSetsComponent extends Component {
@@ -23,6 +24,13 @@ export default class CuratedSetsComponent extends Component {
     let curatedSetsArray = this.props.curatedSets
     // console.log("curatedSetsArray in CuratedSetsComponent:", curatedSetsArray)
 
+    const breakpointColumnsObj = {
+      default: 4,
+      1100: 3,
+      700: 2,
+      500: 1
+    };
+
 
 
     return (
@@ -32,8 +40,11 @@ export default class CuratedSetsComponent extends Component {
 
         <h2>Curated Sets</h2>
 
-        <div id="curated-sets-list"
-             className="image-grid" >
+        <Masonry breakpointCols={breakpointColumnsObj}
+                 className="my-masonry-grid curated-sets-list"
+                 columnClassName="my-masonry-grid_column">
+
+
 
 
           {curatedSetsArray.map( (item, index) => {
@@ -92,14 +103,12 @@ export default class CuratedSetsComponent extends Component {
         })}
 
 
-        </div>
+        </Masonry>
 
       </section>
   );
   }
 
-                // this works, but is hard-coded
-                // <a href= {"/meeting-backgrounds/curatedSets/" + "gourmet" + ".zip"}  download >
 
 }
 

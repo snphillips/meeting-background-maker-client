@@ -11,6 +11,7 @@ import Footer from './Footer';
 import removalListArray from './removalListArray';
 import backgroundImages from './backgroundImages';
 import SelectedImages from './SelectedImages';
+import Masonry from 'react-masonry-css'
 let JSZip = require("jszip");
 
 // Curated Sets
@@ -280,7 +281,7 @@ zipDownloadFolderSelectedImages() {
                       toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
                       zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
                       />
-     <CuratedSetsComponent parentState={this.state}
+       <CuratedSetsComponent parentState={this.state}
                            zipDownloadFolderCuratedSet={this.zipDownloadFolderCuratedSet}
                            curatedSets={this.state.curatedSets}
                            toggleCuratedSetImages={this.toggleCuratedSetImages}
