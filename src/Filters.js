@@ -23,11 +23,6 @@ import LoadingSpinner from './LoadingSpinner';
 
 
 
-
-
-
-
-
 export default class Filters extends Component {
   render() {
     return (

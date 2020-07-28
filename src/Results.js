@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import Masonry from 'react-masonry-css';
 
 // This component takes an array called preSelectedImages (that was populated
 // when the user selected a search term), maps over that array and displays
@@ -29,13 +30,27 @@ export default class Results extends React.Component {
 
   render() {
 
+
+    // For use with Masonry package
+    const breakpointColumnsObj = {
+      default: 4,
+      1100: 3,
+      700: 2,
+      500: 1
+    };
+
+
     return (
+
       <section className="component"
                id="results-component">
 
           <h2>Search Results</h2>
 
-          <div className="pre-selected-images-gallery results image-grid">
+            <Masonry breakpointCols={breakpointColumnsObj}
+                     className="my-masonry-grid curated-sets-list pre-selected-images-gallery results image-grid"
+                     columnClassName="my-masonry-grid_column"
+                     >
 
                  {this.props.preSelectedImages.map( item => {
 
@@ -65,7 +80,7 @@ export default class Results extends React.Component {
                        })
                  }
 
-        </div>
+        </Masonry>
 
 
     </section>
