@@ -1,12 +1,21 @@
 import React from 'react';
 // import DownloadButton from './DownloadButton'
 import './index.css';
+import Masonry from 'react-masonry-css';
 
 
 export default class selectedImages extends React.Component {
 
 
   render() {
+
+   // For use with Masonry package
+    const breakpointColumnsObj = {
+      default: 4,
+      1100: 3,
+      700: 2,
+      500: 1
+    };
 
     return (
 
@@ -17,8 +26,10 @@ export default class selectedImages extends React.Component {
 
         <h2>Your selected images</h2>
 
-
-          <div className="selected-images-gallery image-grid">
+          <Masonry breakpointCols={breakpointColumnsObj}
+           className="my-masonry-grid curated-sets-list selected-images-gallery image-grid"
+           columnClassName="my-masonry-grid_column"
+           >
 
                  {this.props.selectedImages.map( (item, index) => {
 
@@ -41,7 +52,7 @@ export default class selectedImages extends React.Component {
                        })
                  }
 
-        </div>
+         </Masonry>
 
       </section>
 

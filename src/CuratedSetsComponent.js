@@ -48,8 +48,6 @@ export default class CuratedSetsComponent extends Component {
                  >
 
 
-
-
           {curatedSetsArray.map( (item, index) => {
 
 
