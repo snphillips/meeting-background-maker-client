@@ -1,12 +1,10 @@
 ## Meeting Background Maker - Client
 
-(companion to Meeting Background Maker Server)
+(companion to Meeting Background Maker Server: https://github.com/snphillips/meeting-background-maker-server)
 
 ### Getting Started
 
-Visit the Cooper Hewitt Museum API website, and review their documentation: https://collection.cooperhewitt.org/api/
-You'll need to create an access token (it's free): https://collection.cooperhewitt.org/api/oauth2/authenticate/like-magic/
-This token is secret. You'll need it for this app's server, which is in a different repo:  "snphillips/meeting-background-maker-server"
+Follow the instructions to install the server first, then come back here: https://github.com/snphillips/meeting-background-maker-server
 
 Clone this repo:
 
