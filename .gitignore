@@ -24,6 +24,8 @@ yarn-error.log*
 
 
 # Sarah's additions
+/meeting-backgrounds
+/curatedSets
 /cocktailHour
 /colorTheory
 /gardenParty
@@ -31,3 +33,5 @@ yarn-error.log*
 /hermanMillerPicnic
 /photoMural
 /wallpaperThatKills
+/userSelectedBackgrounds
+

@@ -51,14 +51,14 @@ h2 {
   text-align: center;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2rem;
-  margin: .5rem 0;
+  margin: .25rem 0;
 }
 
 .component {
   border: 2px solid #efefef;
   color: #fff;
   margin-bottom: 2rem;
-  /*padding: 1rem;*/
+  padding: 1rem;
 }
 
 button {
@@ -90,12 +90,6 @@ button:hover {
 
 .card {
   text-align: left;
-  margin: 1rem;
-  padding: .75rem;
-  /* */
-  /*align-self: stretch;*/
-  /*display: flex;*/
-  /*align-items: center;*/
   break-inside: avoid-column;
   margin-bottom: 1rem;
 }
@@ -204,9 +198,9 @@ button.active {
 /*==============================
 Results
 ================================*/
-
 #results-component{
-  display: none; /* will be changed to block in app.js" */
+  /*display: none;  will be changed to block in app.js" */
+  display: block;
 }
 
 /*.pre-selected-images-gallery,
@@ -287,7 +281,8 @@ Download Button
 Selected Images
 ================================*/
 #selected-images-component {
-  display: none;
+  /*display: none;*/
+  display: block;
 }
 
 
