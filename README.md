@@ -16,7 +16,7 @@ Run npm to install all the dependencies:
 
 Start the React server:
 
-`npm start`
+`nodemon`
 
 Your browser should open to http://localhost:3000/ Voila!
 
