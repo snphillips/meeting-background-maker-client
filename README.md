@@ -20,6 +20,4 @@ Start the React server:
 
 Your browser should open to http://localhost:3000/ Voila!
 
-You wont be able to do much without the server for this app running. See the repo "snphillips/meeting-background-maker-server" to get started with that.
-
 
