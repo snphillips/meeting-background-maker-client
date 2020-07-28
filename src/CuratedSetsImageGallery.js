@@ -3,6 +3,18 @@ import React, { Component } from 'react';
 import _Lodash from 'lodash';
 
 
+// This section contains the curated set images and the "view set" button.
+// The first image from every set IS NOT displayed, as it it displayed
+// as the cover in CuratedSetsComponent.js. The first image is removed by
+// using the _Lodash library's drop method
+
+// This componenet has two states: imagesRevealed & viewButtonMessage.
+// An image set is either expanded (imagesRevealed: true) or collapsed (imagesRevealed: false)
+// The button message (viewButtonMessage) depends on whether the images are
+// revealed or not.
+
+
+
 
 export default class CuratedSetsImageGallery extends Component {
   constructor(props) {
@@ -38,11 +50,11 @@ export default class CuratedSetsImageGallery extends Component {
       return (
 
        <div>
+
         <section className="curated-images-gallery"
                  id={"curated-set-gallery-" + index}
                  style={{maxHeight: this.state.imagesRevealed ? '4000px': 0}}
                  >
-
 
               {allTheSetImagesMinusCover.map( (item, index) => {
 
