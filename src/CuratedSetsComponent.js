@@ -12,7 +12,6 @@ export default class CuratedSetsComponent extends Component {
 
     };
 
-
     // This binding is necessary to make `this` work in the callback
 
   }
@@ -71,7 +70,7 @@ export default class CuratedSetsComponent extends Component {
                 </div>
 
 
-                <img src={item.images[0].imageURL}
+                <img src={item.images[0].localImageURL}
                      id={"curated-set-cover-image-" + index}
                      className="curated-set-cover-image"
                      />
