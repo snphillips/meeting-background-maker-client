@@ -4,6 +4,30 @@ import filterTerms from './filterTerms';
 import { css } from "@emotion/core";
 import LoadingSpinner from './LoadingSpinner';
 
+
+
+// It used to be that when the user selected one of the filter terms,
+// an axios call was made to the server, which was then made to the
+// museum, and results were returned. The problem with this strategy is
+// that it was sloooow, and didn't make sense b/c the images don't
+// change often so there's no need to get fresh images every time.
+
+
+// The new strategy is to write a script that is run by the server to get
+// all the images in advance, manupulate them then store them either with
+// the server or client. This way, all the hard work of calling the museum,
+// and manipulating the images has been done in advance.
+
+
+
+
+
+
+
+
+
+
+
 export default class Filters extends Component {
   render() {
     return (
@@ -11,8 +35,8 @@ export default class Filters extends Component {
     <div className="filters-component">
 
       <section className="app-description">
-        <p>Generate backgrounds for video meetings.</p>
-        <p>All images are sourced from the Cooper Hewitt Museum's archive.</p>
+        <p>Generate backgrounds for video meetings from the Cooper Hewitt Museum's archive.</p>
+        <p>Filter using keywords, or download curated sets.</p>
       </section>
 
 

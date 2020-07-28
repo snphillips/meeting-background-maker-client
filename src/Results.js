@@ -1,6 +1,14 @@
 import React from 'react';
 import './index.css';
 
+// This component takes an array called preSelectedImages (that was populated
+// when the user selected a search term), maps over that array and displays
+// each image with info.
+
+// TODO: if the array only contains jpegs from the server, you won't have any of
+// the metadata that makes this app interesting. It seems you want to keep all this
+// great metadata, but also bring over the path to the locally stored image.
+
 
 export default class Results extends React.Component {
   constructor(props) {
@@ -32,10 +40,6 @@ export default class Results extends React.Component {
                  {this.props.preSelectedImages.map( item => {
 
                   // console.log("hi from results.js. Item is:", item)
-
-                    // not really using this but it's helpful for tracking
-                    // let imageIndex = this.props.preSelectedImages.indexOf(item)
-                    // console.log("imageIndex as gallery built:", imageIndex)
 
                       return(
 

@@ -11,7 +11,7 @@ import Footer from './Footer';
 import removalListArray from './removalListArray';
 import backgroundImages from './backgroundImages';
 import SelectedImages from './SelectedImages';
-import Masonry from 'react-masonry-css'
+// import Masonry from 'react-masonry-css'
 let JSZip = require("jszip");
 
 // Curated Sets
@@ -21,7 +21,6 @@ let gardenParty = require('./CuratedSets/gardenParty.js').default;
 let gourmet = require('./CuratedSets/gourmet.js').default;
 let hermanMillerPicnic = require('./CuratedSets/hermanMillerPicnic.js').default;
 let photoMural = require('./CuratedSets/photoMural.js').default;
-let wallpaperThatKills = require('./CuratedSets/wallpaperThatKills.js').default;
 
 
 export default class App extends Component {
@@ -30,9 +29,9 @@ export default class App extends Component {
 
     this.state = {
       loading: false, // the loading spinner
-      displayFilterResults: false,
-      displaySelectedImages: false,
-      displayDownloadButton: false,
+      displayFilterResults: true,
+      displaySelectedImages: true,
+      displayDownloadButton: true,
       downloadSetComponent: true,
       value: 'dots',
       preSelectedImages: [],
@@ -49,7 +48,7 @@ export default class App extends Component {
     this.handleRemoveFromCollectionSubmit = this.handleRemoveFromCollectionSubmit.bind(this);
     this.shuffleBackgroundClipTextImage = this.shuffleBackgroundClipTextImage.bind(this);
     this.whichButton = this.whichButton.bind(this);
-    this.zipDownloadFolderCuratedSet = this.zipDownloadFolderCuratedSet.bind(this);
+    // this.zipDownloadFolderCuratedSet = this.zipDownloadFolderCuratedSet.bind(this);
     this.zipDownloadFolderSelectedImages = this.zipDownloadFolderSelectedImages.bind(this);
     this.toggleCuratedSetImages = this.toggleCuratedSetImages.bind(this);
     this.toggleDisplayBlockOrNone = this.toggleDisplayBlockOrNone.bind(this);
@@ -123,6 +122,46 @@ export default class App extends Component {
     return(buttonResult)
   };
 
+    cooperHewittSearchByTagFromAPI() {
+    // start the loading spinner
+    this.setState({loading: true})
+
+    // ${this.state.value} is whatever keyword the user chooses from the dropdown menu
+    // The "response" does the following:
+    // 1) stops the loading spinner
+    // 2) removes the placeholder image
+    // 3) returns a random item (image, title, description & link url)
+    // axios.get(`https://art-thief.herokuapp.com/searchbytag/`+`${this.state.value}`)
+    axios.get(`http://localhost:3001/searchbytag/`+ this.state.value)
+      .then( (response) => {
+        // having some fun and changing the background
+        this.shuffleBackgroundClipTextImage()
+        // console.log(`The search value is:`, this.state.value, `There are`, (response.data).length, `images.`)
+        // console.log(`1) The search value is:`, this.state.value, "response length is:", (response.data).length )
+        // set the state of preSelectedImage with the response from the server
+        this.setState({preSelectedImages: response.data})
+        // this.removeBlacklist()
+        // this.rotatePortrait()
+        // this.skinnyGottaGo()
+        // console.log("4) AFTER Manipulation preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+        // stop the loading spinner
+        this.setState({loading: false});
+        // show the component that displays results
+        this.revealFilterResultsComponent()
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  };
+
+
+
+
+
+
+
+
 
 
   searchByTag() {
@@ -131,28 +170,51 @@ export default class App extends Component {
     console.log("this.state.value is: ", this.state.value)
     this.shuffleBackgroundClipTextImage()
 
-    // ${this.state.value} is whatever keyword the user chooses from the dropdown menu
-    // The "response" does the following:
-    // 1) stops the loading spinner
+     axios.get(`http://localhost:3001/searchbytag/`+ this.state.value)
+    .then( (response) => {
+      // having some fun and changing the background
+      this.shuffleBackgroundClipTextImage()
+      // console.log(`The search value is:`, this.state.value, `There are`, (response.data).length, `images.`)
+      // console.log(`1) The search value is:`, this.state.value, "response length is:", (response.data).length )
+      // set the state of preSelectedImage with the response from the server
+      this.setState({preSelectedImages: response.data})
+      // this.removeBlacklist()
+      // this.rotatePortrait()
+      // this.skinnyGottaGo()
+      // console.log("4) AFTER Manipulation preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+      // stop the loading spinner
+      this.setState({loading: false});
 
-    this.setState({preSelectedImages: this.state.value})
+      // show the component that displays the preSelected results from the search
+      this.setState({displayFilterResults: true}, () => {
+        this.toggleDisplayBlockOrNone(this.state.displayFilterResults, "#results-component")
+      })
 
-    // stop the loading spinner
-    this.setState({loading: false});
-    // show the component that displays results
-    this.setState({displayFilterResults: true}, () => {
-      this.toggleDisplayBlockOrNone(this.state.displayFilterResults, "#results-component")
+
     })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-  };
+ }
 
 
-  // Reusable Function
+
+
+
+
+
+
+
+
+  // Reusable toggle function-- toggle betwewen display block or none
+  // If toggleState is true, then display block. If false, display none.
+  // This function is being used on displayFilterResults, displaySelectedImages &
+  // displayDownloadButton
   toggleDisplayBlockOrNone(toggleState, htmlSelector) {
     console.log("toggle display block or none. toggleState: ", toggleState, "htmlSelector: ", htmlSelector)
     toggleState ? (document.querySelector(htmlSelector).style.display = "block") : (document.querySelector(htmlSelector).style.display = "none")
   };
-
 
   toggleDownloadButtonComponent() {
     if (this.state.selectedImages.length > 0) {
@@ -160,8 +222,6 @@ export default class App extends Component {
       document.querySelector(".download-button").style.display = "block";
     }
   };
-
-
 
   shuffleBackgroundClipTextImage() {
     let arrayLength = backgroundImages.length - 1
@@ -178,53 +238,25 @@ export default class App extends Component {
 
 
 
-// Using the JSZip library
- zipDownloadFolderCuratedSet(value, index) {
-  console.log("downloading curated image set with value of: ", value, index)
-  console.log("this.state.curatedSets[index]", this.state.curatedSets[index])
-
-
-/* Create a new instance of JSZip and a folder named 'collection' where*/
-/* we will be adding all of our files*/
-let zip = new JSZip();
-let folder = zip.folder(this.value);
-
-/* Add the image to the folder */
-folder.file(`1159162379.jpg`);
-
-/* Generate a zip file asynchronously and trigger the download */
-folder.generateAsync({ type: "blob" }).then(content => saveAs(content, "files"));
- }
-
-
-
-
-
-
-
 // // Using the JSZip library
 //  zipDownloadFolderCuratedSet(value, index) {
 //   console.log("downloading curated image set with value of: ", value, index)
 //   console.log("this.state.curatedSets[index]", this.state.curatedSets[index])
-//   // let desiredCuratedSet = value
-
-//   let selectedCuratedSet = this.state.curatedSets[index].images
 
 
-//   // value is the name of the selected curated list
-//   let folderName = value
-//   let zip = new JSZip();
+// /* Create a new instance of JSZip and a folder named 'collection' where*/
+// // we will be adding all of our files
+// let zip = new JSZip();
+// let folder = zip.folder(this.value);
 
-//   selectedCuratedSet.forEach( (thing) => {
-//     zip.file(thing.localImageURL, this.imgData, {base64: true});
-//   })
+// /* Add the image to the folder */
+// folder.file(`1159162379.jpg`);
 
-//   zip.generateAsync({type:"blob"})
-//      .then(function(content) {
-//       // Using npm library FileSaver.js
-//       saveAs(content, folderName);
-//   });
+// /* Generate a zip file asynchronously and trigger the download */
+// folder.generateAsync({ type: "blob" }).then(content => saveAs(content, "files"));
 //  }
+
+
 
 // Using the JSZip library
 zipDownloadFolderSelectedImages() {

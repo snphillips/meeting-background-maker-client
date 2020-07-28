@@ -24,6 +24,8 @@ export default class CuratedSetsComponent extends Component {
     let curatedSetsArray = this.props.curatedSets
     // console.log("curatedSetsArray in CuratedSetsComponent:", curatedSetsArray)
 
+
+   // For use with Masonry package
     const breakpointColumnsObj = {
       default: 4,
       1100: 3,
@@ -42,7 +44,8 @@ export default class CuratedSetsComponent extends Component {
 
         <Masonry breakpointCols={breakpointColumnsObj}
                  className="my-masonry-grid curated-sets-list"
-                 columnClassName="my-masonry-grid_column">
+                 columnClassName="my-masonry-grid_column"
+                 >
 
 
 
