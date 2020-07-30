@@ -11,17 +11,17 @@ import Footer from './Footer';
 import removalListArray from './removalListArray';
 import backgroundImages from './backgroundImages';
 import SelectedImages from './SelectedImages';
-// import Masonry from 'react-masonry-css'
-let JSZip = require("jszip");
 
 // Curated Sets
-let cocktailHour = require('./CuratedSets/cocktailHour.js').default;
-let colorTheory = require('./CuratedSets/colorTheory.js').default;
-let gardenParty = require('./CuratedSets/gardenParty.js').default;
-let gourmet = require('./CuratedSets/gourmet.js').default;
-let hermanMillerPicnic = require('./CuratedSets/hermanMillerPicnic.js').default;
-let photoMural = require('./CuratedSets/photoMural.js').default;
+import kolomanMoser from './CuratedSets/kolomanMoser';
+import cocktailHour from'./CuratedSets/cocktailHour.js';
+import colorTheory from'./CuratedSets/colorTheory.js';
+import gardenParty from'./CuratedSets/gardenParty.js';
+import gourmet from'./CuratedSets/gourmet.js';
+import hermanMillerPicnic from'./CuratedSets/hermanMillerPicnic.js';
+import photoMural from'./CuratedSets/photoMural.js';
 
+let JSZip = require("jszip");
 
 export default class App extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ export default class App extends Component {
       preSelectedImages: [],
       selectedImages: [],
       removalList: removalListArray,
-      curatedSets: [ cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural],
+      curatedSets: [ cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser],
       // selectedCuratedSet: ''
     };
 
