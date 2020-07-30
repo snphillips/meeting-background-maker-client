@@ -48,11 +48,11 @@ let cocktailHour = {
       localImageURL: "/meeting-backgrounds/curatedSets/cocktailHour/18680713.jpg",
     },
         {
-      id: '000000',
-      title: "find title",
-      url: "https://collection.cooperhewitt.org/objects/18680713/",
+      id: '18606935',
+      title: "SIDEWALL - SAMPLE, PAIR O'DICE CLUB, 1946–1947",
+      url: "https://collection.cooperhewitt.org/objects/18606935/",
       imageURL: "https://images.collection.cooperhewitt.org/48840_d6c6f3959b1afbc9_b.jpg",
-      localImageURL: "/meeting-backgrounds/curatedSets/cocktailHour/48840_d6c6f3959b1afbc9_b.jpg",
+      localImageURL: "/meeting-backgrounds/curatedSets/cocktailHour/18606935.jpg",
     }
     ]
   }

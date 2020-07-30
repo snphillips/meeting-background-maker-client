@@ -5,7 +5,7 @@ const colorTheory = {
   images:[
     {
       id: '1108749935',
-      title: "BOOKPLATE, DER FARBKÖRPER (THE COLOR BODY), 1927",
+      title: "Bookplate, DER FARBKÖRPER (THE COLOR BODY), 1927",
       url: "https://collection.cooperhewitt.org/objects/1108749935/",
       imageURL: "https://images.collection.cooperhewitt.org/335502_7a5877cde84063e2_b.jpg",
       localImageURL: "/meeting-backgrounds/curatedSets/colorTheory/1108749935.jpg"

@@ -262,6 +262,11 @@ img {
 
 }
 
+/*
+Default is display: block
+If either container has images, message will
+display: none;
+*/
 
 .default-filtered-message,
 .default-selected-message {

@@ -48,7 +48,7 @@ export default class Results extends React.Component {
           <h2>Search Results</h2>
 
               <div>
-                <p className="defuault-results-message">Select a search term to view images from the Cooper Hewitt's collection.</p>
+                <p className="default-results-message">Select a search term to view images from the Cooper Hewitt's collection.</p>
               </div>
 
             <Masonry breakpointCols={breakpointColumnsObj}

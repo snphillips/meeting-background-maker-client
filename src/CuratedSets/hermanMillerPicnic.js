@@ -28,11 +28,11 @@ let hermanMillerPicnic = {
       localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/18617419.jpg"
     },
     {
-      id: '18758375',
+      id: '18758367',
       title: "Poster, Herman Miller Summer Picnic, 1982, 1982",
-      url: "https://collection.cooperhewitt.org/objects/132629853/",
+      url: "https://collection.cooperhewitt.org/objects/18758367/",
       imageURL: "https://images.collection.cooperhewitt.org/44519_9f37394830da3bac_b.jpg",
-      localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/18758375.jpg"
+      localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/18758367.jpg"
     },
     {
       id: '18758381',
@@ -44,7 +44,7 @@ let hermanMillerPicnic = {
     {
       id: '18758375',
       title: "Poster, Herman Miller Summer Picnic, July 26, 1986, 1986",
-      url: "https://collection.cooperhewitt.org/objects/132629861/",
+      url: "https://collection.cooperhewitt.org/objects/18758375/",
       imageURL: "https://images.collection.cooperhewitt.org/44523_03458ddca244b5f3_b.jpg",
       localImageURL: "/meeting-backgrounds/curatedSets/hermanMillerPicnic/18758375.jpg"
     },

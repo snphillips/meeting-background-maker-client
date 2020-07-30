@@ -27,7 +27,7 @@ export default class selectedImages extends React.Component {
         <h2>Your selected images</h2>
 
           <div>
-            <p className="defuault-results-message">No selected images yet</p>
+            <p className="default-selected-message">No selected images yet</p>
           </div>
 
           <Masonry breakpointCols={breakpointColumnsObj}
