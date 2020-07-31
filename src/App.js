@@ -11,6 +11,7 @@ import Footer from './Footer';
 import removalListArray from './removalListArray';
 import backgroundImages from './backgroundImages';
 import SelectedImages from './SelectedImages';
+import UserGeneratedSetComponent from './userGeneratedSetComponent';
 
 // Curated Sets
 import kolomanMoser from './CuratedSets/kolomanMoser';
@@ -32,6 +33,8 @@ export default class App extends Component {
       displayFilterResults: true,
       displaySelectedImages: true,
       displayDownloadButton: true,
+      displayUserGeneratedSetComponent: true,
+      displayCuratedSetComponent: false,
       downloadSetComponent: true,
       value: 'dots',
       preSelectedImages: [],
@@ -304,15 +307,21 @@ zipDownloadFolderSelectedImages() {
                parent_state={this.state}
                loading={this.state.loading}
                 />
-      <Results parentState={this.state}
-               preSelectedImages={this.state.preSelectedImages}
-               toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
-               whichButton={this.whichButton}
-               />
-      <SelectedImages selectedImages={this.state.selectedImages}
-                      toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
-                      zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
-                      />
+      <UserGeneratedSetComponent>
+
+          <Results parentState={this.state}
+                   preSelectedImages={this.state.preSelectedImages}
+                   toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
+                   whichButton={this.whichButton}
+                   />
+
+          <SelectedImages selectedImages={this.state.selectedImages}
+                          toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
+                          zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
+                          />
+
+      </UserGeneratedSetComponent>
+
        <CuratedSetsComponent parentState={this.state}
                            zipDownloadFolderCuratedSet={this.zipDownloadFolderCuratedSet}
                            curatedSets={this.state.curatedSets}
