@@ -11,6 +11,13 @@ let  kolomanMoser = {
       localImageURL: "/meeting-backgrounds/curatedSets/kolomanMoser/18670519.jpg",
     },
     {
+      id: '18670545',
+      title: "Print, Frau Nolda Gewebter Wandbehang (Madame Nolda, Woven Wall Hanging), plate 24, in Die Quelle: Flächen Schmuck (The Source: Ornament for Flat...",
+      url: "https://collection.cooperhewitt.org/objects/18670545/",
+      imageURL: "https://images.collection.cooperhewitt.org/51502_584cf62bd9d976e6_b.jpg",
+      localImageURL: "/meeting-backgrounds/curatedSets/kolomanMoser/18670545.jpg",
+    },
+    {
       id: '18670503',
       title: "Print, Bedruckter Stoff Silvanus (Silvanus Printed Fabric), plate 23, in Die Quelle: Flächen Schmuck (The Source: Ornament for Flat Surfaces), 1901;",
       url: "https://collection.cooperhewitt.org/objects/18670503/",
