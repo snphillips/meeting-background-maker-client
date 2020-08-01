@@ -11,7 +11,7 @@ import Footer from './Footer';
 import removalListArray from './removalListArray';
 import backgroundImages from './backgroundImages';
 import SelectedImages from './SelectedImages';
-import UserGeneratedSetComponent from './userGeneratedSetComponent';
+import UserGeneratedSetComponent from './UserGeneratedSetComponent';
 
 // Curated Sets
 import kolomanMoser from './CuratedSets/kolomanMoser';
@@ -307,26 +307,20 @@ zipDownloadFolderSelectedImages() {
                parent_state={this.state}
                loading={this.state.loading}
                 />
-      <UserGeneratedSetComponent>
-
-          <Results parentState={this.state}
-                   preSelectedImages={this.state.preSelectedImages}
-                   toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
-                   whichButton={this.whichButton}
-                   />
-
-          <SelectedImages selectedImages={this.state.selectedImages}
-                          toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
-                          zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
-                          />
-
-      </UserGeneratedSetComponent>
+      <UserGeneratedSetComponent parentState={this.state}
+                                 preSelectedImages={this.state.preSelectedImages}
+                                 toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
+                                 whichButton={this.whichButton}
+                                 selectedImages={this.state.selectedImages}
+                                 toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
+                                 zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
+                                 />
 
        <CuratedSetsComponent parentState={this.state}
-                           zipDownloadFolderCuratedSet={this.zipDownloadFolderCuratedSet}
-                           curatedSets={this.state.curatedSets}
-                           toggleCuratedSetImages={this.toggleCuratedSetImages}
-                           />
+                             zipDownloadFolderCuratedSet={this.zipDownloadFolderCuratedSet}
+                             curatedSets={this.state.curatedSets}
+                             toggleCuratedSetImages={this.toggleCuratedSetImages}
+                             />
       <Instructions />
       <Footer />
     </div>
@@ -334,3 +328,14 @@ zipDownloadFolderSelectedImages() {
 }
 }
 
+
+          // <Results parentState={this.state}
+          //          preSelectedImages={this.state.preSelectedImages}
+          //          toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
+          //          whichButton={this.whichButton}
+          //          />
+
+          // <SelectedImages selectedImages={this.state.selectedImages}
+          //                 toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
+          //                 zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
+          //                 />

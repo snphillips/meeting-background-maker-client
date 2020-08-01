@@ -30,6 +30,8 @@ export default class Results extends React.Component {
 
   render() {
 
+    let preSelectedImages = this.props.preSelectedImages
+
 
     // For use with Masonry package
     const breakpointColumnsObj = {
@@ -57,7 +59,7 @@ export default class Results extends React.Component {
                      >
 
 
-                 {this.props.preSelectedImages.map( item => {
+                 {preSelectedImages.map( item => {
 
                   // console.log("hi from results.js. Item is:", item)
 
