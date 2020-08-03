@@ -327,15 +327,3 @@ zipDownloadFolderSelectedImages() {
   );
 }
 }
-
-
-          // <Results parentState={this.state}
-          //          preSelectedImages={this.state.preSelectedImages}
-          //          toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
-          //          whichButton={this.whichButton}
-          //          />
-
-          // <SelectedImages selectedImages={this.state.selectedImages}
-          //                 toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
-          //                 zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
-          //                 />

@@ -18,21 +18,32 @@ export default class UserGeneratedSetComponent extends React.Component {
 
     return (
 
-      <div id="user-generated-set-window">
+      <section className="component">
 
-        <Results parentState={this.state}
-                 preSelectedImages={this.props.preSelectedImages}
-                 toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
-                 whichButton={this.whichButton}
-                 />
+        <a href="#">
+          <div className="user-generated-set-div">
+            <h2 className="user-generated-set-heading">User Generated Set Component</h2>
+          </div>
+        </a>
 
-        <SelectedImages parentState={this.state}
-                        selectedImages={this.props.selectedImages}
-                        toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
-                        zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
-                        />
 
-      </div>
+        <div class="user-generated-set-window">
+
+          <Results parentState={this.state}
+                   preSelectedImages={this.props.preSelectedImages}
+                   toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
+                   whichButton={this.props.whichButton}
+                   />
+
+          <SelectedImages parentState={this.state}
+                          selectedImages={this.props.selectedImages}
+                          toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
+                          zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
+                          />
+
+        </div>
+
+      </section>
 
 
     );
