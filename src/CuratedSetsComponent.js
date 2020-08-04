@@ -114,19 +114,3 @@ export default class CuratedSetsComponent extends Component {
 
 }
 
-
-          // <div className="curated-set-heading-div">
-          //   <h2 className="set-heading curated-set-heading"
-          //       onClick={ (event) => {
-          //         this.setState({displayCuratedSetComponent: true}, () => {
-          //           this.props.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
-          //           console.log("1) click to show Curated Set Component", this.state.displayCuratedSetComponent)
-          //         })
-          //         this.setState({displayUserGeneratedSetComponent: false}, () => {
-          //           this.props.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
-          //           console.log("2) hide User Generated Set Component", this.state.displayUserGeneratedSetComponent)
-          //         })
-          //       }}>
-          //       Curated Sets
-          //   </h2>
-          // </div>

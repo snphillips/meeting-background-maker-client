@@ -348,6 +348,8 @@ zipDownloadFolderSelectedImages() {
 
 
         <UserGeneratedSetComponent parentState={this.state}
+                                   handleFilterSubmit={this.handleFilterSubmit}
+                                   loading={this.state.loading}
                                    preSelectedImages={this.state.preSelectedImages}
                                    toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
                                    whichButton={this.whichButton}
@@ -371,7 +373,6 @@ zipDownloadFolderSelectedImages() {
 
       </section>
 
-      <Instructions />
       <Footer />
     </div>
   );
@@ -382,3 +383,5 @@ zipDownloadFolderSelectedImages() {
       //          parent_state={this.state}
       //          loading={this.state.loading}
       //           />
+
+      // <Instructions />

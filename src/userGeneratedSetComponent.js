@@ -27,9 +27,8 @@ export default class UserGeneratedSetComponent extends React.Component {
         <div id="user-generated-set-window">
 
 
-          <Filters handleFilterSubmit={this.handleFilterSubmit}
-                   parent_state={this.state}
-                   loading={this.state.loading}
+          <Filters handleFilterSubmit={this.props.handleFilterSubmit}
+                   loading={this.props.loading}
                    />
 
           <Results parentState={this.state}
@@ -38,8 +37,7 @@ export default class UserGeneratedSetComponent extends React.Component {
                    whichButton={this.props.whichButton}
                    />
 
-          <SelectedImages parentState={this.state}
-                          selectedImages={this.props.selectedImages}
+          <SelectedImages selectedImages={this.props.selectedImages}
                           toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
                           zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
                           />
