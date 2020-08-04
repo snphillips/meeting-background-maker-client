@@ -24,7 +24,7 @@ export default class selectedImages extends React.Component {
 
         <section>
 
-        <h2>Your selected images</h2>
+        <h3>Your selected images</h3>
 
           <div>
             <p className="default-selected-message">No selected images yet</p>

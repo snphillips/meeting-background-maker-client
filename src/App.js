@@ -33,8 +33,8 @@ export default class App extends Component {
       displayFilterResults: true,
       displaySelectedImages: true,
       displayDownloadButton: true,
-      displayUserGeneratedSetComponent: true,
-      displayCuratedSetComponent: false,
+      displayUserGeneratedSetComponent: false,
+      displayCuratedSetComponent: true,
       downloadSetComponent: true,
       value: 'dots',
       preSelectedImages: [],
@@ -53,7 +53,6 @@ export default class App extends Component {
     this.whichButton = this.whichButton.bind(this);
     // this.zipDownloadFolderCuratedSet = this.zipDownloadFolderCuratedSet.bind(this);
     this.zipDownloadFolderSelectedImages = this.zipDownloadFolderSelectedImages.bind(this);
-    this.toggleCuratedSetImages = this.toggleCuratedSetImages.bind(this);
     this.toggleDisplayBlockOrNone = this.toggleDisplayBlockOrNone.bind(this);
   }
 
@@ -202,6 +201,12 @@ export default class App extends Component {
  }
 
 
+ toggleSectionHeaderAndComponent() {
+
+
+ }
+
+
 
 
 
@@ -215,7 +220,7 @@ export default class App extends Component {
   // This function is being used on displayFilterResults, displaySelectedImages &
   // displayDownloadButton
   toggleDisplayBlockOrNone(toggleState, htmlSelector) {
-    console.log("toggle display block or none. toggleState: ", toggleState, "htmlSelector: ", htmlSelector)
+    // console.log("Toggle display block/none. toggleState: ", toggleState, " for htmlSelector: ", htmlSelector)
     toggleState ? (document.querySelector(htmlSelector).style.display = "block") : (document.querySelector(htmlSelector).style.display = "none")
   };
 
@@ -282,12 +287,6 @@ zipDownloadFolderSelectedImages() {
  }
 
 
- toggleCuratedSetImages(index){
-  console.log("toggle curated set images for: ", index)
-  // {this.state.imagesRevealed ? 'Hide details' : 'Show details'}
- }
-
-
 
 
 
@@ -307,20 +306,75 @@ zipDownloadFolderSelectedImages() {
                parent_state={this.state}
                loading={this.state.loading}
                 />
-      <UserGeneratedSetComponent parentState={this.state}
-                                 preSelectedImages={this.state.preSelectedImages}
-                                 toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
-                                 whichButton={this.whichButton}
-                                 selectedImages={this.state.selectedImages}
-                                 toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
-                                 zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
-                                 />
 
-       <CuratedSetsComponent parentState={this.state}
-                             zipDownloadFolderCuratedSet={this.zipDownloadFolderCuratedSet}
-                             curatedSets={this.state.curatedSets}
-                             toggleCuratedSetImages={this.toggleCuratedSetImages}
-                             />
+      <section id="section-headers">
+
+          <div className="user-generated-set-div">
+            <h2 className="set-heading user-generated-set-heading"
+                onClick={ (event) => {
+                  this.setState({displayUserGeneratedSetComponent: true}, () => {
+                    this.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
+                    document.querySelector(".user-generated-set-heading").classList.add("set-heading-active")
+                    console.log("1) show User Generated Set Component", this.state.displayUserGeneratedSetComponent)
+                  })
+                  this.setState({displayCuratedSetComponent: false}, () => {
+                    this.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
+                    document.querySelector(".curated-set-heading").classList.remove("set-heading-active")
+                    console.log("2) hide Curated Set Component", this.state.displayCuratedSetComponent)
+                  })
+                }}>
+                Your Backgrounds
+            </h2>
+          </div>
+
+
+          <div className="curated-set-heading-div">
+            <h2 className="set-heading curated-set-heading"
+                onClick={ (event) => {
+                  this.setState({displayCuratedSetComponent: true}, () => {
+                    this.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
+                    document.querySelector(".curated-set-heading").classList.add("set-heading-active")
+                    console.log("1) click to show Curated Set Component", this.state.displayCuratedSetComponent)
+                  })
+                  this.setState({displayUserGeneratedSetComponent: false}, () => {
+                    this.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
+                    document.querySelector(".user-generated-set-heading").classList.remove("set-heading-active")
+                    console.log("2) hide User Generated Set Component", this.state.displayUserGeneratedSetComponent)
+                  })
+                }}>
+                Curated Sets
+            </h2>
+          </div>
+
+      </section>
+
+      <section id="component-sections">
+
+
+        <UserGeneratedSetComponent parentState={this.state}
+                                   preSelectedImages={this.state.preSelectedImages}
+                                   toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
+                                   whichButton={this.whichButton}
+                                   selectedImages={this.state.selectedImages}
+                                   toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
+                                   zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
+                                   toggleDisplayBlockOrNone={this.toggleDisplayBlockOrNone}
+                                   toggleView={this.toggleView}
+                                   displayUserGeneratedSetComponent={this.state.displayUserGeneratedSetComponent}
+                                   displayCuratedSetComponent={this.state.displayCuratedSetComponent}
+                                   />
+
+         <CuratedSetsComponent parentState={this.state}
+                               zipDownloadFolderCuratedSet={this.zipDownloadFolderCuratedSet}
+                               curatedSets={this.state.curatedSets}
+                               toggleDisplayBlockOrNone={this.toggleDisplayBlockOrNone}
+                               toggleView={this.toggleView}
+                               displayCuratedSetComponent={this.state.displayCuratedSetComponent}
+                               displayUserGeneratedSetComponent={this.state.displayUserGeneratedSetComponent}
+                               />
+
+      </section>
+
       <Instructions />
       <Footer />
     </div>

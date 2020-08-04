@@ -19,7 +19,8 @@ export default class CuratedSetsComponent extends Component {
 
   render() {
 
-
+    // let displayUserGeneratedSetComponentWindow = this.props.displayUserGeneratedSetComponent
+    // let displayCuratedSetComponentWindow = this.props.displayCuratedSetComponent
     let curatedSetsArray = this.props.curatedSets
     // console.log("curatedSetsArray in CuratedSetsComponent:", curatedSetsArray)
 
@@ -34,18 +35,15 @@ export default class CuratedSetsComponent extends Component {
 
 
 
+
+
     return (
 
 
       <section className="component">
 
-        <a href="#">
-          <div className="curated-set-heading-div">
-            <h2 className="curated-set-heading">Curated Sets</h2>
-          </div>
-        </a>
 
-        <div className="curated-set-window">
+        <div id="curated-set-window">
 
           <Masonry breakpointCols={breakpointColumnsObj}
                    className="my-masonry-grid curated-sets-list"
@@ -116,3 +114,19 @@ export default class CuratedSetsComponent extends Component {
 
 }
 
+
+          // <div className="curated-set-heading-div">
+          //   <h2 className="set-heading curated-set-heading"
+          //       onClick={ (event) => {
+          //         this.setState({displayCuratedSetComponent: true}, () => {
+          //           this.props.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
+          //           console.log("1) click to show Curated Set Component", this.state.displayCuratedSetComponent)
+          //         })
+          //         this.setState({displayUserGeneratedSetComponent: false}, () => {
+          //           this.props.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
+          //           console.log("2) hide User Generated Set Component", this.state.displayUserGeneratedSetComponent)
+          //         })
+          //       }}>
+          //       Curated Sets
+          //   </h2>
+          // </div>

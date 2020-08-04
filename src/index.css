@@ -42,14 +42,6 @@ a:hover {
   text-decoration: none;
 }
 
-h2 {
-  color: #efefef;
-  /*background: #000;*/
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2rem;
-  margin: .25rem 0;
-  padding: .5rem;
-}
 
 
 button {
@@ -84,6 +76,50 @@ button:hover {
   margin-bottom: 1rem;
 }
 
+/*==========================*/
+ /* Headings */
+/*==========================*/
+h3 {
+  color: #efefef;
+  background: #000;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  margin: .25rem 0;
+  padding: .5rem;
+}
+
+.set-heading {
+  color: #efefef;
+  font-family: 'Bebas Neue', sans-serif;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  background: #000;
+  padding: .5rem 2rem;
+  cursor: pointer;
+}
+
+.user-generated-set-heading {
+  top: 49px;
+}
+
+.curated-set-heading {
+  text-align: right;
+  top: 2px;
+}
+
+.set-heading-active {
+  border-bottom: 0 solid #fff;
+}
+
+.set-heading-not-active {
+  color: #d6d6d6;
+  border-bottom: 0 solid #fff;
+}
 
 /*==========================*/
 /* Masonry npm package */
@@ -184,24 +220,18 @@ button.active {
 }
 
 /*==============================
-UserGeneratedSetComponent
+Your Backgrounds
 ================================*/
-.user-generated-set-heading {
-  display: inline-block;
-  position: relative;
-  top: 2px;
-  margin: 0;
+.user-generated-set-headin-div {
   text-align: right;
-  border-top: 2px solid #fff;
-  border-left: 2px solid #fff;
-  border-right: 2px solid #fff;
-  background: #000;
-  padding: .5rem 2rem;
 }
-.user-generated-set-window {
+
+
+#user-generated-set-window {
+  display: block;
   border: 2px solid #efefef;
   color: #fff;
-  margin-bottom: 2rem;
+  margin-bottom: 7rem;
   padding: 1rem;
 }
 
@@ -315,22 +345,13 @@ Curated Sets
 ================================*/
 .curated-set-heading-div {
   text-align: right;
+  cursor: pointer;
 }
 
-.curated-set-heading {
-  display: inline-block;
-  position: relative;
-  top: 2px;
-  margin: 0;
-  text-align: right;
-  border-top: 2px solid #fff;
-  border-left: 2px solid #fff;
-  border-right: 2px solid #fff;
-  background: #000;
-  padding: .5rem 2rem;
-}
 
-.curated-set-window {
+
+#curated-set-window {
+  display: none;
   border: 2px solid #efefef;
   color: #fff;
   margin-bottom: 2rem;

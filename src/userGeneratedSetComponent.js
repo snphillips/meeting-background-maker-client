@@ -16,18 +16,14 @@ export default class UserGeneratedSetComponent extends React.Component {
 
   render() {
 
+
+
     return (
 
       <section className="component">
 
-        <a href="#">
-          <div className="user-generated-set-div">
-            <h2 className="user-generated-set-heading">User Generated Set Component</h2>
-          </div>
-        </a>
 
-
-        <div class="user-generated-set-window">
+        <div id="user-generated-set-window">
 
           <Results parentState={this.state}
                    preSelectedImages={this.props.preSelectedImages}
@@ -51,3 +47,19 @@ export default class UserGeneratedSetComponent extends React.Component {
 
 }
 
+
+          // <div className="user-generated-set-div">
+          //   <h2 className="set-heading user-generated-set-heading"
+          //       onClick={ (event) => {
+          //         this.setState({displayUserGeneratedSetComponent: true}, () => {
+          //           this.props.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
+          //           console.log("1) show User Generated Set Component", this.state.displayUserGeneratedSetComponent)
+          //         })
+          //         this.setState({displayCuratedSetComponent: false}, () => {
+          //           this.props.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
+          //           console.log("2) hide Curated Set Component", this.state.displayCuratedSetComponent)
+          //         })
+          //       }}>
+          //       Your Backgrounds
+          //   </h2>
+          // </div>

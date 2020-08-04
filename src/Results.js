@@ -47,7 +47,7 @@ export default class Results extends React.Component {
       <section className="component"
                id="results-component">
 
-          <h2>Search Results</h2>
+          <h3>Search Results</h3>
 
               <div>
                 <p className="default-results-message">Select a search term to view images from the Cooper Hewitt's collection.</p>
