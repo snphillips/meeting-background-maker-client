@@ -79,6 +79,12 @@ button:hover {
 /*==========================*/
  /* Headings */
 /*==========================*/
+#section-headers {
+  display: flex;
+  flex-direction: row;
+}
+
+
 h3 {
   color: #efefef;
   background: #000;
@@ -94,6 +100,7 @@ h3 {
   display: inline-block;
   position: relative;
   margin: 0;
+  top: 2px;
   border-top: 2px solid #fff;
   border-left: 2px solid #fff;
   border-right: 2px solid #fff;
@@ -104,21 +111,20 @@ h3 {
 }
 
 .user-generated-set-heading {
-  top: 49px;
+
 }
 
 .curated-set-heading {
-  text-align: right;
-  top: 2px;
+  /*text-align: right;*/
 }
 
 .set-heading-active {
-  border-bottom: 0 solid #fff;
+  border-bottom: 2px solid #000;
 }
 
 .set-heading-not-active {
   color: #d6d6d6;
-  border-bottom: 0 solid #fff;
+  border-bottom: 2px solid #fff;
 }
 
 /*==========================*/
