@@ -302,10 +302,6 @@ zipDownloadFolderSelectedImages() {
   return (
     <div className="App app-container">
       <Header />
-      <Filters handleFilterSubmit={this.handleFilterSubmit}
-               parent_state={this.state}
-               loading={this.state.loading}
-                />
 
       <section id="section-headers">
 
@@ -381,3 +377,8 @@ zipDownloadFolderSelectedImages() {
   );
 }
 }
+
+      // <Filters handleFilterSubmit={this.handleFilterSubmit}
+      //          parent_state={this.state}
+      //          loading={this.state.loading}
+      //           />

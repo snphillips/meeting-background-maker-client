@@ -20,19 +20,11 @@ import LoadingSpinner from './LoadingSpinner';
 
 
 
-
-
-
 export default class Filters extends Component {
   render() {
     return (
 
     <div className="filters-component">
-
-      <section className="app-description">
-        <p>Generate backgrounds for video meetings from the Cooper Hewitt Museum's archive.</p>
-        <p>Filter using keywords, or download curated sets.</p>
-      </section>
 
 
       <section className="filter-button-section">
