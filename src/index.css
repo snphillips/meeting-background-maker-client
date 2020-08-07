@@ -80,13 +80,8 @@ button:hover {
 /*==========================*/
  /* Toggle States */
 /*==========================*/
-.hidden {
-   display: none;
-}
-.show{
-   display: block;
-}
 
+/* for section headings*/
 .heading-active {
   border-bottom: 2px solid #000;
 }
@@ -124,18 +119,18 @@ h3 {
   border-top: 2px solid #fff;
   border-left: 2px solid #fff;
   border-right: 2px solid #fff;
-  border-bottom: 2px solid #fff;
+  /*border-bottom: 2px solid #fff;*/
   background: #000;
   padding: .5rem 2rem;
   cursor: pointer;
 }
 
 .user-generated-set-heading {
-
+  border-bottom: 2px solid #000;
 }
 
 .curated-set-heading {
-  /*text-align: right;*/
+  border-bottom: 2px solid #fff;
 }
 
 

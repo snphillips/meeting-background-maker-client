@@ -53,6 +53,7 @@ export default class App extends Component {
     // this.zipDownloadFolderCuratedSet = this.zipDownloadFolderCuratedSet.bind(this);
     this.zipDownloadFolderSelectedImages = this.zipDownloadFolderSelectedImages.bind(this);
     this.toggleDisplayBlockOrNone = this.toggleDisplayBlockOrNone.bind(this);
+    this.toggleHeaderAndComponent = this.toggleHeaderAndComponent.bind(this);
   }
 
 // ***********************************
@@ -200,14 +201,6 @@ export default class App extends Component {
  }
 
 
-  toggleHeader() {
-
-
- }
-
-
-
-
 
 
 
@@ -216,12 +209,47 @@ export default class App extends Component {
 
   // Reusable toggle function-- toggle betwewen display block or none
   // If toggleState is true, then display block. If false, display none.
-  // This function is being used on displayFilterResults, displaySelectedImages &
+  // This function is being used in displayFilterResults, displaySelectedImages &
   // displayDownloadButton
   toggleDisplayBlockOrNone(toggleState, htmlSelector) {
-    // console.log("Toggle display block/none. toggleState: ", toggleState, " for htmlSelector: ", htmlSelector)
+    console.log("toggleState: ", toggleState, htmlSelector)
     toggleState ? (document.querySelector(htmlSelector).style.display = "block") : (document.querySelector(htmlSelector).style.display = "none")
   };
+
+
+
+
+  toggleHeaderAndComponent(){
+
+    if (this.state.displayUserGeneratedSetComponent === true) {
+
+      this.setState({displayCuratedSetComponent: false}, () => {
+
+        // The part that toggles the label tab
+        document.querySelector(".user-generated-set-heading").style.borderBottom = "2px solid #000"
+        document.querySelector(".curated-set-heading").style.borderBottom = "2px solid #fff"
+
+      })
+
+    } else if (this.state.displayUserGeneratedSetComponent === false) {
+
+      this.setState({displayCuratedSetComponent: true}, () => {
+
+
+        // The part that toggles the label tab
+        document.querySelector(".user-generated-set-heading").style.borderBottom = "2px solid #fff"
+        document.querySelector(".curated-set-heading").style.borderBottom = "2px solid #000"
+
+      })
+
+    }
+        // The part that toggles the component
+        this.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
+        this.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
+
+  };
+
+
 
   toggleDownloadButtonComponent() {
     if (this.state.selectedImages.length > 0) {
@@ -230,8 +258,9 @@ export default class App extends Component {
     }
   };
 
+
   shuffleBackgroundClipTextImage() {
-    let numOfBackgroundImages = 32
+    let numOfBackgroundImages = 31
     let randomNumber = Math.floor(Math.random() * numOfBackgroundImages);
     console.log("random background image number is: ", randomNumber)
     document.querySelector(".clip-text").style.setProperty("background", `url("/images/` + randomNumber + `.png")` )
@@ -244,17 +273,6 @@ export default class App extends Component {
 
 
 
-  // a funct
-  toggleHeaderAndComponent(componentShow, componentDontShow){
-    this.setState({componentShow: true}, () => {
-      this.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
-      document.querySelector(".user-generated-set-heading").classList.add("set-heading-active")
-    })
-    this.setState({componentDontShow: false}, () => {
-      this.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
-      document.querySelector(".curated-set-heading").classList.remove("set-heading-active")
-    })
-  }
 
 
 
@@ -303,12 +321,7 @@ export default class App extends Component {
             <h2 className="set-heading user-generated-set-heading"
                 onClick={ () => {
                   this.setState({displayUserGeneratedSetComponent: true}, () => {
-                    this.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
-                    document.querySelector(".user-generated-set-heading").classList.add("heading-active")
-                  })
-                  this.setState({displayCuratedSetComponent: false}, () => {
-                    this.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
-                    document.querySelector(".curated-set-heading").classList.remove("heading-active")
+                    this.toggleHeaderAndComponent()
                   })
                 }}>
                 Your Backgrounds
@@ -320,12 +333,7 @@ export default class App extends Component {
             <h2 className="set-heading curated-set-heading"
                 onClick={ () => {
                   this.setState({displayCuratedSetComponent: true}, () => {
-                    this.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
-                    document.querySelector(".curated-set-heading").classList.add("heading-active")
-                  })
-                  this.setState({displayUserGeneratedSetComponent: false}, () => {
-                    this.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
-                    document.querySelector(".user-generated-set-heading").classList.remove("heading-active")
+                    this.toggleHeaderAndComponent()
                   })
                 }}>
                 Curated Sets
