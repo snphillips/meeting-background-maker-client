@@ -9,7 +9,6 @@ import Instructions from './Instructions';
 import CuratedSetsComponent from './CuratedSetsComponent';
 import Footer from './Footer';
 import removalListArray from './removalListArray';
-import backgroundImages from './backgroundImages';
 import SelectedImages from './SelectedImages';
 import UserGeneratedSetComponent from './UserGeneratedSetComponent';
 
@@ -201,7 +200,7 @@ export default class App extends Component {
  }
 
 
- toggleSectionHeaderAndComponent() {
+  toggleHeader() {
 
 
  }
@@ -232,12 +231,11 @@ export default class App extends Component {
   };
 
   shuffleBackgroundClipTextImage() {
-    let arrayLength = backgroundImages.length - 1
-    let randomNumber = Math.floor(Math.random() * arrayLength);
-    let randomImage = backgroundImages[randomNumber];
-
-    document.querySelector(".clip-text").style.setProperty("background", `url("/images/` + randomImage + `")` )
-    document.querySelector("body").style.setProperty("background", `url("/images/` + randomImage + `")` )
+    let numOfBackgroundImages = 32
+    let randomNumber = Math.floor(Math.random() * numOfBackgroundImages);
+    console.log("random background image number is: ", randomNumber)
+    document.querySelector(".clip-text").style.setProperty("background", `url("/images/` + randomNumber + `.png")` )
+    document.querySelector("body").style.setProperty("background", `url("/images/` + randomNumber + `.png")` )
     document.querySelector(".clip-text").style.setProperty("color", "#fff;")
     document.querySelector(".clip-text").style.setProperty("-webkit-text-fill-color", "transparent")
     document.querySelector(".clip-text").style.setProperty("-webkit-background-clip", "text")
@@ -246,45 +244,41 @@ export default class App extends Component {
 
 
 
-// // Using the JSZip library
-//  zipDownloadFolderCuratedSet(value, index) {
-//   console.log("downloading curated image set with value of: ", value, index)
-//   console.log("this.state.curatedSets[index]", this.state.curatedSets[index])
-
-
-// /* Create a new instance of JSZip and a folder named 'collection' where*/
-// // we will be adding all of our files
-// let zip = new JSZip();
-// let folder = zip.folder(this.value);
-
-// /* Add the image to the folder */
-// folder.file(`1159162379.jpg`);
-
-// /* Generate a zip file asynchronously and trigger the download */
-// folder.generateAsync({ type: "blob" }).then(content => saveAs(content, "files"));
-//  }
+  // a funct
+  toggleHeaderAndComponent(componentShow, componentDontShow){
+    this.setState({componentShow: true}, () => {
+      this.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
+      document.querySelector(".user-generated-set-heading").classList.add("set-heading-active")
+    })
+    this.setState({componentDontShow: false}, () => {
+      this.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
+      document.querySelector(".curated-set-heading").classList.remove("set-heading-active")
+    })
+  }
 
 
 
-// Using the JSZip library
-zipDownloadFolderSelectedImages() {
-  console.log("downloading selected images: ", this.state.selectedImages)
-  let selectedImages = this.state.selectedImages
-  let folderName = 'meeting-backgrounds'
-  let zip = new JSZip();
-  // zip.file("Hello.txt", "Hello World\n");
-  let imgFolder = zip.folder("meeting-backgrounds");
 
-  selectedImages.forEach( (image) => {
-    imgFolder.file(image.images[0].b.url, this.imgData, {base64: true});
-  })
 
-  zip.generateAsync({type:"blob"})
-  .then(function(content) {
-      // Using npm library FileSaver.js
-      saveAs(content, folderName);
-  });
- }
+  // Using the JSZip library
+  zipDownloadFolderSelectedImages() {
+    console.log("downloading selected images: ", this.state.selectedImages)
+    let selectedImages = this.state.selectedImages
+    let folderName = 'meeting-backgrounds'
+    let zip = new JSZip();
+    // zip.file("Hello.txt", "Hello World\n");
+    let imgFolder = zip.folder("meeting-backgrounds");
+
+    selectedImages.forEach( (image) => {
+      imgFolder.file(image.images[0].b.url, this.imgData, {base64: true});
+    })
+
+    zip.generateAsync({type:"blob"})
+    .then(function(content) {
+        // Using npm library FileSaver.js
+        saveAs(content, folderName);
+    });
+   }
 
 
 
@@ -307,16 +301,14 @@ zipDownloadFolderSelectedImages() {
 
           <div className="user-generated-set-div">
             <h2 className="set-heading user-generated-set-heading"
-                onClick={ (event) => {
+                onClick={ () => {
                   this.setState({displayUserGeneratedSetComponent: true}, () => {
                     this.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
-                    document.querySelector(".user-generated-set-heading").classList.add("set-heading-active")
-                    console.log("1) show User Generated Set Component", this.state.displayUserGeneratedSetComponent)
+                    document.querySelector(".user-generated-set-heading").classList.add("heading-active")
                   })
                   this.setState({displayCuratedSetComponent: false}, () => {
                     this.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
-                    document.querySelector(".curated-set-heading").classList.remove("set-heading-active")
-                    console.log("2) hide Curated Set Component", this.state.displayCuratedSetComponent)
+                    document.querySelector(".curated-set-heading").classList.remove("heading-active")
                   })
                 }}>
                 Your Backgrounds
@@ -326,16 +318,14 @@ zipDownloadFolderSelectedImages() {
 
           <div className="curated-set-heading-div">
             <h2 className="set-heading curated-set-heading"
-                onClick={ (event) => {
+                onClick={ () => {
                   this.setState({displayCuratedSetComponent: true}, () => {
                     this.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
-                    document.querySelector(".curated-set-heading").classList.add("set-heading-active")
-                    console.log("1) click to show Curated Set Component", this.state.displayCuratedSetComponent)
+                    document.querySelector(".curated-set-heading").classList.add("heading-active")
                   })
                   this.setState({displayUserGeneratedSetComponent: false}, () => {
                     this.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
-                    document.querySelector(".user-generated-set-heading").classList.remove("set-heading-active")
-                    console.log("2) hide User Generated Set Component", this.state.displayUserGeneratedSetComponent)
+                    document.querySelector(".user-generated-set-heading").classList.remove("heading-active")
                   })
                 }}>
                 Curated Sets
@@ -372,16 +362,10 @@ zipDownloadFolderSelectedImages() {
                                />
 
       </section>
-
       <Footer />
+
     </div>
   );
 }
 }
 
-      // <Filters handleFilterSubmit={this.handleFilterSubmit}
-      //          parent_state={this.state}
-      //          loading={this.state.loading}
-      //           />
-
-      // <Instructions />

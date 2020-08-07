@@ -34,12 +34,14 @@ export default class UserGeneratedSetComponent extends React.Component {
           <Results parentState={this.state}
                    preSelectedImages={this.props.preSelectedImages}
                    toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
+                   toggleDisplayBlockOrNone={this.toggleDisplayBlockOrNone}
                    whichButton={this.props.whichButton}
                    />
 
           <SelectedImages selectedImages={this.props.selectedImages}
                           toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
                           zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
+                          toggleDisplayBlockOrNone={this.toggleDisplayBlockOrNone}
                           />
 
         </div>
