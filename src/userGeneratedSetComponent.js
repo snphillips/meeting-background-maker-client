@@ -27,10 +27,8 @@ export default class UserGeneratedSetComponent extends React.Component {
 
     return (
 
-      <section className="component">
 
-
-        <div id="user-generated-set-window">
+        <section id="user-generated-set-window">
 
 
           <Filters handleFilterSubmit={this.props.handleFilterSubmit}
@@ -49,9 +47,7 @@ export default class UserGeneratedSetComponent extends React.Component {
                           toggleDisplayBlockOrNone={this.toggleDisplayBlockOrNone}
                           />
 
-        </div>
-
-      </section>
+        </section>
 
 
     );

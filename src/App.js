@@ -341,5 +341,3 @@ export default class App extends Component {
 }
 }
 
-                                   // toggleView={this.toggleView}
-                               // toggleView={this.toggleView}

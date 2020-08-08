@@ -44,10 +44,7 @@ export default class CuratedSetsComponent extends Component {
     return (
 
 
-      <section className="component">
-
-
-        <div id="curated-set-window">
+        <section id="curated-set-window">
 
           <Masonry breakpointCols={breakpointColumnsObj}
                    className="my-masonry-grid curated-sets-list"
@@ -109,9 +106,8 @@ export default class CuratedSetsComponent extends Component {
 
           </Masonry>
 
-        </div>
+        </section>
 
-      </section>
   );
   }
 
