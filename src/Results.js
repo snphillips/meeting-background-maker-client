@@ -28,6 +28,7 @@ export default class Results extends React.Component {
 // End of constructor
 // ***********************************
 
+
   render() {
 
     let preSelectedImages = this.props.preSelectedImages
@@ -40,6 +41,8 @@ export default class Results extends React.Component {
       700: 2,
       500: 1
     };
+
+
 
 
     return (

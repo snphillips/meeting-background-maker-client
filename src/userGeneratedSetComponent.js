@@ -15,6 +15,14 @@ export default class UserGeneratedSetComponent extends React.Component {
 
 
 
+   componentDidMount() {
+     this.props.toggleDisplayBlockOrNone(this.state.displayResultsComponent, "#results-component")
+     this.props.toggleDisplayBlockOrNone(this.state.displaySelectedImages, "#selected-images-component")
+   }
+
+
+
+
   render() {
 
 
@@ -34,7 +42,6 @@ export default class UserGeneratedSetComponent extends React.Component {
           <Results parentState={this.state}
                    preSelectedImages={this.props.preSelectedImages}
                    toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
-                   toggleDisplayBlockOrNone={this.toggleDisplayBlockOrNone}
                    whichButton={this.props.whichButton}
                    />
 

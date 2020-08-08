@@ -7,7 +7,7 @@ import Masonry from 'react-masonry-css';
 export default class selectedImages extends React.Component {
 
 
-  render() {
+   render() {
 
    // For use with Masonry package
     const breakpointColumnsObj = {

@@ -16,6 +16,10 @@ export default class CuratedSetsComponent extends Component {
 
   }
 
+   //  componentDidMount() {
+   //   this.props.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
+   // }
+
 
   render() {
 

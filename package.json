@@ -12,6 +12,7 @@
     "jimp": "^0.12.1",
     "jszip": "^3.4.0",
     "lodash": "^4.17.19",
+    "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-masonry-css": "^1.0.14",

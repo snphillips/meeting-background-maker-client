@@ -29,11 +29,12 @@ export default class App extends Component {
 
     this.state = {
       loading: false, // the loading spinner
-      displayFilterResults: true,
-      displaySelectedImages: true,
+      displayUserGeneratedSetComponent: true,
+      displayResultsComponent: false,
+      displayFilterResults: false,
+      displaySelectedImages: false,
       displayDownloadButton: true,
-      displayUserGeneratedSetComponent: false,
-      displayCuratedSetComponent: true,
+      displayCuratedSetComponent: false,
       downloadSetComponent: true,
       value: 'dots',
       preSelectedImages: [],
@@ -53,7 +54,6 @@ export default class App extends Component {
     // this.zipDownloadFolderCuratedSet = this.zipDownloadFolderCuratedSet.bind(this);
     this.zipDownloadFolderSelectedImages = this.zipDownloadFolderSelectedImages.bind(this);
     this.toggleDisplayBlockOrNone = this.toggleDisplayBlockOrNone.bind(this);
-    this.toggleHeaderAndComponent = this.toggleHeaderAndComponent.bind(this);
   }
 
 // ***********************************
@@ -218,39 +218,6 @@ export default class App extends Component {
 
 
 
-
-  toggleHeaderAndComponent(){
-
-    if (this.state.displayUserGeneratedSetComponent === true) {
-
-      this.setState({displayCuratedSetComponent: false}, () => {
-
-        // The part that toggles the label tab
-        document.querySelector(".user-generated-set-heading").style.borderBottom = "2px solid #000"
-        document.querySelector(".curated-set-heading").style.borderBottom = "2px solid #fff"
-
-      })
-
-    } else if (this.state.displayUserGeneratedSetComponent === false) {
-
-      this.setState({displayCuratedSetComponent: true}, () => {
-
-
-        // The part that toggles the label tab
-        document.querySelector(".user-generated-set-heading").style.borderBottom = "2px solid #fff"
-        document.querySelector(".curated-set-heading").style.borderBottom = "2px solid #000"
-
-      })
-
-    }
-        // The part that toggles the component
-        this.toggleDisplayBlockOrNone(this.state.displayUserGeneratedSetComponent, "#user-generated-set-window")
-        this.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
-
-  };
-
-
-
   toggleDownloadButtonComponent() {
     if (this.state.selectedImages.length > 0) {
       this.setState({displayDownloadButton: true})
@@ -270,11 +237,6 @@ export default class App extends Component {
     document.querySelector(".clip-text").style.setProperty("-webkit-background-clip", "text")
     // document.querySelector(".header").style.textShadow = "2px 2px 2px #fff";
   }
-
-
-
-
-
 
 
 
@@ -321,7 +283,10 @@ export default class App extends Component {
             <h2 className="set-heading user-generated-set-heading"
                 onClick={ () => {
                   this.setState({displayUserGeneratedSetComponent: true}, () => {
-                    this.toggleHeaderAndComponent()
+                    document.querySelector(".user-generated-set-heading").style.borderBottom = "2px solid #000"
+                    document.querySelector(".curated-set-heading").style.borderBottom = "2px solid #fff"
+                    document.querySelector("#user-generated-set-window").style.display = "block"
+                    document.querySelector("#curated-set-window").style.display = "none"
                   })
                 }}>
                 Your Backgrounds
@@ -333,7 +298,10 @@ export default class App extends Component {
             <h2 className="set-heading curated-set-heading"
                 onClick={ () => {
                   this.setState({displayCuratedSetComponent: true}, () => {
-                    this.toggleHeaderAndComponent()
+                    document.querySelector(".user-generated-set-heading").style.borderBottom = "2px solid #fff"
+                    document.querySelector(".curated-set-heading").style.borderBottom = "2px solid #000"
+                    document.querySelector("#user-generated-set-window").style.display = "none"
+                    document.querySelector("#curated-set-window").style.display = "block"
                   })
                 }}>
                 Curated Sets
@@ -355,18 +323,17 @@ export default class App extends Component {
                                    toggleSelectedImagesComponent={this.state.toggleSelectedImagesComponent}
                                    zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
                                    toggleDisplayBlockOrNone={this.toggleDisplayBlockOrNone}
-                                   toggleView={this.toggleView}
                                    displayUserGeneratedSetComponent={this.state.displayUserGeneratedSetComponent}
                                    displayCuratedSetComponent={this.state.displayCuratedSetComponent}
+                                   displayResultsComponent={this.state.displayResultsComponent}
                                    />
 
          <CuratedSetsComponent parentState={this.state}
                                zipDownloadFolderCuratedSet={this.zipDownloadFolderCuratedSet}
                                curatedSets={this.state.curatedSets}
-                               toggleDisplayBlockOrNone={this.toggleDisplayBlockOrNone}
-                               toggleView={this.toggleView}
                                displayCuratedSetComponent={this.state.displayCuratedSetComponent}
                                displayUserGeneratedSetComponent={this.state.displayUserGeneratedSetComponent}
+                               toggleDisplayBlockOrNone={this.toggleDisplayBlockOrNone}
                                />
 
       </section>
@@ -377,3 +344,5 @@ export default class App extends Component {
 }
 }
 
+                                   // toggleView={this.toggleView}
+                               // toggleView={this.toggleView}
