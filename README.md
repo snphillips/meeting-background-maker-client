@@ -10,36 +10,40 @@ Follow the instructions to install the server first, then come back here: https:
 
 Clone this repo:
 
+`````````
 `git clone https://github.com/snphillips/meeting-background-maker-client.git`
+`````````
  
+Change directories into the project folder:
+
+`````````
+cd meeting-background-maker-client
+`````````
+
+
 Run npm to install all the dependencies:
 
+`````````
 `npm install`
+`````````
 
 Start the React server:
 
+`````````
 `nodemon`
-
+`````````
 Your browser should open to http://localhost:3000/ Voila!
 
 
 ### Made With
 -Cooper Hewitt Museum API
-
 -Create-React-App
-
 -axios
-
 -file-saver
-
 -jimp
-
 -jszip
-
 -lodash
-
 -nodemon
-
 -react-spinners
 
 
