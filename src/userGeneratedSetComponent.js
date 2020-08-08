@@ -14,12 +14,10 @@ export default class UserGeneratedSetComponent extends React.Component {
 }
 
 
-
    componentDidMount() {
      this.props.toggleDisplayBlockOrNone(this.state.displayResultsComponent, "#results-component")
      this.props.toggleDisplayBlockOrNone(this.state.displaySelectedImages, "#selected-images-component")
    }
-
 
 
 

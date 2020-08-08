@@ -3,13 +3,10 @@ import axios from 'axios';
 import { saveAs } from 'file-saver';
 import _Lodash from 'lodash';
 import Header from './Header';
-import Filters from './Filters';
-import Results from './Results';
 import Instructions from './Instructions';
 import CuratedSetsComponent from './CuratedSetsComponent';
 import Footer from './Footer';
 import removalListArray from './removalListArray';
-import SelectedImages from './SelectedImages';
 import UserGeneratedSetComponent from './UserGeneratedSetComponent';
 
 // Curated Sets
