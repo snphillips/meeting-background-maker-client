@@ -24,15 +24,15 @@ Your browser should open to http://localhost:3000/ Voila!
 
 
 ### Made With
-Cooper Hewitt Museum API
-Create-React-App
-axios
-file-saver
-jimp
-jszip
-lodash
-nodemon
-react-spinners
+-Cooper Hewitt Museum API
+-Create-React-App
+-axios
+-file-saver
+-jimp
+-jszip
+-lodash
+-nodemon
+-react-spinners
 
 
 
