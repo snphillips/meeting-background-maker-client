@@ -149,7 +149,7 @@ export default class App extends Component {
         this.revealFilterResultsComponent()
       })
       .catch(function (error) {
-        console.log(error);
+        console.log("error", error);
       });
 
   };

@@ -27,7 +27,7 @@ export default class Filters extends Component {
     <div className="filters-component">
 
       <div>
-        <p className="filter-message">Select a search term to view images from the Cooper Hewitt's collection.</p>
+        <p className="filter-message">Select a search term to view images from the museum's collection.</p>
       </div>
 
 

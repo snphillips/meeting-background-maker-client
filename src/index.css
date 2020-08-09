@@ -120,6 +120,23 @@ button:hover {
 /*==========================*/
  /* Headings */
 /*==========================*/
+.header-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+h1.header {
+  margin: 0;
+  max-width: 100%;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 5rem;
+  line-height: .6;
+  text-transform: uppercase;
+  padding: .5rem 0 2rem;
+  letter-spacing: -6px;
+  /*text-shadow: 2px 2px 0 #fff;*/
+}
+
 #section-headers {
   display: flex;
   flex-direction: row;
@@ -186,22 +203,7 @@ h3 {
 /*==========================*/
 /* Header */
 /*==========================*/
-.header-container {
-  width: 100%;
-  max-width: 100%;
-}
 
-h1.header {
-  margin: 0;
-  max-width: 100%;
-  font-family: 'Work Sans', sans-serif;
-  font-size: 6rem;
-  line-height: .6;
-  text-transform: uppercase;
-  padding: .5rem 0 2rem;
-  letter-spacing: -6px;
-  /*text-shadow: 2px 2px 0 #fff;*/
-}
 
 p {
   color: #efefef;
@@ -444,14 +446,19 @@ button.curated-set-download-button {
 /*==============================
 Footer
 ================================*/
-footer {
-  color: #efefef;
+.footer-link {
+  color: #efefef !important;
+  font-size: 1rem;
+  font-weight: 500;
+  /* to keep it at the bottom of app */
   align-self: flex-end;
   flex-shrink: 0;
+  transition: .3s;
 }
 
-footer:hover {
-  color: #fff;
+.footer-link:hover {
+  color: #fff !important;
+  background-color: #000 !important;
 }
 
 /******************************************************************/
@@ -482,6 +489,11 @@ Media Queries - small computer
 ==========================*/
 @media (max-width: 1000px) {
 
+  h1.header {
+    font-size: 4rem;
+  }
+
+
 .image-grid {
   /*display: grid;*/
   /* 3 colums, all the same width */
@@ -503,7 +515,7 @@ Media Queries - tablets
 @media (max-width: 700px) {
 
   h1.header {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 
 .set-heading {
@@ -512,7 +524,11 @@ Media Queries - tablets
   padding: .25rem 1rem;
 }
 
-  .filters-component {
+.filter-message {
+  font-size: 15px;
+}
+
+.filters-component {
     display: flex;
     flex-direction: column;
   }
@@ -535,6 +551,9 @@ Media Queries - phones
 /*==========================*/
 @media (max-width: 415px) {
 
+  h1.header {
+    font-size: 3rem;
+  }
 
 
 .image-grid {
