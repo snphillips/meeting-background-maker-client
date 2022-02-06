@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './index.css';
 import CuratedSetsImageGallery from './CuratedSetsImageGallery';
 import Masonry from 'react-masonry-css';
 

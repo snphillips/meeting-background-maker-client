@@ -1,6 +1,5 @@
 import React from 'react';
 // import DownloadButton from './DownloadButton'
-import './index.css';
 import Masonry from 'react-masonry-css';
 
 

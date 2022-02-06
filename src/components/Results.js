@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.css';
 import Masonry from 'react-masonry-css';
 
 // This component takes an array called preSelectedImages (that was populated

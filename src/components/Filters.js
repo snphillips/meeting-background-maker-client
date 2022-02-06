@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import filterTerms from './filterTerms';
-import LoadingSpinner from './LoadingSpinner';
+import filterTerms from '../filterTerms';
+import LoadingSpinner from '../LoadingSpinner';
 
 
 

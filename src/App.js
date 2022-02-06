@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 import _Lodash from 'lodash';
-import Header from './Header';
-import Instructions from './Instructions';
-import CuratedSetsComponent from './CuratedSetsComponent';
-import Footer from './Footer';
+import Header from './components/Header';
+import Instructions from './components/Instructions';
+import CuratedSetsComponent from './components/CuratedSetsComponent';
+import Footer from './components/Footer';
 import removalListArray from './removalListArray';
-import UserGeneratedSetComponent from './UserGeneratedSetComponent';
+import UserGeneratedSetComponent from './components/UserGeneratedSetComponent';
 
 // Curated Sets
 import kolomanMoser from './CuratedSets/kolomanMoser';
