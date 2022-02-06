@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import filterTerms from './filterTerms';
-// the spinner is an npm package that also uses @emotion
-import { css } from "@emotion/core";
 import LoadingSpinner from './LoadingSpinner';
 
 
