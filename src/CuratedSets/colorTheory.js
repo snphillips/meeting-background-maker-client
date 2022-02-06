@@ -46,13 +46,6 @@ const colorTheory = {
       localImageURL: "/meeting-backgrounds/curatedSets/colorTheory/1108749985.jpg"
     },
     {
-      id: '18797535',
-      title: "Book, The Theory of Color in itls Relation to art and art industry, 1876",
-      url: "https://collection.cooperhewitt.org/objects/1108749881/",
-      imageURL: "https://images.collection.cooperhewitt.org/338813_44ed18207fa7b431_b.jpg",
-      localImageURL: "/meeting-backgrounds/curatedSets/colorTheory/18797535.jpg"
-    },
-    {
       id: '1108749927',
       title: "Book, The Theory of Color in itls Relation to art and art industry, 1876",
       url: "https://collection.cooperhewitt.org/objects/1108749927/",

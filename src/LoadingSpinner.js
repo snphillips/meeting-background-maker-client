@@ -1,5 +1,5 @@
 import React from 'react';
-import { css, jsx } from "@emotion/react";
+import { css } from "@emotion/react";
 // react-spinners is an npm package
 import BeatLoader from 'react-spinners/BeatLoader';
 
