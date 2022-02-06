@@ -1,9 +1,7 @@
 import React from "react";
-import "./index.css";
 
-export default class collection extends React.Component {
-  render() {
-    return (
+export default function Collection(props) {
+  return (
       <section className="component">
         <h2>Your selected images:</h2>
 
@@ -12,8 +10,8 @@ export default class collection extends React.Component {
         </div>
 
         <div className="selected-images-gallery results">
-          {this.props.selectedImages.map((item) => {
-            let imageIndex = this.props.selectedImages.indexOf(item);
+          {props.selectedImages.map((item) => {
+            let imageIndex = props.selectedImages.indexOf(item);
             console.log("imageIndex as we build the gallery:", imageIndex);
 
             return (
@@ -30,5 +28,4 @@ export default class collection extends React.Component {
         </div>
       </section>
     );
-  }
 }
