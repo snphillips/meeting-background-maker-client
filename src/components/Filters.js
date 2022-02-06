@@ -2,20 +2,21 @@ import React, { Component } from "react";
 import filterTerms from "../filterTerms";
 import LoadingSpinner from "../LoadingSpinner";
 
-// It used to be that when the user selected one of the filter terms,
-// an axios call was made to the server, which was then made to the
-// museum, and results were returned. The problem with this strategy is
-// that it was sloooow, and didn't make sense b/c the images don't
-// change often so there's no need to get fresh images every time.
+/*
+It used to be that when the user selected one of the filter terms,
+an axios call was made to the server, which was then made to the
+museum, and results were returned. The problem with this strategy is
+that it was sloooow, and didn't make sense b/c the images don't
+change often so there's no need to get fresh images every time.
 
-// The new strategy is to write a script that is run by the server to get
-// all the images in advance, manupulate them then store them either with
-// the server or client. This way, all the hard work of calling the museum,
-// and manipulating the images has been done in advance.
+The new strategy is to write a script that is run by the server to get
+all the images in advance, manupulate them, then store them either with
+the server or client. This way, all the hard work of calling the museum,
+and manipulating the images has been done in advance.
+*/
 
-export default class Filters extends Component {
-  render() {
-    return (
+export default function Filters(props) {
+  return (
       <div className="filters-component">
         <div>
           <p className="filter-message">
@@ -36,7 +37,7 @@ export default class Filters extends Component {
                 value={item}
                 onClick={(event) => {
                   console.log("button value is:", event.target.value);
-                  this.props.handleFilterSubmit(event);
+                  props.handleFilterSubmit(event);
                 }}
               >
                 {item}
@@ -45,10 +46,9 @@ export default class Filters extends Component {
           })}
 
           <span className="spinner-container">
-            <LoadingSpinner loading={this.props.loading} />
+            <LoadingSpinner loading={props.loading} />
           </span>
         </section>
       </div>
     );
-  }
 }
