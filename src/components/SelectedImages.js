@@ -1,9 +1,8 @@
 import React from "react";
-// import DownloadButton from './DownloadButton'
 import Masonry from "react-masonry-css";
 
-export default class selectedImages extends React.Component {
-  render() {
+export default function SelectedImages(props) {
+  
     // For use with Masonry package
     const breakpointColumnsObj = {
       default: 4,
@@ -26,7 +25,7 @@ export default class selectedImages extends React.Component {
             className="my-masonry-grid curated-sets-list selected-images-gallery image-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {this.props.selectedImages.map((item, index) => {
+            {props.selectedImages.map((item, index) => {
               return (
                 <div className="image-card card" key={item.id}>
                   <img
@@ -46,12 +45,11 @@ export default class selectedImages extends React.Component {
           value=""
           onClick={(event) => {
             console.log("download selected images");
-            this.props.zipDownloadFolderSelectedImages();
+            props.zipDownloadFolderSelectedImages();
           }}
         >
           Download Set of Selected Images
         </button>
       </div>
     );
-  }
 }
