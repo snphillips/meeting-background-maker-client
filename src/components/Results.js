@@ -1,38 +1,28 @@
 import React from "react";
 import Masonry from "react-masonry-css";
 
-// This component takes an array called preSelectedImages (that was populated
-// when the user selected a search term), maps over that array and displays
-// each image with info.
+/*
+This component takes an array called preSelectedImages 
+(that was populated when the user selected a search term),
+maps over that array and displays each image with info.
 
-// TODO: if the array only contains jpegs from the server, you won't have any of
-// the metadata that makes this app interesting. It seems you want to keep all this
-// great metadata, but also bring over the path to the locally stored image.
+TODO: if the array only contains jpegs from the server,
+you won't have any of the metadata that makes this app interesting.
+It seems you want to keep all this great metadata,
+but also bring over the path to the locally stored image.
+*/
 
-export default class Results extends React.Component {
-  constructor(props) {
-    super(props);
+export default function Results(props) {
 
-    this.state = {};
-
-    // This binding is necessary to make `this` work in the callback
-    // this.handleChange = this.handleChange.bind(this);
-  }
-
-  // ***********************************
-  // End of constructor
-  // ***********************************
-
-  render() {
-    let preSelectedImages = this.props.preSelectedImages;
+  let preSelectedImages = props.preSelectedImages;
 
     // For use with Masonry package
-    const breakpointColumnsObj = {
+  const breakpointColumnsObj = {
       default: 4,
       1100: 3,
       700: 2,
       500: 1,
-    };
+  };
 
     return (
       <section className="component" id="results-component">
@@ -58,12 +48,11 @@ export default class Results extends React.Component {
                 <p className="item-title">{item.title}</p>
                 <p className="item-title">{item.id}</p>
 
-                {this.props.whichButton(item)}
+                {props.whichButton(item)}
               </div>
             );
           })}
         </Masonry>
       </section>
     );
-  }
 }
