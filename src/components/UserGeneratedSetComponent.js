@@ -3,48 +3,39 @@ import Filters from "./Filters";
 import Results from "./Results.js";
 import SelectedImages from "./SelectedImages.js";
 
-export default class UserGeneratedSetComponent extends React.Component {
-  constructor(props) {
-    super(props);
+export default function UserGeneratedSetComponent(props) {
 
-    this.state = {};
-  }
+  // componentDidMount() {
+    // props.toggleDisplayBlockOrNone(
+    //   props.displayResultsComponent,
+    //   "#results-component"
+    // );
+    // props.toggleDisplayBlockOrNone(
+    //   props.displaySelectedImages,
+    //   "#selected-images-component"
+    // );
+  // }
 
-  componentDidMount() {
-    this.props.toggleDisplayBlockOrNone(
-      this.state.displayResultsComponent,
-      "#results-component"
-    );
-    this.props.toggleDisplayBlockOrNone(
-      this.state.displaySelectedImages,
-      "#selected-images-component"
-    );
-  }
-
-  render() {
     return (
       <section id="user-generated-set-window">
         <Filters
-          handleFilterSubmit={this.props.handleFilterSubmit}
-          loading={this.props.loading}
+          handleFilterSubmit={props.handleFilterSubmit}
+          loading={props.loading}
         />
 
         <Results
-          parentState={this.state}
-          preSelectedImages={this.props.preSelectedImages}
-          toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
-          whichButton={this.props.whichButton}
+          // parentstate={props}
+          preSelectedImages={props.preSelectedImages}
+          toggleFilterResultsPlacehodler={props.toggleFilterResultsPlacehodler}
+          whichButton={props.whichButton}
         />
 
         <SelectedImages
-          selectedImages={this.props.selectedImages}
-          toggleSelectedImagesComponent={
-            this.state.toggleSelectedImagesComponent
-          }
-          zipDownloadFolderSelectedImages={this.zipDownloadFolderSelectedImages}
-          toggleDisplayBlockOrNone={this.toggleDisplayBlockOrNone}
+          selectedImages={props.selectedImages}
+          toggleSelectedImagesComponent={props.toggleSelectedImagesComponent}
+          zipDownloadFolderSelectedImages={props.zipDownloadFolderSelectedImages}
+          toggleDisplayBlockOrNone={props.toggleDisplayBlockOrNone}
         />
       </section>
     );
-  }
 }

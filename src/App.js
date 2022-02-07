@@ -344,7 +344,8 @@ export default class App extends Component {
             handleFilterSubmit={this.handleFilterSubmit}
             loading={this.state.loading}
             preSelectedImages={this.state.preSelectedImages}
-            toggleFilterResultsPlacehodler={this.toggleFilterResultsPlacehodler}
+            toggleFilterResultsPlaceholder={this.toggleFilterResultsPlaceholder}
+            // toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
             whichButton={this.whichButton}
             selectedImages={this.state.selectedImages}
             toggleSelectedImagesComponent={
