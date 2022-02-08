@@ -312,9 +312,9 @@ useEffect(() => {
             <h2
               className="set-heading user-generated-set-heading"
               onClick={() => {
-                setState(
-                  { displayUserGeneratedSetComponent: true },
-                  () => {
+                setDisplayUserGeneratedSetComponent(true);
+               
+
                     document.querySelector(
                       ".user-generated-set-heading"
                     ).style.borderBottom = "2px solid #000";
@@ -327,8 +327,8 @@ useEffect(() => {
                     document.querySelector(
                       "#curated-set-window"
                     ).style.display = "none";
-                  }
-                );
+                
+              
               }}
             >
               Your Backgrounds
@@ -340,9 +340,7 @@ useEffect(() => {
               className="set-heading curated-set-heading"
               onClick={() => {
                 setDisplayCuratedSetComponent(true);
-                  document.querySelector(
-                    ".user-generated-set-heading"
-                  ).style.borderBottom = "2px solid #fff";
+                  document.querySelector(".user-generated-set-heading").style.borderBottom = "2px solid #fff";
                   document.querySelector(
                     ".curated-set-heading"
                   ).style.borderBottom = "2px solid #000";
