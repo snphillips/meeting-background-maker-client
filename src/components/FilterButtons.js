@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import filterTerms from "../filterTerms";
 import LoadingSpinner from "../LoadingSpinner";
 
@@ -15,7 +15,7 @@ the server or client. This way, all the hard work of calling the museum,
 and manipulating the images has been done in advance.
 */
 
-export default function Filters(props) {
+export default function FilterButtons(props) {
   return (
       <div className="filters-component">
         <div>

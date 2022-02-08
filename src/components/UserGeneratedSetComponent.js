@@ -1,24 +1,30 @@
-import React from "react";
-import Filters from "./Filters";
+import React, { useEffect } from "react";
+import FilterButtons from "./FilterButtons";
 import Results from "./Results.js";
 import SelectedImages from "./SelectedImages.js";
 
 export default function UserGeneratedSetComponent(props) {
 
-  // componentDidMount() {
-    // props.toggleDisplayBlockOrNone(
-    //   props.displayResultsComponent,
-    //   "#results-component"
-    // );
-    // props.toggleDisplayBlockOrNone(
-    //   props.displaySelectedImages,
-    //   "#selected-images-component"
-    // );
-  // }
+  useEffect(() => {
+
+    props.toggleDisplayBlockOrNone(
+      props.displayResultsComponent,
+      "#results-component"
+    );
+    props.toggleDisplayBlockOrNone(
+      props.displaySelectedImages,
+      "#selected-images-component"
+    );
+    
+  }, []);
+
+
+
+  
 
     return (
       <section id="user-generated-set-window">
-        <Filters
+        <FilterButtons
           handleFilterSubmit={props.handleFilterSubmit}
           loading={props.loading}
         />
@@ -26,7 +32,7 @@ export default function UserGeneratedSetComponent(props) {
         <Results
           // parentstate={props}
           preSelectedImages={props.preSelectedImages}
-          toggleFilterResultsPlacehodler={props.toggleFilterResultsPlacehodler}
+          toggleFilterResultsPlaceholder={props.toggleFilterResultsPlaceholder}
           whichButton={props.whichButton}
         />
 

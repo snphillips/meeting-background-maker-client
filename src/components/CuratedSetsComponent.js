@@ -1,24 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import CuratedSetsImageGallery from "./CuratedSetsImageGallery";
 import Masonry from "react-masonry-css";
 
-export default class CuratedSetsComponent extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {};
+export default function CuratedSetComponent(props) {
 
-    // This binding is necessary to make `this` work in the callback
-  }
-
-  //  componentDidMount() {
-  //   this.props.toggleDisplayBlockOrNone(this.state.displayCuratedSetComponent, "#curated-set-window")
-  // }
-
-  render() {
-    // let displayUserGeneratedSetComponentWindow = this.props.displayUserGeneratedSetComponent
-    // let displayCuratedSetComponentWindow = this.props.displayCuratedSetComponent
-    let curatedSetsArray = this.props.curatedSets;
+    // let displayUserGeneratedSetComponentWindow = props.displayUserGeneratedSetComponent
+    // let displayCuratedSetComponentWindow = props.displayCuratedSetComponent
+    let curatedSetsArray = props.curatedSets;
     // console.log("curatedSetsArray in CuratedSetsComponent:", curatedSetsArray)
 
     // For use with Masonry package
@@ -27,7 +16,7 @@ export default class CuratedSetsComponent extends Component {
       1100: 3,
       700: 2,
       500: 1,
-    };
+    }
 
     return (
       <section id="curated-set-window">
@@ -51,7 +40,7 @@ export default class CuratedSetsComponent extends Component {
                   value={item.setName}
                   onClick={(event) => {
                     console.log("button value is:", event.target.value);
-                    // this.props.handleFilterSubmit(event)
+                    // props.handleFilterSubmit(event)
                   }}
                 >
                   {item.setName}
@@ -64,7 +53,6 @@ export default class CuratedSetsComponent extends Component {
                 />
 
                 <CuratedSetsImageGallery
-                  parentState={this.state}
                   curatedSetsArray={curatedSetsArray}
                   index={index}
                 />
@@ -84,7 +72,7 @@ export default class CuratedSetsComponent extends Component {
                     value={item.setName}
                     onClick={(event) => {
                       console.log("download selected images");
-                      // this.props.zipDownloadFolderCuratedSet(item.setName, index)
+                      // props.zipDownloadFolderCuratedSet(item.setName, index)
                     }}
                   >
                     download image set
@@ -96,5 +84,4 @@ export default class CuratedSetsComponent extends Component {
         </Masonry>
       </section>
     );
-  }
 }

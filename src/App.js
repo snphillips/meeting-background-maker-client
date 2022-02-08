@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { useState, setState, useEffect, useRef } from "react";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import _Lodash from "lodash";
 import Header from "./components/Header";
-import Instructions from "./components/Instructions";
+// import Instructions from "./components/Instructions";
 import CuratedSetsComponent from "./components/CuratedSetsComponent";
 import Footer from "./components/Footer";
 import removalListArray from "./removalListArray";
@@ -18,98 +18,98 @@ import gourmet from "./CuratedSets/gourmet.js";
 import hermanMillerPicnic from "./CuratedSets/hermanMillerPicnic.js";
 import photoMural from "./CuratedSets/photoMural.js";
 
-let JSZip = require("jszip");
+const JSZip = require("jszip");
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
+export default function App(props) {
+  
+const initialRender = useRef(true);
+const [loading, setLoading] = useState(false); // the loading spinner
+const [value, setValue] = useState("dots");
+const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
+const [displayFilterResults, setDisplayFilterResults] = useState(false);
+const [displayCuratedSetComponent, setDisplayCuratedSetComponent] = useState(false);
+const [displayUserGeneratedSetComponent, setDisplayUserGeneratedSetComponent] = useState(true);
+const [toggleFilterResultsPlaceholder, setToggleFilterResultsPlaceholder] = useState(false);
+const [toggleSelectedImagesComponent, setToggleSelectedImagesComponent] = useState(false);
+const [revealFilterResultsComponent, setRevealFilterResultsComponent] = useState(false);
+const [displayResultsComponent, setDisplayResultsComponent] = useState(false);
+const [displayDownloadButton, setDisplayDownloadButton] = useState(true);
+const [downloadSetComponent, setDownloadSetComponent] = useState(true);
+const [preSelectedImages, setPreSelectedImages] = useState([]); 
+const [selectedImages, setSelectedImages] = useState([]);
+const [removalList, setRemovalList] = useState([]); 
+const [removalListArray, setRemovalListArray] = useState([]);
+const [curatedSets, setCuratedSets] = useState([cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser]);
+const [imgData, setImgData] = useState();
+                  
 
-    this.state = {
-      loading: false, // the loading spinner
-      displayUserGeneratedSetComponent: true,
-      displayResultsComponent: false,
-      displayFilterResults: false,
-      displaySelectedImages: false,
-      displayDownloadButton: true,
-      displayCuratedSetComponent: false,
-      downloadSetComponent: true,
-      value: "dots",
-      preSelectedImages: [],
-      selectedImages: [],
-      removalList: removalListArray,
-      curatedSets: [
-        cocktailHour,
-        colorTheory,
-        gardenParty,
-        gourmet,
-        hermanMillerPicnic,
-        photoMural,
-        kolomanMoser,
-      ],
-      // selectedCuratedSet: ''
-    };
+// ===================================
+// Runs on first render
+// ===================================
+useEffect(() => {
+  // debugger
+  shuffleBackgroundClipTextImage();
+  // zipDownloadFolderCuratedSet()
+  // zipDownloadFolderSelectedImages()
+}, []);
 
-    // This binding is necessary to make `this` work in the callback
-    // this.handleChange = this.handleChange.bind(this);
-    this.handleFilterSubmit = this.handleFilterSubmit.bind(this);
-    this.handleAddToCollectionSubmit =
-      this.handleAddToCollectionSubmit.bind(this);
-    this.handleRemoveFromCollectionSubmit =
-      this.handleRemoveFromCollectionSubmit.bind(this);
-    this.shuffleBackgroundClipTextImage =
-      this.shuffleBackgroundClipTextImage.bind(this);
-    this.whichButton = this.whichButton.bind(this);
-    // this.zipDownloadFolderCuratedSet = this.zipDownloadFolderCuratedSet.bind(this);
-    this.zipDownloadFolderSelectedImages =
-      this.zipDownloadFolderSelectedImages.bind(this);
-    this.toggleDisplayBlockOrNone = this.toggleDisplayBlockOrNone.bind(this);
-  }
 
-  // ***********************************
-  // End of constructor
-  // ***********************************
-
-  handleFilterSubmit(event) {
-    this.setState({ value: event.target.value }, () => {
-      this.searchByTag();
-    });
+  function handleFilterSubmit(event) {
+    console.log("event", event)
+    // Sarah, app used to have event.target.value
+    setValue({event})
+    // setValue({event.target.value})
+    // setValue({event.target.innerText})
+    // sarah, when I refactored the event.preventDefault was
+    // in the callback...does it work here
     event.preventDefault();
-  }
+  };
 
-  handleAddToCollectionSubmit(item) {
+  // useEffect(() => {
+  //   searchByTag();
+  // }, [value]);
+
+  useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+    } else {
+      searchByTag();
+    }
+  }, [value]);
+
+  function handleAddToCollectionSubmit(item) {
     console.log("add to collection");
-    let selectedImageArray = this.state.selectedImages;
+    let selectedImageArray = selectedImages;
     selectedImageArray.push(item);
-    this.setState({ selectedImages: selectedImageArray });
-    this.toggleDownloadButtonComponent();
-
-    this.setState({ displaySelectedImages: true }, () => {
-      this.toggleDisplayBlockOrNone(
-        this.state.displaySelectedImages,
-        "#selected-images-component"
-      );
-    });
+    setSelectedImages(selectedImageArray);
+    toggleDownloadButtonComponent();
+    setDisplaySelectedImages(true);
   }
 
-  handleRemoveFromCollectionSubmit(item) {
+    useEffect(() => {
+      toggleDisplayBlockOrNone(displaySelectedImages, "#selected-images-component")
+    }, [displaySelectedImages])
+
+
+  function handleRemoveFromCollectionSubmit(item) {
     console.log("removing this item from collection: ", item.title);
-    let selectedImagesArray = this.state.selectedImages;
+    let selectedImagesArray = selectedImages;
     // using the _Lodash library to remove the item from the
     // array of selected images
     // https://lodash.com/docs/#reject
     selectedImagesArray = _Lodash.reject(selectedImagesArray, (theObject) => {
       return theObject.id === item.id;
     });
-    this.setState({ selectedImages: selectedImagesArray });
+    setSelectedImages(selectedImagesArray)
   }
 
-  whichButton(item) {
+  function whichButton(item) {
     // using the _Lodash library to efficiently check if the button
     // belongs to an item that the user has selected or not
     // https://lodash.com/docs/#includes
     let buttonResult = "";
 
-    if (_Lodash.includes(this.state.selectedImages, item)) {
+    if (_Lodash.includes(selectedImages, item)) {
       // could this be a switch statement?
       buttonResult = (
         <button
@@ -118,7 +118,7 @@ export default class App extends Component {
           className="results-button-remove-from-collection"
           onClick={(event) => {
             console.log("button value is:", item, item.id);
-            this.handleRemoveFromCollectionSubmit(item);
+            handleRemoveFromCollectionSubmit(item);
           }}
         >
           {" "}
@@ -133,7 +133,7 @@ export default class App extends Component {
           className="results-button-add-to-collection"
           onClick={(event) => {
             console.log("button value is:", item, item.id);
-            this.handleAddToCollectionSubmit(item);
+            handleAddToCollectionSubmit(item);
           }}
         >
           {" "}
@@ -144,93 +144,94 @@ export default class App extends Component {
     return buttonResult;
   }
 
-  cooperHewittSearchByTagFromAPI() {
+  function cooperHewittSearchByTagFromAPI() {
     // start the loading spinner
-    this.setState({ loading: true });
+    setLoading(true);
 
-    // ${this.state.value} is whatever keyword the user chooses from the dropdown menu
+    // ${value} is whatever keyword the user chooses from the dropdown menu
     // The "response" does the following:
     // 1) stops the loading spinner
     // 2) removes the placeholder image
     // 3) returns a random item (image, title, description & link url)
-    // axios.get(`https://art-thief.herokuapp.com/searchbytag/`+`${this.state.value}`)
+    // axios.get(`https://art-thief.herokuapp.com/searchbytag/`+`${value}`)
     axios
-      .get(`http://localhost:3001/searchbytag/` + this.state.value)
+      .get(`http://localhost:3001/searchbytag/` + value)
       .then((response) => {
         // having some fun and changing the background
-        this.shuffleBackgroundClipTextImage();
-        // console.log(`The search value is:`, this.state.value, `There are`, (response.data).length, `images.`)
-        // console.log(`1) The search value is:`, this.state.value, "response length is:", (response.data).length )
+        shuffleBackgroundClipTextImage();
+        // console.log(`The search value is:`, value, `There are`, (response.data).length, `images.`)
+        // console.log(`1) The search value is:`, value, "response length is:", (response.data).length )
         // set the state of preSelectedImage with the response from the server
-        this.setState({ preSelectedImages: response.data });
-        // this.removeBlacklist()
-        // this.rotatePortrait()
-        // this.skinnyGottaGo()
-        // console.log("4) AFTER Manipulation preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+        setPreSelectedImages(response.data)
+        // removeBlacklist()
+        // rotatePortrait()
+        // skinnyGottaGo()
+        // console.log("4) AFTER Manipulation preSelectedImages are:", preSelectedImages, preSelectedImages.length)
         // stop the loading spinner
-        this.setState({ loading: false });
+        setLoading(false);
         // show the component that displays results
-        this.revealFilterResultsComponent();
+        setRevealFilterResultsComponent(true);
       })
       .catch(function (error) {
         console.log("error", error);
       });
   }
 
-  searchByTag() {
+  function searchByTag() {
     // start the loading spinner
-    this.setState({ loading: true });
-    console.log("this.state.value is: ", this.state.value);
-    this.shuffleBackgroundClipTextImage();
+    setLoading(true);
+    console.log("value is: ", value);
+    shuffleBackgroundClipTextImage();
 
     axios
-      .get(`http://localhost:3001/searchbytag/` + this.state.value)
+      .get(`http://localhost:3001/searchbytag/` + value)
       .then((response) => {
         // having some fun and changing the background
-        this.shuffleBackgroundClipTextImage();
-        // console.log(`The search value is:`, this.state.value, `There are`, (response.data).length, `images.`)
-        // console.log(`1) The search value is:`, this.state.value, "response length is:", (response.data).length )
+        shuffleBackgroundClipTextImage();
+        // console.log(`The search value is:`, value, `There are`, (response.data).length, `images.`)
+        // console.log(`1) The search value is:`, value, "response length is:", (response.data).length )
         // set the state of preSelectedImage with the response from the server
-        this.setState({ preSelectedImages: response.data });
-        // this.removeBlacklist()
-        // this.rotatePortrait()
-        // this.skinnyGottaGo()
-        // console.log("4) AFTER Manipulation preSelectedImages are:", this.state.preSelectedImages, this.state.preSelectedImages.length)
+        setPreSelectedImages(response.data)
+        // removeBlacklist()
+        // rotatePortrait()
+        // skinnyGottaGo()
+        // console.log("4) AFTER Manipulation preSelectedImages are:", preSelectedImages, preSelectedImages.length)
         // stop the loading spinner
-        this.setState({ loading: false });
+        setLoading(false);
 
         // show the component that displays the preSelected results from the search
-        this.setState({ displayFilterResults: true }, () => {
-          this.toggleDisplayBlockOrNone(
-            this.state.displayFilterResults,
-            "#results-component"
-          );
-        });
-      })
-      .catch(function (error) {
+        setDisplayFilterResults(true)
+        // setState({ displayFilterResults: true }, () => {
+          // toggleDisplayBlockOrNone( displayFilterResults, "#results-component");
+        // });
+      }).catch(function (error) {
         console.log(error);
       });
-  }
+    }
+    
+    useEffect(() => {
+      toggleDisplayBlockOrNone( displayFilterResults, "#results-component");
+    }, [displayFilterResults])
 
   // Reusable toggle function-- toggle betwewen display block or none
   // If toggleState is true, then display block. If false, display none.
   // This function is being used in displayFilterResults, displaySelectedImages &
   // displayDownloadButton
-  toggleDisplayBlockOrNone(toggleState, htmlSelector) {
+  function toggleDisplayBlockOrNone(toggleState, htmlSelector) {
     console.log("toggleState: ", toggleState, htmlSelector);
     toggleState
       ? (document.querySelector(htmlSelector).style.display = "block")
       : (document.querySelector(htmlSelector).style.display = "none");
   }
 
-  toggleDownloadButtonComponent() {
-    if (this.state.selectedImages.length > 0) {
-      this.setState({ displayDownloadButton: true });
+  function toggleDownloadButtonComponent() {
+    if (selectedImages.length > 0) {
+      setDisplayDownloadButton(true);
       document.querySelector(".download-button").style.display = "block";
     }
   }
 
-  shuffleBackgroundClipTextImage() {
+  function shuffleBackgroundClipTextImage() {
     let numOfBackgroundImages = 31;
     let randomNumber = Math.floor(Math.random() * numOfBackgroundImages);
     console.log("random background image number is: ", randomNumber);
@@ -257,16 +258,16 @@ export default class App extends Component {
   }
 
   // Using the JSZip library
-  zipDownloadFolderSelectedImages() {
-    console.log("downloading selected images: ", this.state.selectedImages);
-    let selectedImages = this.state.selectedImages;
+  function zipDownloadFolderSelectedImages() {
+    console.log("downloading selected images: ", selectedImages);
+    let selectedImages = selectedImages;
     let folderName = "meeting-backgrounds";
     let zip = new JSZip();
     // zip.file("Hello.txt", "Hello World\n");
     let imgFolder = zip.folder("meeting-backgrounds");
 
     selectedImages.forEach((image) => {
-      imgFolder.file(image.images[0].b.url, this.imgData, { base64: true });
+      imgFolder.file(image.images[0].b.url, imgData, { base64: true });
     });
 
     zip.generateAsync({ type: "blob" }).then(function (content) {
@@ -275,13 +276,33 @@ export default class App extends Component {
     });
   }
 
-  componentDidMount() {
-    this.shuffleBackgroundClipTextImage();
-    // this.zipDownloadFolderCuratedSet()
-    // this.zipDownloadFolderSelectedImages()
+  // Sarah why did you take this out in 2020?
+  function zipDownloadFolderCuratedSet(value, index) {
+    console.log("downloading curated image set with value of: ", value, index)
+    console.log("spongebob", this.state.curatedSets[index])
+
+    let desiredCuratedSet = value
+    let selectedCuratedSet = this.state.curatedSets[index].images
+    // value is the name of the selected curated list
+    let folderName = value
+    let zip = new JSZip();
+    // zip.file("Hello.txt", "Hello World\n");
+    // let imgFolder = zip.folder("cocktailHour");
+  
+    selectedCuratedSet.forEach( (thing) => {
+      zip.file(thing.imageURL, this.imgData, {base64: true});
+    })
+  
+    zip.generateAsync({type:"blob"})
+       .then(function(content) {
+          // Using npm library FileSaver.js
+          saveAs(content, folderName);
+       });
   }
 
-  render() {
+
+
+
     return (
       <div className="App app-container">
         <Header />
@@ -291,7 +312,7 @@ export default class App extends Component {
             <h2
               className="set-heading user-generated-set-heading"
               onClick={() => {
-                this.setState(
+                setState(
                   { displayUserGeneratedSetComponent: true },
                   () => {
                     document.querySelector(
@@ -318,7 +339,7 @@ export default class App extends Component {
             <h2
               className="set-heading curated-set-heading"
               onClick={() => {
-                this.setState({ displayCuratedSetComponent: true }, () => {
+                setDisplayCuratedSetComponent(true);
                   document.querySelector(
                     ".user-generated-set-heading"
                   ).style.borderBottom = "2px solid #fff";
@@ -330,7 +351,6 @@ export default class App extends Component {
                   ).style.display = "none";
                   document.querySelector("#curated-set-window").style.display =
                     "block";
-                });
               }}
             >
               Curated Sets
@@ -339,42 +359,31 @@ export default class App extends Component {
         </section>
 
         <section id="component-sections">
+
           <UserGeneratedSetComponent
-            parentState={this.state}
-            handleFilterSubmit={this.handleFilterSubmit}
-            loading={this.state.loading}
-            preSelectedImages={this.state.preSelectedImages}
-            toggleFilterResultsPlaceholder={this.toggleFilterResultsPlaceholder}
-            // toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
-            whichButton={this.whichButton}
-            selectedImages={this.state.selectedImages}
-            toggleSelectedImagesComponent={
-              this.state.toggleSelectedImagesComponent
-            }
-            zipDownloadFolderSelectedImages={
-              this.zipDownloadFolderSelectedImages
-            }
-            toggleDisplayBlockOrNone={this.toggleDisplayBlockOrNone}
-            displayUserGeneratedSetComponent={
-              this.state.displayUserGeneratedSetComponent
-            }
-            displayCuratedSetComponent={this.state.displayCuratedSetComponent}
-            displayResultsComponent={this.state.displayResultsComponent}
+            loading={loading}
+            preSelectedImages={preSelectedImages}
+            toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
+            selectedImages={selectedImages}
+            toggleSelectedImagesComponent={toggleSelectedImagesComponent}
+            displayUserGeneratedSetComponent={displayUserGeneratedSetComponent}
+            displayCuratedSetComponent={displayCuratedSetComponent}
+            displayResultsComponent={displayResultsComponent}
+            handleFilterSubmit={handleFilterSubmit}
+            whichButton={whichButton}
+            zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
+            toggleDisplayBlockOrNone={toggleDisplayBlockOrNone}
           />
 
           <CuratedSetsComponent
-            parentState={this.state}
-            zipDownloadFolderCuratedSet={this.zipDownloadFolderCuratedSet}
-            curatedSets={this.state.curatedSets}
-            displayCuratedSetComponent={this.state.displayCuratedSetComponent}
-            displayUserGeneratedSetComponent={
-              this.state.displayUserGeneratedSetComponent
-            }
-            toggleDisplayBlockOrNone={this.toggleDisplayBlockOrNone}
+            zipDownloadFolderCuratedSet={zipDownloadFolderCuratedSet}
+            curatedSets={curatedSets}
+            displayCuratedSetComponent={displayCuratedSetComponent}
+            displayUserGeneratedSetComponent={displayUserGeneratedSetComponent}
+            toggleDisplayBlockOrNone={toggleDisplayBlockOrNone}
           />
         </section>
         <Footer />
       </div>
     );
-  }
 }
