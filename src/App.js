@@ -1,4 +1,4 @@
-import React, { useState, setState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import _Lodash from "lodash";
@@ -6,8 +6,8 @@ import Header from "./components/Header";
 // import Instructions from "./components/Instructions";
 import CuratedSetsComponent from "./components/CuratedSetsComponent";
 import Footer from "./components/Footer";
-import removalListArray from "./removalListArray";
-import UserGeneratedSetComponent from "./components/UserGeneratedSetComponent";
+// import removalListArray from "./removalListArray";
+import YourBackgroundsComponent from "./components/YourBackgroundsComponent";
 
 // Curated Sets
 import kolomanMoser from "./CuratedSets/kolomanMoser";
@@ -26,13 +26,10 @@ const initialRender = useRef(true);
 const [loading, setLoading] = useState(false); // the loading spinner
 const [value, setValue] = useState("dots");
 const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
-const [displayFilterResults, setDisplayFilterResults] = useState(false);
 const [displayCuratedSetComponent, setDisplayCuratedSetComponent] = useState(false);
-const [displayUserGeneratedSetComponent, setDisplayUserGeneratedSetComponent] = useState(true);
+const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = useState(true);
 const [toggleFilterResultsPlaceholder, setToggleFilterResultsPlaceholder] = useState(false);
-const [toggleSelectedImagesComponent, setToggleSelectedImagesComponent] = useState(false);
-const [revealFilterResultsComponent, setRevealFilterResultsComponent] = useState(false);
-const [displayResultsComponent, setDisplayResultsComponent] = useState(false);
+const [displayFilteredResults, setDisplayFilteredResults] = useState(false);
 const [displayDownloadButton, setDisplayDownloadButton] = useState(true);
 const [downloadSetComponent, setDownloadSetComponent] = useState(true);
 const [preSelectedImages, setPreSelectedImages] = useState([]); 
@@ -53,11 +50,10 @@ useEffect(() => {
   // zipDownloadFolderSelectedImages()
 }, []);
 
-
   function handleFilterSubmit(event) {
     console.log("event", event)
     // Sarah, app used to have event.target.value
-    setValue({event})
+    setValue(event.target.value)
     // setValue({event.target.value})
     // setValue({event.target.innerText})
     // sarah, when I refactored the event.preventDefault was
@@ -65,17 +61,42 @@ useEffect(() => {
     event.preventDefault();
   };
 
-  // useEffect(() => {
-  //   searchByTag();
-  // }, [value]);
-
   useEffect(() => {
+
+    function searchByTag() {
+      // start the loading spinner
+      setLoading(true);
+      console.log("value is: ", value);
+      shuffleBackgroundClipTextImage();
+  
+      axios
+        .get(`http://localhost:3001/searchbytag/` + value)
+        .then((response) => {
+          // having some fun and changing the background
+          shuffleBackgroundClipTextImage();
+          console.log(`The search value is:`, value, `There are`, (response.data).length, `images.`)
+          console.log(`1) The search value is:`, value, "response length is:", (response.data).length )
+          // set the state of preSelectedImage with the response from the server
+          setPreSelectedImages(response.data)
+          // stop the loading spinner
+          setLoading(false);
+  
+          // show the component that displays the preSelected results from the search
+          setDisplayFilteredResults(true)
+        }).catch(function (error) {
+          console.log(error);
+        });
+      }
+    // don't run on initial render
     if (initialRender.current) {
       initialRender.current = false;
     } else {
       searchByTag();
+      setDisplayFilteredResults(true);
     }
   }, [value]);
+
+
 
   function handleAddToCollectionSubmit(item) {
     console.log("add to collection");
@@ -87,7 +108,7 @@ useEffect(() => {
   }
 
     useEffect(() => {
-      toggleDisplayBlockOrNone(displaySelectedImages, "#selected-images-component")
+      setDisplaySelectedImages(true);
     }, [displaySelectedImages])
 
 
@@ -170,59 +191,33 @@ useEffect(() => {
         // stop the loading spinner
         setLoading(false);
         // show the component that displays results
-        setRevealFilterResultsComponent(true);
+        // setDisplayFilteredResultsComponent(true);
+        setDisplayFilteredResults(true);
       })
       .catch(function (error) {
         console.log("error", error);
       });
   }
 
-  function searchByTag() {
-    // start the loading spinner
-    setLoading(true);
-    console.log("value is: ", value);
-    shuffleBackgroundClipTextImage();
 
-    axios
-      .get(`http://localhost:3001/searchbytag/` + value)
-      .then((response) => {
-        // having some fun and changing the background
-        shuffleBackgroundClipTextImage();
-        // console.log(`The search value is:`, value, `There are`, (response.data).length, `images.`)
-        // console.log(`1) The search value is:`, value, "response length is:", (response.data).length )
-        // set the state of preSelectedImage with the response from the server
-        setPreSelectedImages(response.data)
-        // removeBlacklist()
-        // rotatePortrait()
-        // skinnyGottaGo()
-        // console.log("4) AFTER Manipulation preSelectedImages are:", preSelectedImages, preSelectedImages.length)
-        // stop the loading spinner
-        setLoading(false);
-
-        // show the component that displays the preSelected results from the search
-        setDisplayFilterResults(true)
-        // setState({ displayFilterResults: true }, () => {
-          // toggleDisplayBlockOrNone( displayFilterResults, "#results-component");
-        // });
-      }).catch(function (error) {
-        console.log(error);
-      });
-    }
     
-    useEffect(() => {
-      toggleDisplayBlockOrNone( displayFilterResults, "#results-component");
-    }, [displayFilterResults])
+    // useEffect(() => {
+    //   // toggleDisplayBlockOrNone( displayFilteredResults, "#results-component");
+    //   setDisplayFilteredResults(true);
+    // }, [displayFilteredResults])
 
-  // Reusable toggle function-- toggle betwewen display block or none
-  // If toggleState is true, then display block. If false, display none.
-  // This function is being used in displayFilterResults, displaySelectedImages &
-  // displayDownloadButton
-  function toggleDisplayBlockOrNone(toggleState, htmlSelector) {
-    console.log("toggleState: ", toggleState, htmlSelector);
-    toggleState
-      ? (document.querySelector(htmlSelector).style.display = "block")
-      : (document.querySelector(htmlSelector).style.display = "none");
-  }
+  // // Reusable toggle function-- toggle betwewen display block or none
+  // // If toggleState is true, then display block. If false, display none.
+  // // This function is being used in 
+  // // displayFilteredResults, 
+  // // displaySelectedImages &
+  // // displayDownloadButton
+  // function toggleDisplayBlockOrNone(toggleState, htmlSelector) {
+  //   console.log("toggleState: ", toggleState, htmlSelector);
+  //   toggleState
+  //     ? (document.querySelector(htmlSelector).style.display = "block")
+  //     : (document.querySelector(htmlSelector).style.display = "none");
+  // }
 
   function toggleDownloadButtonComponent() {
     if (selectedImages.length > 0) {
@@ -234,7 +229,7 @@ useEffect(() => {
   function shuffleBackgroundClipTextImage() {
     let numOfBackgroundImages = 31;
     let randomNumber = Math.floor(Math.random() * numOfBackgroundImages);
-    console.log("random background image number is: ", randomNumber);
+    // console.log("random background image number is: ", randomNumber);
     document
       .querySelector(".clip-text")
       .style.setProperty(
@@ -260,7 +255,7 @@ useEffect(() => {
   // Using the JSZip library
   function zipDownloadFolderSelectedImages() {
     console.log("downloading selected images: ", selectedImages);
-    let selectedImages = selectedImages;
+    // let selectedImages = selectedImages;
     let folderName = "meeting-backgrounds";
     let zip = new JSZip();
     // zip.file("Hello.txt", "Hello World\n");
@@ -312,23 +307,19 @@ useEffect(() => {
             <h2
               className="set-heading user-generated-set-heading"
               onClick={() => {
-                setDisplayUserGeneratedSetComponent(true);
-               
-
-                    document.querySelector(
-                      ".user-generated-set-heading"
-                    ).style.borderBottom = "2px solid #000";
-                    document.querySelector(
-                      ".curated-set-heading"
-                    ).style.borderBottom = "2px solid #fff";
-                    document.querySelector(
-                      "#user-generated-set-window"
-                    ).style.display = "block";
-                    document.querySelector(
-                      "#curated-set-window"
-                    ).style.display = "none";
-                
-              
+                setDisplayYourBackgroundsComponent(true);
+                document.querySelector(
+                  ".user-generated-set-heading"
+                ).style.borderBottom = "2px solid #000";
+                document.querySelector(
+                  ".curated-set-heading"
+                ).style.borderBottom = "2px solid #fff";
+                document.querySelector(
+                  "#user-generated-set-window"
+                ).style.display = "block";
+                document.querySelector(
+                  "#curated-set-window"
+                ).style.display = "none";
               }}
             >
               Your Backgrounds
@@ -341,12 +332,8 @@ useEffect(() => {
               onClick={() => {
                 setDisplayCuratedSetComponent(true);
                   document.querySelector(".user-generated-set-heading").style.borderBottom = "2px solid #fff";
-                  document.querySelector(
-                    ".curated-set-heading"
-                  ).style.borderBottom = "2px solid #000";
-                  document.querySelector(
-                    "#user-generated-set-window"
-                  ).style.display = "none";
+                  document.querySelector(".curated-set-heading").style.borderBottom = "2px solid #000";
+                  document.querySelector("#user-generated-set-window").style.display = "none";
                   document.querySelector("#curated-set-window").style.display =
                     "block";
               }}
@@ -358,27 +345,25 @@ useEffect(() => {
 
         <section id="component-sections">
 
-          <UserGeneratedSetComponent
+          <YourBackgroundsComponent
             loading={loading}
             preSelectedImages={preSelectedImages}
             toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
             selectedImages={selectedImages}
-            toggleSelectedImagesComponent={toggleSelectedImagesComponent}
-            displayUserGeneratedSetComponent={displayUserGeneratedSetComponent}
+            displaySelectedImages={displaySelectedImages}
+            displayYourBackgroundsComponent={displayYourBackgroundsComponent}
             displayCuratedSetComponent={displayCuratedSetComponent}
-            displayResultsComponent={displayResultsComponent}
+            displayFilteredResults={displayFilteredResults}
             handleFilterSubmit={handleFilterSubmit}
             whichButton={whichButton}
             zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
-            toggleDisplayBlockOrNone={toggleDisplayBlockOrNone}
           />
 
           <CuratedSetsComponent
-            zipDownloadFolderCuratedSet={zipDownloadFolderCuratedSet}
             curatedSets={curatedSets}
             displayCuratedSetComponent={displayCuratedSetComponent}
-            displayUserGeneratedSetComponent={displayUserGeneratedSetComponent}
-            toggleDisplayBlockOrNone={toggleDisplayBlockOrNone}
+            displayYourBackgroundsComponent={displayYourBackgroundsComponent}
+            zipDownloadFolderCuratedSet={zipDownloadFolderCuratedSet}
           />
         </section>
         <Footer />

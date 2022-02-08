@@ -1,28 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import FilterButtons from "./FilterButtons";
 import Results from "./Results.js";
 import SelectedImages from "./SelectedImages.js";
 
-export default function UserGeneratedSetComponent(props) {
-
-  useEffect(() => {
-
-    props.toggleDisplayBlockOrNone(
-      props.displayResultsComponent,
-      "#results-component"
-    );
-    props.toggleDisplayBlockOrNone(
-      props.displaySelectedImages,
-      "#selected-images-component"
-    );
-    
-  }, []);
-
-
-
-  
+export default function YourBackgroundsComponent(props) {
 
     return (
+      
       <section id="user-generated-set-window">
         <FilterButtons
           handleFilterSubmit={props.handleFilterSubmit}
@@ -30,18 +14,25 @@ export default function UserGeneratedSetComponent(props) {
         />
 
         <Results
-          // parentstate={props}
           preSelectedImages={props.preSelectedImages}
           toggleFilterResultsPlaceholder={props.toggleFilterResultsPlaceholder}
           whichButton={props.whichButton}
-        />
+          displayFilteredResults={props.displayFilteredResults}
+          />
 
+
+        {/* { props.displaySelectedImages && */}
+        <div>
         <SelectedImages
           selectedImages={props.selectedImages}
           toggleSelectedImagesComponent={props.toggleSelectedImagesComponent}
           zipDownloadFolderSelectedImages={props.zipDownloadFolderSelectedImages}
-          toggleDisplayBlockOrNone={props.toggleDisplayBlockOrNone}
-        />
+          // toggleDisplayBlockOrNone={props.toggleDisplayBlockOrNone}
+          />
+
+          </div>
+        {/* } */}
+
       </section>
     );
 }
