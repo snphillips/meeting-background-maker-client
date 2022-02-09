@@ -53,11 +53,10 @@ useEffect(() => {
   function handleFilterSubmit(event) {
     // debugger
     console.log("event", event)
-    // Sarah, app used to have event.target.value
+    // The default button action is to submit a form.
+    // If you don't need that - you need to prevent that:
+    event.preventDefault();
     setValue(event.target.value)
-    // sarah, when I refactored the event.preventDefault was
-    // in the callback...does it work here
-    // event.preventDefault();
   };
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 // import './index.css';
 import _Lodash from "lodash";
 
@@ -12,33 +12,27 @@ import _Lodash from "lodash";
 // The button message (viewButtonMessage) depends on whether the images are
 // revealed or not.
 
-export default class CuratedSetsImageGallery extends Component {
-  constructor(props) {
-    super(props);
+export default function CuratedSetsImageGallery(props){
 
-    this.state = {
-      imagesRevealed: false,
-      viewButtonMessage: "view set",
-    };
+  
+  const [imagesRevealed, setImagesRevealed] = useState(false);
+  const [viewButtonMessage, setViewButtonMessage] = useState("view set"); 
+    
 
-    // This binding is necessary to make `this` work in the callback
-    this.toggleCuratedSetImages = this.toggleCuratedSetImages.bind(this);
-  }
 
-  toggleCuratedSetImages(set, index) {
+
+  function toggleCuratedSetImages(set, index) {
     console.log("toggle curated set images for: ", set, index);
-    this.state.imagesRevealed
-      ? this.setState({ imagesRevealed: false })
-      : this.setState({ imagesRevealed: true });
-    console.log("this.state.imagesRevealed is ", this.state.imagesRevealed);
-    this.state.imagesRevealed
-      ? this.setState({ viewButtonMessage: "view set" })
-      : this.setState({ viewButtonMessage: "hide set" });
+    props.imagesRevealed
+      ? setImagesRevealed(false)
+      : setImagesRevealed(true);
+    console.log("props.imagesRevealed is ", props.imagesRevealed);
+    props.imagesRevealed ? setViewButtonMessage("view set") : setViewButtonMessage("hide set");
   }
 
-  render() {
-    let index = this.props.index;
-    let thisCuratedSet = this.props.curatedSetsArray[index];
+
+    let index = props.index;
+    let thisCuratedSet = props.curatedSetsArray[index];
     let allTheSetImages = thisCuratedSet.images;
     let allTheSetImagesMinusCover = _Lodash.drop(allTheSetImages, 1);
 
@@ -47,7 +41,7 @@ export default class CuratedSetsImageGallery extends Component {
         <section
           className="curated-images-gallery"
           id={"curated-set-gallery-" + index}
-          style={{ maxHeight: this.state.imagesRevealed ? "4000px" : 0 }}
+          style={{ maxHeight: props.imagesRevealed ? "4000px" : 0 }}
         >
           {allTheSetImagesMinusCover.map((item, index) => {
             // console.log("allTheSetImages item.id:", item.id)
@@ -60,7 +54,7 @@ export default class CuratedSetsImageGallery extends Component {
                 key={index}
                 id={"-curated-image-" + index}
                 className="curated-image"
-                // style={{display: this.state.imagesRevealed ? 'block': 'none'}}
+                // style={{display: props.imagesRevealed ? 'block': 'none'}}
               >
                 <a href={item.url}>
                   <img
@@ -84,13 +78,12 @@ export default class CuratedSetsImageGallery extends Component {
             // console.log("view images in set:", thisCuratedSet.setName)
           }}
           onClick={(event, index) => {
-            this.toggleCuratedSetImages(thisCuratedSet, index);
-            // let imagesRevealed = this.state.imagesRevealed
+            toggleCuratedSetImages(thisCuratedSet, index);
+            // let imagesRevealed = props.imagesRevealed
           }}
         >
-          {this.state.viewButtonMessage}
+          {viewButtonMessage}
         </button>
       </div>
     );
-  }
 }
