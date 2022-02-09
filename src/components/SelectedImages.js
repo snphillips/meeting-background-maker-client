@@ -12,7 +12,11 @@ export default function SelectedImages(props) {
     };
 
     return (
+      
       <div className="component" id="selected-images-component">
+
+      { props.displaySelectedImages &&
+        <div>
         <section>
           <h3>Your selected images</h3>
 
@@ -50,6 +54,8 @@ export default function SelectedImages(props) {
         >
           Download Set of Selected Images
         </button>
-      </div>
+        </div>
+      }
+        </div>
     );
 }

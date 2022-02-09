@@ -20,18 +20,11 @@ export default function YourBackgroundsComponent(props) {
           displayFilteredResults={props.displayFilteredResults}
           />
 
-
-        {/* { props.displaySelectedImages && */}
-        <div>
         <SelectedImages
           selectedImages={props.selectedImages}
-          toggleSelectedImagesComponent={props.toggleSelectedImagesComponent}
+          displaySelectedImages={props.displaySelectedImages}
           zipDownloadFolderSelectedImages={props.zipDownloadFolderSelectedImages}
-          // toggleDisplayBlockOrNone={props.toggleDisplayBlockOrNone}
           />
-
-          </div>
-        {/* } */}
 
       </section>
     );

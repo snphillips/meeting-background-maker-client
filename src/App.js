@@ -34,8 +34,8 @@ const [displayDownloadButton, setDisplayDownloadButton] = useState(true);
 const [downloadSetComponent, setDownloadSetComponent] = useState(true);
 const [preSelectedImages, setPreSelectedImages] = useState([]); 
 const [selectedImages, setSelectedImages] = useState([]);
-const [removalList, setRemovalList] = useState([]); 
-const [removalListArray, setRemovalListArray] = useState([]);
+// const [removalList, setRemovalList] = useState([]); 
+// const [removalListArray, setRemovalListArray] = useState([]);
 const [curatedSets, setCuratedSets] = useState([cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser]);
 const [imgData, setImgData] = useState();
                   
@@ -51,24 +51,24 @@ useEffect(() => {
 }, []);
 
   function handleFilterSubmit(event) {
+    // debugger
     console.log("event", event)
     // Sarah, app used to have event.target.value
     setValue(event.target.value)
-    // setValue({event.target.value})
-    // setValue({event.target.innerText})
     // sarah, when I refactored the event.preventDefault was
     // in the callback...does it work here
-    event.preventDefault();
+    // event.preventDefault();
   };
 
   useEffect(() => {
 
+    // =================================== 
     function searchByTag() {
       // start the loading spinner
       setLoading(true);
       console.log("value is: ", value);
       shuffleBackgroundClipTextImage();
-  
+      
       axios
         .get(`http://localhost:3001/searchbytag/` + value)
         .then((response) => {
@@ -87,10 +87,13 @@ useEffect(() => {
           console.log(error);
         });
       }
+   // =================================== 
+
     // don't run on initial render
     if (initialRender.current) {
       initialRender.current = false;
     } else {
+      // debugger
       searchByTag();
       setDisplayFilteredResults(true);
     }
@@ -104,12 +107,16 @@ useEffect(() => {
     selectedImageArray.push(item);
     setSelectedImages(selectedImageArray);
     toggleDownloadButtonComponent();
-    setDisplaySelectedImages(true);
   }
 
     useEffect(() => {
+    // don't run if there are no selected images
+    if (selectedImages.length === 0) {
+      return
+    } else {
       setDisplaySelectedImages(true);
-    }, [displaySelectedImages])
+    } 
+    }, [selectedImages])
 
 
   function handleRemoveFromCollectionSubmit(item) {
@@ -191,7 +198,6 @@ useEffect(() => {
         // stop the loading spinner
         setLoading(false);
         // show the component that displays results
-        // setDisplayFilteredResultsComponent(true);
         setDisplayFilteredResults(true);
       })
       .catch(function (error) {
@@ -200,24 +206,6 @@ useEffect(() => {
   }
 
 
-    
-    // useEffect(() => {
-    //   // toggleDisplayBlockOrNone( displayFilteredResults, "#results-component");
-    //   setDisplayFilteredResults(true);
-    // }, [displayFilteredResults])
-
-  // // Reusable toggle function-- toggle betwewen display block or none
-  // // If toggleState is true, then display block. If false, display none.
-  // // This function is being used in 
-  // // displayFilteredResults, 
-  // // displaySelectedImages &
-  // // displayDownloadButton
-  // function toggleDisplayBlockOrNone(toggleState, htmlSelector) {
-  //   console.log("toggleState: ", toggleState, htmlSelector);
-  //   toggleState
-  //     ? (document.querySelector(htmlSelector).style.display = "block")
-  //     : (document.querySelector(htmlSelector).style.display = "none");
-  // }
 
   function toggleDownloadButtonComponent() {
     if (selectedImages.length > 0) {
