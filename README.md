@@ -30,7 +30,7 @@ Run npm to install all the dependencies:
 Start the React server:
 
 `````````
-`nodemon`
+`npm start`
 `````````
 Your browser should open to http://localhost:3000/ Voila!
 
@@ -42,8 +42,6 @@ Your browser should open to http://localhost:3000/ Voila!
 * file-saver
 * jimp
 * jszip
-* lodash
-* nodemon
 * react-spinners
 
 
