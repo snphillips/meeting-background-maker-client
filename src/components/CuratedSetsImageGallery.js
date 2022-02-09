@@ -1,8 +1,9 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import _Lodash from "lodash";
 
 /*
 This section contains the curated set images and the "view set" button.
+(The "download image set" button )
 The first image from every set IS NOT displayed, as it it displayed
 as the cover in CuratedSetsComponent.js. The first image is removed by
 using the _Lodash library's drop method
@@ -70,7 +71,7 @@ export default function CuratedSetsImageGallery(props){
           type=""
           value={index}
           onMouseOver={(event, index) => {
-            // console.log("view images in set:", thisCuratedSet.setName)
+            console.log("view images in set:", thisCuratedSet.setName)
           }}
           onClick={(event, index) => {
             toggleCuratedSetImages(thisCuratedSet, index);

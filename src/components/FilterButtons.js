@@ -35,10 +35,11 @@ export default function FilterButtons(props) {
                 id={"filter-button-" + item}
                 type="submit"
                 value={item}
-                onClick={(event) => {
-                  console.log("button value is:", event.target.value);
-                  props.handleFilterSubmit(event);
-                }}
+                // onClick={(event) => {
+                //   console.log("button value is:", event.target.value);
+                //   props.handleFilterSubmit(event);
+                // }}
+                onClick={ props.handleFilterSubmit }
               >
                 {item}
               </button>

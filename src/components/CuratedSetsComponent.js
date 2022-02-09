@@ -57,11 +57,11 @@ export default function CuratedSetComponent(props) {
                   index={index}
                 />
 
-                <a
-                  href={
+                <a href={
+                    // machineName is something I created.
+                    // It has no spaces
                     "/meeting-backgrounds/curatedSets/" +
-                    item.machineName +
-                    ".zip"
+                    item.machineName + ".zip"
                   }
                   download
                 >
@@ -71,8 +71,11 @@ export default function CuratedSetComponent(props) {
                     type="download"
                     value={item.setName}
                     onClick={(event) => {
-                      console.log("download selected images");
+                      console.log("HI! download images:", item.setName);
                       // props.zipDownloadFolderCuratedSet(item.setName, index)
+                    }}
+                    onMouseOver={(event) => {
+                      console.log("download selected images", item.setName);
                     }}
                   >
                     download image set

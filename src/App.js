@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import _Lodash from "lodash";
@@ -19,6 +19,7 @@ import hermanMillerPicnic from "./CuratedSets/hermanMillerPicnic.js";
 import photoMural from "./CuratedSets/photoMural.js";
 
 const JSZip = require("jszip");
+const curatedSets = [cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser];
 
 export default function App(props) {
   
@@ -36,7 +37,6 @@ const [preSelectedImages, setPreSelectedImages] = useState([]);
 const [selectedImages, setSelectedImages] = useState([]);
 // const [removalList, setRemovalList] = useState([]); 
 // const [removalListArray, setRemovalListArray] = useState([]);
-const [curatedSets, setCuratedSets] = useState([cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser]);
 const [imgData, setImgData] = useState();
                   
 
@@ -53,10 +53,13 @@ useEffect(() => {
   function handleFilterSubmit(event) {
     // debugger
     console.log("event", event)
-    // The default button action is to submit a form.
-    // If you don't need that - you need to prevent that:
-    event.preventDefault();
     setValue(event.target.value)
+    // The default button action is to submit a form.
+    // If you don't need that - you need to prevent that
+    // with event.preventDefault();
+    // TODO: doesn't seem to be doing anything here.
+    // When commented out, app doens't refresh either
+    // event.preventDefault();
   };
 
   useEffect(() => {
@@ -72,18 +75,17 @@ useEffect(() => {
         .get(`http://localhost:3001/searchbytag/` + value)
         .then((response) => {
           // having some fun and changing the background
-          shuffleBackgroundClipTextImage();
+          // shuffleBackgroundClipTextImage();
           console.log(`The search value is:`, value, `There are`, (response.data).length, `images.`)
           console.log(`1) The search value is:`, value, "response length is:", (response.data).length )
           // set the state of preSelectedImage with the response from the server
           setPreSelectedImages(response.data)
           // stop the loading spinner
-          setLoading(false);
-  
           // show the component that displays the preSelected results from the search
+          setLoading(false);
           setDisplayFilteredResults(true)
         }).catch(function (error) {
-          console.log(error);
+          console.log("api call catch error:", error );
         });
       }
    // =================================== 
@@ -92,9 +94,9 @@ useEffect(() => {
     if (initialRender.current) {
       initialRender.current = false;
     } else {
-      // debugger
       searchByTag();
       setDisplayFilteredResults(true);
+      // debugger
     }
   }, [value]);
 
@@ -171,38 +173,38 @@ useEffect(() => {
     return buttonResult;
   }
 
-  function cooperHewittSearchByTagFromAPI() {
-    // start the loading spinner
-    setLoading(true);
+  // function cooperHewittSearchByTagFromAPI() {
+  //   // start the loading spinner
+  //   setLoading(true);
 
-    // ${value} is whatever keyword the user chooses from the dropdown menu
-    // The "response" does the following:
-    // 1) stops the loading spinner
-    // 2) removes the placeholder image
-    // 3) returns a random item (image, title, description & link url)
-    // axios.get(`https://art-thief.herokuapp.com/searchbytag/`+`${value}`)
-    axios
-      .get(`http://localhost:3001/searchbytag/` + value)
-      .then((response) => {
-        // having some fun and changing the background
-        shuffleBackgroundClipTextImage();
-        // console.log(`The search value is:`, value, `There are`, (response.data).length, `images.`)
-        // console.log(`1) The search value is:`, value, "response length is:", (response.data).length )
-        // set the state of preSelectedImage with the response from the server
-        setPreSelectedImages(response.data)
-        // removeBlacklist()
-        // rotatePortrait()
-        // skinnyGottaGo()
-        // console.log("4) AFTER Manipulation preSelectedImages are:", preSelectedImages, preSelectedImages.length)
-        // stop the loading spinner
-        setLoading(false);
-        // show the component that displays results
-        setDisplayFilteredResults(true);
-      })
-      .catch(function (error) {
-        console.log("error", error);
-      });
-  }
+  //   // ${value} is whatever keyword the user chooses from the dropdown menu
+  //   // The "response" does the following:
+  //   // 1) stops the loading spinner
+  //   // 2) removes the placeholder image
+  //   // 3) returns a random item (image, title, description & link url)
+  //   // axios.get(`https://art-thief.herokuapp.com/searchbytag/`+`${value}`)
+  //   axios
+  //     .get(`http://localhost:3001/searchbytag/` + value)
+  //     .then((response) => {
+  //       // having some fun and changing the background
+  //       shuffleBackgroundClipTextImage();
+  //       // console.log(`The search value is:`, value, `There are`, (response.data).length, `images.`)
+  //       // console.log(`1) The search value is:`, value, "response length is:", (response.data).length )
+  //       // set the state of preSelectedImage with the response from the server
+          // setPreSelectedImages(response.data)
+  //       // removeBlacklist()
+  //       // rotatePortrait()
+  //       // skinnyGottaGo()
+  //       // console.log("4) AFTER Manipulation preSelectedImages are:", preSelectedImages, preSelectedImages.length)
+  //       // stop the loading spinner
+  //       setLoading(false);
+  //       // show the component that displays results
+  //       setDisplayFilteredResults(true);
+  //     })
+  //     .catch(function (error) {
+  //       console.log("error", error);
+  //     });
+  // }
 
 
 
@@ -263,7 +265,7 @@ useEffect(() => {
     console.log("downloading curated image set with value of: ", value, index)
     console.log("spongebob", this.state.curatedSets[index])
 
-    let desiredCuratedSet = value
+    // let desiredCuratedSet = value
     let selectedCuratedSet = this.state.curatedSets[index].images
     // value is the name of the selected curated list
     let folderName = value
