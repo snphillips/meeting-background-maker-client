@@ -29,24 +29,29 @@ export default function FilterButtons(props) {
             // console.log("button value:", item)
 
             return (
-              <button
+              <form 
                 key={index}
-                className="filter-button"
-                id={"filter-button-" + item}
-                // type="submit"
-                type="button"
+                onClick={(e) => {props.handleSubmit(e)}}
                 value={item}
-                // onClick={(event) => {
-                //   console.log("button value is:", event.target.value);
-                //   props.handleFilterSubmit(event);
-                // }}
-                onClick={props.handleFilterSubmit}
-                onMouseOver={ () => {
-                  console.log("hihihi") 
-                }}
+                // onSubmit={props.userSelectFilterTerm}
+
               >
+                <button
+                  key={index}
+                  className="filter-button"
+                  id={"filter-button-" + item}
+                  // type="submit"
+                  type="button"
+                  value={item}
+                  onClick={(e) => {
+                    console.log("button value is:", e.target.value);
+                    props.userSelectFilterTerm(e);
+                  }}
+                  // onClick={props.userSelectFilterTerm}
+                >
                 {item}
               </button>
+              </form>
             );
           })}
 

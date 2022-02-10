@@ -26,6 +26,7 @@ export default function App(props) {
 const initialRender = useRef(true);
 const [loading, setLoading] = useState(false); // the loading spinner
 const [value, setValue] = useState("dots");
+const [displayComputerImage, setDisplayComputerImage] = useState(true);
 const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
 const [displayCuratedSetComponent, setDisplayCuratedSetComponent] = useState(false);
 const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = useState(true);
@@ -45,22 +46,27 @@ const [imgData, setImgData] = useState();
 // ===================================
 useEffect(() => {
   // debugger
+  console.log("starting app from the top!!!!!!")
   shuffleBackgroundClipTextImage();
   // zipDownloadFolderCuratedSet()
   // zipDownloadFolderSelectedImages()
 }, []);
 
-  function handleFilterSubmit(event) {
-    // debugger
-    console.log("event", event)
-    setValue(event.target.value)
-    // The default button action is to submit a form.
-    // If you don't need that - you need to prevent that
-    // with event.preventDefault();
-    // TODO: doesn't seem to be doing anything here.
-    // When commented out, app doens't refresh either
-    event.preventDefault();
-  };
+// **************************************
+function handleSubmit(e){
+  e.preventDefault();
+  console.log("@@@@@@@@ preventDefault")
+  // debugger
+  // setValue(event.target.value)
+};
+
+function userSelectFilterTerm(e){
+  e.preventDefault();
+  console.log("*********** event", e)
+  // debugger
+  setValue(e.target.value)
+};
+// **************************************
 
   useEffect(() => {
 
@@ -95,8 +101,8 @@ useEffect(() => {
       initialRender.current = false;
     } else {
       searchByTag();
-      // setDisplayFilteredResults(true);
-      console.log("jahamorah")
+      setDisplayComputerImage(false);
+      setDisplayFilteredResults(true);
       // debugger
     }
   }, [value]);
@@ -350,9 +356,11 @@ useEffect(() => {
             displayYourBackgroundsComponent={displayYourBackgroundsComponent}
             displayCuratedSetComponent={displayCuratedSetComponent}
             displayFilteredResults={displayFilteredResults}
-            handleFilterSubmit={handleFilterSubmit}
+            displayComputerImage={displayComputerImage}
+            handleSubmit={handleSubmit}
             whichButton={whichButton}
             zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
+            userSelectFilterTerm={userSelectFilterTerm}
           />
 
           <CuratedSetsComponent

@@ -6,6 +6,8 @@ export default function ComputerImage(props) {
       <section 
         id="computer-image">
 
+        {props.displayComputerImage && 
+
         <div style={{
           display: "flex",
           alignItems: "center",
@@ -27,7 +29,8 @@ export default function ComputerImage(props) {
              height: "100%",
              display: "flex",
              alignItems: "center",
-             justifyContent: "center",
+             justifyContent: "end",
+             flexDirection: "column"
            }}
            id="person"
            >
@@ -39,13 +42,20 @@ export default function ComputerImage(props) {
              background: "black",
              display: "flex",
              borderRadius: "50%"
-           }}>
-
-           </div>
+           }}/>
+           <div
+             id="person=body"
+             style={{
+              width: "80px",
+              height: "80px",
+              background: "black",
+             }} 
+           />
          </div>
         </div>
 
         </div>
+        }
 
       </section>
     );

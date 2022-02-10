@@ -11,11 +11,13 @@ export default function YourBackgroundsComponent(props) {
       
       <section id="user-generated-set-window">
         <FilterButtons
-          handleFilterSubmit={props.handleFilterSubmit}
+          handleSubmit={props.handleSubmit}
           loading={props.loading}
+          userSelectFilterTerm={props.userSelectFilterTerm}
         />
 
-        <ComputerImage />
+        <ComputerImage 
+          displayComputerImage={props.displayComputerImage} />
 
         <Results
           preSelectedImages={props.preSelectedImages}
