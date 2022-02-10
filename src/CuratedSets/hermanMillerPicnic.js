@@ -1,7 +1,7 @@
 
 
 
-let hermanMillerPicnic = {
+const hermanMillerPicnic = {
   setName: "herman millar picnic",
   machineName: "hermanMillerPicnic",
   images:

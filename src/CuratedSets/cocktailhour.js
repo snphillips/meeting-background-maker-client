@@ -1,7 +1,7 @@
 
 
 
-let cocktailHour = {
+const cocktailHour = {
   setName: "cocktail hour",
   machineName: "cocktailHour",
   images:[

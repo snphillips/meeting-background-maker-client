@@ -1,5 +1,5 @@
 
-let  kolomanMoser = {
+const kolomanMoser = {
   setName: "Koloman Moser",
   machineName: "kolomanMoser",
   images:[

@@ -1,7 +1,9 @@
 import React from "react";
 import FilterButtons from "./FilterButtons";
+import ComputerImage from "./ComputerImage";
 import Results from "./Results.js";
-import SelectedImages from "./SelectedImages.js";
+import SelectedImages from "./SelectedImages";
+
 
 export default function YourBackgroundsComponent(props) {
 
@@ -12,6 +14,8 @@ export default function YourBackgroundsComponent(props) {
           handleFilterSubmit={props.handleFilterSubmit}
           loading={props.loading}
         />
+
+        <ComputerImage />
 
         <Results
           preSelectedImages={props.preSelectedImages}

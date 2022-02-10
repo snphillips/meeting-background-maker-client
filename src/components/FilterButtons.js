@@ -33,13 +33,17 @@ export default function FilterButtons(props) {
                 key={index}
                 className="filter-button"
                 id={"filter-button-" + item}
-                type="submit"
+                // type="submit"
+                type="button"
                 value={item}
                 // onClick={(event) => {
                 //   console.log("button value is:", event.target.value);
                 //   props.handleFilterSubmit(event);
                 // }}
-                onClick={ props.handleFilterSubmit }
+                onClick={props.handleFilterSubmit}
+                onMouseOver={ () => {
+                  console.log("hihihi") 
+                }}
               >
                 {item}
               </button>

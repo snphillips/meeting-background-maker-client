@@ -10,13 +10,13 @@ import Footer from "./components/Footer";
 import YourBackgroundsComponent from "./components/YourBackgroundsComponent";
 
 // Curated Sets
-import kolomanMoser from "./CuratedSets/kolomanMoser";
 import cocktailHour from "./CuratedSets/cocktailHour.js";
 import colorTheory from "./CuratedSets/colorTheory.js";
 import gardenParty from "./CuratedSets/gardenParty.js";
 import gourmet from "./CuratedSets/gourmet.js";
 import hermanMillerPicnic from "./CuratedSets/hermanMillerPicnic.js";
 import photoMural from "./CuratedSets/photoMural.js";
+import kolomanMoser from "./CuratedSets/kolomanMoser";
 
 const JSZip = require("jszip");
 const curatedSets = [cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser];
@@ -59,7 +59,7 @@ useEffect(() => {
     // with event.preventDefault();
     // TODO: doesn't seem to be doing anything here.
     // When commented out, app doens't refresh either
-    // event.preventDefault();
+    event.preventDefault();
   };
 
   useEffect(() => {
@@ -95,7 +95,8 @@ useEffect(() => {
       initialRender.current = false;
     } else {
       searchByTag();
-      setDisplayFilteredResults(true);
+      // setDisplayFilteredResults(true);
+      console.log("jahamorah")
       // debugger
     }
   }, [value]);
@@ -227,6 +228,12 @@ useEffect(() => {
       );
     document
       .querySelector("body")
+      .style.setProperty(
+        "background",
+        `url("/images/` + randomNumber + `.png")`
+      );
+      document
+      .querySelector("#computer-screen")
       .style.setProperty(
         "background",
         `url("/images/` + randomNumber + `.png")`
