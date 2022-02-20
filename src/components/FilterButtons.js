@@ -29,13 +29,6 @@ export default function FilterButtons(props) {
             // console.log("button value:", item)
 
             return (
-              <form 
-                key={index}
-                onClick={(e) => {props.handleSubmit(e)}}
-                value={item}
-                // onSubmit={props.userSelectFilterTerm}
-
-              >
                 <button
                   key={index}
                   className="filter-button"
@@ -43,15 +36,16 @@ export default function FilterButtons(props) {
                   // type="submit"
                   type="button"
                   value={item}
-                  onClick={(e) => {
-                    console.log("button value is:", e.target.value);
-                    props.userSelectFilterTerm(e);
-                  }}
-                  // onClick={props.userSelectFilterTerm}
+                  // onClick={(event) => {
+                  //   event.preventDefault();
+                  //   console.log("button value is:", event.target.value);
+                  //   props.userSelectFilterTerm(event);
+                  // }}
+                  onClick={props.userSelectFilterTerm}
+                  // onSubmit={props.userSelectFilterTerm}
                 >
                 {item}
               </button>
-              </form>
             );
           })}
 

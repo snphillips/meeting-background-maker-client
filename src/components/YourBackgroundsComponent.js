@@ -1,7 +1,7 @@
 import React from "react";
 import FilterButtons from "./FilterButtons";
 import ComputerImage from "./ComputerImage";
-import Results from "./Results.js";
+import SearchResults from "./SearchResults.js";
 import SelectedImages from "./SelectedImages";
 
 
@@ -19,17 +19,18 @@ export default function YourBackgroundsComponent(props) {
         <ComputerImage 
           displayComputerImage={props.displayComputerImage} />
 
-        <Results
+        <SearchResults
           preSelectedImages={props.preSelectedImages}
           toggleFilterResultsPlaceholder={props.toggleFilterResultsPlaceholder}
           whichButton={props.whichButton}
-          displayFilteredResults={props.displayFilteredResults}
+          displaySearchResults={props.displaySearchResults}
           />
 
         <SelectedImages
           selectedImages={props.selectedImages}
           displaySelectedImages={props.displaySelectedImages}
           zipDownloadFolderSelectedImages={props.zipDownloadFolderSelectedImages}
+          setDisplayDownloadButton={props.setDisplayDownloadButton}
           />
 
       </section>

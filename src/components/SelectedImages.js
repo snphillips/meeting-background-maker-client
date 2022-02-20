@@ -44,6 +44,8 @@ export default function SelectedImages(props) {
           </Masonry>
         </section>
 
+      {props.setDisplayDownloadButton && 
+
         <button
           className="download-button"
           value=""
@@ -54,6 +56,7 @@ export default function SelectedImages(props) {
         >
           Download Set of Selected Images
         </button>
+      }
         </div>
       }
         </div>

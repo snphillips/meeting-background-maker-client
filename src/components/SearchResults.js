@@ -12,7 +12,7 @@ It seems you want to keep all this great metadata,
 but also bring over the path to the locally stored image.
 */
 
-export default function Results(props) {
+export default function SearchResults(props) {
   
   
   let preSelectedImages = props.preSelectedImages;
@@ -30,7 +30,7 @@ export default function Results(props) {
     
       <section className="component" id="results-component">
 
-      { props.displayFilteredResults &&
+      { props.displaySearchResults &&
       <div>
         
         <h3>Search Results</h3>

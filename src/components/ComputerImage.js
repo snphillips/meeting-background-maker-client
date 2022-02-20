@@ -12,6 +12,7 @@ export default function ComputerImage(props) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          flexDirection: "column"
         }}>
 
         <div 
@@ -52,6 +53,22 @@ export default function ComputerImage(props) {
              }} 
            />
          </div>
+        </div>
+        <div
+        id="computer-keyboard"
+        style={{
+          border: "3px solid white",
+          width: "100%",
+          height: "50px",
+          clipPath: "polygon(20% 0%, 80% 0%, 91% 100%, 8% 100%)",
+          // borderLeft: "20vw solid white",
+          // borderTop: "5vw solid transparent",
+          // borderBottom: "5vw solid transparent",
+          // width: "0",
+          // height: "10vw",
+        }}
+        >
+
         </div>
 
         </div>

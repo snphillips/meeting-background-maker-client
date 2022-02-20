@@ -31,7 +31,7 @@ const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
 const [displayCuratedSetComponent, setDisplayCuratedSetComponent] = useState(false);
 const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = useState(true);
 const [toggleFilterResultsPlaceholder, setToggleFilterResultsPlaceholder] = useState(false);
-const [displayFilteredResults, setDisplayFilteredResults] = useState(false);
+const [displaySearchResults, setDisplaySearchResults] = useState(false);
 const [displayDownloadButton, setDisplayDownloadButton] = useState(true);
 const [downloadSetComponent, setDownloadSetComponent] = useState(true);
 const [preSelectedImages, setPreSelectedImages] = useState([]); 
@@ -53,19 +53,23 @@ useEffect(() => {
 }, []);
 
 // **************************************
-function handleSubmit(e){
-  e.preventDefault();
-  console.log("@@@@@@@@ preventDefault")
-  // debugger
-  // setValue(event.target.value)
-};
+// function handleSubmit(event){
+//   event.preventDefault();
+//   console.log("@@@@@@@@ preventDefault")
+//   // debugger
+//   // setValue(event.target.value)
+// };
 
-function userSelectFilterTerm(e){
-  e.preventDefault();
-  console.log("*********** event", e)
-  // debugger
-  setValue(e.target.value)
-};
+// const userSelectFilterTerm = (event) => {
+//   event.preventDefault();
+//   console.log("*********** userSelectFilterTerm event", event)
+//   setValue(event.target.value)
+// };
+
+function userSelectFilterTerm(event) {
+  console.log("*********** userSelectFilterTerm event", event.target.value)
+  setValue(event.target.value);
+}
 // **************************************
 
   useEffect(() => {
@@ -80,29 +84,30 @@ function userSelectFilterTerm(e){
       axios
         .get(`http://localhost:3001/searchbytag/` + value)
         .then((response) => {
-          // having some fun and changing the background
-          // shuffleBackgroundClipTextImage();
-          console.log(`The search value is:`, value, `There are`, (response.data).length, `images.`)
-          console.log(`1) The search value is:`, value, "response length is:", (response.data).length )
+          console.log(`🍩 The search value is:`, value, `There are`, (response.data).length, `images.`)
           // set the state of preSelectedImage with the response from the server
           setPreSelectedImages(response.data)
           // stop the loading spinner
           // show the component that displays the preSelected results from the search
           setLoading(false);
-          setDisplayFilteredResults(true)
-        }).catch(function (error) {
-          console.log("api call catch error:", error );
+          setDisplaySearchResults(true)
+        })
+        .catch(function (error) {
+          // debugger
+          console.log("axios api call catch error:", error );
         });
       }
-   // =================================== 
+      // =================================== 
+      
+      // don't run on initial render
 
-    // don't run on initial render
-    if (initialRender.current) {
-      initialRender.current = false;
-    } else {
-      searchByTag();
-      setDisplayComputerImage(false);
-      setDisplayFilteredResults(true);
+      if (initialRender.current) {
+        initialRender.current = false;
+      } else {
+        searchByTag();
+        setDisplayComputerImage(false);
+        setDisplaySearchResults(true);
+        console.log("hello from useEffect")
       // debugger
     }
   }, [value]);
@@ -111,9 +116,12 @@ function userSelectFilterTerm(e){
 
   function handleAddToCollectionSubmit(item) {
     console.log("add to collection");
-    let selectedImageArray = selectedImages;
-    selectedImageArray.push(item);
-    setSelectedImages(selectedImageArray);
+    // todo sarah fix this
+    // let selectedImageArray = selectedImages;
+    // let selectedImageArray = selectedImages;
+    selectedImages.push(item);
+    // setSelectedImages(selectedImageArray);
+    setSelectedImages(selectedImages);
     toggleDownloadButtonComponent();
   }
 
@@ -129,14 +137,17 @@ function userSelectFilterTerm(e){
 
   function handleRemoveFromCollectionSubmit(item) {
     console.log("removing this item from collection: ", item.title);
-    let selectedImagesArray = selectedImages;
+    // let selectedImagesArray = selectedImages;
+    // todo Sarah fix this
+    // let selectedImagesArray = selectedImages;
     // using the _Lodash library to remove the item from the
     // array of selected images
     // https://lodash.com/docs/#reject
-    selectedImagesArray = _Lodash.reject(selectedImagesArray, (theObject) => {
+    // selectedImagesArray = _Lodash.reject(selectedImagesArray, (theObject) => {
+    selectedImages = _Lodash.reject(selectedImages, (theObject) => {
       return theObject.id === item.id;
     });
-    setSelectedImages(selectedImagesArray)
+    setSelectedImages(selectedImages)
   }
 
   function whichButton(item) {
@@ -218,7 +229,7 @@ function userSelectFilterTerm(e){
   function toggleDownloadButtonComponent() {
     if (selectedImages.length > 0) {
       setDisplayDownloadButton(true);
-      document.querySelector(".download-button").style.display = "block";
+      // document.querySelector(".download-button").style.display = "block";
     }
   }
 
@@ -355,12 +366,13 @@ function userSelectFilterTerm(e){
             displaySelectedImages={displaySelectedImages}
             displayYourBackgroundsComponent={displayYourBackgroundsComponent}
             displayCuratedSetComponent={displayCuratedSetComponent}
-            displayFilteredResults={displayFilteredResults}
+            displaySearchResults={displaySearchResults}
             displayComputerImage={displayComputerImage}
-            handleSubmit={handleSubmit}
+            // handleSubmit={handleSubmit}
             whichButton={whichButton}
             zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
             userSelectFilterTerm={userSelectFilterTerm}
+            setDisplayDownloadButton={setDisplayDownloadButton}
           />
 
           <CuratedSetsComponent
