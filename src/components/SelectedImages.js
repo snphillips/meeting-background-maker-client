@@ -20,9 +20,9 @@ export default function SelectedImages(props) {
         <section>
           <h3>Your selected images</h3>
 
-          <div>
+           {/* <div>
             <p className="default-selected-message">No selected images yet</p>
-          </div>
+          </div> */}
 
           <Masonry
             breakpointCols={breakpointColumnsObj}

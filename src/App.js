@@ -52,20 +52,6 @@ useEffect(() => {
   // zipDownloadFolderSelectedImages()
 }, []);
 
-// **************************************
-// function handleSubmit(event){
-//   event.preventDefault();
-//   console.log("@@@@@@@@ preventDefault")
-//   // debugger
-//   // setValue(event.target.value)
-// };
-
-// const userSelectFilterTerm = (event) => {
-//   event.preventDefault();
-//   console.log("*********** userSelectFilterTerm event", event)
-//   setValue(event.target.value)
-// };
-
 function userSelectFilterTerm(event) {
   console.log("*********** userSelectFilterTerm event", event.target.value)
   setValue(event.target.value);
@@ -116,24 +102,15 @@ function userSelectFilterTerm(event) {
 
   function handleAddToCollectionSubmit(item) {
     console.log("add to collection");
-    // todo sarah fix this
-    // let selectedImageArray = selectedImages;
-    // let selectedImageArray = selectedImages;
-    selectedImages.push(item);
-    // setSelectedImages(selectedImageArray);
-    setSelectedImages(selectedImages);
+    let selectedImageArray = selectedImages;
+    selectedImageArray.push(item);
+    console.log("selectedImages:", selectedImages)
+    setSelectedImages(selectedImageArray);
     toggleDownloadButtonComponent();
+    // sarah, originally I had this in a useEffect, 
+    // but that wasn't working...so here it lays
+    setDisplaySelectedImages(true);
   }
-
-    useEffect(() => {
-    // don't run if there are no selected images
-    if (selectedImages.length === 0) {
-      return
-    } else {
-      setDisplaySelectedImages(true);
-    } 
-    }, [selectedImages])
-
 
   function handleRemoveFromCollectionSubmit(item) {
     console.log("removing this item from collection: ", item.title);
