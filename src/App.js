@@ -32,7 +32,7 @@ const [displayCuratedSetComponent, setDisplayCuratedSetComponent] = useState(fal
 const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = useState(true);
 const [toggleFilterResultsPlaceholder, setToggleFilterResultsPlaceholder] = useState(false);
 const [displaySearchResults, setDisplaySearchResults] = useState(false);
-const [displayDownloadButton, setDisplayDownloadButton] = useState(true);
+// const [displayDownloadButton, setDisplayDownloadButton] = useState(true);
 const [downloadSetComponent, setDownloadSetComponent] = useState(true);
 const [preSelectedImages, setPreSelectedImages] = useState([]); 
 const [selectedImages, setSelectedImages] = useState([]);
@@ -100,13 +100,13 @@ function userSelectFilterTerm(event) {
 
 
 
-  function handleAddToCollectionSubmit(item) {
+  function handleAddToCollection(item) {
     console.log("add to collection");
     let selectedImageArray = selectedImages;
     selectedImageArray.push(item);
     console.log("selectedImages:", selectedImages)
     setSelectedImages(selectedImageArray);
-    toggleDownloadButtonComponent();
+    // toggleDownloadButtonComponent();
     // sarah, originally I had this in a useEffect, 
     // but that wasn't working...so here it lays
     setDisplaySelectedImages(true);
@@ -157,7 +157,7 @@ function userSelectFilterTerm(event) {
           className="results-button-add-to-collection"
           onClick={(event) => {
             console.log("button value is:", item, item.id);
-            handleAddToCollectionSubmit(item);
+            handleAddToCollection(item);
           }}
         >
           {" "}
@@ -203,12 +203,12 @@ function userSelectFilterTerm(event) {
 
 
 
-  function toggleDownloadButtonComponent() {
-    if (selectedImages.length > 0) {
-      setDisplayDownloadButton(true);
-      // document.querySelector(".download-button").style.display = "block";
-    }
-  }
+  // function toggleDownloadButtonComponent() {
+  //   if (selectedImages.length > 0) {
+  //     setDisplayDownloadButton(true);
+  //     // document.querySelector(".download-button").style.display = "block";
+  //   }
+  // }
 
   function shuffleBackgroundClipTextImage() {
     let numOfBackgroundImages = 31;
@@ -349,7 +349,7 @@ function userSelectFilterTerm(event) {
             whichButton={whichButton}
             zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
             userSelectFilterTerm={userSelectFilterTerm}
-            setDisplayDownloadButton={setDisplayDownloadButton}
+            // displayDownloadButton={displayDownloadButton}
           />
 
           <CuratedSetsComponent

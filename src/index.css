@@ -376,7 +376,7 @@ display: none;
 Download Button
 ================================*/
 .download-button {
-  display: none;
+  /* display: none; */
   text-align: center;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 18px;
