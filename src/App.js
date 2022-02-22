@@ -32,7 +32,6 @@ const [displayCuratedSetComponent, setDisplayCuratedSetComponent] = useState(fal
 const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = useState(true);
 const [toggleFilterResultsPlaceholder, setToggleFilterResultsPlaceholder] = useState(false);
 const [displaySearchResults, setDisplaySearchResults] = useState(false);
-// const [displayDownloadButton, setDisplayDownloadButton] = useState(true);
 const [downloadSetComponent, setDownloadSetComponent] = useState(true);
 const [preSelectedImages, setPreSelectedImages] = useState([]); 
 const [selectedImages, setSelectedImages] = useState([]);
@@ -53,6 +52,7 @@ useEffect(() => {
 }, []);
 
 function userSelectFilterTerm(event) {
+  event.preventDefault();
   console.log("*********** userSelectFilterTerm event", event.target.value)
   setValue(event.target.value);
 }
@@ -101,30 +101,25 @@ function userSelectFilterTerm(event) {
 
 
   function handleAddToCollection(item) {
-    console.log("add to collection");
+    console.log("add to collection", item.title);
     let selectedImageArray = selectedImages;
     selectedImageArray.push(item);
-    console.log("selectedImages:", selectedImages)
+    console.log("selectedImages:", selectedImages);
     setSelectedImages(selectedImageArray);
-    // toggleDownloadButtonComponent();
-    // sarah, originally I had this in a useEffect, 
-    // but that wasn't working...so here it lays
     setDisplaySelectedImages(true);
   }
 
-  function handleRemoveFromCollectionSubmit(item) {
+  function handleRemoveSelected(item) {
     console.log("removing this item from collection: ", item.title);
-    // let selectedImagesArray = selectedImages;
-    // todo Sarah fix this
-    // let selectedImagesArray = selectedImages;
+    let selectedImagesArray = selectedImages;
     // using the _Lodash library to remove the item from the
     // array of selected images
     // https://lodash.com/docs/#reject
-    // selectedImagesArray = _Lodash.reject(selectedImagesArray, (theObject) => {
-    selectedImages = _Lodash.reject(selectedImages, (theObject) => {
+    selectedImagesArray = _Lodash.reject(selectedImagesArray, (theObject) => {
+    // selectedImages = _Lodash.reject(selectedImages, (theObject) => {
       return theObject.id === item.id;
     });
-    setSelectedImages(selectedImages)
+    setSelectedImages(selectedImagesArray)
   }
 
   function whichButton(item) {
@@ -141,8 +136,8 @@ function userSelectFilterTerm(event) {
           value={item}
           className="results-button-remove-from-collection"
           onClick={(event) => {
-            console.log("button value is:", item, item.id);
-            handleRemoveFromCollectionSubmit(item);
+            // console.log("button value is:", item.title);
+            handleRemoveSelected(item);
           }}
         >
           {" "}
@@ -167,48 +162,6 @@ function userSelectFilterTerm(event) {
     }
     return buttonResult;
   }
-
-  // function cooperHewittSearchByTagFromAPI() {
-  //   // start the loading spinner
-  //   setLoading(true);
-
-  //   // ${value} is whatever keyword the user chooses from the dropdown menu
-  //   // The "response" does the following:
-  //   // 1) stops the loading spinner
-  //   // 2) removes the placeholder image
-  //   // 3) returns a random item (image, title, description & link url)
-  //   // axios.get(`https://art-thief.herokuapp.com/searchbytag/`+`${value}`)
-  //   axios
-  //     .get(`http://localhost:3001/searchbytag/` + value)
-  //     .then((response) => {
-  //       // having some fun and changing the background
-  //       shuffleBackgroundClipTextImage();
-  //       // console.log(`The search value is:`, value, `There are`, (response.data).length, `images.`)
-  //       // console.log(`1) The search value is:`, value, "response length is:", (response.data).length )
-  //       // set the state of preSelectedImage with the response from the server
-          // setPreSelectedImages(response.data)
-  //       // removeBlacklist()
-  //       // rotatePortrait()
-  //       // skinnyGottaGo()
-  //       // console.log("4) AFTER Manipulation preSelectedImages are:", preSelectedImages, preSelectedImages.length)
-  //       // stop the loading spinner
-  //       setLoading(false);
-  //       // show the component that displays results
-  //       setDisplayFilteredResults(true);
-  //     })
-  //     .catch(function (error) {
-  //       console.log("error", error);
-  //     });
-  // }
-
-
-
-  // function toggleDownloadButtonComponent() {
-  //   if (selectedImages.length > 0) {
-  //     setDisplayDownloadButton(true);
-  //     // document.querySelector(".download-button").style.display = "block";
-  //   }
-  // }
 
   function shuffleBackgroundClipTextImage() {
     let numOfBackgroundImages = 31;
@@ -264,7 +217,7 @@ function userSelectFilterTerm(event) {
   // Sarah why did you take this out in 2020?
   function zipDownloadFolderCuratedSet(value, index) {
     console.log("downloading curated image set with value of: ", value, index)
-    console.log("spongebob", this.state.curatedSets[index])
+    console.log("this.state.curatedSets[index]", this.state.curatedSets[index])
 
     // let desiredCuratedSet = value
     let selectedCuratedSet = this.state.curatedSets[index].images

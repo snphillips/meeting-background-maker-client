@@ -20,10 +20,6 @@ export default function SelectedImages(props) {
         <section>
           <h3>Your selected images</h3>
 
-           {/* <div>
-            <p className="default-selected-message">No selected images yet</p>
-          </div> */}
-
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid curated-sets-list selected-images-gallery image-grid"
@@ -31,8 +27,9 @@ export default function SelectedImages(props) {
           >
             {props.selectedImages.map((item, index) => {
               return (
-                <div className="image-card card" key={item.id}>
+                <div className="image-card card" key={item.id} >
                   <img
+                    key={item.id}
                     className="selected-img"
                     src={item.images[0].b.url}
                     alt={item.title}
@@ -44,8 +41,6 @@ export default function SelectedImages(props) {
           </Masonry>
         </section>
 
-      {/* {props.displayDownloadButton &&  */}
-
         <button
           className="download-button"
           value=""
@@ -56,7 +51,6 @@ export default function SelectedImages(props) {
         >
           Download Set of Selected Images
         </button>
-      {/* } */}
         </div>
       }
         </div>

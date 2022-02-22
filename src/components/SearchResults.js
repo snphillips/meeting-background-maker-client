@@ -53,7 +53,7 @@ export default function SearchResults(props) {
                   />
                 </a>
                 <p className="item-title">{item.title}</p>
-                <p className="item-title">{item.id}</p>
+                {/* <p className="item-title">{item.id}</p> */}
 
                 {props.whichButton(item)}
               </div>
