@@ -100,13 +100,13 @@ function userSelectFilterTerm(event) {
 
 
 
-  function handleAddToCollection(item) {
-    console.log("add to collection", item.title);
+  const addToCollection = (item) => {
+    // console.log("add to collection", item.title);
     let selectedImageArray = selectedImages;
     selectedImageArray.push(item);
-    console.log("selectedImages:", selectedImages);
     setSelectedImages(selectedImageArray);
     setDisplaySelectedImages(true);
+    console.log("selectedImages:", selectedImages);
   }
 
   function handleRemoveSelected(item) {
@@ -150,10 +150,11 @@ function userSelectFilterTerm(event) {
           type="submit"
           value={item}
           className="results-button-add-to-collection"
-          onClick={(event) => {
+          onClick={() => {
             console.log("button value is:", item, item.id);
-            handleAddToCollection(item);
+            addToCollection(item);
           }}
+          // onClick={addToCollection}  
         >
           {" "}
           add to collection
@@ -179,19 +180,29 @@ function userSelectFilterTerm(event) {
         "background",
         `url("/images/` + randomNumber + `.png")`
       );
-      document
-      .querySelector("#computer-screen")
-      .style.setProperty(
-        "background",
-        `url("/images/` + randomNumber + `.png")`
-      );
-    document.querySelector(".clip-text").style.setProperty("color", "#fff;");
+
+      // We change the background often for fun
+      // Sometimes, we change the background and there is no computer screen icon
+      // Only change the background of the computer icon, if it's there.
+      let compyIcon = document.querySelector("#computer-screen") !== null;
+      if (compyIcon) {
+        document
+          .querySelector("#computer-screen")
+          .style.setProperty(
+            "background",
+            `url("/images/` + randomNumber + `.png")`
+          );
+      }
+
     document
       .querySelector(".clip-text")
-      .style.setProperty("-webkit-text-fill-color", "transparent");
+        .style.setProperty("color", "#fff;");
     document
       .querySelector(".clip-text")
-      .style.setProperty("-webkit-background-clip", "text");
+        .style.setProperty("-webkit-text-fill-color", "transparent");
+    document
+      .querySelector(".clip-text")
+        .style.setProperty("-webkit-background-clip", "text");
     // document.querySelector(".header").style.textShadow = "2px 2px 2px #fff";
   }
 
