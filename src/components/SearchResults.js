@@ -14,9 +14,6 @@ but also bring over the path to the locally stored image.
 
 export default function SearchResults(props) {
   
-  
-  let preSelectedImages = props.preSelectedImages;
-  
   // For use with Masonry package
   const breakpointColumnsObj = {
     default: 4,
@@ -40,13 +37,14 @@ export default function SearchResults(props) {
           className="my-masonry-grid curated-sets-list pre-selected-images-gallery results image-grid"
           columnClassName="my-masonry-grid_column"
           >
-          {preSelectedImages.map((item) => {
+          {props.preSelectedImages.map((item, index) => {
             // console.log("hi from results.js. Item is:", item)
             
             return (
               <div key={item.id} className="image-card card">
                 <a href={item.url}>
                   <img
+                    key={index}
                     className="result-img"
                     src={item.images[0].b.url}
                     alt={item.title}

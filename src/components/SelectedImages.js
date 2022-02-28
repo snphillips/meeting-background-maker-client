@@ -25,11 +25,12 @@ export default function SelectedImages(props) {
             className="my-masonry-grid curated-sets-list selected-images-gallery image-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {props.selectedImages.map((item, index) => {
+            {props.selectedImagesCollection.map((item, index) => {
+              // console.log("hihih", props.selectedImagesCollection[0])
               return (
-                <div className="image-card card" key={item.id} >
+                <div className="image-card card" key={index} >
                   <img
-                    key={item.id}
+                    key={index}
                     className="selected-img"
                     src={item.images[0].b.url}
                     alt={item.title}

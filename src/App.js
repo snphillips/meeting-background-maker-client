@@ -34,7 +34,7 @@ const [toggleFilterResultsPlaceholder, setToggleFilterResultsPlaceholder] = useS
 const [displaySearchResults, setDisplaySearchResults] = useState(false);
 const [downloadSetComponent, setDownloadSetComponent] = useState(true);
 const [preSelectedImages, setPreSelectedImages] = useState([]); 
-const [selectedImages, setSelectedImages] = useState([]);
+const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
 // const [removalList, setRemovalList] = useState([]); 
 // const [removalListArray, setRemovalListArray] = useState([]);
 const [imgData, setImgData] = useState();
@@ -93,25 +93,24 @@ function userSelectFilterTerm(event) {
         searchByTag();
         setDisplayComputerImage(false);
         setDisplaySearchResults(true);
-        console.log("hello from useEffect")
+        // console.log("hello from useEffect")
       // debugger
     }
   }, [value]);
 
 
-
   const addToCollection = (item) => {
-    // console.log("add to collection", item.title);
-    let selectedImageArray = selectedImages;
-    selectedImageArray.push(item);
-    setSelectedImages(selectedImageArray);
+    setSelectedImagesCollection( array => array.concat(item) );
     setDisplaySelectedImages(true);
-    console.log("selectedImages:", selectedImages);
   }
-
+  
+  useEffect(() => {
+    console.log("NEW selectedImagesCollection:", "length:", selectedImagesCollection.length, selectedImagesCollection);
+  }, [selectedImagesCollection]);
+  
   function handleRemoveSelected(item) {
     console.log("removing this item from collection: ", item.title);
-    let selectedImagesArray = selectedImages;
+    let selectedImagesArray = selectedImagesCollection;
     // using the _Lodash library to remove the item from the
     // array of selected images
     // https://lodash.com/docs/#reject
@@ -119,7 +118,7 @@ function userSelectFilterTerm(event) {
     // selectedImages = _Lodash.reject(selectedImages, (theObject) => {
       return theObject.id === item.id;
     });
-    setSelectedImages(selectedImagesArray)
+    setSelectedImagesCollection(selectedImagesArray)
   }
 
   function whichButton(item) {
@@ -128,14 +127,14 @@ function userSelectFilterTerm(event) {
     // https://lodash.com/docs/#includes
     let buttonResult = "";
 
-    if (_Lodash.includes(selectedImages, item)) {
+    if (_Lodash.includes(selectedImagesCollection, item)) {
       // could this be a switch statement?
       buttonResult = (
         <button
           type="submit"
           value={item}
           className="results-button-remove-from-collection"
-          onClick={(event) => {
+          onClick={(item) => {
             // console.log("button value is:", item.title);
             handleRemoveSelected(item);
           }}
@@ -147,14 +146,14 @@ function userSelectFilterTerm(event) {
     } else {
       buttonResult = (
         <button
-          type="submit"
+          // type="submit"
+          type="button"
           value={item}
           className="results-button-add-to-collection"
           onClick={() => {
-            console.log("button value is:", item, item.id);
+            // console.log("button value is:", item, item.id);
             addToCollection(item);
           }}
-          // onClick={addToCollection}  
         >
           {" "}
           add to collection
@@ -208,14 +207,14 @@ function userSelectFilterTerm(event) {
 
   // Using the JSZip library
   function zipDownloadFolderSelectedImages() {
-    console.log("downloading selected images: ", selectedImages);
+    console.log("downloading selected images: ", selectedImagesCollection);
     // let selectedImages = selectedImages;
     let folderName = "meeting-backgrounds";
     let zip = new JSZip();
     // zip.file("Hello.txt", "Hello World\n");
     let imgFolder = zip.folder("meeting-backgrounds");
 
-    selectedImages.forEach((image) => {
+    selectedImagesCollection.forEach((image) => {
       imgFolder.file(image.images[0].b.url, imgData, { base64: true });
     });
 
@@ -303,7 +302,7 @@ function userSelectFilterTerm(event) {
             loading={loading}
             preSelectedImages={preSelectedImages}
             toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
-            selectedImages={selectedImages}
+            selectedImagesCollection={selectedImagesCollection}
             displaySelectedImages={displaySelectedImages}
             displayYourBackgroundsComponent={displayYourBackgroundsComponent}
             displayCuratedSetComponent={displayCuratedSetComponent}
