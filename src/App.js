@@ -99,17 +99,14 @@ function userSelectFilterTerm(event) {
   }, [value]);
 
 
-  const addToCollection = (item) => {
+  function addToCollection(item){
     setSelectedImagesCollection( array => array.concat(item) );
     setDisplaySelectedImages(true);
   }
   
-  useEffect(() => {
-    console.log("NEW selectedImagesCollection:", "length:", selectedImagesCollection.length, selectedImagesCollection);
-  }, [selectedImagesCollection]);
   
-  function handleRemoveSelected(item) {
-    console.log("removing this item from collection: ", item.title);
+  function removeFromCollection(item) {
+    console.log("Remove ", item.title, " this item from collection");
     let selectedImagesArray = selectedImagesCollection;
     // using the _Lodash library to remove the item from the
     // array of selected images
@@ -131,12 +128,13 @@ function userSelectFilterTerm(event) {
       // could this be a switch statement?
       buttonResult = (
         <button
-          type="submit"
+          // type="submit"
+          type="button"
           value={item}
           className="results-button-remove-from-collection"
-          onClick={(item) => {
+          onClick={() => {
             // console.log("button value is:", item.title);
-            handleRemoveSelected(item);
+            removeFromCollection(item);
           }}
         >
           {" "}
