@@ -101,8 +101,16 @@ function userSelectFilterTerm(event) {
 
   function addToCollection(item){
     setSelectedImagesCollection( array => array.concat(item) );
-    setDisplaySelectedImages(true);
+    // setDisplaySelectedImages(true);
   }
+
+  useEffect(() => {
+    if (selectedImagesCollection.length < 1) {
+      setDisplaySelectedImages(false);
+    } else {
+      setDisplaySelectedImages(true);
+    }
+  }, [selectedImagesCollection])
   
   
   function removeFromCollection(item) {
