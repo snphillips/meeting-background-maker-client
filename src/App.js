@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import _Lodash from "lodash";
@@ -30,13 +30,9 @@ const [displayComputerImage, setDisplayComputerImage] = useState(true);
 const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
 const [displayCuratedSetComponent, setDisplayCuratedSetComponent] = useState(false);
 const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = useState(true);
-const [toggleFilterResultsPlaceholder, setToggleFilterResultsPlaceholder] = useState(false);
 const [displaySearchResults, setDisplaySearchResults] = useState(false);
-const [downloadSetComponent, setDownloadSetComponent] = useState(true);
 const [preSelectedImages, setPreSelectedImages] = useState([]); 
 const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
-// const [removalList, setRemovalList] = useState([]); 
-// const [removalListArray, setRemovalListArray] = useState([]);
 const [imgData, setImgData] = useState();
                   
 
@@ -44,7 +40,6 @@ const [imgData, setImgData] = useState();
 // Runs on first render
 // ===================================
 useEffect(() => {
-  // debugger
   console.log("starting app from the top!!!!!!")
   shuffleBackgroundClipTextImage();
   // zipDownloadFolderCuratedSet()
@@ -93,15 +88,12 @@ function userSelectFilterTerm(event) {
         searchByTag();
         setDisplayComputerImage(false);
         setDisplaySearchResults(true);
-        // console.log("hello from useEffect")
-      // debugger
     }
   }, [value]);
 
 
   function addToCollection(item){
     setSelectedImagesCollection( array => array.concat(item) );
-    // setDisplaySelectedImages(true);
   }
 
   useEffect(() => {
@@ -212,47 +204,56 @@ function userSelectFilterTerm(event) {
   }
 
   // Using the JSZip library
+  // https://stuk.github.io/jszip/documentation/examples.html
   function zipDownloadFolderSelectedImages() {
     console.log("downloading selected images: ", selectedImagesCollection);
-    // let selectedImages = selectedImages;
     let folderName = "meeting-backgrounds";
     let zip = new JSZip();
-    // zip.file("Hello.txt", "Hello World\n");
+    // jszip format is: .folder(nameoffolder)
     let imgFolder = zip.folder("meeting-backgrounds");
 
+    // forEach image, generate a console.log and file item
     selectedImagesCollection.forEach((image) => {
-      imgFolder.file(image.images[0].b.url, imgData, { base64: true });
+      // sarah, what is imgData supposed to be?
+      console.log('imgData:', imgData)
+      // jszip file format is: .file(nameoffile, contentoffile, options)
+      // Set to true if the data is base64 encoded.
+      // For example image data from a <canvas> element. Plain text and HTML do not need this option.
+      // Sarah, do I need {base64: true}?
+      imgFolder.file(image.images[0].b.url, imgData, {base64: true});
     });
 
-    zip.generateAsync({ type: "blob" }).then(function (content) {
+    zip.generateAsync({ type: "blob" }).then(function (folderContent) {
       // Using npm library FileSaver.js
-      saveAs(content, folderName);
+      console.log("folderContent:", folderContent, "folderName:", folderName)
+      saveAs(folderContent, folderName);
     });
   }
 
   // Sarah why did you take this out in 2020?
-  function zipDownloadFolderCuratedSet(value, index) {
-    console.log("downloading curated image set with value of: ", value, index)
-    console.log("this.state.curatedSets[index]", this.state.curatedSets[index])
+  // function zipDownloadFolderCuratedSet(value, index) {
+    // console.log("downloading curated image set with value of: ", value, index)
+    // console.log("this.state.curatedSets[index]", this.state.curatedSets[index])
 
-    // let desiredCuratedSet = value
-    let selectedCuratedSet = this.state.curatedSets[index].images
-    // value is the name of the selected curated list
-    let folderName = value
-    let zip = new JSZip();
-    // zip.file("Hello.txt", "Hello World\n");
-    // let imgFolder = zip.folder("cocktailHour");
+    // // let desiredCuratedSet = value
+    // let selectedCuratedSet = this.state.curatedSets[index].images
+    // // value is the name of the selected curated list
+    // let folderName = value
+    // let zip = new JSZip();
+    // // zip.file("Hello.txt", "Hello World\n");
+    // // let imgFolder = zip.folder("cocktailHour");
   
-    selectedCuratedSet.forEach( (thing) => {
-      zip.file(thing.imageURL, this.imgData, {base64: true});
-    })
+    // selectedCuratedSet.forEach( (thing) => {
+    //   console.log("curated imgData:", imgData)
+    //   zip.file(thing.imageURL, imgData, {base64: true});
+    // })
   
-    zip.generateAsync({type:"blob"})
-       .then(function(content) {
-          // Using npm library FileSaver.js
-          saveAs(content, folderName);
-       });
-  }
+    // zip.generateAsync({type:"blob"})
+    //    .then(function(content) {
+    //       // Using npm library FileSaver.js
+    //       saveAs(content, folderName);
+    //    });
+  // }
 
 
 
@@ -307,25 +308,21 @@ function userSelectFilterTerm(event) {
           <YourBackgroundsComponent
             loading={loading}
             preSelectedImages={preSelectedImages}
-            toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
             selectedImagesCollection={selectedImagesCollection}
             displaySelectedImages={displaySelectedImages}
             displayYourBackgroundsComponent={displayYourBackgroundsComponent}
             displayCuratedSetComponent={displayCuratedSetComponent}
             displaySearchResults={displaySearchResults}
             displayComputerImage={displayComputerImage}
-            // handleSubmit={handleSubmit}
             whichButton={whichButton}
             zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
             userSelectFilterTerm={userSelectFilterTerm}
-            // displayDownloadButton={displayDownloadButton}
           />
 
           <CuratedSetsComponent
             curatedSets={curatedSets}
             displayCuratedSetComponent={displayCuratedSetComponent}
             displayYourBackgroundsComponent={displayYourBackgroundsComponent}
-            zipDownloadFolderCuratedSet={zipDownloadFolderCuratedSet}
           />
         </section>
         <Footer />
