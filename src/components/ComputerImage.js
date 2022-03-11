@@ -57,15 +57,14 @@ export default function ComputerImage(props) {
         <div
         id="computer-keyboard"
         style={{
-          border: "3px solid white",
-          width: "100%",
+          borderTop: "3px solid white",
+          borderBottom: "3px solid white",
+          borderLeft: "6px solid white",
+          borderRight: "6px solid white",
+          width: "297px",
           height: "50px",
-          clipPath: "polygon(20% 0%, 80% 0%, 91% 100%, 8% 100%)",
-          // borderLeft: "20vw solid white",
-          // borderTop: "5vw solid transparent",
-          // borderBottom: "5vw solid transparent",
-          // width: "0",
-          // height: "10vw",
+          // clipPath: "polygon(20% 0%, 80% 0%, 91% 100%, 8% 100%)",
+          transform: "skew(54deg, 0deg) translate(40px, -2px)"
         }}
         >
 

@@ -213,19 +213,25 @@ function userSelectFilterTerm(event) {
     let imgFolder = zip.folder("meeting-backgrounds");
 
     // forEach image, generate a console.log and file item
+    let folderContent = [];
     selectedImagesCollection.forEach((image) => {
       // sarah, what is imgData supposed to be?
-      console.log('imgData:', imgData)
-      // jszip file format is: .file(nameoffile, contentoffile, options)
+      console.log('image.imgFileLocation:', image.imgFileLocation)
+      // {base64: true}
       // Set to true if the data is base64 encoded.
       // For example image data from a <canvas> element. Plain text and HTML do not need this option.
-      // Sarah, do I need {base64: true}?
-      imgFolder.file(image.images[0].b.url, imgData, {base64: true});
+      // Sarah, do I need {base64: true} What does that means?
+      // jszip file format is: .file(nameoffile, content-of-file, options)
+      // imgFolder.file(image.images[0].b.url, content-of-file, {base64: true});
+      // imgFolder.file(image.title, image.imgFileLocation, {base64: true});
+      folderContent.push(imgFolder.file(image.id + '.jpg', image.imgFileLocation));
+      console.log("folderContent:", folderContent)
     });
 
     zip.generateAsync({ type: "blob" }).then(function (folderContent) {
       // Using npm library FileSaver.js
-      console.log("folderContent:", folderContent, "folderName:", folderName)
+      console.log("folderContent:", folderContent, "folderName:", folderName, "folderContent", folderContent)
+      // saveAs(folderContent, folderName);
       saveAs(folderContent, folderName);
     });
   }
