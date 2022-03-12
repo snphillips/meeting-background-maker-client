@@ -36,7 +36,10 @@ const removalListArray = [
   "18615581",
   "18309157",
   "18109767",
-  "18386219"
+  "18386219",
+  "18612761",
+  "18655055",
+  "18449303"
 ]
 
 export default removalListArray;
