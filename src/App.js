@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import _Lodash from "lodash";
+import JSZipUtils from "jszip-utils";
+
 import Header from "./components/Header";
 // import Instructions from "./components/Instructions";
 import CuratedSetsComponent from "./components/CuratedSetsComponent";
@@ -33,7 +35,7 @@ const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = us
 const [displaySearchResults, setDisplaySearchResults] = useState(false);
 const [preSelectedImages, setPreSelectedImages] = useState([]); 
 const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
-const [imgData, setImgData] = useState();
+// const [imgData, setImgData] = useState();
                   
 
 // ===================================
@@ -101,7 +103,9 @@ function userSelectFilterTerm(event) {
       setDisplaySelectedImages(false);
     } else {
       setDisplaySelectedImages(true);
+      console.log("selectedImagesCollection:", selectedImagesCollection)
     }
+    // TODO: update /meeting-backgrounds/userSelectedBackgrounds
   }, [selectedImagesCollection])
   
   
@@ -206,61 +210,30 @@ function userSelectFilterTerm(event) {
   // Using the JSZip library
   // https://stuk.github.io/jszip/documentation/examples.html
   function zipDownloadFolderSelectedImages() {
-    console.log("downloading selected images: ", selectedImagesCollection);
-    let folderName = "meeting-backgrounds";
+
+    /* Create a new instance of JSZip where (describe)*/
+    /* we will be adding all of our files*/
     let zip = new JSZip();
-    // jszip format is: .folder(nameoffolder)
-    let imgFolder = zip.folder("meeting-backgrounds");
+    let count = 0;
 
-    // forEach image, generate a console.log and file item
-    let folderContent = [];
-    selectedImagesCollection.forEach((image) => {
-      // sarah, what is imgData supposed to be?
-      console.log('image.imgFileLocation:', image.imgFileLocation)
-      // {base64: true}
-      // Set to true if the data is base64 encoded.
-      // For example image data from a <canvas> element. Plain text and HTML do not need this option.
-      // Sarah, do I need {base64: true} What does that means?
-      // jszip file format is: .file(nameoffile, content-of-file, options)
-      // imgFolder.file(image.images[0].b.url, content-of-file, {base64: true});
-      // imgFolder.file(image.title, image.imgFileLocation, {base64: true});
-      folderContent.push(imgFolder.file(image.id + '.jpg', image.imgFileLocation));
-      console.log("folderContent:", folderContent)
-    });
+    selectedImagesCollection.forEach(function (image) {
+      let filename = image.id + `.jpg`;
+      let url = image.imgFileLocation;
 
-    zip.generateAsync({ type: "blob" }).then(function (folderContent) {
-      // Using npm library FileSaver.js
-      console.log("folderContent:", folderContent, "folderName:", folderName, "folderContent", folderContent)
-      // saveAs(folderContent, folderName);
-      saveAs(folderContent, folderName);
-    });
+      JSZipUtils.getBinaryContent(url, function (err, data) {
+        if (err) {
+          throw err; // or handle the error
+        }
+        zip.file(filename, data, { binary: true });
+        count++;
+        if (count == selectedImagesCollection.length) {
+          zip.generateAsync({ type: 'blob' }).then(function (content) {
+            saveAs(content, "meeting-backgrounds");
+          });
+        }
+      });
+    }) 
   }
-
-  // Sarah why did you take this out in 2020?
-  // function zipDownloadFolderCuratedSet(value, index) {
-    // console.log("downloading curated image set with value of: ", value, index)
-    // console.log("this.state.curatedSets[index]", this.state.curatedSets[index])
-
-    // // let desiredCuratedSet = value
-    // let selectedCuratedSet = this.state.curatedSets[index].images
-    // // value is the name of the selected curated list
-    // let folderName = value
-    // let zip = new JSZip();
-    // // zip.file("Hello.txt", "Hello World\n");
-    // // let imgFolder = zip.folder("cocktailHour");
-  
-    // selectedCuratedSet.forEach( (thing) => {
-    //   console.log("curated imgData:", imgData)
-    //   zip.file(thing.imageURL, imgData, {base64: true});
-    // })
-  
-    // zip.generateAsync({type:"blob"})
-    //    .then(function(content) {
-    //       // Using npm library FileSaver.js
-    //       saveAs(content, folderName);
-    //    });
-  // }
-
 
 
 

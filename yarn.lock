@@ -7233,6 +7233,11 @@
     "array-includes" "^3.1.1"
     "object.assign" "^4.1.0"
 
+"jszip-utils@^0.1.0":
+  "integrity" "sha512-tBNe0o3HAf8vo0BrOYnLPnXNo5A3KsRMnkBFYjh20Y3GPYGfgyoclEMgvVchx0nnL+mherPi74yLPIusHUQpZg=="
+  "resolved" "https://registry.npmjs.org/jszip-utils/-/jszip-utils-0.1.0.tgz"
+  "version" "0.1.0"
+
 "jszip@^3.4.0":
   "integrity" "sha512-ghL0tz1XG9ZEmRMcEN2vt7xabrDdqHHeykgARpmZ0BiIctWxM47Vt63ZO2dnp4QYt/xJVLLy5Zv1l/xRdh2byg=="
   "resolved" "https://registry.npmjs.org/jszip/-/jszip-3.7.1.tgz"

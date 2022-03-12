@@ -41,17 +41,18 @@ export default function SelectedImages(props) {
             })}
           </Masonry>
         </section>
-
+      {/* <a href="/meeting-backgrounds/userSelectedBackgrounds"> */}
         <button
           className="download-button"
-          value=""
+          // value=""
+          type="download"
           onClick={(event) => {
-            console.log("download selected images");
             props.zipDownloadFolderSelectedImages();
           }}
-        >
+          >
           Download Set of Selected Images
         </button>
+      {/* </a> */}
         </div>
       }
         </div>

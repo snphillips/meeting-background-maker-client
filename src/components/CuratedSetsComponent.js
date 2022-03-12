@@ -67,14 +67,11 @@ export default function CuratedSetComponent(props) {
                     key={item.setName + "downlad-button"}
                     className="curated-set-download-button"
                     type="download"
-                    value={item.setName}
-                    onClick={() => {
-                      console.log("HI! download images:", item.setName);
-                      // props.zipDownloadFolderCuratedSet(item.setName, index)
-                    }}
-                    onMouseOver={() => {
-                      console.log("download selected images", item.setName);
-                    }}
+                    // value={item.setName}
+                    // onClick={() => {
+                    //   console.log("HI! download images:", item.setName);
+                    //   // props.zipDownloadFolderCuratedSet(item.setName, index)
+                    // }}
                   >
                     download image set
                   </button>
