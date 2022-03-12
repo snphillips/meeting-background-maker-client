@@ -3,7 +3,7 @@ import React from "react";
 export default function Header(props) {
   return (
     <div className="header-container">
-      <h1 className="header clip-text">meeting background finder</h1>
+      <h1 className="header clip-text">meeting background maker</h1>
 
       <section className="app-description">
         <p>

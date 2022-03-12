@@ -207,7 +207,7 @@ function userSelectFilterTerm(event) {
     // document.querySelector(".header").style.textShadow = "2px 2px 2px #fff";
   }
 
-  // Using the JSZip library
+  // Using the JSZip library & jszip-utils
   // https://stuk.github.io/jszip/documentation/examples.html
   function zipDownloadFolderSelectedImages() {
 
@@ -226,7 +226,7 @@ function userSelectFilterTerm(event) {
         }
         zip.file(filename, data, { binary: true });
         count++;
-        if (count == selectedImagesCollection.length) {
+        if (count === selectedImagesCollection.length) {
           zip.generateAsync({ type: 'blob' }).then(function (content) {
             saveAs(content, "meeting-backgrounds");
           });
@@ -261,7 +261,7 @@ function userSelectFilterTerm(event) {
                 ).style.display = "none";
               }}
             >
-              Your Backgrounds
+              Your Backgrounds  
             </h2>
           </div>
 

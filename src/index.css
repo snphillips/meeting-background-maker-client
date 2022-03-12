@@ -12,6 +12,29 @@
   font-display: swap;
 }
 
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+
+.svg-icon {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: .5rem;
+  margin-bottom: -.2rem;
+  stroke-width: 10;
+}
+
+.svg-icon path {
+  fill: #efefef;
+  stroke-width: 10;
+}
+
+.download-button:hover .svg-icon path {
+  fill: #000;
+  stroke-width: 10;
+}
+
+
 /*==============================
 General Styling
 ================================*/
