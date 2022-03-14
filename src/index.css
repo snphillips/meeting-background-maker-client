@@ -15,7 +15,6 @@
 /* -----
 SVG Icons - svgicons.sparkk.fr
 ----- */
-
 .svg-icon {
   width: 1.2em;
   height: 1.2em;
@@ -124,6 +123,10 @@ button:hover {
 
 .component {
   height: 100%;
+}
+
+.spinner-container {
+  display: block;
 }
 
 /*==========================*/

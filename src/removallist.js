@@ -6,6 +6,10 @@ const removalList = [
      removalListId: ["18643663", "18728283"]
    },
    {
+     filterTerm: "airplanes",
+     removalListId: []
+   },
+   {
      filterTerm: "architectural-drawing",
      removalListId: ["18410999", "18410979", "18410981", "18172133", "18384975", "18628765", "68776049", "18384931"]
     },
@@ -38,8 +42,8 @@ const removalList = [
       removalListId: []
     },
     {
-      filterTerm: "airplanes",
-      removalListId: []
+      filterTerm: "dots",
+      removalListId: ["18141033", "18141027", "18453515", "18630895", "18480401" ]
     },
     {
       filterTerm: "palm trees",
@@ -69,10 +73,6 @@ const removalList = [
       removalListId: []
     },
     {
-      filterTerm: "space",
-      removalListId: []
-    },
-    {
       filterTerm: "sky",
       removalListId: ["18612761", "18655055", "18449303"]
     },
@@ -83,7 +83,7 @@ const removalList = [
     {
       filterTerm: "public space",
       removalListId: []
-    },
+    }
 ]
 
 export default removalList;

@@ -44,8 +44,6 @@ const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
 useEffect(() => {
   console.log("starting app from the top!!!!!!")
   shuffleBackgroundClipTextImage();
-  // zipDownloadFolderCuratedSet()
-  // zipDownloadFolderSelectedImages()
 }, []);
 
 function userSelectFilterTerm(event) {

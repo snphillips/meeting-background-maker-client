@@ -8,18 +8,24 @@ const filterTerms = [
   "bouquets",
   "cubism",
   "data visualization",
+  "dots",
   "gradient",
   "mid-century modern",
+  "modern",
   "moon",
   "op art",
   "palm trees",
-  "postmodern",
   "public space",
   "roses",
   "sky", 
   "sound",
   "sunset",
   "wall decoration",
+  "art deco",
+  "memphis"
 ];
 
 export default filterTerms;
+
+// This tag caused an error
+// "postmodern",

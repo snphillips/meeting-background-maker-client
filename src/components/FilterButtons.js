@@ -27,7 +27,6 @@ export default function FilterButtons(props) {
         <section className="filter-button-section">
           {filterTerms.map((item, index) => {
             // console.log("button value:", item)
-
             return (
                 <button
                   key={index}
@@ -36,22 +35,16 @@ export default function FilterButtons(props) {
                   // type="submit"
                   type="button"
                   value={item}
-                  // onClick={(event) => {
-                  //   event.preventDefault();
-                  //   console.log("button value is:", event.target.value);
-                  //   props.userSelectFilterTerm(event);
-                  // }}
                   onClick={props.userSelectFilterTerm}
-                  // onSubmit={props.userSelectFilterTerm}
                 >
                 {item}
               </button>
             );
           })}
 
-          <span className="spinner-container">
+          <div className="spinner-container">
             <LoadingSpinner loading={props.loading} />
-          </span>
+          </div>
         </section>
       </div>
     );
