@@ -20,6 +20,7 @@ export default function YourBackgroundsComponent(props) {
           displayComputerImage={props.displayComputerImage} />
 
         <SearchResults
+          value={props.value}
           preSelectedImages={props.preSelectedImages}
           toggleFilterResultsPlaceholder={props.toggleFilterResultsPlaceholder}
           whichButton={props.whichButton}

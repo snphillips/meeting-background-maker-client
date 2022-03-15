@@ -46,7 +46,8 @@ export default function SearchResults(props) {
                   <img
                     key={index}
                     className="result-img"
-                    src={item.images[0].b.url}
+                    // src={item.images[0].b.url}
+                    src={`../meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
                     alt={item.title}
                   />
                 </a>

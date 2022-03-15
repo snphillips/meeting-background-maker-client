@@ -65,7 +65,8 @@ function userSelectFilterTerm(event) {
       axios
         .get(`http://localhost:3001/searchbytag/` + value)
         .then((response) => {
-          console.log(`🍩 The search value is:`, value, `There are`, (response.data).length, `images.`)
+          // console.log(`🍩 The search value is:`, value, `There are`, (response.data).length, `images.`)
+          console.log(`🍩 The search value is:`, value, `response.data:`, response.data)
           // set the state of preSelectedImage with the response from the server
           setPreSelectedImages(response.data)
           // stop the loading spinner
@@ -283,6 +284,7 @@ function userSelectFilterTerm(event) {
         <section id="component-sections">
 
           <YourBackgroundsComponent
+            value={value}
             loading={loading}
             preSelectedImages={preSelectedImages}
             selectedImagesCollection={selectedImagesCollection}
