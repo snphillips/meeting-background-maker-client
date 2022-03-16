@@ -1,4 +1,5 @@
 import React from "react";
+import LoadingSpinner from "../LoadingSpinner";
 
 export default function Header(props) {
   return (
@@ -11,6 +12,7 @@ export default function Header(props) {
           Museum's archive.
         </p>
         <p>Filter using keywords, or download curated sets.</p>
+
       </section>
     </div>
   );

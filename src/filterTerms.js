@@ -2,27 +2,23 @@
 
 const filterTerms = [
   "accountants",
-  "airplanes",
+  "thistles",
+  "clams",
+  "movie poster",
   "art deco",
-  "astronomy",
+  "art nouveau",
   "bauhaus", 
   "bouquets",
   "cubism",
-  "data visualization",
   "gradient",
-  "memphis",
   "mid-century modern",
   "modern",
   "modernism",
-  "moon",
   "op art",
   "palm trees",
+  "pattern",
   "postmodern",
-  "public space",
-  "roses",
-  "sky", 
-  "sound",
-  "sunset",
+  "sidewall", 
   "textile",
   "textile design",
   "wall decoration",
@@ -30,7 +26,3 @@ const filterTerms = [
 ];
 
 export default filterTerms;
-
-// These tags caused an error - figure out what's up
-// "postmodern",
-// "cubism",

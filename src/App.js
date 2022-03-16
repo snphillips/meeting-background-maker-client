@@ -21,13 +21,15 @@ import photoMural from "./CuratedSets/photoMural.js";
 import kolomanMoser from "./CuratedSets/kolomanMoser";
 
 const JSZip = require("jszip");
+
+
 const curatedSets = [cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser];
 
 export default function App(props) {
   
 const initialRender = useRef(true);
 const [loading, setLoading] = useState(false); // the loading spinner
-const [value, setValue] = useState("dots");
+const [value, setValue] = useState();
 const [displayComputerImage, setDisplayComputerImage] = useState(true);
 const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
 const [displayCuratedSetComponent, setDisplayCuratedSetComponent] = useState(false);
@@ -36,7 +38,8 @@ const [displaySearchResults, setDisplaySearchResults] = useState(false);
 const [preSelectedImages, setPreSelectedImages] = useState([]); 
 const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
 // const [imgData, setImgData] = useState();
-                  
+
+
 
 // ===================================
 // Runs on first render

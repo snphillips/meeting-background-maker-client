@@ -22,6 +22,9 @@ export default function FilterButtons(props) {
           <p className="filter-message">
             Select a search term to view images from the museum's collection.
           </p>
+          <div className="spinner-container">
+            <LoadingSpinner loading={props.loading} />
+          </div>
         </div>
 
         <section className="filter-button-section">
@@ -42,9 +45,6 @@ export default function FilterButtons(props) {
             );
           })}
 
-          <div className="spinner-container">
-            <LoadingSpinner loading={props.loading} />
-          </div>
         </section>
       </div>
     );
