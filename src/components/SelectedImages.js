@@ -42,7 +42,6 @@ export default function SelectedImages(props) {
             })}
           </Masonry>
         </section>
-      {/* <a href="/meeting-backgrounds/userSelectedBackgrounds"> */}
         <button
           className="download-button"
           // value=""
@@ -56,7 +55,6 @@ export default function SelectedImages(props) {
 					</svg>
           Download Set of Selected Images
         </button>
-      {/* </a> */}
         </div>
       }
         </div>

@@ -2,13 +2,13 @@
 
 _Companion to Meeting Background Maker Server: https://github.com/snphillips/meeting-background-maker-server_
 
-This web app allows users to view items from the Cooper Hewitt Design Museum's collection
+This web app allows users to select images of items from the Cooper Hewitt Design Museum's collection to be used as backgrounds for online meetings. The user may browse through the museum's collection using keywords such as "bauhaus" or "modernism", or the the user may download existing sets curated by me.
 
 ### Getting Started
 
-Follow the instructions to install the server first, then come back here: https://github.com/snphillips/meeting-background-maker-server
+Follow the instructions to install the server first, then come back here to: https://github.com/snphillips/meeting-background-maker-server
 
-Clone this repo:
+After you've set up the server, clone this repo:
 
 `````````
 `git clone https://github.com/snphillips/meeting-background-maker-client.git`
@@ -21,18 +21,18 @@ cd meeting-background-maker-client
 `````````
 
 
-Run npm to install all the dependencies:
+🛠 Run npm to install all the dependencies:
 
 `````````
 `npm install`
 `````````
 
-Start the React server:
+🪄 Start the React server:
 
 `````````
 `npm start`
 `````````
-Your browser should open to http://localhost:3000/ Voila!
+Your browser should open to http://localhost:3000/ Voila! 🥂
 
 
 ### Made With
@@ -40,9 +40,9 @@ Your browser should open to http://localhost:3000/ Voila!
 * Create-React-App
 * axios
 * file-saver
-* jimp
 * jszip
 * react-spinners
+
 
 
 
