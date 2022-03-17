@@ -5,10 +5,8 @@ import _Lodash from "lodash";
 import JSZipUtils from "jszip-utils";
 
 import Header from "./components/Header";
-// import Instructions from "./components/Instructions";
 import CuratedSetsComponent from "./components/CuratedSetsComponent";
 import Footer from "./components/Footer";
-// import removalListArray from "./removalListArray";
 import YourBackgroundsComponent from "./components/YourBackgroundsComponent";
 
 // Curated Sets
@@ -21,7 +19,6 @@ import photoMural from "./CuratedSets/photoMural.js";
 import kolomanMoser from "./CuratedSets/kolomanMoser";
 
 const JSZip = require("jszip");
-
 
 const curatedSets = [cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser];
 
@@ -37,7 +34,6 @@ const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = us
 const [displaySearchResults, setDisplaySearchResults] = useState(false);
 const [preSelectedImages, setPreSelectedImages] = useState([]); 
 const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
-// const [imgData, setImgData] = useState();
 
 
 
@@ -107,7 +103,7 @@ function userSelectFilterTerm(event) {
       setDisplaySelectedImages(true);
       console.log("selectedImagesCollection:", selectedImagesCollection)
     }
-    // TODO: update /meeting-backgrounds/userSelectedBackgrounds
+    // TODO: update /user-selected-meeting-backgrounds/ (are you even going to use this?)
   }, [selectedImagesCollection])
   
   

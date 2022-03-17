@@ -60,7 +60,7 @@ export default function CuratedSetComponent(props) {
                 <a href={
                     // machineName is something I created.
                     // It has no spaces
-                    "/meeting-backgrounds/curatedSets/" +
+                    "/meeting-backgrounds-curated-sets/" +
                     item.machineName + ".zip"
                   }>
                   <button
