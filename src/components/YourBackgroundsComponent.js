@@ -28,6 +28,7 @@ export default function YourBackgroundsComponent(props) {
           />
 
         <SelectedImages
+          value={props.value}
           selectedImagesCollection={props.selectedImagesCollection}
           displaySelectedImages={props.displaySelectedImages}
           zipDownloadFolderSelectedImages={props.zipDownloadFolderSelectedImages}
