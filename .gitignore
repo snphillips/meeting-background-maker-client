@@ -24,29 +24,6 @@ yarn-error.log*
 
 
 # Sarah's additions
-meeting-backgrounds/**
-accountants/
-thistles/
-clams/
-movie poster/
-art deco/
-art nouveau/
-bauhaus/
-bouquets/
-cubism/
-gradient/
-mid-century modern/
-modern/
-modernism/
-op art/
-palm trees/
-pattern/
-postmodern/
-sidewall/
-textile/
-textile design/
-wall decoration/
-wallpaper/
-public/user-selected-meeting-backgrounds/**
+public/meeting-backgrounds/**
 HOWTO.txt
 
