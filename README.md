@@ -32,7 +32,7 @@ Start the React server:
 `````````
 `npm start`
 `````````
-Your browser should open to http://localhost:3000/ Voila!
+Your browser should open to http://localhost:3000/ Voila! 🥂
 
 
 ### Made With
