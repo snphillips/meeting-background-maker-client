@@ -24,6 +24,7 @@ yarn-error.log*
 
 
 # Sarah's additions
-public/meeting-backgrounds/**
 HOWTO.txt
+meeting-backgrounds/**
+
 

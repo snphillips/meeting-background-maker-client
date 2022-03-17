@@ -25,6 +25,7 @@ const cocktailHour = {
       url: "https://collection.cooperhewitt.org/objects/907130443/",
       imageURL: "https://images.collection.cooperhewitt.org/325194_7ba84f2e7fc8ac1b_b.jpg",
       localImageURL: "/meeting-backgrounds-curated-sets/cocktailHour/907130443.jpg",
+
     },
     {
       id: '18420481',
@@ -32,6 +33,7 @@ const cocktailHour = {
       url: "https://collection.cooperhewitt.org/objects/18420481/",
       imageURL: "https://images.collection.cooperhewitt.org/89286_40904f6909ab33bc_b.jpg",
       localImageURL: "/meeting-backgrounds-curated-sets/cocktailHour/18420481.jpg",
+
     },
     {
       id: '18486705',
@@ -39,6 +41,7 @@ const cocktailHour = {
       url: "https://collection.cooperhewitt.org/objects/18486705/",
       imageURL: "https://images.collection.cooperhewitt.org/39571_f51cbee0bcf81169_b.jpg",
       localImageURL: "/meeting-backgrounds-curated-sets/cocktailHour/18486705.jpg",
+
     },
     {
       id: '18680713',
@@ -46,6 +49,7 @@ const cocktailHour = {
       url: "https://collection.cooperhewitt.org/objects/18680713/",
       imageURL: "https://images.collection.cooperhewitt.org/155203_a42ace55852a053a_b.jpg",
       localImageURL: "/meeting-backgrounds-curated-sets/cocktailHour/18680713.jpg",
+
     },
         {
       id: '18606935',
@@ -53,6 +57,7 @@ const cocktailHour = {
       url: "https://collection.cooperhewitt.org/objects/18606935/",
       imageURL: "https://images.collection.cooperhewitt.org/48840_d6c6f3959b1afbc9_b.jpg",
       localImageURL: "/meeting-backgrounds-curated-sets/cocktailHour/18606935.jpg",
+
     }
     ]
   }
