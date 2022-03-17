@@ -40,7 +40,6 @@ Your browser should open to http://localhost:3000/ Voila! 🥂
 * Create-React-App
 * axios
 * file-saver
-* jimp
 * jszip
 * react-spinners
 
