@@ -21,13 +21,13 @@ cd meeting-background-maker-client
 `````````
 
 
-Run npm to install all the dependencies:
+🛠 Run npm to install all the dependencies:
 
 `````````
 `npm install`
 `````````
 
-Start the React server:
+🪄 Start the React server:
 
 `````````
 `npm start`
