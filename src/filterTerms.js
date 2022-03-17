@@ -4,6 +4,7 @@ const filterTerms = [
   "accountants",
   "thistles",
   "clams",
+  "accordion",
   "movie poster",
   "art deco",
   "art nouveau",
