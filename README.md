@@ -2,7 +2,7 @@
 
 _Companion to Meeting Background Maker Server: https://github.com/snphillips/meeting-background-maker-server_
 
-This web app allows users to select images of items from the Cooper Hewitt Design Museum's collection to be used as backgrounds for online meetings.
+This web app allows users to select images of items from the Cooper Hewitt Design Museum's collection to be used as backgrounds for online meetings. The user may browse through the museum's collection using keywords such as "bauhaus" or "modernism", or the the user may download existing curated sets.
 
 ### Getting Started
 
