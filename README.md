@@ -6,7 +6,7 @@ This web app allows users to select images of items from the Cooper Hewitt Desig
 
 ### Getting Started
 
-Follow the instructions to install the server first, then come back here: https://github.com/snphillips/meeting-background-maker-server
+Follow the instructions to install the server first, then come back here to: https://github.com/snphillips/meeting-background-maker-server
 
 After you've set up the server, clone this repo:
 
@@ -42,6 +42,7 @@ Your browser should open to http://localhost:3000/ Voila! 🥂
 * file-saver
 * jszip
 * react-spinners
+
 
 
 
