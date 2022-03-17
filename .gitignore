@@ -24,7 +24,7 @@ yarn-error.log*
 
 
 # Sarah's additions
-public/meeting-backgrounds/**
+meeting-backgrounds/**
 accountants/
 thistles/
 clams/
