@@ -48,16 +48,18 @@ export default function FilterButtons(props) {
 
             );
           })}
-           <select 
-            // value={this.allTags}
-            // onChange={this.handleChange}
-            >
-            {props.allTags.map((item) => (
-              <option value={item.name}>
-                {item.name}
-              </option>
-            ))}
-          </select>  
+          <form onSubmit={props.handleDropdownSubmit} >
+            <select onChange={props.userSelectFilterTerm} >
+              {props.allTags.map((item, index) => (
+                <option 
+                  key={index}
+                  value={item.name}
+                  >
+                    {item.name}
+                </option>
+              ))}
+            </select>  
+          </form>
         </section>
       </div>
     );
