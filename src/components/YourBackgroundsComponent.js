@@ -11,7 +11,6 @@ export default function YourBackgroundsComponent(props) {
       
       <section id="user-generated-set-window">
         <FilterButtons
-          handleSubmit={props.handleSubmit}
           loading={props.loading}
           userSelectFilterTerm={props.userSelectFilterTerm}
           allTags={props.allTags}

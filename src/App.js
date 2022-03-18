@@ -239,6 +239,16 @@ function userSelectFilterTerm(event) {
 // =====================================
 // get tags
 // =====================================
+function handleDropdownChange(event) {
+  setValue(event.target.value)
+}
+
+function handleDropdownSubmit(event) {
+  console.log("handleDropdownSubmit clicked value is:", value)
+  cooperHewittGetTagsFromAPI()
+}
+
+
 function cooperHewittGetTagsFromAPI() {
   console.log("making api call")
   let url = `http://localhost:3001/alltags/`
@@ -246,12 +256,13 @@ function cooperHewittGetTagsFromAPI() {
   axios.get(url)
   .then((response) => {
     console.log(`🎈 response.data.tags:`, response.data)
-    // set the state of preSelectedImage with the response from the server
-    setAllTags(response.data);
-    // stop the loading spinner
-    // show the component that displays the preSelected results from the search
-    // setLoading(false);
-    // setDisplaySearchResults(true)
+    
+    let tempArray = response.data;
+    tempArray = tempArray.filter(function( obj ) {
+      return obj.name.length < 16;
+    });
+
+    setAllTags(tempArray);
   })
   .catch(function (error) {
     // debugger
@@ -313,8 +324,9 @@ function cooperHewittGetTagsFromAPI() {
         <section id="component-sections">
 
           <YourBackgroundsComponent
-            value={value}
             loading={loading}
+            value={value}
+            allTags={allTags}
             preSelectedImages={preSelectedImages}
             selectedImagesCollection={selectedImagesCollection}
             displaySelectedImages={displaySelectedImages}
@@ -326,7 +338,8 @@ function cooperHewittGetTagsFromAPI() {
             zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
             userSelectFilterTerm={userSelectFilterTerm}
             cooperHewittGetTagsFromAPI={cooperHewittGetTagsFromAPI}
-            allTags={allTags}
+            handleDropdownSubmit={handleDropdownSubmit}
+            onChange={handleDropdownChange}
           />
 
           <CuratedSetsComponent
