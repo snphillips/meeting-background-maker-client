@@ -78,7 +78,7 @@ a:hover {
 }
 
 
-button {
+button, select {
   display: block;
   margin: .5rem auto;
   color: #efefef;
