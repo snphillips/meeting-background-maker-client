@@ -4,6 +4,7 @@ import { saveAs } from "file-saver";
 import _Lodash from "lodash";
 import JSZipUtils from "jszip-utils";
 
+
 import Header from "./components/Header";
 import CuratedSetsComponent from "./components/CuratedSetsComponent";
 import Footer from "./components/Footer";
@@ -34,6 +35,7 @@ const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = us
 const [displaySearchResults, setDisplaySearchResults] = useState(false);
 const [preSelectedImages, setPreSelectedImages] = useState([]); 
 const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
+const [allTags, setAllTags] = useState([]);
 
 
 
@@ -43,6 +45,7 @@ const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
 useEffect(() => {
   console.log("starting app from the top!!!!!!")
   shuffleBackgroundClipTextImage();
+  cooperHewittGetTagsFromAPI();
 }, []);
 
 function userSelectFilterTerm(event) {
@@ -233,6 +236,33 @@ function userSelectFilterTerm(event) {
     }) 
   }
 
+// =====================================
+// get tags
+// =====================================
+function cooperHewittGetTagsFromAPI() {
+  console.log("making api call")
+  let url = `http://localhost:3001/alltags/`
+  
+  axios.get(url)
+  .then((response) => {
+    console.log(`🎈 response.data.tags:`, response.data)
+    // set the state of preSelectedImage with the response from the server
+    setAllTags(response.data);
+    // stop the loading spinner
+    // show the component that displays the preSelected results from the search
+    // setLoading(false);
+    // setDisplaySearchResults(true)
+  })
+  .catch(function (error) {
+    // debugger
+    console.log("axios api call catch error:", error );
+  });
+}
+
+
+
+
+
 
 
     return (
@@ -295,6 +325,8 @@ function userSelectFilterTerm(event) {
             whichButton={whichButton}
             zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
             userSelectFilterTerm={userSelectFilterTerm}
+            cooperHewittGetTagsFromAPI={cooperHewittGetTagsFromAPI}
+            allTags={allTags}
           />
 
           <CuratedSetsComponent

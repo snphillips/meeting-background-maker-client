@@ -14,6 +14,7 @@ export default function YourBackgroundsComponent(props) {
           handleSubmit={props.handleSubmit}
           loading={props.loading}
           userSelectFilterTerm={props.userSelectFilterTerm}
+          allTags={props.allTags}
         />
 
         <ComputerImage 

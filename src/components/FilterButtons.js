@@ -15,6 +15,7 @@ the server or client. This way, all the hard work of calling the museum,
 and manipulating the images has been done in advance.
 */
 
+
 export default function FilterButtons(props) {
   return (
       <div className="filters-component">
@@ -42,9 +43,21 @@ export default function FilterButtons(props) {
                 >
                 {item}
               </button>
+              
+              
+
             );
           })}
-
+           <select 
+            // value={this.allTags}
+            // onChange={this.handleChange}
+            >
+            {props.allTags.map((item) => (
+              <option value={item.name}>
+                {item.name}
+              </option>
+            ))}
+          </select>  
         </section>
       </div>
     );
