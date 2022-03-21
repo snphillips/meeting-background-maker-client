@@ -251,7 +251,9 @@ function handleDropdownSubmit(event) {
 
 function cooperHewittGetTagsFromAPI() {
   console.log("making api call")
+  
   let url = `http://localhost:3001/alltags/`
+  // let url = `https://meeting-background-server.herokuapp.com/alltags/`
   
   axios.get(url)
   .then((response) => {
