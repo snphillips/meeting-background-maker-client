@@ -170,17 +170,16 @@ function userSelectFilterTerm(event) {
     let numOfBackgroundImages = 31;
     let randomNumber = Math.floor(Math.random() * numOfBackgroundImages);
     // console.log("random background image number is: ", randomNumber);
+    let dir = `http://meeting-background-maker.s3.amazonaws.com/app-backgrounds/`
     document
       .querySelector(".clip-text")
       .style.setProperty(
-        "background",
-        `url("/images/` + randomNumber + `.png")`
+        "background", `url(`+ dir + randomNumber + `.png)`
       );
     document
       .querySelector("body")
       .style.setProperty(
-        "background",
-        `url("/images/` + randomNumber + `.png")`
+        "background", `url(`+ dir + randomNumber + `.png)`
       );
 
       // We change the background often for fun
@@ -191,8 +190,7 @@ function userSelectFilterTerm(event) {
         document
           .querySelector("#computer-screen")
           .style.setProperty(
-            "background",
-            `url("/images/` + randomNumber + `.png")`
+            "background", `url(`+ dir + randomNumber + `.png)`
           );
       }
 
@@ -250,14 +248,19 @@ function handleDropdownSubmit(event) {
 
 
 function cooperHewittGetTagsFromAPI() {
-  console.log("making api call")
+  console.log("making api call to server")
+
+  let url;
+  if (process.env.NODE_ENV === 'development') {
+    url = `http://localhost:3001/alltags/` 
+  } else {
+    let url = `https://meeting-background-server.herokuapp.com/alltags/`
+  }
   
-  let url = `http://localhost:3001/alltags/`
-  // let url = `https://meeting-background-server.herokuapp.com/alltags/`
   
   axios.get(url)
   .then((response) => {
-    console.log(`🎈 response.data.tags:`, response.data)
+    // console.log(`🎈 response.data.tags:`, response.data)
     
     let tempArray = response.data;
     tempArray = tempArray.filter(function( obj ) {

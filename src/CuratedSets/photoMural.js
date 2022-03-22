@@ -63,7 +63,7 @@ const photoMural = {
       title: "Sample Book, Decor Photowalls, 1975",
       url: "https://collection.cooperhewitt.org/objects/18797537/",
       imageURL: "https://images.collection.cooperhewitt.org/296034_517f6e0462712fc7_b.jpg",
-      localImageURL: "http://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds-curated-sets/photoMural//296034_517f6e0462712fc7_b.jpg"
+      localImageURL: "http://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds-curated-sets/photoMural/296034_517f6e0462712fc7_b.jpg"
     },
     {
       id: '18797537',

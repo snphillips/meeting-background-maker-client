@@ -47,7 +47,9 @@ export default function SearchResults(props) {
                     key={index}
                     className="result-img"
                     // src={item.images[0].b.url}
-                    src={`../meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
+                    // src={`../meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
+                    // src={`http://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
+                    src={`meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
                     alt={item.title}
                   />
                 </a>
