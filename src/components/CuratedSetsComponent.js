@@ -60,7 +60,9 @@ export default function CuratedSetComponent(props) {
                 <a href={
                     // machineName is something I created.
                     // It has no spaces
-                    "/meeting-backgrounds-curated-sets/" +
+                    // "/meeting-backgrounds-curated-sets/" +
+                    // item.machineName + ".zip"
+                    `https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds-curated-sets/` +
                     item.machineName + ".zip"
                   }>
                   <button

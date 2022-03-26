@@ -32,8 +32,7 @@ export default function SelectedImages(props) {
                   <img
                     key={index}
                     className="selected-img"
-                    // src={item.images[0].b.url}
-                    src={`../meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
+                    src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
                     alt={item.title}
                   />
                   <p>{item.title}</p>
