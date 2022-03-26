@@ -37,8 +37,14 @@ export default function SearchResults(props) {
           className="my-masonry-grid curated-sets-list pre-selected-images-gallery results image-grid"
           columnClassName="my-masonry-grid_column"
           >
+
           {props.preSelectedImages.map((item, index) => {
-            // console.log("hi from results.js. Item is:", item)
+            console.log("hi from results.js. Item is:", item)
+
+            if (item === null) {
+              console.log("item is null:", item)
+              return
+            }; 
             
             return (
               <div key={item.id} className="image-card card">
@@ -46,10 +52,9 @@ export default function SearchResults(props) {
                   <img
                     key={index}
                     className="result-img"
-                    // src={item.images[0].b.url}
                     // src={`../meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
-                    // src={`http://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
-                    src={`meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
+                    src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
+                    // src={`meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
                     alt={item.title}
                   />
                 </a>

@@ -3,8 +3,6 @@ import axios from "axios";
 import { saveAs } from "file-saver";
 import _Lodash from "lodash";
 import JSZipUtils from "jszip-utils";
-
-
 import Header from "./components/Header";
 import CuratedSetsComponent from "./components/CuratedSetsComponent";
 import Footer from "./components/Footer";
@@ -18,7 +16,6 @@ import gourmet from "./CuratedSets/gourmet.js";
 import hermanMillerPicnic from "./CuratedSets/hermanMillerPicnic.js";
 import photoMural from "./CuratedSets/photoMural.js";
 import kolomanMoser from "./CuratedSets/kolomanMoser";
-
 const JSZip = require("jszip");
 
 const curatedSets = [cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser];
@@ -37,13 +34,14 @@ const [preSelectedImages, setPreSelectedImages] = useState([]);
 const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
 const [allTags, setAllTags] = useState([]);
 
+let serverURL = `http://localhost:3001/` 
+// let serverURL = `https://meeting-background-server.herokuapp.com/`
 
 
 // ===================================
 // Runs on first render
 // ===================================
 useEffect(() => {
-  console.log("starting app from the top!!!!!!")
   shuffleBackgroundClipTextImage();
   cooperHewittGetTagsFromAPI();
 }, []);
@@ -59,13 +57,14 @@ function userSelectFilterTerm(event) {
 
     // =================================== 
     function searchByTag() {
+
       // start the loading spinner
       setLoading(true);
       console.log("value is: ", value);
       shuffleBackgroundClipTextImage();
       
       axios
-        .get(`http://localhost:3001/searchbytag/` + value)
+        .get(serverURL + `searchbytag/` + value)
         .then((response) => {
           // console.log(`🍩 The search value is:`, value, `There are`, (response.data).length, `images.`)
           console.log(`🍩 The search value is:`, value, `response.data:`, response.data)
@@ -73,8 +72,8 @@ function userSelectFilterTerm(event) {
           setPreSelectedImages(response.data)
           // stop the loading spinner
           // show the component that displays the preSelected results from the search
-          setLoading(false);
           setDisplaySearchResults(true)
+          setLoading(false);
         })
         .catch(function (error) {
           // debugger
@@ -170,7 +169,7 @@ function userSelectFilterTerm(event) {
     let numOfBackgroundImages = 31;
     let randomNumber = Math.floor(Math.random() * numOfBackgroundImages);
     // console.log("random background image number is: ", randomNumber);
-    let dir = `http://meeting-background-maker.s3.amazonaws.com/app-backgrounds/`
+    let dir = `https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/`
     document
       .querySelector(".clip-text")
       .style.setProperty(
@@ -248,17 +247,8 @@ function handleDropdownSubmit(event) {
 
 
 function cooperHewittGetTagsFromAPI() {
-  console.log("making api call to server")
-
-  let url;
-  if (process.env.NODE_ENV === 'development') {
-    url = `http://localhost:3001/alltags/` 
-  } else {
-    let url = `https://meeting-background-server.herokuapp.com/alltags/`
-  }
   
-  
-  axios.get(url)
+  axios.get(serverURL + `alltags/`)
   .then((response) => {
     // console.log(`🎈 response.data.tags:`, response.data)
     
@@ -274,11 +264,6 @@ function cooperHewittGetTagsFromAPI() {
     console.log("axios api call catch error:", error );
   });
 }
-
-
-
-
-
 
 
     return (

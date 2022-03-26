@@ -55,7 +55,7 @@ export default function CuratedSetsImageGallery(props){
                   <img
                     className="curated-list-img"
                     src={item.localImageURL}
-                    // src="http://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds-curated-sets/colorTheory/1108749909.jpg"
+                    // src="https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds-curated-sets/colorTheory/1108749909.jpg"
                     alt={item.title}
                   />
                 </a>
