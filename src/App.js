@@ -62,28 +62,42 @@ function userSelectFilterTerm(event) {
       setLoading(true);
       console.log("value is: ", value);
       shuffleBackgroundClipTextImage();
-      
-      axios
-        .get(serverURL + `searchbytag/` + value)
-        .then((response) => {
-          // console.log(`🍩 The search value is:`, value, `There are`, (response.data).length, `images.`)
+
+      const sendGetRequest = async () => {
+        try {
+          const response = await axios.get(serverURL + `searchbytag/` + value);
           console.log(`🍩 The search value is:`, value, `response.data:`, response.data)
-          // set the state of preSelectedImage with the response from the server
+          
           setPreSelectedImages(response.data)
           // stop the loading spinner
           // show the component that displays the preSelected results from the search
-          setDisplaySearchResults(true)
           setLoading(false);
-        })
-        .catch(function (error) {
-          // debugger
+          setDisplaySearchResults(true)
+        } catch (error) {
+          // Handle Error Here
           console.log("axios api call catch error:", error );
-        });
+        }
+    };
+    sendGetRequest()
+      
+      // axios.get(serverURL + `searchbytag/` + value)
+      //   .then((response) => {
+      //     // console.log(`🍩 The search value is:`, value, `There are`, (response.data).length, `images.`)
+      //     console.log(`🍩 The search value is:`, value, `response.data:`, response.data)
+      //     // set the state of preSelectedImage with the response from the server
+      //     setPreSelectedImages(response.data)
+      //     // stop the loading spinner
+      //     // show the component that displays the preSelected results from the search
+      //     setLoading(false);
+      //     setDisplaySearchResults(true)
+      //   })
+      //   .catch(function (error) {
+      //     console.log("axios api call catch error:", error );
+      //   });
       }
       // =================================== 
-      
+       
       // don't run on initial render
-
       if (initialRender.current) {
         initialRender.current = false;
       } else {
@@ -246,24 +260,16 @@ function handleDropdownSubmit(event) {
 }
 
 
-function cooperHewittGetTagsFromAPI() {
-  
-  axios.get(serverURL + `alltags/`)
-  .then((response) => {
-    // console.log(`🎈 response.data.tags:`, response.data)
-    
-    let tempArray = response.data;
-    tempArray = tempArray.filter(function( obj ) {
-      return obj.name.length < 16;
-    });
-
-    setAllTags(tempArray);
-  })
-  .catch(function (error) {
-    // debugger
+async function cooperHewittGetTagsFromAPI() {
+  try {
+    const response = await axios.get(serverURL + `alltags/`)
+    // console.log(`🎈 response.data:`, response.data)
+    setAllTags(response.data)
+  } catch (error) {
     console.log("axios api call catch error:", error );
-  });
+  }
 }
+
 
 
     return (
