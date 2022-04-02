@@ -209,9 +209,24 @@ function userSelectFilterTerm(event) {
   // https://stuk.github.io/jszip/documentation/examples.html
    function zipDownloadFolderSelectedImages() {
 
-    axios.get(serverURL + `download/`, {
-      responseType: 'blob'
+    console.log("selectedImagesCollection:", selectedImagesCollection)
+    const imgJpegArray = [];
+    selectedImagesCollection.map( (item) => {
+      for (const [key, value] of Object.entries(item)) {
+        if (key === "id") {
+          console.log(`${key}: ${value}`);
+          imgJpegArray.push(value + '.jpg')
+          console.log("imgJpegArray:", imgJpegArray)
+        }
+      }
     })
+
+    let request = {
+      params: imgJpegArray,
+      responseType: 'blob',
+    };
+
+    axios.get(serverURL + `download/`, request)
       .then(function (response) {
         // handle success
         console.log("response", response);
