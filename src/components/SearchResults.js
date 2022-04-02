@@ -1,4 +1,5 @@
 import React from "react";
+import { isCompositeComponent } from "react-dom/test-utils";
 import Masonry from "react-masonry-css";
 
 /*
@@ -14,6 +15,16 @@ but also bring over the path to the locally stored image.
 
 export default function SearchResults(props) {
   
+  let preSelectedImages = props.preSelectedImages
+  // let result = preSelectedImages.filter(removeNulls)
+  
+  // function removeNulls(item) {
+  //   if (item.imgFileLocation) {
+  //     return
+  //   } else {
+  //     console.log("Null value found. Delete")
+  //   }
+  // }
   // For use with Masonry package
   const breakpointColumnsObj = {
     default: 4,
@@ -38,7 +49,7 @@ export default function SearchResults(props) {
           columnClassName="my-masonry-grid_column"
           >
 
-          {props.preSelectedImages.map((item, index) => {
+          {preSelectedImages.map((item, index) => {
             console.log("hi from results.js. Item is:", item)
 
             if (item === null) {
@@ -52,9 +63,7 @@ export default function SearchResults(props) {
                   <img
                     key={index}
                     className="result-img"
-                    // src={`../meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
                     src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
-                    // src={`meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
                     alt={item.title}
                   />
                 </a>

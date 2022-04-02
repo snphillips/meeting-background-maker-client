@@ -80,20 +80,6 @@ function userSelectFilterTerm(event) {
     };
     sendGetRequest()
       
-      // axios.get(serverURL + `searchbytag/` + value)
-      //   .then((response) => {
-      //     // console.log(`🍩 The search value is:`, value, `There are`, (response.data).length, `images.`)
-      //     console.log(`🍩 The search value is:`, value, `response.data:`, response.data)
-      //     // set the state of preSelectedImage with the response from the server
-      //     setPreSelectedImages(response.data)
-      //     // stop the loading spinner
-      //     // show the component that displays the preSelected results from the search
-      //     setLoading(false);
-      //     setDisplaySearchResults(true)
-      //   })
-      //   .catch(function (error) {
-      //     console.log("axios api call catch error:", error );
-      //   });
       }
       // =================================== 
        
@@ -221,31 +207,29 @@ function userSelectFilterTerm(event) {
 
   // Using the JSZip library & jszip-utils
   // https://stuk.github.io/jszip/documentation/examples.html
-  function zipDownloadFolderSelectedImages() {
+   function zipDownloadFolderSelectedImages() {
 
-    /* Create a new instance of JSZip where (describe)*/
-    /* we will be adding all of our files*/
-    let zip = new JSZip();
-    let count = 0;
+    axios.get(serverURL + `download/`, {
+      responseType: 'blob'
+    })
+      .then(function (response) {
+        // handle success
+        console.log("response", response);
+        const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.setAttribute('download', 'meeting-backgrounds.zip');
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      })
+      .catch(function (error) {
+        // handle error
+        console.log("downloadZip error:", error);
+      })
 
-    selectedImagesCollection.forEach(function (image) {
-      let filename = image.id + `.jpg`;
-      let url = image.imgFileLocation;
-
-      JSZipUtils.getBinaryContent(url, function (err, data) {
-        if (err) {
-          throw err; // or handle the error
-        }
-        zip.file(filename, data, { binary: true });
-        count++;
-        if (count === selectedImagesCollection.length) {
-          zip.generateAsync({ type: 'blob' }).then(function (content) {
-            saveAs(content, "meeting-backgrounds");
-          });
-        }
-      });
-    }) 
   }
+
 
 // =====================================
 // get tags
@@ -259,12 +243,16 @@ function handleDropdownSubmit(event) {
   cooperHewittGetTagsFromAPI()
 }
 
-
 async function cooperHewittGetTagsFromAPI() {
   try {
     const response = await axios.get(serverURL + `alltags/`)
     // console.log(`🎈 response.data:`, response.data)
-    setAllTags(response.data)
+    let tempArray = response.data;
+    // tempArray = tempArray.filter(function( obj ) {
+    //   return obj.name.length < 16;
+    // });  
+    
+    setAllTags(tempArray)
   } catch (error) {
     console.log("axios api call catch error:", error );
   }

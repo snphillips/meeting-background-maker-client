@@ -60,8 +60,6 @@ export default function CuratedSetComponent(props) {
                 <a href={
                     // machineName is something I created.
                     // It has no spaces
-                    // "/meeting-backgrounds-curated-sets/" +
-                    // item.machineName + ".zip"
                     `https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds-curated-sets/` +
                     item.machineName + ".zip"
                   }>
@@ -69,11 +67,6 @@ export default function CuratedSetComponent(props) {
                     key={item.setName + "downlad-button"}
                     className="curated-set-download-button"
                     type="download"
-                    // value={item.setName}
-                    // onClick={() => {
-                    //   console.log("HI! download images:", item.setName);
-                    //   // props.zipDownloadFolderCuratedSet(item.setName, index)
-                    // }}
                   >
                     <svg className="svg-icon" viewBox="0 0 20 20">
 						          <path 
