@@ -4,6 +4,10 @@ _Companion to Meeting Background Maker Server: https://github.com/snphillips/mee
 
 This web app allows users to select images of items from the Cooper Hewitt Design Museum's collection to be used as backgrounds for online meetings. The user may browse through the museum's collection using keywords such as "bauhaus" or "modernism", or the the user may download existing sets curated by me.
 
+Using the jimp image processing library, the images are resized and have descriptive text added before being saved to an AWS S3 bucket. The image manipulation happens with the node/express server.
+
+When users are satisfied with a collection of images they've curated, they may download the images to thier hard drive as a zip folder. I use the package s3-zip to zip the selected images in the AWS S3 bucket and make them available for the user to download.
+
 ### Getting Started
 
 Follow the instructions to install the server first, then come back here to: https://github.com/snphillips/meeting-background-maker-server
