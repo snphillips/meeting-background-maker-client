@@ -127,33 +127,31 @@ function userSelectFilterTerm(event) {
     // https://lodash.com/docs/#includes
     let buttonResult = "";
 
-    if (_Lodash.includes(selectedImagesCollection, item)) {
+    if (selectedImagesCollection.includes(item)) {
       // could this be a switch statement?
       buttonResult = (
         <button
           type="button"
-          value={item}
-          className="results-button-remove-from-collection"
-          onClick={() => {
-            // console.log("button value is:", item.title);
-            removeFromCollection(item);
-          }}
+          value={item.id}
+          className="results-button-in-collection"
         >
+          {/* sarah remind me what the " " is for */}
           {" "}
-          remove from collection
+          in collection
         </button>
       );
     } else {
       buttonResult = (
         <button
           type="button"
-          value={item}
+          value={item.id}
           className="results-button-add-to-collection"
           onClick={() => {
             // console.log("button value is:", item, item.id);
             addToCollection(item);
           }}
         >
+          {/* sarah remind me what the " " is for */}
           {" "}
           add to collection
         </button>
@@ -321,7 +319,6 @@ async function cooperHewittGetTagsFromAPI() {
 
           <YourBackgroundsComponent
             loading={loading}
-            // value={value}
             allTags={allTags}
             preSelectedImages={preSelectedImages}
             selectedImagesCollection={selectedImagesCollection}

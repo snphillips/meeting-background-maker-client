@@ -93,9 +93,8 @@ button, select {
   transition: .3s;
 }
 
-button:hover,
-button:focus{
-  color: #000 !important;
+button:hover {
+  color: #000;
   background-color: #efefef;
 }
 
@@ -362,6 +361,14 @@ img {
 .results-button-add-to-collection {
   color: #efefef;
   background: #000;
+}
+
+.results-button-in-collection,
+.results-button-in-collection:hover {
+  /* hide the border so it doesn't look like a button */
+  border: 2px solid #000;
+  background-color: #000;
+  color: #efefef;
 }
 
 .filter {

@@ -44,7 +44,6 @@ export default function SelectedCollection(props) {
                     props.removeFromCollection(item);
                   }}
                   >
-                 {/* {" "} */}
                  remove
                  </button>
                 </div>
