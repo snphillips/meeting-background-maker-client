@@ -63,13 +63,10 @@ export default function SearchResults(props) {
                   <img
                     key={index}
                     className="result-img"
-                    src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + props.value + "/" + item.id + ".jpg"}
+                    src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + item.id + ".jpg"}
                     alt={item.title}
                   />
                 </a>
-                <p className="item-title">{item.title}</p>
-                {/* <p className="item-title">{item.id}</p> */}
-
                 {props.whichButton(item)}
               </div>
             );
