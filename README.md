@@ -39,8 +39,6 @@ Your browser should open to http://localhost:3000/ Voila! 🥂
 * Cooper Hewitt Museum API
 * Create-React-App
 * axios
-* file-saver
-* jszip
 * react-spinners
 
 
