@@ -18,7 +18,9 @@ export default function SelectedCollection(props) {
       { props.displaySelectedImages &&
         <div>
         <section>
-          <h3>Your collection</h3>
+          <div style={{display: "flex"}}>
+            <h3>Your collection: {props.selectedImagesCollection.length} images</h3>
+          </div>
 
           <Masonry
             breakpointCols={breakpointColumnsObj}

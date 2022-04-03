@@ -94,6 +94,11 @@ function userSelectFilterTerm(event) {
 
 
   function addToCollection(item){
+    if (selectedImagesCollection.length >= 20) {
+      console.log("Collection is full. Return.", selectedImagesCollection.length)
+      alert("Collection full. Remove an image before adding another.")
+      return;
+    }
     setSelectedImagesCollection( array => array.concat(item) );
   }
 
