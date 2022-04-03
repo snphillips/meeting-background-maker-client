@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { saveAs } from "file-saver";
 import _Lodash from "lodash";
 import Header from "./components/Header";
 import CuratedSetsComponent from "./components/CuratedSetsComponent";
@@ -15,7 +14,6 @@ import gourmet from "./CuratedSets/gourmet.js";
 import hermanMillerPicnic from "./CuratedSets/hermanMillerPicnic.js";
 import photoMural from "./CuratedSets/photoMural.js";
 import kolomanMoser from "./CuratedSets/kolomanMoser";
-const JSZip = require("jszip");
 
 const curatedSets = [cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser];
 
@@ -47,7 +45,7 @@ useEffect(() => {
 
 function userSelectFilterTerm(event) {
   event.preventDefault();
-  console.log("*********** userSelectFilterTerm event", event.target.value)
+  console.log("userSelectFilterTerm:", event.target.value)
   setValue(event.target.value);
 }
 // **************************************
