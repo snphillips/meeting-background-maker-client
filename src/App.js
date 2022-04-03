@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import _Lodash from "lodash";
-import JSZipUtils from "jszip-utils";
 import Header from "./components/Header";
 import CuratedSetsComponent from "./components/CuratedSetsComponent";
 import Footer from "./components/Footer";
@@ -148,7 +147,7 @@ function userSelectFilterTerm(event) {
     } else {
       buttonResult = (
         <button
-          // type="submit"
+
           type="button"
           value={item}
           className="results-button-add-to-collection"
@@ -324,7 +323,7 @@ async function cooperHewittGetTagsFromAPI() {
 
           <YourBackgroundsComponent
             loading={loading}
-            value={value}
+            // value={value}
             allTags={allTags}
             preSelectedImages={preSelectedImages}
             selectedImagesCollection={selectedImagesCollection}

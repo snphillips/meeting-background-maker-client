@@ -1,7 +1,7 @@
 import React from "react";
 import Masonry from "react-masonry-css";
 
-export default function SelectedImages(props) {
+export default function SelectedCollection(props) {
   
     // For use with Masonry package
     const breakpointColumnsObj = {

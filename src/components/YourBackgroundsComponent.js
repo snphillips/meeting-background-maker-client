@@ -2,7 +2,7 @@ import React from "react";
 import FilterButtons from "./FilterButtons";
 import ComputerImage from "./ComputerImage";
 import SearchResults from "./SearchResults.js";
-import SelectedImages from "./SelectedImages";
+import SelectedCollection from "./SelectedCollection";
 
 
 export default function YourBackgroundsComponent(props) {
@@ -29,8 +29,8 @@ export default function YourBackgroundsComponent(props) {
           displaySearchResults={props.displaySearchResults}
           />
 
-        <SelectedImages
-          value={props.value}
+        <SelectedCollection
+          // value={props.value}
           selectedImagesCollection={props.selectedImagesCollection}
           displaySelectedImages={props.displaySelectedImages}
           zipDownloadFolderSelectedImages={props.zipDownloadFolderSelectedImages}
