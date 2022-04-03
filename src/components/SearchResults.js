@@ -67,9 +67,6 @@ export default function SearchResults(props) {
                     alt={item.title}
                   />
                 </a>
-                <p className="item-title">{item.title}</p>
-                {/* <p className="item-title">{item.id}</p> */}
-
                 {props.whichButton(item)}
               </div>
             );

@@ -35,7 +35,6 @@ export default function SelectedImages(props) {
                     src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + item.id + ".jpg"}
                     alt={item.title}
                   />
-                  <p>{item.title}</p>
                 </div>
               );
             })}
