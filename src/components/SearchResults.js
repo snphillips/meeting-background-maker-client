@@ -50,7 +50,7 @@ export default function SearchResults(props) {
           >
 
           {preSelectedImages.map((item, index) => {
-            console.log("hi from results.js. Item is:", item)
+            // console.log("hi from results.js. Item is:", item)
 
             if (item === null) {
               console.log("item is null:", item)
