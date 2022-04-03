@@ -35,6 +35,18 @@ export default function SelectedCollection(props) {
                     src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + item.id + ".jpg"}
                     alt={item.title}
                   />
+                <button
+                  type="button"
+                  value={item}
+                  className="results-button-remove-from-collection"
+                  onClick={() => {
+                    // console.log("button value is:", item.title);
+                    props.removeFromCollection(item);
+                  }}
+                  >
+                 {/* {" "} */}
+                 remove
+                 </button>
                 </div>
               );
             })}

@@ -131,7 +131,6 @@ function userSelectFilterTerm(event) {
       // could this be a switch statement?
       buttonResult = (
         <button
-          // type="submit"
           type="button"
           value={item}
           className="results-button-remove-from-collection"
@@ -147,7 +146,6 @@ function userSelectFilterTerm(event) {
     } else {
       buttonResult = (
         <button
-
           type="button"
           value={item}
           className="results-button-add-to-collection"
@@ -338,6 +336,7 @@ async function cooperHewittGetTagsFromAPI() {
             cooperHewittGetTagsFromAPI={cooperHewittGetTagsFromAPI}
             handleDropdownSubmit={handleDropdownSubmit}
             onChange={handleDropdownChange}
+            removeFromCollection={removeFromCollection}
           />
 
           <CuratedSetsComponent

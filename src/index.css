@@ -348,19 +348,15 @@ img {
 }
 
 .results-button-in-collection,
-.results-button-add-to-collection {
+.results-button-add-to-collection,
+.results-button-remove-from-collection {
   margin-bottom: 1rem;
   width: 100%;
 }
 
-.results-button-remove-from-collection {
-  color: #000;
-  background: #efefef;
-}
-
 .results-button-remove-from-collection:hover {
-  color: #efefef !important;
-  background: #000;
+  color: #000 !important;
+  background: #efefef !important;
 }
 
 .results-button-add-to-collection {
