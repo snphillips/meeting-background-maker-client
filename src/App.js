@@ -30,6 +30,7 @@ const [displaySearchResults, setDisplaySearchResults] = useState(false);
 const [preSelectedImages, setPreSelectedImages] = useState([]); 
 const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
 const [allTags, setAllTags] = useState([]);
+const [activeButton, setActiveButton] = useState('button-id');
 
 // let serverURL = `http://localhost:3001/` 
 let serverURL = `https://meeting-background-server.herokuapp.com/`
@@ -47,6 +48,8 @@ function userSelectFilterTerm(event) {
   event.preventDefault();
   console.log("userSelectFilterTerm:", event.target.value)
   setValue(event.target.value);
+  // active filter button gets a differnt style
+  setActiveButton(event.target.value);
 }
 // **************************************
 
@@ -245,11 +248,7 @@ function userSelectFilterTerm(event) {
 
 
     
-  let searchButtonClass = "unselected"
 
-  // if (userSelectFilterTerm === item) {
-  //   searchButtonClass = "selected"
-  // }
   
 
 
@@ -332,7 +331,6 @@ async function cooperHewittGetTagsFromAPI() {
           <YourBackgroundsComponent
             loading={loading}
             allTags={allTags}
-            searchButtonClass={searchButtonClass}
             preSelectedImages={preSelectedImages}
             selectedImagesCollection={selectedImagesCollection}
             displaySelectedImages={displaySelectedImages}
@@ -340,6 +338,7 @@ async function cooperHewittGetTagsFromAPI() {
             displayCuratedSetComponent={displayCuratedSetComponent}
             displaySearchResults={displaySearchResults}
             displayComputerImage={displayComputerImage}
+            activeButton={activeButton}
             whichButton={whichButton}
             zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
             userSelectFilterTerm={userSelectFilterTerm}

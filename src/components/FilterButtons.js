@@ -25,7 +25,7 @@ export default function FilterButtons(props) {
             return (
               <button
                 key={index}
-                className={`filter-button ${props.searchButtonClass}`}
+                className={props.activeButton === item ? "filter-button active" : "filter-button"}
                 id={"filter-button-" + item}
                 type="button"
                 value={item}

@@ -14,7 +14,7 @@ export default function YourBackgroundsComponent(props) {
           loading={props.loading}
           userSelectFilterTerm={props.userSelectFilterTerm}
           allTags={props.allTags}
-          searchButtonClass={props.searchButtonClass}
+          activeButton={props.activeButton}
           handleDropdownSubmit={props.handleDropdownSubmit}
           onChange={props.handleDropdownChange}
         />
@@ -31,7 +31,6 @@ export default function YourBackgroundsComponent(props) {
           />
 
         <SelectedCollection
-          // value={props.value}
           removeFromCollection={props.removeFromCollection}
           selectedImagesCollection={props.selectedImagesCollection}
           displaySelectedImages={props.displaySelectedImages}

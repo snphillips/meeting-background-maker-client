@@ -94,7 +94,7 @@ button, select {
 }
 
 button:hover,
-button.selected {
+button.active {
   color: #000;
   background-color: #efefef;
 }
