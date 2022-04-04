@@ -1,6 +1,6 @@
 ## About Meeting Background Maker Client
 
-See project deployed here (still in development...is still a little buggy): https://meeting-background-maker.surge.sh/ 
+See project deployed here (in development...is still a little buggy): https://meeting-background-maker.surge.sh/ 
 
 _Companion to Meeting Background Maker Server: https://github.com/snphillips/meeting-background-maker-server_
 
