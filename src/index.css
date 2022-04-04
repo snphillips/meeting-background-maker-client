@@ -93,7 +93,8 @@ button, select {
   transition: .3s;
 }
 
-button:hover {
+button:hover,
+button.selected {
   color: #000;
   background-color: #efefef;
 }

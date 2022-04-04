@@ -14,6 +14,7 @@ export default function YourBackgroundsComponent(props) {
           loading={props.loading}
           userSelectFilterTerm={props.userSelectFilterTerm}
           allTags={props.allTags}
+          searchButtonClass={props.searchButtonClass}
           handleDropdownSubmit={props.handleDropdownSubmit}
           onChange={props.handleDropdownChange}
         />

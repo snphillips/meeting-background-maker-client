@@ -31,8 +31,8 @@ const [preSelectedImages, setPreSelectedImages] = useState([]);
 const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
 const [allTags, setAllTags] = useState([]);
 
-let serverURL = `http://localhost:3001/` 
-// let serverURL = `https://meeting-background-server.herokuapp.com/`
+// let serverURL = `http://localhost:3001/` 
+let serverURL = `https://meeting-background-server.herokuapp.com/`
 
 
 // ===================================
@@ -203,10 +203,10 @@ function userSelectFilterTerm(event) {
     // document.querySelector(".header").style.textShadow = "2px 2px 2px #fff";
   }
 
-  // Using the JSZip library & jszip-utils
-  // https://stuk.github.io/jszip/documentation/examples.html
+
    function zipDownloadFolderSelectedImages() {
 
+    // TODO: explain what you are doing here
     console.log("selectedImagesCollection:", selectedImagesCollection)
     const imgJpegArray = [];
     selectedImagesCollection.map( (item) => {
@@ -242,6 +242,15 @@ function userSelectFilterTerm(event) {
       })
 
   }
+
+
+    
+  let searchButtonClass = "unselected"
+
+  // if (userSelectFilterTerm === item) {
+  //   searchButtonClass = "selected"
+  // }
+  
 
 
 // =====================================
@@ -323,6 +332,7 @@ async function cooperHewittGetTagsFromAPI() {
           <YourBackgroundsComponent
             loading={loading}
             allTags={allTags}
+            searchButtonClass={searchButtonClass}
             preSelectedImages={preSelectedImages}
             selectedImagesCollection={selectedImagesCollection}
             displaySelectedImages={displaySelectedImages}
