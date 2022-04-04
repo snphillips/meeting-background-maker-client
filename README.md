@@ -42,6 +42,7 @@ Your browser should open to http://localhost:3000/ Voila! 🥂
 ### Made With
 * Cooper Hewitt Museum API
 * Create-React-App
+* react-masonry-css
 * axios
 * react-spinners
 
