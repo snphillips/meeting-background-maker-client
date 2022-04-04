@@ -11,8 +11,10 @@ export default function SelectedCollection(props) {
       500: 1,
     };
    
+    // ternary to establish whether to display singular or plural word image
     let num = props.selectedImagesCollection.length
     let imageSingularOrPlural = (num <= 1) ? "image" : "images"
+    let collectionFull = (num >= 20) ? "  -  collection full" : ''
     
 
     return (
@@ -23,7 +25,7 @@ export default function SelectedCollection(props) {
         <div>
         <section>
           <div>
-            <h3>Your collection: {num} {imageSingularOrPlural}</h3>
+            <h3>Your collection: {num} {imageSingularOrPlural} {collectionFull}</h3>
           </div>
 
           <Masonry
