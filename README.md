@@ -53,9 +53,13 @@ Your browser should open to http://localhost:3000/ Voila! 🥂
 * Cooper Hewitt Museum API
 * Create-React-App
 * react-masonry-css
-* axios
-* react-spinners
+* Axios
+* React-Ppinners
 
-
-
+### Server Made With
+* Node
+* Express
+* Axios
+* Jimp (server-side image processsing library)
+* s3-zip (saves seleted images in s3 bucket to zip)
 
