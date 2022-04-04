@@ -10,6 +10,10 @@ export default function SelectedCollection(props) {
       700: 2,
       500: 1,
     };
+   
+    let num = props.selectedImagesCollection.length
+    let imageSingularOrPlural = (num <= 1) ? "image" : "images"
+    
 
     return (
       
@@ -18,8 +22,8 @@ export default function SelectedCollection(props) {
       { props.displaySelectedImages &&
         <div>
         <section>
-          <div style={{display: "flex"}}>
-            <h3>Your collection: {props.selectedImagesCollection.length} images</h3>
+          <div>
+            <h3>Your collection: {num} {imageSingularOrPlural}</h3>
           </div>
 
           <Masonry
