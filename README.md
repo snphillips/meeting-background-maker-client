@@ -6,13 +6,13 @@ This web app allows users to select images of items from the Cooper Hewitt Desig
 
 <img src="https://i.imgur.com/4mN13AS.png" width="450" alt="screengrab of app">
 
-Using the jimp image processing library, the images are resized and have descriptive text added before being saved to an AWS S3 bucket. The image manipulation happens with the node/express server.
+The user may select up to 20 images in thier collection. Using the jimp image processing library, the images are resized and have descriptive text added before being saved to an AWS S3 bucket. The image manipulation happens with the node/express server.
 
 When users are satisfied with a collection of images they've curated, they may download the images to thier hard drive as a zip folder. I use the package s3-zip to zip the selected images in the AWS S3 bucket and make them available for the user to download.
 
 ### Getting Started
 
-This app assumes you have an aws s3 bucket to save images in.
+This app assumes you have an aws s3 bucket to save images in. 
 
 Follow the instructions to install the server first, then come back here to: https://github.com/snphillips/meeting-background-maker-server
 
