@@ -12,6 +12,8 @@ When users are satisfied with a collection of images they've curated, they may d
 
 ### Getting Started
 
+This app assumes you have an aws s3 bucket to save images in.
+
 Follow the instructions to install the server first, then come back here to: https://github.com/snphillips/meeting-background-maker-server
 
 After you've set up the server, clone this repo:
