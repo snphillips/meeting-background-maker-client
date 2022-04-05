@@ -4,15 +4,15 @@ See project deployed here (in development...is still a little buggy): https://me
 
 _Companion to Meeting Background Maker Server: https://github.com/snphillips/meeting-background-maker-server_
 
-This web app allows users to select images of items from the Cooper Hewitt Design Museum's collection to be used as backgrounds for online meetings. The user may browse through the museum's collection using keywords such as "bauhaus" or "modernism", or the the user may download existing sets curated by me.
+This web app allows users to select images of items from the Cooper Hewitt Design Museum's collection to be used as backgrounds for online meetings. The user may browse through the museum's collection using keywords such as "bauhaus" or "modernism", or the user may download existing sets curated by me.
 
 <img src="https://i.imgur.com/4mN13AS.png" width="500" alt="screengrab of app">
 <img src="https://i.imgur.com/zePmX1v.png" width="500" alt="screengrab of app">
 <img src="https://i.imgur.com/zIvwMoR.png" width="500" alt="screengrab of app">
 
-The user may select up to 20 images in thier collection. Using the jimp image processing library, the images are resized and have descriptive text added before being saved to an AWS S3 bucket. The image manipulation happens with the node/express server.
+The user may select up to 20 images in their collection. Using the jimp image processing library, the images are resized and have descriptive text added before being saved to an AWS S3 bucket. The image manipulation happens with the node/express server.
 
-When users are satisfied with a collection of images they've curated, they may download the images to thier hard drive as a zip folder. I use the package s3-zip to zip the selected images in the AWS S3 bucket and make them available for the user to download.
+When users are satisfied with a collection of images they've curated, they may download the images to their hard drive as a zip folder. I use the package s3-zip to zip the selected images in the AWS S3 bucket and make them available for the user to download.
 
 <img src="https://i.imgur.com/mxxNYyW.png" width="500" alt="screengrab of app">
 
@@ -60,6 +60,6 @@ Your browser should open to http://localhost:3000/ Voila! 🥂
 * Node
 * Express
 * Axios
-* Jimp (server-side image processsing library)
-* s3-zip (saves seleted images in s3 bucket to zip)
+* Jimp (server-side image processing library)
+* s3-zip (saves selected images in s3 bucket to zip)
 
