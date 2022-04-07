@@ -48,10 +48,10 @@ function userSelectFilterTerm(event) {
   event.preventDefault();
   console.log("userSelectFilterTerm:", event.target.value)
   setValue(event.target.value);
-  // active filter button gets a differnt style
+  // Active filter button gets a differnt style
+  // We pass activeButton state to FilterButtons
   setActiveButton(event.target.value);
 }
-// **************************************
 
   useEffect(() => {
 
@@ -74,7 +74,6 @@ function userSelectFilterTerm(event) {
           setLoading(false);
           setDisplaySearchResults(true)
         } catch (error) {
-          // Handle Error Here
           console.log("axios api call catch error:", error );
         }
     };
@@ -209,8 +208,13 @@ function userSelectFilterTerm(event) {
 
    function zipDownloadFolderSelectedImages() {
 
-    // TODO: explain what you are doing here
-    console.log("selectedImagesCollection:", selectedImagesCollection)
+    // At this stage selectedImagesCollection is a large object
+    // with lots of interesting data. All we are interested in though
+    // is the item id number, as that is used as file names in AWS.
+    // The frist step is to map over the large object and push into 
+    // an array the the key "id" and its corresponding value.
+    // Now we have the imgJpegArray, which is being send in the request
+    // the the server, which will then speak to AWS
     const imgJpegArray = [];
     selectedImagesCollection.map( (item) => {
       for (const [key, value] of Object.entries(item)) {
