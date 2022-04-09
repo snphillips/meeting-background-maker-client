@@ -1,42 +1,29 @@
 import React from "react";
+import { useState } from 'react';
 import { isCompositeComponent } from "react-dom/test-utils";
 import Masonry from "react-masonry-css";
 
 /*
 This component takes an array called preSelectedImages 
 (that was populated when the user selected a search term),
-maps over that array and displays each image with info.
-
-TODO: if the array only contains jpegs from the server,
-you won't have any of the metadata that makes this app interesting.
-It seems you want to keep all this great metadata,
-but also bring over the path to the locally stored image.
+maps over that array and displays each image.
 */
 
 export default function SearchResults(props) {
   
   let preSelectedImages = props.preSelectedImages
-  // let result = preSelectedImages.filter(removeNulls)
   
-  // function removeNulls(item) {
-  //   if (item.imgFileLocation) {
-  //     return
-  //   } else {
-  //     console.log("Null value found. Delete")
-  //   }
-  // }
-  // For use with Masonry package
+  // For use with React Masonry Css package
   const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1,
+    default: 3,
+    960: 2,
+    650: 1,
   };
+
+
   
   return (
-    
-    
-      <section className="component" id="results-component">
+    <section className="component" id="results-component">
 
       { props.displaySearchResults &&
       <div>
@@ -58,15 +45,20 @@ export default function SearchResults(props) {
             }; 
             
             return (
-              <div key={item.id} className="image-card card">
-                <a href={item.url}>
+              <div 
+                key={index}
+                className="image-card card"
+              >
                   <img
-                    key={index}
+                    key={item.id}
                     className="result-img"
                     src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + item.id + ".jpg"}
                     alt={item.title}
+                    onClick={ () => {
+                      // nothing going on now
+                      // perhaps in the future?      
+                    }}
                   />
-                </a>
                 {props.whichButton(item)}
               </div>
             );

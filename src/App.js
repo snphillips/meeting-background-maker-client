@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import _Lodash from "lodash";
+import _reject from 'lodash/reject';
 import Header from "./components/Header";
 import CuratedSetsComponent from "./components/CuratedSetsComponent";
 import Footer from "./components/Footer";
@@ -14,26 +14,25 @@ import gourmet from "./CuratedSets/gourmet.js";
 import hermanMillerPicnic from "./CuratedSets/hermanMillerPicnic.js";
 import photoMural from "./CuratedSets/photoMural.js";
 import kolomanMoser from "./CuratedSets/kolomanMoser";
-
 const curatedSets = [cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser];
 
 export default function App(props) {
   
-const initialRender = useRef(true);
-const [loading, setLoading] = useState(false); // the loading spinner
-const [value, setValue] = useState();
-const [displayComputerImage, setDisplayComputerImage] = useState(true);
-const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
-const [displayCuratedSetComponent, setDisplayCuratedSetComponent] = useState(false);
-const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = useState(true);
-const [displaySearchResults, setDisplaySearchResults] = useState(false);
-const [preSelectedImages, setPreSelectedImages] = useState([]); 
-const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
-const [allTags, setAllTags] = useState([]);
-const [activeButton, setActiveButton] = useState('button-id');
+  const initialRender = useRef(true);
+  const [loading, setLoading] = useState(false); // the loading spinner
+  const [value, setValue] = useState();
+  const [displayComputerImage, setDisplayComputerImage] = useState(true);
+  const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
+  const [displayCuratedSetComponent, setDisplayCuratedSetComponent] = useState(false);
+  const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = useState(true);
+  const [displaySearchResults, setDisplaySearchResults] = useState(false);
+  const [preSelectedImages, setPreSelectedImages] = useState([]); 
+  const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
+  const [allTags, setAllTags] = useState([]);
+  const [activeButton, setActiveButton] = useState('button-id');
 
-// let serverURL = `http://localhost:3001/` 
-let serverURL = `https://meeting-background-server.herokuapp.com/`
+  let serverURL = `http://localhost:3001/` 
+  // let serverURL = `https://meeting-background-server.herokuapp.com/`
 
 
 // ===================================
@@ -48,14 +47,13 @@ function userSelectFilterTerm(event) {
   event.preventDefault();
   console.log("userSelectFilterTerm:", event.target.value)
   setValue(event.target.value);
-  // Active filter button gets a differnt style
+  // The "active" filter button gets an inverted style
   // We pass activeButton state to FilterButtons
   setActiveButton(event.target.value);
 }
 
   useEffect(() => {
 
-    // =================================== 
     function searchByTag() {
 
       // start the loading spinner
@@ -80,7 +78,6 @@ function userSelectFilterTerm(event) {
     sendGetRequest()
       
       }
-      // =================================== 
        
       // don't run on initial render
       if (initialRender.current) {
@@ -91,7 +88,6 @@ function userSelectFilterTerm(event) {
         setDisplaySearchResults(true);
     }
   }, [value]);
-
 
   function addToCollection(item){
     if (selectedImagesCollection.length >= 20) {
@@ -109,7 +105,6 @@ function userSelectFilterTerm(event) {
       setDisplaySelectedImages(true);
       console.log("selectedImagesCollection:", selectedImagesCollection)
     }
-    // TODO: update /user-selected-meeting-backgrounds/ (are you even going to use this?)
   }, [selectedImagesCollection])
   
   
@@ -119,20 +114,19 @@ function userSelectFilterTerm(event) {
     // using the _Lodash library to remove the item from the
     // array of selected images
     // https://lodash.com/docs/#reject
-    selectedImagesArray = _Lodash.reject(selectedImagesArray, (theObject) => {
-    // selectedImages = _Lodash.reject(selectedImages, (theObject) => {
+    selectedImagesArray = _reject(selectedImagesArray, (theObject) => {
       return theObject.id === item.id;
     });
     setSelectedImagesCollection(selectedImagesArray)
   }
 
   function whichButton(item) {
-    // using the _Lodash library to efficiently check if the button
-    // belongs to an item that the user has selected or not
-    // https://lodash.com/docs/#includes
+ 
     let buttonResult = "";
+    console.log("selectedImagesCollection:", selectedImagesCollection)
 
     if (selectedImagesCollection.includes(item)) {
+      console.log("💋 item included", item.id)
       // could this be a switch statement?
       buttonResult = (
         <button
@@ -140,24 +134,20 @@ function userSelectFilterTerm(event) {
           value={item.id}
           className="results-button-in-collection"
         >
-          {/* sarah remind me what the " " is for */}
-          {" "}
           in collection
         </button>
       );
     } else {
+      console.log("👎 item NOT included", item.id)
       buttonResult = (
         <button
           type="button"
           value={item.id}
           className="results-button-add-to-collection"
           onClick={() => {
-            // console.log("button value is:", item, item.id);
             addToCollection(item);
           }}
         >
-          {/* sarah remind me what the " " is for */}
-          {" "}
           add to collection
         </button>
       );
@@ -207,14 +197,13 @@ function userSelectFilterTerm(event) {
 
 
    function zipDownloadFolderSelectedImages() {
-
-    // At this stage selectedImagesCollection is a large object
-    // with lots of interesting data. All we are interested in though
-    // is the item id number, as that is used as file names in AWS.
-    // The frist step is to map over the large object and push into 
-    // an array the the key "id" and its corresponding value.
-    // Now we have the imgJpegArray, which is being send in the request
-    // the the server, which will then speak to AWS
+    // At this stage selectedImagesCollection is an array of
+    // large object constaining interesting data about the items.
+    // All we are interested in is the item id, as that is what is
+    // used as file names in AWS. The frist step is to map over the
+    // large object and push into an array the the key "id" and its
+    // corresponding value. Now we have the imgJpegArray, which is
+    // being send in the request to the server, which will then speak to AWS
     const imgJpegArray = [];
     selectedImagesCollection.map( (item) => {
       for (const [key, value] of Object.entries(item)) {
@@ -233,8 +222,7 @@ function userSelectFilterTerm(event) {
 
     axios.get(serverURL + `download/`, request)
       .then(function (response) {
-        // handle success
-        console.log("response", response);
+        console.log("response:", response);
         const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement('a');
         link.href = downloadUrl;
@@ -247,17 +235,13 @@ function userSelectFilterTerm(event) {
         // handle error
         console.log("downloadZip error:", error);
       })
-
-  }
-
-
-    
-
-  
+  } 
 
 
 // =====================================
 // get tags
+// This gets all the tags that populate 
+// the dropdown menu of tags
 // =====================================
 function handleDropdownChange(event) {
   setValue(event.target.value)
@@ -271,11 +255,7 @@ function handleDropdownSubmit(event) {
 async function cooperHewittGetTagsFromAPI() {
   try {
     const response = await axios.get(serverURL + `alltags/`)
-    // console.log(`🎈 response.data:`, response.data)
     let tempArray = response.data;
-    // tempArray = tempArray.filter(function( obj ) {
-    //   return obj.name.length < 16;
-    // });  
     
     setAllTags(tempArray)
   } catch (error) {

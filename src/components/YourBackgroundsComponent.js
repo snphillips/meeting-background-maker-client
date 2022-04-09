@@ -4,7 +4,6 @@ import ComputerImage from "./ComputerImage";
 import SearchResults from "./SearchResults.js";
 import SelectedCollection from "./SelectedCollection";
 
-
 export default function YourBackgroundsComponent(props) {
 
     return (
@@ -17,7 +16,7 @@ export default function YourBackgroundsComponent(props) {
           activeButton={props.activeButton}
           handleDropdownSubmit={props.handleDropdownSubmit}
           onChange={props.handleDropdownChange}
-        />
+          />
 
         <ComputerImage 
           displayComputerImage={props.displayComputerImage} />
@@ -28,6 +27,8 @@ export default function YourBackgroundsComponent(props) {
           toggleFilterResultsPlaceholder={props.toggleFilterResultsPlaceholder}
           whichButton={props.whichButton}
           displaySearchResults={props.displaySearchResults}
+          openModal={props.openModal}
+          displayModal={props.displayModal}
           />
 
         <SelectedCollection

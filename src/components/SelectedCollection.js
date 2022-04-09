@@ -5,11 +5,11 @@ export default function SelectedCollection(props) {
   
     // For use with Masonry package
     const breakpointColumnsObj = {
-      default: 4,
-      1100: 3,
-      700: 2,
-      500: 1,
+      default: 3,
+      960: 2,
+      650: 1,
     };
+
    
     // ternary to establish whether to display singular or plural word image
     let num = props.selectedImagesCollection.length
