@@ -333,6 +333,7 @@ async function cooperHewittGetTagsFromAPI() {
           />
 
           <CuratedSetsComponent
+            // index={index}
             curatedSets={curatedSets}
             displayCuratedSetComponent={displayCuratedSetComponent}
             displayYourBackgroundsComponent={displayYourBackgroundsComponent}

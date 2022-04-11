@@ -1,14 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import CuratedSetsImageGallery from "./CuratedSetsImageGallery";
 import Masonry from "react-masonry-css";
 
 
 export default function CuratedSetComponent(props) {
 
-    // let displayUserGeneratedSetComponentWindow = props.displayUserGeneratedSetComponent
-    // let displayCuratedSetComponentWindow = props.displayCuratedSetComponent
     let curatedSetsArray = props.curatedSets;
-    // console.log("curatedSetsArray in CuratedSetsComponent:", curatedSetsArray)
 
     // For use with Masonry package
     const breakpointColumnsObj = {
@@ -18,21 +15,30 @@ export default function CuratedSetComponent(props) {
       500: 1,
     }
 
+    const [imagesRevealed, setImagesRevealed] = useState(false);
+    let index = props.index;
+    // let thisCuratedSet = props.curatedSetsArray[index];
+
+    function toggleCuratedSetImages() {
+      imagesRevealed ? setImagesRevealed(false) : setImagesRevealed(true);
+    }
+
     return (
       <section id="curated-set-window">
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid curated-sets-list"
           columnClassName="my-masonry-grid_column"
-        >
+          >
           {curatedSetsArray.map((item, index) => {
             // console.log("curatedSetsArray[0].images[0].imageURL:", curatedSetsArray[0].images[0].imageURL)
-
+            
             return (
               <div
-                key={index + "-card"}
-                className="curated-set-card card"
-                value={item.setName}
+              key={index + "-card"}
+              className="curated-set-card card"
+              value={item.setName}
+              // style={{ maxHeight: imagesRevealed ? "4000px" : "400px" }}
               >
                 <div
                   key={index + "-label"}
@@ -50,6 +56,10 @@ export default function CuratedSetComponent(props) {
                   src={item.images[0].localImageURL}
                   id={"curated-set-cover-image-" + index}
                   className="curated-set-cover-image"
+                  onClick={() => {
+                    console.log("imagesRevealed:", imagesRevealed)
+                    toggleCuratedSetImages();
+                  }}
                 />
 
                 <CuratedSetsImageGallery

@@ -22,10 +22,8 @@ export default function CuratedSetsImageGallery(props){
   const [viewButtonMessage, setViewButtonMessage] = useState("view set"); 
     
   function toggleCuratedSetImages(set, index) {
-    console.log("toggle curated set images for: ", set, index);
-    imagesRevealed
-      ? setImagesRevealed(false)
-      : setImagesRevealed(true);
+    // console.log("toggle curated set images for: ", set, index);
+    imagesRevealed ? setImagesRevealed(false) : setImagesRevealed(true);
     console.log("imagesRevealed is ", imagesRevealed);
     imagesRevealed ? setViewButtonMessage("view set") : setViewButtonMessage("hide set");
   }
@@ -51,14 +49,16 @@ export default function CuratedSetsImageGallery(props){
                 id={"-curated-image-" + index}
                 className="curated-image"
               >
-                <a href={item.url}>
+                {/* <a href={item.url}> */}
                   <img
                     className="curated-list-img"
                     src={item.localImageURL}
-                    // src="https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds-curated-sets/colorTheory/1108749909.jpg"
                     alt={item.title}
+                    onClick={(index) => {
+                      toggleCuratedSetImages(thisCuratedSet, index);
+                    }}
                   />
-                </a>
+                {/* </a> */}
               </div>
             );
           })}
