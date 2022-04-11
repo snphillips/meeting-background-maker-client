@@ -18,17 +18,6 @@ revealed or not.
 
 export default function CuratedSetsImageGallery(props){
   
-  const [imagesRevealed, setImagesRevealed] = useState(false);
-  const [viewButtonMessage, setViewButtonMessage] = useState("view set"); 
-    
-  function toggleCuratedSetImages(set, index) {
-    // console.log("toggle curated set images for: ", set, index);
-    imagesRevealed ? setImagesRevealed(false) : setImagesRevealed(true);
-    console.log("imagesRevealed is ", imagesRevealed);
-    imagesRevealed ? setViewButtonMessage("view set") : setViewButtonMessage("hide set");
-  }
-
-
     let index = props.index;
     let thisCuratedSet = props.curatedSetsArray[index];
     let allTheSetImages = thisCuratedSet.images;
@@ -39,7 +28,7 @@ export default function CuratedSetsImageGallery(props){
         <section
           className="curated-images-gallery"
           id={"curated-set-gallery-" + index}
-          style={{ maxHeight: imagesRevealed ? "4000px" : 0 }}
+          style={{ maxHeight: props.imagesRevealed ? "4000px" : 0 }}
         >
           {allTheSetImagesMinusCover.map((item, index) => {
 
@@ -49,16 +38,14 @@ export default function CuratedSetsImageGallery(props){
                 id={"-curated-image-" + index}
                 className="curated-image"
               >
-                {/* <a href={item.url}> */}
                   <img
                     className="curated-list-img"
                     src={item.localImageURL}
                     alt={item.title}
                     onClick={(index) => {
-                      toggleCuratedSetImages(thisCuratedSet, index);
+                      props.toggleCuratedSetImages(thisCuratedSet, index);
                     }}
                   />
-                {/* </a> */}
               </div>
             );
           })}
@@ -72,11 +59,11 @@ export default function CuratedSetsImageGallery(props){
           onMouseOver={() => {
             console.log("view images in set:", thisCuratedSet.setName)
           }}
-          onClick={(event, index) => {
-            toggleCuratedSetImages(thisCuratedSet, index);
+          onClick={(index) => {
+            props.toggleCuratedSetImages(thisCuratedSet, index);
           }}
         >
-          {viewButtonMessage}
+          {props.viewButtonMessage}
         </button>
       </div>
     );

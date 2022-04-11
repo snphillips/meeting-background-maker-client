@@ -16,11 +16,13 @@ export default function CuratedSetComponent(props) {
     }
 
     const [imagesRevealed, setImagesRevealed] = useState(false);
+    const [viewButtonMessage, setViewButtonMessage] = useState("view set"); 
     let index = props.index;
     // let thisCuratedSet = props.curatedSetsArray[index];
 
     function toggleCuratedSetImages() {
       imagesRevealed ? setImagesRevealed(false) : setImagesRevealed(true);
+      imagesRevealed ? setViewButtonMessage("view set") : setViewButtonMessage("hide set");
     }
 
     return (
@@ -65,6 +67,9 @@ export default function CuratedSetComponent(props) {
                 <CuratedSetsImageGallery
                   curatedSetsArray={curatedSetsArray}
                   index={index}
+                  imagesRevealed={imagesRevealed}
+                  toggleCuratedSetImages={toggleCuratedSetImages}
+                  viewButtonMessage={viewButtonMessage}
                 />
 
                 <a href={
