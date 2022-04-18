@@ -11,7 +11,7 @@ export default function Header(props) {
           Generate backgrounds for video meetings from the Cooper Hewitt
           Museum's archive.
         </p>
-        <p>Filter using keywords, or download curated sets.</p>
+        {/* <p>Filter using keywords, or download curated sets.</p> */}
 
       </section>
     </div>
