@@ -1,5 +1,6 @@
 import React from "react";
-import filterTerms from "../filterTerms";
+import filterTags from "../filterTags";
+import filterTagsAll from "../filterTagsAll";
 import LoadingSpinner from "../LoadingSpinner";
 
 
@@ -19,7 +20,7 @@ export default function FilterButtons(props) {
 
         <section className="filter-button-section">
 
-          {filterTerms.map((item, index) => {
+          {filterTags.map((item, index) => {
             // console.log("button value:", item)
 
             return (
@@ -37,12 +38,12 @@ export default function FilterButtons(props) {
           })}
           <form onSubmit={props.handleDropdownSubmit} >
             <select onChange={props.userSelectFilterTerm} >
-              {props.allTags.map((item, index) => (
+              {filterTagsAll.map((item, index) => (
                 <option 
                   key={index}
-                  value={item.name}
+                  value={item}
                   >
-                    {item.name}
+                    {item}
                 </option>
               ))}
             </select>  

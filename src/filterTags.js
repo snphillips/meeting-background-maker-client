@@ -1,6 +1,6 @@
 
 
-const filterTerms = [
+const filterTags = [
   "accountants",
   "thistles",
   "clams",
@@ -26,4 +26,4 @@ const filterTerms = [
   "wallpaper"
 ];
 
-export default filterTerms;
+export default filterTags;

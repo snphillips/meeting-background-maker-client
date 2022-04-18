@@ -33,23 +33,17 @@ export default function CuratedSetComponent(props) {
           columnClassName="my-masonry-grid_column"
           >
           {curatedSetsArray.map((item, index) => {
-            // console.log("curatedSetsArray[0].images[0].imageURL:", curatedSetsArray[0].images[0].imageURL)
             
             return (
               <div
               key={index + "-card"}
               className="curated-set-card card"
               value={item.setName}
-              // style={{ maxHeight: imagesRevealed ? "4000px" : "400px" }}
               >
                 <div
                   key={index + "-label"}
                   className="curated-set-label"
                   value={item.setName}
-                  onClick={(event) => {
-                    console.log("button value is:", event.target.value);
-                    // props.handleFilterSubmit(event)
-                  }}
                 >
                   {item.setName}
                 </div>

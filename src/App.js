@@ -65,6 +65,9 @@ function userSelectFilterTerm(event) {
         try {
           const response = await axios.get(serverURL + `searchbytag/` + value);
           console.log(`🍩 The search value is:`, value, `response.data:`, response.data)
+          console.log(response.data.map((item) => {
+            return item.id
+          }))
           
           setPreSelectedImages(response.data)
           // stop the loading spinner
@@ -104,6 +107,9 @@ function userSelectFilterTerm(event) {
     } else {
       setDisplaySelectedImages(true);
       console.log("selectedImagesCollection:", selectedImagesCollection)
+      console.log(selectedImagesCollection.map((item) => {
+        return item.id
+      }))
     }
   }, [selectedImagesCollection])
   
@@ -171,9 +177,11 @@ function userSelectFilterTerm(event) {
         "background", `url(`+ dir + randomNumber + `.png)`
       );
 
-      // We change the background often for fun
-      // Sometimes, we change the background and there is no computer screen icon
-      // Only change the background of the computer icon, if it's there.
+      /* We change the background often for fun
+      Sometimes, we change the background and
+      there is no computer screen icon
+      Only change the background of the computer icon,
+      if it's there. */
       let compyIcon = document.querySelector("#computer-screen") !== null;
       if (compyIcon) {
         document
@@ -197,13 +205,14 @@ function userSelectFilterTerm(event) {
 
 
    function zipDownloadFolderSelectedImages() {
-    // At this stage selectedImagesCollection is an array of
-    // large object constaining interesting data about the items.
-    // All we are interested in is the item id, as that is what is
-    // used as file names in AWS. The frist step is to map over the
-    // large object and push into an array the the key "id" and its
-    // corresponding value. Now we have the imgJpegArray, which is
-    // being send in the request to the server, which will then speak to AWS
+    /* At this stage selectedImagesCollection is an array of
+    large object constaining interesting data about the items.
+    All we are interested in is the item id, as that is what is
+    used as file names in AWS. The frist step is to map over the
+    large object and push into an array the the key "id" and its
+    corresponding value. Now we have the imgJpegArray, which is
+    being send in the request to the server,
+    which will then speak to AWS */
     const imgJpegArray = [];
     selectedImagesCollection.map( (item) => {
       for (const [key, value] of Object.entries(item)) {
@@ -238,11 +247,11 @@ function userSelectFilterTerm(event) {
   } 
 
 
-// =====================================
-// get tags
-// This gets all the tags that populate 
-// the dropdown menu of tags
-// =====================================
+/* =====================================
+get tags
+This gets all the tags that populate 
+the dropdown menu of tags
+===================================== */
 function handleDropdownChange(event) {
   setValue(event.target.value)
 }
@@ -256,8 +265,14 @@ async function cooperHewittGetTagsFromAPI() {
   try {
     const response = await axios.get(serverURL + `alltags/`)
     let tempArray = response.data;
+    let snakes = tempArray.sort();
     
-    setAllTags(tempArray)
+    setAllTags(snakes)
+
+    console.log(tempArray.map((item) => {
+      return item.name
+    }))
+
   } catch (error) {
     console.log("axios api call catch error:", error );
   }
