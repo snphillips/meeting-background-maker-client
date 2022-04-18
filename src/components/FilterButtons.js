@@ -38,8 +38,9 @@ export default function FilterButtons(props) {
           <form onSubmit={props.handleDropdownSubmit} >
             <select 
               onChange={props.userSelectFilterTerm} 
-            > <option>more search terms</option>
-              
+            > 
+            <option>more search terms</option>
+            
               {filterTagsAll.map((item, index) => (
                 <option 
                   key={index}

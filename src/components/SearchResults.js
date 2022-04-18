@@ -6,14 +6,18 @@ import Masonry from "react-masonry-css";
 /*
 This component takes an array called preSelectedImages 
 (that was populated when the user selected a search term),
-maps over that array and displays each image.
+maps over that array and displays each image and a button
+under each image. 
+
+The button (props.whichButton) could say "add to collection"
+or, "in collection". 
 */
 
 export default function SearchResults(props) {
   
   let preSelectedImages = props.preSelectedImages
   
-  // For use with React Masonry Css package
+  // For use with React Masonry CSS package
   const breakpointColumnsObj = {
     default: 3,
     960: 2,
@@ -36,13 +40,7 @@ export default function SearchResults(props) {
           columnClassName="my-masonry-grid_column"
           >
 
-          {preSelectedImages.map((item, index) => {
-            // console.log("hi from results.js. Item is:", item)
-
-            if (item === null) {
-              console.log("item is null:", item)
-              return
-            }; 
+          {preSelectedImages.map((item, index) => {         
             
             return (
               <div 
@@ -55,8 +53,8 @@ export default function SearchResults(props) {
                     src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + item.id + ".jpg"}
                     alt={item.title}
                     onClick={ () => {
-                      // nothing going on now
-                      // perhaps in the future?      
+                      // nothing going on now when user clicks
+                      // perhaps in the future? Like, a modal opens?     
                     }}
                   />
                 {props.whichButton(item)}
