@@ -12,11 +12,10 @@ export default function YourBackgroundsComponent(props) {
         <FilterButtons
           loading={props.loading}
           userSelectFilterTerm={props.userSelectFilterTerm}
-          allTags={props.allTags}
           activeButton={props.activeButton}
           handleDropdownSubmit={props.handleDropdownSubmit}
           onChange={props.handleDropdownChange}
-          />
+        />
 
         <ComputerImage 
           displayComputerImage={props.displayComputerImage} />
@@ -29,7 +28,7 @@ export default function YourBackgroundsComponent(props) {
           displaySearchResults={props.displaySearchResults}
           openModal={props.openModal}
           displayModal={props.displayModal}
-          />
+        />
 
         <SelectedCollection
           removeFromCollection={props.removeFromCollection}
@@ -37,7 +36,7 @@ export default function YourBackgroundsComponent(props) {
           displaySelectedImages={props.displaySelectedImages}
           zipDownloadFolderSelectedImages={props.zipDownloadFolderSelectedImages}
           setDisplayDownloadButton={props.setDisplayDownloadButton}
-          />
+        />
 
       </section>
     );

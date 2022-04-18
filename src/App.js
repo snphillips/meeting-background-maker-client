@@ -28,7 +28,6 @@ export default function App(props) {
   const [displaySearchResults, setDisplaySearchResults] = useState(false);
   const [preSelectedImages, setPreSelectedImages] = useState([]); 
   const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
-  const [allTags, setAllTags] = useState([]);
   const [activeButton, setActiveButton] = useState('button-id');
 
   let serverURL = `http://localhost:3001/` 
@@ -40,7 +39,6 @@ export default function App(props) {
 // ===================================
 useEffect(() => {
   shuffleBackgroundClipTextImage();
-  cooperHewittGetTagsFromAPI();
 }, []);
 
 function userSelectFilterTerm(event) {
@@ -246,39 +244,13 @@ function userSelectFilterTerm(event) {
       })
   } 
 
-
-/* =====================================
-get tags
-This gets all the tags that populate 
-the dropdown menu of tags
-===================================== */
 function handleDropdownChange(event) {
   setValue(event.target.value)
 }
 
 function handleDropdownSubmit(event) {
   console.log("handleDropdownSubmit clicked value is:", value)
-  cooperHewittGetTagsFromAPI()
 }
-
-async function cooperHewittGetTagsFromAPI() {
-  try {
-    const response = await axios.get(serverURL + `alltags/`)
-    let tempArray = response.data;
-    let snakes = tempArray.sort();
-    
-    setAllTags(snakes)
-
-    console.log(tempArray.map((item) => {
-      return item.name
-    }))
-
-  } catch (error) {
-    console.log("axios api call catch error:", error );
-  }
-}
-
-
 
     return (
       <div className="App app-container">
@@ -329,7 +301,6 @@ async function cooperHewittGetTagsFromAPI() {
 
           <YourBackgroundsComponent
             loading={loading}
-            allTags={allTags}
             preSelectedImages={preSelectedImages}
             selectedImagesCollection={selectedImagesCollection}
             displaySelectedImages={displaySelectedImages}
@@ -341,14 +312,12 @@ async function cooperHewittGetTagsFromAPI() {
             whichButton={whichButton}
             zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
             userSelectFilterTerm={userSelectFilterTerm}
-            cooperHewittGetTagsFromAPI={cooperHewittGetTagsFromAPI}
             handleDropdownSubmit={handleDropdownSubmit}
             onChange={handleDropdownChange}
             removeFromCollection={removeFromCollection}
           />
 
           <CuratedSetsComponent
-            // index={index}
             curatedSets={curatedSets}
             displayCuratedSetComponent={displayCuratedSetComponent}
             displayYourBackgroundsComponent={displayYourBackgroundsComponent}
