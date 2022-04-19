@@ -21,7 +21,7 @@ export default function CuratedSetsImageGallery(props){
     let index = props.index;
     let thisCuratedSet = props.curatedSetsArray[index];
     let allTheSetImages = thisCuratedSet.images;
-    let allTheSetImagesMinusCover = _Lodash.drop(allTheSetImages, 1);
+    // let allTheSetImagesMinusCover = _Lodash.drop(allTheSetImages, 1);
 
     return (
       <div>
@@ -30,7 +30,8 @@ export default function CuratedSetsImageGallery(props){
           id={"curated-set-gallery-" + index}
           style={{ maxHeight: props.imagesRevealed ? "4000px" : 0 }}
         >
-          {allTheSetImagesMinusCover.map((item, index) => {
+          {allTheSetImages.map((item, index) => {
+          // {allTheSetImagesMinusCover.map((item, index) => {
 
             return (
               <div
