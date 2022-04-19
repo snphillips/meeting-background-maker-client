@@ -28,7 +28,8 @@ export default function CuratedSetsImageGallery(props){
         <section
           className="curated-images-gallery"
           id={"curated-set-gallery-" + index}
-          style={{ maxHeight: props.imagesRevealed ? "4000px" : 0 }}
+          // style={{ maxHeight: props.imagesRevealed ? "4000px" : 0 }}
+          style={{ maxHeight: "4000px"}}
         >
           {allTheSetImages.map((item, index) => {
           // {allTheSetImagesMinusCover.map((item, index) => {
