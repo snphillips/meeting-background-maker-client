@@ -9,11 +9,10 @@ export default function CuratedSetComponent(props) {
 
     // For use with Masonry package
     const breakpointColumnsObj = {
-      default: 4,
-      1100: 3,
-      700: 2,
-      500: 1,
-    }
+      default: 3,
+      960: 2,
+      650: 1,
+    };
 
     // const [imagesRevealed, setImagesRevealed] = useState(false);
     // const [viewButtonMessage, setViewButtonMessage] = useState("view set"); 
