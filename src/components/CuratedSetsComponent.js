@@ -15,17 +15,17 @@ export default function CuratedSetComponent(props) {
       500: 1,
     }
 
-    const [imagesRevealed, setImagesRevealed] = useState(false);
-    const [viewButtonMessage, setViewButtonMessage] = useState("view set"); 
-    let index = props.index;
+    // const [imagesRevealed, setImagesRevealed] = useState(false);
+    // const [viewButtonMessage, setViewButtonMessage] = useState("view set"); 
+    // let index = props.index;
    
     // When the user first clicks the cover image or the 
     // "view set" button, the image set expands.
     // When the user clicks again, the image set collapses.
-    function toggleCuratedSetImages() {
-      imagesRevealed ? setImagesRevealed(false) : setImagesRevealed(true);
-      imagesRevealed ? setViewButtonMessage("view set") : setViewButtonMessage("hide set");
-    }
+    // function toggleCuratedSetImages() {
+    //   imagesRevealed ? setImagesRevealed(false) : setImagesRevealed(true);
+    //   imagesRevealed ? setViewButtonMessage("view set") : setViewButtonMessage("hide set");
+    // }
 
     return (
       <section id="curated-set-window">
@@ -84,9 +84,9 @@ export default function CuratedSetComponent(props) {
                 <CuratedSetsImageGallery
                   curatedSetsArray={curatedSetsArray}
                   index={index}
-                  imagesRevealed={imagesRevealed}
-                  toggleCuratedSetImages={toggleCuratedSetImages}
-                  viewButtonMessage={viewButtonMessage}
+                  // imagesRevealed={imagesRevealed}
+                  // toggleCuratedSetImages={toggleCuratedSetImages}
+                  // viewButtonMessage={viewButtonMessage}
                 />
 
                 <a href={
