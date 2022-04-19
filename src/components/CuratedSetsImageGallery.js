@@ -50,7 +50,7 @@ export default function CuratedSetsImageGallery(props){
             );
           })}
         </section>
-        <button
+        {/* <button
           key={index + "-view-allbutton"}
           id={thisCuratedSet + "-view-allbutton"}
           className="curated-set-view-all-button"
@@ -64,7 +64,7 @@ export default function CuratedSetsImageGallery(props){
           }}
         >
           {props.viewButtonMessage}
-        </button>
+        </button> */}
       </div>
     );
 }
