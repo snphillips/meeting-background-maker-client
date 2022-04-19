@@ -10,7 +10,7 @@ export default function CuratedSetComponent(props) {
     // For use with Masonry package
     const breakpointColumnsObj = {
       default: 3,
-      960: 2,
+      860: 2,
       650: 1,
     };
 
