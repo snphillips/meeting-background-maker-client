@@ -18,8 +18,10 @@ export default function CuratedSetComponent(props) {
     const [imagesRevealed, setImagesRevealed] = useState(false);
     const [viewButtonMessage, setViewButtonMessage] = useState("view set"); 
     let index = props.index;
-    // let thisCuratedSet = props.curatedSetsArray[index];
-
+   
+    // When the user first clicks the cover image or the 
+    // "view set" button, the image set expands.
+    // When the user clicks again, the image set collapses.
     function toggleCuratedSetImages() {
       imagesRevealed ? setImagesRevealed(false) : setImagesRevealed(true);
       imagesRevealed ? setViewButtonMessage("view set") : setViewButtonMessage("hide set");
@@ -48,7 +50,7 @@ export default function CuratedSetComponent(props) {
                   {item.setName}
                 </div>
 
-                <img
+                {/* <img
                   src={item.images[0].localImageURL}
                   id={"curated-set-cover-image-" + index}
                   className="curated-set-cover-image"
@@ -56,7 +58,7 @@ export default function CuratedSetComponent(props) {
                     console.log("imagesRevealed:", imagesRevealed)
                     toggleCuratedSetImages();
                   }}
-                />
+                /> */}
 
                 <CuratedSetsImageGallery
                   curatedSetsArray={curatedSetsArray}
