@@ -14,7 +14,7 @@ export default function Footer() {
             href="https://github.com/snphillips/meeting-background-maker-client"
             id="github-link"
           >
-            <i className="fa fa-github" aria-hidden="true"></i>
+            <i className="fa fa-github" alt="small github logo" aria-hidden="true"></i>
           </a>
         </span>
       </footer>

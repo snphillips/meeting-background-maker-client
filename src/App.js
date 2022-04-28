@@ -257,7 +257,8 @@ function handleDropdownSubmit(event) {
         <Header />
 
         <nav id="section-headers">
-          <div className="user-generated-set-div">
+          <ul id="nav-tabs">
+          <li className="user-generated-set-div">
             <h2
               className="set-heading user-generated-set-heading"
               onClick={() => {
@@ -278,9 +279,9 @@ function handleDropdownSubmit(event) {
             >
               Your Backgrounds  
             </h2>
-          </div>
+          </li>
 
-          <div className="curated-set-heading-div">
+          <li className="curated-set-heading-div">
             <h2
               className="set-heading curated-set-heading"
               onClick={() => {
@@ -294,7 +295,8 @@ function handleDropdownSubmit(event) {
             >
               Curated Sets
             </h2>
-          </div>
+          </li>
+          </ul>
         </nav>
 
         <section id="component-sections">
