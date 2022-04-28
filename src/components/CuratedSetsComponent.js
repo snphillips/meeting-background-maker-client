@@ -41,13 +41,13 @@ export default function CuratedSetComponent(props) {
               className="curated-set-card card"
               value={item.setName}
               >
-                <div
+                <h4
                   key={index + "-label"}
                   className="curated-set-label"
                   value={item.setName}
                 >
                   {item.setName}
-                </div>
+                </h4>
 
                 <a href={
                     // machineName is something I created.

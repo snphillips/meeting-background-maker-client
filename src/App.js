@@ -30,8 +30,8 @@ export default function App(props) {
   const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
   const [activeButton, setActiveButton] = useState('button-id');
 
-  let serverURL = `http://localhost:3001/` 
-  // let serverURL = `https://meeting-background-server.herokuapp.com/`
+  // let serverURL = `http://localhost:3001/` 
+  let serverURL = `https://meeting-background-server.herokuapp.com/`
 
 
 // ===================================

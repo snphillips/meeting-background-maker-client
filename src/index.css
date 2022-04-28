@@ -207,6 +207,7 @@ h3 {
 
 /*==========================*/
 /* Masonry npm package */
+/* https://www.npmjs.com/package/react-masonry-css */
 /*==========================*/
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
@@ -451,20 +452,12 @@ Curated Sets
   flex-grow: 1;
 }
 
-
-/*#curated-sets-list{
-  display: flex;
-  flex-wrap: wrap;
-}
-*/
-.curated-set-card {
-  /*border: 2px solid white;*/
-}
-
 .curated-set-label {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 20px;
   text-align: center;
+  margin-block-start: unset;
+  margin-block-end: unset;
 }
 
 .curated-images-gallery {
