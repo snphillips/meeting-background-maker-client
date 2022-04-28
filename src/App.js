@@ -256,7 +256,7 @@ function handleDropdownSubmit(event) {
       <div className="App app-container">
         <Header />
 
-        <section id="section-headers">
+        <nav id="section-headers">
           <div className="user-generated-set-div">
             <h2
               className="set-heading user-generated-set-heading"
@@ -295,7 +295,7 @@ function handleDropdownSubmit(event) {
               Curated Sets
             </h2>
           </div>
-        </section>
+        </nav>
 
         <section id="component-sections">
 
