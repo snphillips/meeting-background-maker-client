@@ -1,33 +1,33 @@
-import React from "react";
-import filterTags from "../filterTags";
-import filterTagsAll from "../filterTagsAll";
-import LoadingSpinner from "../LoadingSpinner";
+import React from 'react';
+import filterTagButtons from '../filterTagButtons';
+import filterTagsAll from '../filterTagsAll';
+import LoadingSpinner from '../LoadingSpinner';
 
 
 
 export default function FilterButtons(props) {
 
   return (
-      <div className="filters-component">
+      <div className='filters-component'>
         <div>
-          <p className="filter-message">
+          <p className='filter-message'>
             Select a search term to view images from the museum's collection.
           </p>
-          <div className="spinner-container">
+          <div className='spinner-container'>
             <LoadingSpinner loading={props.loading} />
           </div>
         </div>
 
-        <section className="filter-button-section">
+        <section className='filter-button-section'>
 
-          {filterTags.map((item, index) => {
+          {filterTagButtons.map((item, index) => {
 
             return (
               <button
                 key={index}
-                className={props.activeButton === item ? "filter-button active" : "filter-button"}
-                id={"filter-button-" + item}
-                type="button"
+                className={props.activeButton === item ? 'filter-button active' : 'filter-button'}
+                id={'filter-button-' + item}
+                type='button'
                 value={item}
                 onClick={props.userSelectFilterTerm}
               >
