@@ -1,11 +1,11 @@
 
 
-const filterTags = [
-  "accountants",
+const filterTagButtons = [
+  // "accountants",
   "thistles",
-  "clams",
-  "accordion",
-  "movie poster",
+  // "clams",
+  // "accordion",
+  // "movie poster",
   "art deco",
   "art nouveau",
   "bauhaus", 
@@ -26,4 +26,4 @@ const filterTags = [
   "wallpaper"
 ];
 
-export default filterTags;
+export default filterTagButtons;
