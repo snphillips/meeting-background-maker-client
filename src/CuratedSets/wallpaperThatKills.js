@@ -7,73 +7,73 @@ const wallpaperThatKills = {
       id: '18797535',
       title: "Sample Book, Decor Photowalls, 1975",
       url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
-      imageURL: "https://images.collection.cooperhewitt.org/296081_1746631c1ea4afff_b.jpg"
+      originalImageURL: "https://images.collection.cooperhewitt.org/296081_1746631c1ea4afff_b.jpg"
     },
     {
       id: '',
       title: "",
       url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
-      imageURL: ""
+      originalImageURL: ""
     },
     {
       id: '',
       title: "",
       url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
-      imageURL: ""
+      originalImageURL: ""
     },
     {
       id: '',
       title: "",
       url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
-      imageURL: ""
+      originalImageURL: ""
     },
     {
       id: '',
       title: "",
       url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
-      imageURL: ""
+      originalImageURL: ""
     },
     {
       id: '',
       title: "",
       url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
-      imageURL: ""
+      originalImageURL: ""
     },
         {
       id: '',
       title: "",
       url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
-      imageURL: ""
+      originalImageURL: ""
     },
     {
       id: '',
       title: "",
       url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
-      imageURL: ""
+      originalImageURL: ""
     },
     {
       id: '',
       title: "",
       url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
-      imageURL: ""
+      originalImageURL: ""
     },
     {
       id: '',
       title: "",
       url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
-      imageURL: ""
+      originalImageURL: ""
     },
     {
       id: '',
       title: "",
       url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
-      imageURL: ""
+      originalImageURL: ""
     },
     {
       id: '',
       title: "",
       url: "https://collection.cooperhewitt.org/users/snphillips/shoebox/132628927/",
-      imageURL: ""
+      originalImageURL: ""
     }]
   }
 

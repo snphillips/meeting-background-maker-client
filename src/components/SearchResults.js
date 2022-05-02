@@ -1,6 +1,6 @@
 import React from "react";
-import { useState } from 'react';
-import { isCompositeComponent } from "react-dom/test-utils";
+// import { useState } from 'react';
+// import { isCompositeComponent } from "react-dom/test-utils";
 import Masonry from "react-masonry-css";
 
 /*
@@ -29,6 +29,7 @@ export default function SearchResults(props) {
   return (
     <section className="component" id="results-component">
 
+      {/* Nifty way of knowing when to display a component */}
       { props.displaySearchResults &&
       <div>
         

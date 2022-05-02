@@ -50,6 +50,7 @@ function userSelectFilterTerm(event) {
   setActiveButton(event.target.value);
 }
 
+ // Whenever value changes
   useEffect(() => {
 
     function searchByTag() {
@@ -110,7 +111,7 @@ function userSelectFilterTerm(event) {
       }))
     }
   }, [selectedImagesCollection])
-  
+
   
   function removeFromCollection(item) {
     console.log("Remove ", item.title, " this item from collection");
@@ -123,11 +124,13 @@ function userSelectFilterTerm(event) {
     });
     setSelectedImagesCollection(selectedImagesArray)
   }
-
+ 
+  // If the item is in user's collection, display "in collection" label
+  // If not, display "add to collection" button
   function whichButton(item) {
  
     let buttonResult = "";
-    console.log("selectedImagesCollection:", selectedImagesCollection)
+    console.log('selectedImagesCollection:', selectedImagesCollection, 'item:',  item)
 
     if (selectedImagesCollection.includes(item)) {
       console.log("💋 item included", item.id)
