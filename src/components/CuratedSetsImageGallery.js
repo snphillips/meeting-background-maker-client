@@ -42,7 +42,7 @@ export default function CuratedSetsImageGallery(props){
               >
                   <img
                     className="curated-list-img"
-                    src={item.localImageURL}
+                    src={item.imageURL}
                     alt={item.title}
                     onClick={(index) => {
                       props.toggleCuratedSetImages(thisCuratedSet, index);

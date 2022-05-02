@@ -16,7 +16,7 @@ import photoMural from "./CuratedSets/photoMural.js";
 import kolomanMoser from "./CuratedSets/kolomanMoser";
 const curatedSets = [cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser];
 
-export default function App(props) {
+export default function App() {
   
   const initialRender = useRef(true);
   const [loading, setLoading] = useState(false); // the loading spinner
@@ -30,8 +30,9 @@ export default function App(props) {
   const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
   const [activeButton, setActiveButton] = useState('button-id');
 
-  // let serverURL = `http://localhost:3001/` 
-  let serverURL = `https://meeting-background-server.herokuapp.com/`
+  // const serverURL = `http://localhost:3001/` 
+  const serverURL = `https://meeting-background-server.herokuapp.com/`
+  
 
 
 // ===================================
@@ -45,8 +46,8 @@ function userSelectFilterTerm(event) {
   event.preventDefault();
   console.log("userSelectFilterTerm:", event.target.value)
   setValue(event.target.value);
-  // The "active" filter button gets an inverted style
-  // We pass activeButton state to FilterButtons
+  /* The "active" filter button gets an inverted style
+  We pass activeButton state to FilterButtons */
   setActiveButton(event.target.value);
 }
 
@@ -69,8 +70,9 @@ function userSelectFilterTerm(event) {
           }))
           
           setPreSelectedImages(response.data)
-          // stop the loading spinner
-          // show the component that displays the preSelected results from the search
+          /* stop the loading spinner
+          show the component that displays the preSelected
+          results from the search */
           setLoading(false);
           setDisplaySearchResults(true)
         } catch (error) {
@@ -100,6 +102,8 @@ function userSelectFilterTerm(event) {
     setSelectedImagesCollection( array => array.concat(item) );
   }
 
+  // Run this useEffect everytime selectedImagesCollection updates
+  // 
   useEffect(() => {
     if (selectedImagesCollection.length < 1) {
       setDisplaySelectedImages(false);
@@ -208,6 +212,7 @@ function userSelectFilterTerm(event) {
    function zipDownloadFolderSelectedImages() {
     /* At this stage selectedImagesCollection is an array of
     large object constaining interesting data about the items.
+    
     All we are interested in is the item id, as that is what is
     used as file names in AWS. The frist step is to map over the
     large object and push into an array the the key "id" and its
@@ -330,5 +335,6 @@ function handleDropdownSubmit(event) {
         </section>
         <Footer />
       </div>
+   
     );
 }
