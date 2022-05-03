@@ -1,6 +1,4 @@
 import React from "react";
-// import { useState } from 'react';
-// import { isCompositeComponent } from "react-dom/test-utils";
 import Masonry from "react-masonry-css";
 
 /*
@@ -18,12 +16,12 @@ export default function SearchResults(props) {
   let preSelectedImages = props.preSelectedImages
 
 
-    // If the item is in user's collection, display "in collection" label
+  // If the item is in user's collection, display "in collection" label
   // If not, display "add to collection" button
   function whichButton(item) {
  
     let buttonResult = "";
-    console.log('selectedImagesCollection:', props.selectedImagesCollection, 'item:',  item)
+    // console.log('selectedImagesCollection:', props.selectedImagesCollection, 'item:',  item)
 
     /* 
     The some() method tests whether at least one element
@@ -70,10 +68,6 @@ export default function SearchResults(props) {
     }
     props.setSelectedImagesCollection( array => array.concat(item) );
   }
-
-
-
-  console.log("🦈 props.selectedImagesCollection:", props.selectedImagesCollection)
   
   // For use with React Masonry CSS package
   const breakpointColumnsObj = {
