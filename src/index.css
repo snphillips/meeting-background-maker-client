@@ -347,11 +347,26 @@ img {
   font-size: .8rem;
 }
 
-.results-button-in-collection,
 .results-button-add-to-collection,
 .results-button-remove-from-collection {
   margin-bottom: 1rem;
   width: 100%;
+}
+
+.results-button-in-collection {
+  display: block;
+  margin-bottom: 1rem;
+  width: 100%;
+  border: 2px solid #000;
+  background-color: #000;
+  color: #efefef;
+  padding: 6px 12px;
+  text-align: center !important;
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  box-sizing: border-box;
+
 }
 
 .results-button-remove-from-collection:hover {

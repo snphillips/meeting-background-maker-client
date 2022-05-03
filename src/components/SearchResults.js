@@ -34,13 +34,13 @@ export default function SearchResults(props) {
     if (props.selectedImagesCollection.some(el => el.id === item.id)) {
       // console.log("💋 item included", item.id)
       buttonResult = (
-        <button
-          type="button"
+        <div
+          type=""
           value={item.id}
           className="results-button-in-collection"
         >
           in collection
-        </button>
+        </div>
       );
     } else {
       // console.log("👎 item NOT included", item.id)

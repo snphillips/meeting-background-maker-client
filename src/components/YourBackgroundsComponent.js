@@ -30,7 +30,6 @@ export default function YourBackgroundsComponent(props) {
           openModal={props.openModal}
           addToCollection={props.addToCollection}
           setSelectedImagesCollection={props.setSelectedImagesCollection}
-          // displayModal={props.displayModal}
         />
 
         <SelectedCollection
