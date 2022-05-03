@@ -23,11 +23,14 @@ export default function YourBackgroundsComponent(props) {
         <SearchResults
           value={props.value}
           preSelectedImages={props.preSelectedImages}
+          selectedImagesCollection={props.selectedImagesCollection}
           toggleFilterResultsPlaceholder={props.toggleFilterResultsPlaceholder}
           whichButton={props.whichButton}
           displaySearchResults={props.displaySearchResults}
           openModal={props.openModal}
-          displayModal={props.displayModal}
+          addToCollection={props.addToCollection}
+          setSelectedImagesCollection={props.setSelectedImagesCollection}
+          // displayModal={props.displayModal}
         />
 
         <SelectedCollection

@@ -93,14 +93,14 @@ function userSelectFilterTerm(event) {
     }
   }, [value]);
 
-  function addToCollection(item){
-    if (selectedImagesCollection.length >= 20) {
-      console.log("Collection is full. Return.", selectedImagesCollection.length)
-      alert("Collection full. Remove an image before adding another.")
-      return;
-    }
-    setSelectedImagesCollection( array => array.concat(item) );
-  }
+  // function addToCollection(item){
+  //   if (selectedImagesCollection.length >= 20) {
+  //     console.log("Collection is full. Return.", selectedImagesCollection.length)
+  //     alert("Collection full. Remove an image before adding another.")
+  //     return;
+  //   }
+  //   setSelectedImagesCollection( array => array.concat(item) );
+  // }
 
   // Run this useEffect everytime selectedImagesCollection updates
   // 
@@ -129,42 +129,42 @@ function userSelectFilterTerm(event) {
     setSelectedImagesCollection(selectedImagesArray)
   }
  
-  // If the item is in user's collection, display "in collection" label
-  // If not, display "add to collection" button
-  function whichButton(item) {
+  // // If the item is in user's collection, display "in collection" label
+  // // If not, display "add to collection" button
+  // function whichButton(item) {
  
-    let buttonResult = "";
-    console.log('selectedImagesCollection:', selectedImagesCollection, 'item:',  item)
+  //   let buttonResult = "";
+  //   console.log('selectedImagesCollection:', selectedImagesCollection, 'item:',  item)
 
-    if (selectedImagesCollection.includes(item)) {
-      console.log("💋 item included", item.id)
-      // could this be a switch statement?
-      buttonResult = (
-        <button
-          type="button"
-          value={item.id}
-          className="results-button-in-collection"
-        >
-          in collection
-        </button>
-      );
-    } else {
-      console.log("👎 item NOT included", item.id)
-      buttonResult = (
-        <button
-          type="button"
-          value={item.id}
-          className="results-button-add-to-collection"
-          onClick={() => {
-            addToCollection(item);
-          }}
-        >
-          add to collection
-        </button>
-      );
-    }
-    return buttonResult;
-  }
+  //   if (selectedImagesCollection.includes(item)) {
+  //     console.log("💋 item included", item.id)
+  //     // could this be a switch statement?
+  //     buttonResult = (
+  //       <button
+  //         type="button"
+  //         value={item.id}
+  //         className="results-button-in-collection"
+  //       >
+  //         in collection
+  //       </button>
+  //     );
+  //   } else {
+  //     console.log("👎 item NOT included", item.id)
+  //     buttonResult = (
+  //       <button
+  //         type="button"
+  //         value={item.id}
+  //         className="results-button-add-to-collection"
+  //         onClick={() => {
+  //           addToCollection(item);
+  //         }}
+  //       >
+  //         add to collection
+  //       </button>
+  //     );
+  //   }
+  //   return buttonResult;
+  // }
 
   function shuffleBackgroundClipTextImage() {
     let numOfBackgroundImages = 31;
@@ -319,12 +319,14 @@ function handleDropdownSubmit(event) {
             displaySearchResults={displaySearchResults}
             displayComputerImage={displayComputerImage}
             activeButton={activeButton}
-            whichButton={whichButton}
+            // whichButton={whichButton}
             zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
             userSelectFilterTerm={userSelectFilterTerm}
             handleDropdownSubmit={handleDropdownSubmit}
             onChange={handleDropdownChange}
             removeFromCollection={removeFromCollection}
+            // addToCollection={addToCollection}
+            setSelectedImagesCollection={setSelectedImagesCollection}
           />
 
           <CuratedSetsComponent

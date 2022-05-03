@@ -16,6 +16,64 @@ or, "in collection".
 export default function SearchResults(props) {
   
   let preSelectedImages = props.preSelectedImages
+
+
+    // If the item is in user's collection, display "in collection" label
+  // If not, display "add to collection" button
+  function whichButton(item) {
+ 
+    let buttonResult = "";
+    console.log('selectedImagesCollection:', props.selectedImagesCollection, 'item:',  item)
+
+    /* 
+    The some() method tests whether at least one element
+    in the array passes the test implemented by the provided
+    function. It returns true if, in the array, it finds an
+    element for which the provided function returns true; 
+    otherwise it returns false. It doesn't modify the array.
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+    */
+    if (props.selectedImagesCollection.some(el => el.id === item.id)) {
+      // console.log("💋 item included", item.id)
+      buttonResult = (
+        <button
+          type="button"
+          value={item.id}
+          className="results-button-in-collection"
+        >
+          in collection
+        </button>
+      );
+    } else {
+      // console.log("👎 item NOT included", item.id)
+      buttonResult = (
+        <button
+          type="button"
+          value={item.id}
+          className="results-button-add-to-collection"
+          onClick={() => {
+            addToCollection(item);
+          }}
+        >
+          add to collection
+        </button>
+      );
+    }
+    return buttonResult;
+  }
+
+  function addToCollection(item){
+    if (props.selectedImagesCollection.length >= 20) {
+      console.log("Collection is full. Return.", props.selectedImagesCollection.length)
+      alert("Collection full. Remove an image before adding another.")
+      return;
+    }
+    props.setSelectedImagesCollection( array => array.concat(item) );
+  }
+
+
+
+  console.log("🦈 props.selectedImagesCollection:", props.selectedImagesCollection)
   
   // For use with React Masonry CSS package
   const breakpointColumnsObj = {
@@ -58,7 +116,7 @@ export default function SearchResults(props) {
                       // perhaps in the future? Like, a modal opens?     
                     }}
                   />
-                {props.whichButton(item)}
+                {whichButton(item)}
               </div>
             );
           })}

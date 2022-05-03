@@ -11,7 +11,8 @@ export default function SelectedCollection(props) {
     };
 
    
-    // ternary to establish whether to display singular or plural word image
+    // ternary to establish whether to display singular
+    // or plural word image
     let num = props.selectedImagesCollection.length
     let imageSingularOrPlural = (num <= 1) ? "image" : "images"
     let collectionFull = (num >= 20) ? "  -  collection full" : ''
@@ -63,7 +64,7 @@ export default function SelectedCollection(props) {
           className="download-button"
           // value=""
           type="download"
-          onClick={(event) => {
+          onClick={() => {
             props.zipDownloadFolderSelectedImages();
           }}
           >
