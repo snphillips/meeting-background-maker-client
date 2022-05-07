@@ -22,7 +22,7 @@ export default function ComputerImage(props) {
           maxWidth: "100%",
           height: "270px",
           maxHeight: "auto",
-          margin: "0 auto",
+          margin: "3rem auto",
         }}>
 
         <div 
@@ -61,6 +61,7 @@ export default function ComputerImage(props) {
                width: "80px",
                height: "80px",
                background: "black",
+              // triangle
               //  width: "0",
               //  height: "0",
               //  borderLeft: "50px solid transparent",
