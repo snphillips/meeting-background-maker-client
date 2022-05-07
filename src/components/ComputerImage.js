@@ -4,15 +4,25 @@ export default function ComputerImage(props) {
   return (
 
       <section 
-        id="computer-image">
+        id="computer-image-container"
+        style={{
+        }}
+      >
 
         {props.displayComputerImage && 
 
-        <div style={{
+        <div
+        id="computer-image" 
+        style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          flexDirection: "column"
+          flexDirection: "column",
+          width: "400px",
+          maxWidth: "100%",
+          height: "270px",
+          maxHeight: "auto",
+          margin: "0 auto",
         }}>
 
         <div 
@@ -20,21 +30,22 @@ export default function ComputerImage(props) {
           style={{
             display: "block",
             border: "3px solid white",
-            width: "300px",
-            height: "190px",
+            width: "70%",
+            height: "70%",
             margin: "1rem auto 0 auto",
-            background: "transparent"
-        }}>
+            background: "transparent",
+          }}
+          >
          <div 
+           id="person"
            style={{
              height: "100%",
              display: "flex",
              alignItems: "center",
              justifyContent: "end",
-             flexDirection: "column"
-           }}
-           id="person"
-           >
+             flexDirection: "column",
+            }}
+            >
            <div
            id="head"
            style={{
@@ -43,15 +54,20 @@ export default function ComputerImage(props) {
              background: "black",
              display: "flex",
              borderRadius: "50%"
-           }}/>
+            }}/>
            <div
              id="person=body"
              style={{
-              width: "80px",
-              height: "80px",
-              background: "black",
-             }} 
-           />
+               width: "80px",
+               height: "80px",
+               background: "black",
+              //  width: "0",
+              //  height: "0",
+              //  borderLeft: "50px solid transparent",
+              //  borderRight: "50px solid transparent",
+              //  borderBottom: "100px solid black"
+              }} 
+              />
          </div>
         </div>
         <div
@@ -61,10 +77,9 @@ export default function ComputerImage(props) {
           borderBottom: "3px solid white",
           borderLeft: "6px solid white",
           borderRight: "6px solid white",
-          width: "297px",
-          height: "50px",
-          // clipPath: "polygon(20% 0%, 80% 0%, 91% 100%, 8% 100%)",
-          transform: "skew(54deg, 0deg) translate(40px, -2px)"
+          width: "68%",
+          height: "20%",
+          transform: "skew(54deg, 0deg) translate(42px, -2px)",
         }}
         >
 

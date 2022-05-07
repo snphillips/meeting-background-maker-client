@@ -571,9 +571,9 @@ Media Queries - tablets
 ==========================*/
 @media (max-width: 700px) {
 
-  h1.header {
-    font-size: 3.5rem;
-  }
+h1.header {
+  font-size: 3.5rem;
+}
 
 .set-heading {
   font-size: 1.25rem;
@@ -586,24 +586,36 @@ Media Queries - tablets
 }
 
 .filters-component {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+}
 
-  .image-grid {
-    /*display: grid;*/
-    /* 2 colums, all the same width */
-    /*grid-template-columns: auto auto;*/
-  }
-
-  .card {
-    /*width: 50%;*/
-  }
-
+#computer-image-container {
+  display: none;
+}
+  
 }
 
 /*=========================
 Media Queries - phones
+1 column gallery
+/*==========================*/
+@media (max-width: 500px) {
+  
+  h1.header {
+    font-size: 3rem;
+  }
+
+  .card {
+    padding: .25rem 0;
+    margin-right: unset;
+    margin-bottom: .5rem;
+  }
+
+ }
+
+ /*=========================
+Media Queries - small phones
 1 column gallery
 /*==========================*/
 @media (max-width: 415px) {
@@ -611,22 +623,11 @@ Media Queries - phones
   h1.header {
     font-size: 3rem;
   }
-
-
-.image-grid {
-    /*display: grid;*/
-    /* 1 colum, automatically calculate width */
-    /*grid-template-columns: auto;*/
-  }
-
   .card {
     /*width: 100%;*/
     padding: .25rem 0;
     margin-right: unset;
     margin-bottom: .5rem;
   }
-
-
-
 
  }
