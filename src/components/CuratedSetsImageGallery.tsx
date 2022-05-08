@@ -1,5 +1,5 @@
 import React from "react";
-import _Lodash from "lodash";
+// import _Lodash from "lodash";
 
 /*
 This section contains the curated set images and the "view set" button.
@@ -16,11 +16,14 @@ The button message (viewButtonMessage) depends on whether the images are
 revealed or not.
 */
 
-export default function CuratedSetsImageGallery(props){
+export default function CuratedSetsImageGallery(props): React.ReactNode {
   
     let index = props.index;
     let thisCuratedSet = props.curatedSetsArray[index];
-    let allTheSetImages = thisCuratedSet.images;
+    let allTheSetImages = thisCuratedSet.images; 
+    // console.log("thisCuratedSet", thisCuratedSet)
+    // console.log("allTheSetImages", allTheSetImages)
+    // console.log("index", index)
 
     return (
       <div>
@@ -29,7 +32,7 @@ export default function CuratedSetsImageGallery(props){
           id={"curated-set-gallery-" + index}
           style={{ maxHeight: "4000px"}}
         >
-          {allTheSetImages.map((item, index) => {
+          {allTheSetImages.map((item:any, index: any) => {
 
             return (
               <div
