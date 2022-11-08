@@ -4,42 +4,58 @@ import ComputerImage from "./ComputerImage";
 import SearchResults from "./SearchResults.js";
 import SelectedCollection from "./SelectedCollection";
 
-export default function YourBackgroundsComponent(props) {
+export default function YourBackgroundsComponent({
+  activeButton,
+  addToCollection,
+  displayComputerImage,
+  displaySearchResults,
+  displaySelectedImages,
+  handleDropdownChange,
+  handleDropdownSubmit,
+  loading,
+  preSelectedImages,
+  removeFromCollection,
+  selectedImagesCollection,
+  setSelectedImagesCollection,
+  setDisplayDownloadButton,
+  userSelectFilterTerm,
+  value,
+  whichButton,
+  openModal,
+  toggleFilterResultsPlaceholder,
+  zipDownloadFolderSelectedImages,
+}) {
+  return (
+    <section id="user-generated-set-window">
+      <FilterButtons
+        loading={loading}
+        userSelectFilterTerm={userSelectFilterTerm}
+        activeButton={activeButton}
+        handleDropdownSubmit={handleDropdownSubmit}
+        onChange={handleDropdownChange}
+      />
 
-    return (
-      
-      <section id="user-generated-set-window">
-        <FilterButtons
-          loading={props.loading}
-          userSelectFilterTerm={props.userSelectFilterTerm}
-          activeButton={props.activeButton}
-          handleDropdownSubmit={props.handleDropdownSubmit}
-          onChange={props.handleDropdownChange}
-        />
+      <ComputerImage displayComputerImage={displayComputerImage} />
 
-        <ComputerImage 
-          displayComputerImage={props.displayComputerImage} />
+      <SearchResults
+        value={value}
+        preSelectedImages={preSelectedImages}
+        selectedImagesCollection={selectedImagesCollection}
+        toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
+        whichButton={whichButton}
+        displaySearchResults={displaySearchResults}
+        openModal={openModal}
+        addToCollection={addToCollection}
+        setSelectedImagesCollection={setSelectedImagesCollection}
+      />
 
-        <SearchResults
-          value={props.value}
-          preSelectedImages={props.preSelectedImages}
-          selectedImagesCollection={props.selectedImagesCollection}
-          toggleFilterResultsPlaceholder={props.toggleFilterResultsPlaceholder}
-          whichButton={props.whichButton}
-          displaySearchResults={props.displaySearchResults}
-          openModal={props.openModal}
-          addToCollection={props.addToCollection}
-          setSelectedImagesCollection={props.setSelectedImagesCollection}
-        />
-
-        <SelectedCollection
-          removeFromCollection={props.removeFromCollection}
-          selectedImagesCollection={props.selectedImagesCollection}
-          displaySelectedImages={props.displaySelectedImages}
-          zipDownloadFolderSelectedImages={props.zipDownloadFolderSelectedImages}
-          setDisplayDownloadButton={props.setDisplayDownloadButton}
-        />
-
-      </section>
-    );
+      <SelectedCollection
+        removeFromCollection={removeFromCollection}
+        selectedImagesCollection={selectedImagesCollection}
+        displaySelectedImages={displaySelectedImages}
+        zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
+        setDisplayDownloadButton={setDisplayDownloadButton}
+      />
+    </section>
+  );
 }
