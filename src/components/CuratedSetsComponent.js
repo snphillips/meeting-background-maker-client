@@ -1,9 +1,14 @@
-import React, { useState } from "react";
-import CuratedSetsImageGallery from "./CuratedSetsImageGallery";
-import Masonry from "react-masonry-css";
+import React from 'react';
+import CuratedSetsImageGallery from './CuratedSetsImageGallery';
+import Masonry from 'react-masonry-css';
 
-export default function CuratedSetComponent(props) {
-  let curatedSetsArray = props.curatedSets;
+export default function CuratedSetComponent({
+  activeTab,
+  curatedSets,
+  // displayCuratedSetComponent,
+  // displayYourBackbroundsComponent,
+}) {
+  let curatedSetsArray = curatedSets;
 
   // For use with Masonry package
   const breakpointColumnsObj = {
@@ -13,7 +18,12 @@ export default function CuratedSetComponent(props) {
   };
 
   return (
-    <section id='curated-set-window'>
+    <section
+      id='curated-set-window'
+      style={{
+        display: activeTab === 1 ? 'block' : 'none',
+      }}
+    >
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className='my-masonry-grid curated-sets-list'
@@ -21,16 +31,8 @@ export default function CuratedSetComponent(props) {
       >
         {curatedSetsArray.map((item, index) => {
           return (
-            <div
-              key={index + "-card"}
-              className='curated-set-card card'
-              value={item.setName}
-            >
-              <h4
-                key={index + "-label"}
-                className='curated-set-label'
-                value={item.setName}
-              >
+            <div key={index + '-card'} className='curated-set-card card' value={item.setName}>
+              <h4 key={index + '-label'} className='curated-set-label' value={item.setName}>
                 {item.setName}
               </h4>
 
@@ -40,11 +42,11 @@ export default function CuratedSetComponent(props) {
                   // It has no spaces
                   `https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds-curated-sets/` +
                   item.machineName +
-                  ".zip"
+                  '.zip'
                 }
               >
                 <button
-                  key={item.setName + "downlad-button"}
+                  key={item.setName + 'downlad-button'}
                   className='curated-set-download-button'
                   type='download'
                 >
@@ -58,10 +60,7 @@ export default function CuratedSetComponent(props) {
                 </button>
               </a>
 
-              <CuratedSetsImageGallery
-                curatedSetsArray={curatedSetsArray}
-                index={index}
-              />
+              <CuratedSetsImageGallery curatedSetsArray={curatedSetsArray} index={index} />
 
               <a
                 href={
@@ -69,11 +68,11 @@ export default function CuratedSetComponent(props) {
                   // It has no spaces
                   `https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds-curated-sets/` +
                   item.machineName +
-                  ".zip"
+                  '.zip'
                 }
               >
                 <button
-                  key={item.setName + "downlad-button"}
+                  key={item.setName + 'downlad-button'}
                   className='curated-set-download-button'
                   type='download'
                 >

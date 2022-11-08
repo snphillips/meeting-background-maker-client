@@ -1,11 +1,11 @@
-import React from "react";
-import Masonry from "react-masonry-css";
+import React from 'react';
+import Masonry from 'react-masonry-css';
 
 export default function SelectedCollection({
   displaySelectedImages,
   removeFromCollection,
   selectedImagesCollection,
-  setDisplayDownloadButton,
+  // setDisplayDownloadButton,
   zipDownloadFolderSelectedImages,
 }) {
   // For use with Masonry package
@@ -20,8 +20,8 @@ export default function SelectedCollection({
   or plural word image
   */
   let num = selectedImagesCollection.length;
-  let imageSingularOrPlural = num <= 1 ? "image" : "images";
-  let collectionFull = num >= 20 ? "  -  collection full" : "";
+  let imageSingularOrPlural = num <= 1 ? 'image' : 'images';
+  let collectionFull = num >= 20 ? '  -  collection full' : '';
 
   return (
     <div className='component' id='selected-images-component'>
@@ -48,7 +48,7 @@ export default function SelectedCollection({
                       src={
                         `https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` +
                         item.id +
-                        ".jpg"
+                        '.jpg'
                       }
                       alt={item.title}
                     />

@@ -1,5 +1,5 @@
-import React from "react";
-import Masonry from "react-masonry-css";
+import React from 'react';
+import Masonry from 'react-masonry-css';
 
 /*
 This component takes an array called preSelectedImages 
@@ -7,26 +7,27 @@ This component takes an array called preSelectedImages
 maps over that array and displays each image and a button
 under each image. 
 
-The button (whichButton) could say "add to collection"
-or, "in collection". 
+The button (whichButton) could say 'add to collection'
+or, 'in collection'. 
 */
 
 // export default function SearchResults(props) {
 export default function SearchResults({
   addToCollection,
   displaySearchResults,
+  // todo figure out the modal
   openModal,
   preSelectedImages,
   selectedImagesCollection,
   setSelectedImagesCollection,
-  toggleFilterResultsPlaceholder,
-  value,
+  // toggleFilterResultsPlaceholder,
+  // value,
   whichButton,
 }) {
-  // If the item is in user's collection, display "in collection" label
-  // If not, display "add to collection" button
+  // If the item is in user's collection, display 'in collection' label
+  // If not, display 'add to collection' button
   function whichButton(item) {
-    let buttonResult = "";
+    let buttonResult = '';
     // console.log('selectedImagesCollection:', selectedImagesCollection, 'item:',  item)
 
     /* 
@@ -38,14 +39,14 @@ export default function SearchResults({
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
     */
     if (selectedImagesCollection.some((el) => el.id === item.id)) {
-      // console.log("💋 item included", item.id)
+      // console.log('💋 item included', item.id)
       buttonResult = (
         <div type='' value={item.id} className='results-button-in-collection'>
           in collection
         </div>
       );
     } else {
-      // console.log("👎 item NOT included", item.id)
+      // console.log('👎 item NOT included', item.id)
       buttonResult = (
         <button
           type='button'
@@ -64,11 +65,8 @@ export default function SearchResults({
 
   function addToCollection(item) {
     if (selectedImagesCollection.length >= 20) {
-      console.log(
-        "Collection is full. Return.",
-        selectedImagesCollection.length
-      );
-      alert("Collection full. Remove an image before adding another.");
+      console.log('Collection is full. Return.', selectedImagesCollection.length);
+      alert('Collection full. Remove an image before adding another.');
       return;
     }
     setSelectedImagesCollection((array) => array.concat(item));
@@ -102,11 +100,11 @@ export default function SearchResults({
                     src={
                       `https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` +
                       item.id +
-                      ".jpg"
+                      '.jpg'
                     }
                     alt={item.title}
                     onClick={() => {
-                      // nothing going on now when user clicks
+                      // Nothing going on now when user clicks
                       // perhaps in the future? Like, a modal opens?
                     }}
                   />

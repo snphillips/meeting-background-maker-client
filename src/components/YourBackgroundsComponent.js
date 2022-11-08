@@ -1,11 +1,12 @@
-import React from "react";
-import FilterButtons from "./FilterButtons";
-import ComputerImage from "./ComputerImage";
-import SearchResults from "./SearchResults.js";
-import SelectedCollection from "./SelectedCollection";
+import React from 'react';
+import FilterButtons from './FilterButtons';
+import ComputerImage from './ComputerImage';
+import SearchResults from './SearchResults.js';
+import SelectedCollection from './SelectedCollection';
 
 export default function YourBackgroundsComponent({
   activeButton,
+  activeTab,
   addToCollection,
   displayComputerImage,
   displaySearchResults,
@@ -26,7 +27,12 @@ export default function YourBackgroundsComponent({
   zipDownloadFolderSelectedImages,
 }) {
   return (
-    <section id='user-generated-set-window'>
+    <section
+      id='user-generated-set-window'
+      style={{
+        display: activeTab === 0 ? 'block' : 'none',
+      }}
+    >
       <FilterButtons
         loading={loading}
         userSelectFilterTerm={userSelectFilterTerm}
