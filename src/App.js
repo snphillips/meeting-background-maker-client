@@ -27,15 +27,12 @@ const curatedSets = [
 export default function App() {
   // const serverURL = `http://localhost:3001/`
   const serverURL = `https://meeting-background-server.herokuapp.com/`;
-  // const tabs = ['Your backgrounds', 'Curated Sets'];
 
   const initialRender = useRef(true);
   const [loading, setLoading] = useState(false); // the loading spinner
   const [value, setValue] = useState(); // the user select filter term
   const [displayComputerImage, setDisplayComputerImage] = useState(true);
   const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
-  // const [displayCuratedSetComponent, setDisplayCuratedSetComponent] = useState(false);
-  // const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = useState(true);
   const [displaySearchResults, setDisplaySearchResults] = useState(false);
   const [preSelectedImages, setPreSelectedImages] = useState([]);
   const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
@@ -43,11 +40,11 @@ export default function App() {
   const [activeTab, setActiveTab] = useState(0);
 
   /*
-===================================
-Runs on first render
-Has empty [] as dependency
-===================================
-*/
+  ===================================
+  Runs on first render
+  Has empty [] as dependency
+  ===================================
+  */
   useEffect(() => {
     shuffleBackgroundClipTextImage();
   }, []);
@@ -73,18 +70,18 @@ Has [value] as dependency
     function searchByTag() {
       // start the loading spinner
       setLoading(true);
-      console.log('value is: ', value);
+      // console.log('value is: ', value);
       shuffleBackgroundClipTextImage();
 
       const sendGetRequest = async () => {
         try {
           const response = await axios.get(serverURL + `searchbytag/` + value);
-          console.log(`🍩 The search value is:`, value, `response.data:`, response.data);
-          console.log(
-            response.data.map((item) => {
-              return item.id;
-            })
-          );
+          // console.log(`🍩 The search value is:`, value, `response.data:`, response.data);
+          // console.log(
+          //   response.data.map((item) => {
+          //     return item.id;
+          //   })
+          // );
 
           setPreSelectedImages(response.data);
           /*

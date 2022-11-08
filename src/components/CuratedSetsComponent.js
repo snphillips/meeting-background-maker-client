@@ -2,12 +2,7 @@ import React from 'react';
 import CuratedSetsImageGallery from './CuratedSetsImageGallery';
 import Masonry from 'react-masonry-css';
 
-export default function CuratedSetComponent({
-  activeTab,
-  curatedSets,
-  // displayCuratedSetComponent,
-  // displayYourBackbroundsComponent,
-}) {
+export default function CuratedSetComponent({ activeTab, curatedSets }) {
   let curatedSetsArray = curatedSets;
 
   // For use with Masonry package

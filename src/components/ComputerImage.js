@@ -1,5 +1,5 @@
-import "./ComputerImage.css";
-import React from "react";
+import './ComputerImage.css';
+import React from 'react';
 
 export default function ComputerImage({ displayComputerImage }) {
   return (

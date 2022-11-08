@@ -1,7 +1,7 @@
-import React from "react";
-import filterTagButtons from "../filterTagButtons";
-import filterTagsAll from "../filterTagsAll";
-import LoadingSpinner from "../LoadingSpinner";
+import React from 'react';
+import filterTagButtons from '../filterTagButtons';
+import filterTagsAll from '../filterTagsAll';
+import LoadingSpinner from '../LoadingSpinner';
 
 export default function FilterButtons({
   activeButton,
@@ -25,10 +25,8 @@ export default function FilterButtons({
           return (
             <button
               key={index}
-              className={
-                activeButton === item ? "filter-button active" : "filter-button"
-              }
-              id={"filter-button-" + item}
+              className={activeButton === item ? 'filter-button active' : 'filter-button'}
+              id={'filter-button-' + item}
               type='button'
               value={item}
               onClick={userSelectFilterTerm}
