@@ -1,14 +1,12 @@
-
-
 const filterTagButtons = [
-  // "accountants",
+  // 'accountants',
   "thistles",
-  // "clams",
-  // "accordion",
-  // "movie poster",
+  // 'clams',
+  // 'accordion',
+  // 'movie poster',
   "art deco",
   "art nouveau",
-  "bauhaus", 
+  "bauhaus",
   "bouquets",
   "cubism",
   "gradient",
@@ -19,11 +17,11 @@ const filterTagButtons = [
   "palm trees",
   "pattern",
   "postmodern",
-  "sidewall", 
+  "sidewall",
   "textile",
   "textile design",
   "wall decoration",
-  "wallpaper"
+  "wallpaper",
 ];
 
 export default filterTagButtons;

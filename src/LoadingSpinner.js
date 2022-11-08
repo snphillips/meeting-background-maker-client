@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import { css } from "@emotion/react";
 // react-spinners is an npm package
-import BeatLoader from 'react-spinners/BeatLoader';
+import BeatLoader from "react-spinners/BeatLoader";
 
 const override = css`
   display: block;
@@ -11,18 +11,17 @@ const override = css`
 
 export default function LoadingSpinner(props) {
   return (
-    
-    <div className="loading-div">
+    <div className='loading-div'>
       <span className='sweet-loading'>
         <BeatLoader
           className={override}
           sizeUnit={"px"}
           // size={32}
           height={32}
-          color={'#fff'}
+          color={"#fff"}
           loading={props.loading}
         />
       </span>
     </div>
-  )
+  );
 }
