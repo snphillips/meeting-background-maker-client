@@ -10,17 +10,17 @@ export default function FilterButtons({
   userSelectFilterTerm,
 }) {
   return (
-    <div className="filters-component">
+    <div className='filters-component'>
       <div>
-        <p className="filter-message">
+        <p className='filter-message'>
           Select a search term to view images from the museum's collection.
         </p>
-        <div className="spinner-container">
+        <div className='spinner-container'>
           <LoadingSpinner loading={loading} />
         </div>
       </div>
 
-      <section className="filter-button-section">
+      <section className='filter-button-section'>
         {filterTagButtons.map((item, index) => {
           return (
             <button
@@ -29,7 +29,7 @@ export default function FilterButtons({
                 activeButton === item ? "filter-button active" : "filter-button"
               }
               id={"filter-button-" + item}
-              type="button"
+              type='button'
               value={item}
               onClick={userSelectFilterTerm}
             >

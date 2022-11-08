@@ -40,7 +40,7 @@ export default function SearchResults({
     if (selectedImagesCollection.some((el) => el.id === item.id)) {
       // console.log("💋 item included", item.id)
       buttonResult = (
-        <div type="" value={item.id} className="results-button-in-collection">
+        <div type='' value={item.id} className='results-button-in-collection'>
           in collection
         </div>
       );
@@ -48,9 +48,9 @@ export default function SearchResults({
       // console.log("👎 item NOT included", item.id)
       buttonResult = (
         <button
-          type="button"
+          type='button'
           value={item.id}
-          className="results-button-add-to-collection"
+          className='results-button-add-to-collection'
           onClick={() => {
             addToCollection(item);
           }}
@@ -82,7 +82,7 @@ export default function SearchResults({
   };
 
   return (
-    <section className="component" id="results-component">
+    <section className='component' id='results-component'>
       {/* Nifty way of knowing when to display a component */}
       {displaySearchResults && (
         <div>
@@ -90,15 +90,15 @@ export default function SearchResults({
 
           <Masonry
             breakpointCols={breakpointColumnsObj}
-            className="my-masonry-grid curated-sets-list pre-selected-images-gallery results image-grid"
-            columnClassName="my-masonry-grid_column"
+            className='my-masonry-grid curated-sets-list pre-selected-images-gallery results image-grid'
+            columnClassName='my-masonry-grid_column'
           >
             {preSelectedImages.map((item, index) => {
               return (
-                <div key={index} className="image-card card">
+                <div key={index} className='image-card card'>
                   <img
                     key={item.id}
-                    className="result-img"
+                    className='result-img'
                     src={
                       `https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` +
                       item.id +

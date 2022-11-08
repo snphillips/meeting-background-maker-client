@@ -2,7 +2,7 @@ import React from "react";
 
 /*
 This section contains the curated set images and
-the "view set" button. The "download image set" 
+the 'view set' button. The 'download image set' 
 button is in CuratedSetsComponent.
 */
 
@@ -13,7 +13,7 @@ export default function CuratedSetsImageGallery({ curatedSetsArray, index }) {
   return (
     <div>
       <section
-        className="curated-images-gallery"
+        className='curated-images-gallery'
         id={"curated-set-gallery-" + index}
         style={{ maxHeight: "4000px" }}
       >
@@ -22,10 +22,10 @@ export default function CuratedSetsImageGallery({ curatedSetsArray, index }) {
             <div
               key={index}
               id={"-curated-image-" + index}
-              className="curated-image"
+              className='curated-image'
             >
               <img
-                className="curated-list-img"
+                className='curated-list-img'
                 src={item.imageURL}
                 alt={item.title}
                 onClick={(index) => {

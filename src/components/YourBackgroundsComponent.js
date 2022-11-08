@@ -26,7 +26,7 @@ export default function YourBackgroundsComponent({
   zipDownloadFolderSelectedImages,
 }) {
   return (
-    <section id="user-generated-set-window">
+    <section id='user-generated-set-window'>
       <FilterButtons
         loading={loading}
         userSelectFilterTerm={userSelectFilterTerm}
