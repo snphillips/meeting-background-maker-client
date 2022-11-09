@@ -16,7 +16,6 @@ export default function LoadingSpinner(props) {
         <BeatLoader
           className={override}
           sizeUnit={'px'}
-          // size={32}
           height={32}
           color={'#fff'}
           loading={props.loading}
