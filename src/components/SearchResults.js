@@ -15,14 +15,10 @@ or, 'in collection'.
 export default function SearchResults({
   addToCollection,
   displaySearchResults,
-  // todo figure out the modal
-  openModal,
   preSelectedImages,
   selectedImagesCollection,
   setSelectedImagesCollection,
-  // toggleFilterResultsPlaceholder,
-  // value,
-  whichButton,
+  // whichButton,
 }) {
   // If the item is in user's collection, display 'in collection' label
   // If not, display 'add to collection' button
