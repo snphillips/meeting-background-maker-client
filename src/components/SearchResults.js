@@ -13,12 +13,10 @@ or, 'in collection'.
 
 // export default function SearchResults(props) {
 export default function SearchResults({
-  addToCollection,
   displaySearchResults,
   preSelectedImages,
   selectedImagesCollection,
   setSelectedImagesCollection,
-  // whichButton,
 }) {
   // If the item is in user's collection, display 'in collection' label
   // If not, display 'add to collection' button

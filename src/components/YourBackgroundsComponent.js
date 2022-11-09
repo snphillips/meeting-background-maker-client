@@ -7,7 +7,6 @@ import SelectedCollection from './SelectedCollection';
 export default function YourBackgroundsComponent({
   activeButton,
   activeTab,
-  addToCollection,
   displayComputerImage,
   displaySearchResults,
   displaySelectedImages,
@@ -33,32 +32,31 @@ export default function YourBackgroundsComponent({
       }}
     >
       <FilterButtons
-        loading={loading}
-        userSelectFilterTerm={userSelectFilterTerm}
         activeButton={activeButton}
         handleDropdownSubmit={handleDropdownSubmit}
+        loading={loading}
         onChange={handleDropdownChange}
+        userSelectFilterTerm={userSelectFilterTerm}
       />
 
       <ComputerImage displayComputerImage={displayComputerImage} />
 
       <SearchResults
-        value={value}
-        preSelectedImages={preSelectedImages}
-        selectedImagesCollection={selectedImagesCollection}
-        toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
         displaySearchResults={displaySearchResults}
         openModal={openModal}
-        addToCollection={addToCollection}
+        preSelectedImages={preSelectedImages}
+        selectedImagesCollection={selectedImagesCollection}
         setSelectedImagesCollection={setSelectedImagesCollection}
+        toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
+        value={value}
       />
 
       <SelectedCollection
+        displaySelectedImages={displaySelectedImages}
         removeFromCollection={removeFromCollection}
         selectedImagesCollection={selectedImagesCollection}
-        displaySelectedImages={displaySelectedImages}
-        zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
         setDisplayDownloadButton={setDisplayDownloadButton}
+        zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
       />
     </section>
   );
