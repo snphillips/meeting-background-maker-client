@@ -14,16 +14,15 @@ export default function YourBackgroundsComponent({
   handleDropdownChange,
   handleDropdownSubmit,
   loading,
+  openModal,
   preSelectedImages,
   removeFromCollection,
   selectedImagesCollection,
-  setSelectedImagesCollection,
   setDisplayDownloadButton,
+  setSelectedImagesCollection,
+  toggleFilterResultsPlaceholder,
   userSelectFilterTerm,
   value,
-  whichButton,
-  openModal,
-  toggleFilterResultsPlaceholder,
   zipDownloadFolderSelectedImages,
 }) {
   return (
@@ -48,7 +47,6 @@ export default function YourBackgroundsComponent({
         preSelectedImages={preSelectedImages}
         selectedImagesCollection={selectedImagesCollection}
         toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
-        whichButton={whichButton}
         displaySearchResults={displaySearchResults}
         openModal={openModal}
         addToCollection={addToCollection}
