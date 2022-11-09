@@ -5,7 +5,6 @@ export default function SelectedCollection({
   displaySelectedImages,
   removeFromCollection,
   selectedImagesCollection,
-  // setDisplayDownloadButton,
   zipDownloadFolderSelectedImages,
 }) {
   // For use with Masonry package
