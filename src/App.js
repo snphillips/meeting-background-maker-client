@@ -220,6 +220,7 @@ Has [value] as dependency
   }
 
   function handleDropdownSubmit(event) {
+    // TODO: what's this for? Get rid of it?
     console.log('handleDropdownSubmit clicked value is:', value);
   }
 
@@ -257,20 +258,20 @@ Has [value] as dependency
 
       <section id='component-sections'>
         <YourBackgroundsComponent
-          activeTab={activeTab}
-          loading={loading}
-          preSelectedImages={preSelectedImages}
-          selectedImagesCollection={selectedImagesCollection}
-          displaySelectedImages={displaySelectedImages}
-          displaySearchResults={displaySearchResults}
-          displayComputerImage={displayComputerImage}
           activeButton={activeButton}
-          zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
-          userSelectFilterTerm={userSelectFilterTerm}
+          activeTab={activeTab}
+          displayComputerImage={displayComputerImage}
+          displaySearchResults={displaySearchResults}
+          displaySelectedImages={displaySelectedImages}
           handleDropdownSubmit={handleDropdownSubmit}
+          loading={loading}
           onChange={handleDropdownChange}
+          preSelectedImages={preSelectedImages}
           removeFromCollection={removeFromCollection}
+          selectedImagesCollection={selectedImagesCollection}
           setSelectedImagesCollection={setSelectedImagesCollection}
+          userSelectFilterTerm={userSelectFilterTerm}
+          zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
         />
 
         <CuratedSetsComponent activeTab={activeTab} curatedSets={curatedSets} />
