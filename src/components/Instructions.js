@@ -1,5 +1,9 @@
 import React from 'react';
 
+// TODO:
+// This component isn't being used yet
+// Perhaps it never will be
+
 export default function Instructions() {
   return (
     <div className='component'>
