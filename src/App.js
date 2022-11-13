@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import _reject from 'lodash/reject';
-import Header from './components/Header';
-import CuratedSetsComponent from './components/CuratedSetsComponent';
-import Footer from './components/Footer';
-import YourBackgroundsComponent from './components/YourBackgroundsComponent';
+import _reject from 'lodash/reject.js';
+import Header from './components/Header.js';
+import CuratedSetsComponent from './components/CuratedSetsComponent.js';
+import Footer from './components/Footer.js';
+import YourBackgroundsComponent from './components/YourBackgroundsComponent.js';
 
 // Curated Sets
 import cocktailHour from './CuratedSets/cocktailHour.js';
@@ -13,7 +13,7 @@ import gardenParty from './CuratedSets/gardenParty.js';
 import gourmet from './CuratedSets/gourmet.js';
 import hermanMillerPicnic from './CuratedSets/hermanMillerPicnic.js';
 import photoMural from './CuratedSets/photoMural.js';
-import kolomanMoser from './CuratedSets/kolomanMoser';
+import kolomanMoser from './CuratedSets/kolomanMoser.js';
 const curatedSets = [
   cocktailHour,
   colorTheory,
@@ -107,7 +107,7 @@ Has [value] as dependency
       setDisplayComputerImage(false);
       setDisplaySearchResults(true);
     }
-  }, [value]);
+  }, [value, serverURL]);
 
   // Run this useEffect every time selectedImagesCollection updates
   useEffect(() => {
@@ -185,8 +185,7 @@ Has [value] as dependency
       for (const [key, value] of Object.entries(item)) {
         if (key === 'id') {
           console.log(`${key}: ${value}`);
-          imgJpegArray.push(value + '.jpg');
-          console.log('imgJpegArray:', imgJpegArray);
+          return imgJpegArray.push(value + '.jpg');
         }
       }
     });

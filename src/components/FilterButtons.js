@@ -1,7 +1,7 @@
 import React from 'react';
-import filterTagButtons from '../filterTagButtons';
-import filterTagsAll from '../filterTagsAll';
-import LoadingSpinner from '../LoadingSpinner';
+import filterTagButtons from '../filterTagButtons.js';
+import filterTagsAll from '../filterTagsAll.js';
+import LoadingSpinner from '../LoadingSpinner.js';
 
 export default function FilterButtons({
   activeButton,

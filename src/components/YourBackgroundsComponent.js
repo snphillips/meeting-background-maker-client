@@ -1,8 +1,8 @@
 import React from 'react';
-import FilterButtons from './FilterButtons';
-import ComputerImage from './ComputerImage';
+import FilterButtons from './FilterButtons.js';
+import ComputerImage from './ComputerImage.js';
 import SearchResults from './SearchResults.js';
-import SelectedCollection from './SelectedCollection';
+import SelectedCollection from './SelectedCollection.js';
 
 export default function YourBackgroundsComponent({
   activeButton,

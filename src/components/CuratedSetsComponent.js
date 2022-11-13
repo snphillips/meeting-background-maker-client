@@ -1,5 +1,5 @@
 import React from 'react';
-import CuratedSetsImageGallery from './CuratedSetsImageGallery';
+import CuratedSetsImageGallery from './CuratedSetsImageGallery.js';
 import Masonry from 'react-masonry-css';
 
 export default function CuratedSetComponent({ activeTab, curatedSets }) {
