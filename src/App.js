@@ -46,7 +46,12 @@ export default function App() {
   ===================================
   */
   useEffect(() => {
-    shuffleBackgroundClipTextImage();
+    // Only runs once per app load
+    let didInit = false;
+    if (!didInit) {
+      didInit = true;
+      shuffleBackgroundClipTextImage();
+    }
   }, []);
 
   function userSelectFilterTerm(event) {
