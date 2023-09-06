@@ -1,7 +1,6 @@
 import React from "react";
-import LoadingSpinner from "../LoadingSpinner";
 
-export default function Header(props) {
+export default function Header() {
   return (
     <div className="header-container">
       <h1 className="header clip-text">meeting background maker</h1>

@@ -7,21 +7,33 @@ This component takes an array called preSelectedImages
 maps over that array and displays each image and a button
 under each image. 
 
-The button (props.whichButton) could say "add to collection"
+The button (whichButton) could say "add to collection"
 or, "in collection". 
 */
 
-export default function SearchResults(props) {
+type PropsType = {
+  preSelectedImages: any;
+  selectedImagesCollection: any;
+  setSelectedImagesCollection: any;
+  displaySearchResults: any;
+};
+
+
+export default function SearchResults({
+  preSelectedImages,
+  selectedImagesCollection,
+  setSelectedImagesCollection,
+  displaySearchResults
+}: PropsType ) {
   
-  let preSelectedImages = props.preSelectedImages
+  // let preSelectedImages = preSelectedImages
 
 
   // If the item is in user's collection, display "in collection" label
   // If not, display "add to collection" button
-  function whichButton(item) {
+  function whichButton(item: any) {
  
     let buttonResult = "";
-    // console.log('selectedImagesCollection:', props.selectedImagesCollection, 'item:',  item)
 
     /* 
     The some() method tests whether at least one element
@@ -31,8 +43,7 @@ export default function SearchResults(props) {
     otherwise it returns false. It doesn't modify the array.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
     */
-    if (props.selectedImagesCollection.some(el => el.id === item.id)) {
-      // console.log("💋 item included", item.id)
+    if (selectedImagesCollection.some(el: any => el.id === item.id)) {
       buttonResult = (
         <div
           type=""
@@ -43,7 +54,6 @@ export default function SearchResults(props) {
         </div>
       );
     } else {
-      // console.log("👎 item NOT included", item.id)
       buttonResult = (
         <button
           type="button"
@@ -60,13 +70,13 @@ export default function SearchResults(props) {
     return buttonResult;
   }
 
-  function addToCollection(item){
-    if (props.selectedImagesCollection.length >= 20) {
-      console.log("Collection is full. Return.", props.selectedImagesCollection.length)
+  function addToCollection(item: any){
+    if (selectedImagesCollection.length >= 20) {
+      console.log("Collection is full. Return.", selectedImagesCollection.length)
       alert("Collection full. Remove an image before adding another.")
       return;
     }
-    props.setSelectedImagesCollection( array => array.concat(item) );
+    setSelectedImagesCollection( array => array.concat(item) );
   }
   
   // For use with React Masonry CSS package
@@ -82,7 +92,7 @@ export default function SearchResults(props) {
     <section className="component" id="results-component">
 
       {/* Nifty way of knowing when to display a component */}
-      { props.displaySearchResults &&
+      { displaySearchResults &&
       <div>
         
         <h3>Search Results</h3>
@@ -93,7 +103,7 @@ export default function SearchResults(props) {
           columnClassName="my-masonry-grid_column"
           >
 
-          {preSelectedImages.map((item, index) => {         
+          {preSelectedImages.map((item: any, index: number) => {         
             
             return (
               <div 

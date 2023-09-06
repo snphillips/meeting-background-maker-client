@@ -9,21 +9,27 @@ The first image from every set IS NOT displayed, as it it displayed
 as the cover in CuratedSetsComponent.js. The first image is removed by
 using the _Lodash library's drop method.
 
-This componenet has two states: imagesRevealed & viewButtonMessage.
+This component has two states: imagesRevealed & viewButtonMessage.
 
 An image set is either expanded (imagesRevealed: true) or collapsed (imagesRevealed: false)
 The button message (viewButtonMessage) depends on whether the images are
 revealed or not.
 */
 
-export default function CuratedSetsImageGallery(props): React.ReactNode {
+type PropsType = {
+  index: number,
+  curatedSetsArray: any[],
+  toggleCuratedSetImages: any,
+};
+
+export default function CuratedSetsImageGallery({
+  index,
+  curatedSetsArray,
+  toggleCuratedSetImages
+}: PropsType): React.ReactNode {
   
-    let index = props.index;
-    let thisCuratedSet = props.curatedSetsArray[index];
-    let allTheSetImages = thisCuratedSet.images; 
-    // console.log("thisCuratedSet", thisCuratedSet)
-    // console.log("allTheSetImages", allTheSetImages)
-    // console.log("index", index)
+    const thisCuratedSet = curatedSetsArray[index];
+    const allTheSetImages = thisCuratedSet.images; 
 
     return (
       <div>
@@ -45,7 +51,7 @@ export default function CuratedSetsImageGallery(props): React.ReactNode {
                     src={item.imageURL}
                     alt={item.title}
                     onClick={(index) => {
-                      props.toggleCuratedSetImages(thisCuratedSet, index);
+                      toggleCuratedSetImages(thisCuratedSet, index);
                     }}
                   />
               </div>
