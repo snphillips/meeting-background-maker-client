@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CuratedSetsImageGallery from './CuratedSetsImageGallery';
 import Masonry from 'react-masonry-css';
 
@@ -8,7 +8,7 @@ type PropsType = {
 
 
 export default function CuratedSetComponent({ curatedSets }: PropsType) {
-  let curatedSetsArray = curatedSets;
+  const curatedSetsArray = curatedSets;
 
   // For use with Masonry package
   const breakpointColumnsObj = {
@@ -26,8 +26,18 @@ export default function CuratedSetComponent({ curatedSets }: PropsType) {
       >
         {curatedSetsArray.map((item: any, index: any) => {
           return (
-            <div key={index + '-card'} className="curated-set-card card" value={item.setName}>
-              <h4 key={index + '-label'} className="curated-set-label" value={item.setName}>
+            <div 
+              key={index + '-card'}
+              className="curated-set-card card"
+              // value={item.setName}
+              title={item.setName}
+            >
+              <h4 
+                key={index + '-label'}
+                className="curated-set-label"
+                // value={item.setName}
+                title={item.setName}
+              >
                 {item.setName}
               </h4>
 
@@ -39,8 +49,13 @@ export default function CuratedSetComponent({ curatedSets }: PropsType) {
                   item.machineName +
                   '.zip'
                 }
+                download={item.setName}
               >
-                <button key={item.setName + 'download-button'} className="curated-set-download-button" type="download">
+                <button 
+                  key={item.setName + 'download-button'}
+                  className="curated-set-download-button"
+                  // type="download"
+                >
                   <svg className="svg-icon" viewBox="0 0 20 20">
                     <path
                       fill="none"
@@ -51,7 +66,11 @@ export default function CuratedSetComponent({ curatedSets }: PropsType) {
                 </button>
               </a>
 
-              <CuratedSetsImageGallery curatedSetsArray={curatedSetsArray} index={index} />
+              <CuratedSetsImageGallery 
+                curatedSetsArray={curatedSetsArray}
+                // toggleCuratedSetImages={toggleCuratedSetImages}
+                index={index}
+              />
 
               <a
                 href={
@@ -61,8 +80,13 @@ export default function CuratedSetComponent({ curatedSets }: PropsType) {
                   item.machineName +
                   '.zip'
                 }
+                download={item.setName}
               >
-                <button key={item.setName + 'download-button'} className="curated-set-download-button" type="download">
+                <button 
+                  key={item.setName + 'download-button'}
+                  className="curated-set-download-button"
+                  // type="download"
+                >
                   <svg className="svg-icon" viewBox="0 0 20 20">
                     <path
                       fill="none"

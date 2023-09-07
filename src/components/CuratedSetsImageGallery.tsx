@@ -19,13 +19,13 @@ revealed or not.
 type PropsType = {
   index: number,
   curatedSetsArray: any[],
-  toggleCuratedSetImages: any,
+  // toggleCuratedSetImages: any,
 };
 
 export default function CuratedSetsImageGallery({
   index,
   curatedSetsArray,
-  toggleCuratedSetImages
+  // toggleCuratedSetImages
 }: PropsType): React.ReactNode {
   
     const thisCuratedSet = curatedSetsArray[index];
@@ -38,7 +38,7 @@ export default function CuratedSetsImageGallery({
           id={"curated-set-gallery-" + index}
           style={{ maxHeight: "4000px"}}
         >
-          {allTheSetImages.map((item:any, index: any) => {
+          {allTheSetImages.map((item: any, index: any) => {
 
             return (
               <div
@@ -51,7 +51,8 @@ export default function CuratedSetsImageGallery({
                     src={item.imageURL}
                     alt={item.title}
                     onClick={(index) => {
-                      toggleCuratedSetImages(thisCuratedSet, index);
+                      console.log('toggleCuratedSetImages fired I guess?', index)
+                      // toggleCuratedSetImages(thisCuratedSet, index);
                     }}
                   />
               </div>

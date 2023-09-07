@@ -23,7 +23,7 @@ export default function SearchResults({
   preSelectedImages,
   selectedImagesCollection,
   setSelectedImagesCollection,
-  displaySearchResults
+  displaySearchResults,
 }: PropsType ) {
   
   // let preSelectedImages = preSelectedImages
@@ -43,11 +43,17 @@ export default function SearchResults({
     otherwise it returns false. It doesn't modify the array.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
     */
-    if (selectedImagesCollection.some(el: any => el.id === item.id)) {
+
+    function comparisonTest(el: any) {
+      return el.id === item.id
+    }
+
+
+    if (selectedImagesCollection.some(comparisonTest)) {
       buttonResult = (
         <div
-          type=""
-          value={item.id}
+          // type=""
+          // value={item.id}
           className="results-button-in-collection"
         >
           in collection
@@ -76,7 +82,7 @@ export default function SearchResults({
       alert("Collection full. Remove an image before adding another.")
       return;
     }
-    setSelectedImagesCollection( array => array.concat(item) );
+    setSelectedImagesCollection( (array: any[]) => array.concat(item) );
   }
   
   // For use with React Masonry CSS package

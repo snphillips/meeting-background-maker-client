@@ -8,7 +8,7 @@ export default function Header() {
       <section className="app-description">
         <p>
           Generate backgrounds for video meetings from the Cooper Hewitt
-          Museum's archive.
+          Museum&apos;s archive.
         </p>
         {/* <p>Filter using keywords, or download curated sets.</p> */}
 

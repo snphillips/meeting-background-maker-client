@@ -7,7 +7,7 @@ type PropsType = {
   loading: any,
   activeButton: any,
   userSelectFilterTerm: any,
-  handleDropdownSubmit: any,
+  handleDropdownSubmit: any
 };
 
 export default function FilterButtons({
@@ -19,7 +19,7 @@ export default function FilterButtons({
   return (
     <div className="filters-component">
       <div>
-        <p className="filter-message">Select a search term to view images from the museum's collection.</p>
+        <p className="filter-message">Select a search term to view images from the museum&apos;s collection.</p>
         <div className="spinner-container">
           <LoadingSpinner loading={loading} />
         </div>

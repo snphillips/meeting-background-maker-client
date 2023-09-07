@@ -1,7 +1,7 @@
 import React from 'react';
 import FilterButtons from './FilterButtons';
 import ComputerImage from './ComputerImage';
-import SearchResults from './SearchResults.js';
+import SearchResults from './SearchResults';
 import SelectedCollection from './SelectedCollection';
 
 type PropsType = {
@@ -13,16 +13,15 @@ type PropsType = {
   displayComputerImage: any,
   preSelectedImages: any,
   selectedImagesCollection: any,
-  toggleFilterResultsPlaceholder: any,
-  whichButton: any,
+  // toggleFilterResultsPlaceholder: any,
+  // whichButton: any,
   displaySearchResults: any,
   openModal: any,
-  addToCollection: any,
   setSelectedImagesCollection: any,
   removeFromCollection: any,
   displaySelectedImages: any,
   zipDownloadFolderSelectedImages: any,
-  setDisplayDownloadButton: any,
+  // setDisplayDownloadButton: any,
 };
 
 export default function YourBackgroundsComponent({
@@ -30,20 +29,19 @@ export default function YourBackgroundsComponent({
   userSelectFilterTerm,
   activeButton,
   handleDropdownSubmit,
-  handleDropdownChange,
+  // handleDropdownChange,
   displayComputerImage,
   preSelectedImages,
   selectedImagesCollection,
-  toggleFilterResultsPlaceholder,
-  whichButton,
+  // toggleFilterResultsPlaceholder,
+  // whichButton,
   displaySearchResults,
-  openModal,
-  addToCollection,
+  // openModal,
   setSelectedImagesCollection,
   removeFromCollection,
   displaySelectedImages,
   zipDownloadFolderSelectedImages,
-  setDisplayDownloadButton,
+  // setDisplayDownloadButton,
 }: PropsType) {
   return (
     <section id="user-generated-set-window">
@@ -52,20 +50,18 @@ export default function YourBackgroundsComponent({
         userSelectFilterTerm={userSelectFilterTerm}
         activeButton={activeButton}
         handleDropdownSubmit={handleDropdownSubmit}
-        onChange={handleDropdownChange}
+        // onChange={handleDropdownChange}
       />
 
       <ComputerImage displayComputerImage={displayComputerImage} />
 
       <SearchResults
-        value={value}
         preSelectedImages={preSelectedImages}
         selectedImagesCollection={selectedImagesCollection}
-        toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
-        whichButton={whichButton}
+        // toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
+        // whichButton={whichButton}
         displaySearchResults={displaySearchResults}
-        openModal={openModal}
-        addToCollection={addToCollection}
+        // openModal={openModal}
         setSelectedImagesCollection={setSelectedImagesCollection}
       />
 
@@ -74,7 +70,7 @@ export default function YourBackgroundsComponent({
         selectedImagesCollection={selectedImagesCollection}
         displaySelectedImages={displaySelectedImages}
         zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
-        setDisplayDownloadButton={setDisplayDownloadButton}
+        // setDisplayDownloadButton={setDisplayDownloadButton}
       />
     </section>
   );

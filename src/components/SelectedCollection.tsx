@@ -69,7 +69,7 @@ export default function SelectedCollection({
           </section>
           <button
             className="download-button"
-            type="download"
+            // type="download"
             onClick={() => {
               zipDownloadFolderSelectedImages();
             }}
