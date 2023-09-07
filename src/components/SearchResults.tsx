@@ -33,7 +33,8 @@ export default function SearchResults({
   // If not, display "add to collection" button
   function whichButton(item: any) {
  
-    let buttonResult = "";
+    // TODO: type is button object
+    let buttonResult: any = "";
 
     /* 
     The some() method tests whether at least one element
@@ -73,6 +74,8 @@ export default function SearchResults({
         </button>
       );
     }
+    console.log( 'type buttonResult:', typeof buttonResult)
+    console.log( 'buttonResult:', buttonResult)
     return buttonResult;
   }
 
