@@ -26,7 +26,7 @@ export default function App() {
   const [preSelectedImages, setPreSelectedImages] = useState([]);
   const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
   const [activeButton, setActiveButton] = useState('button-id');
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab] = useState(0);
 
   // const serverURL = `http://localhost:3001/`
   const serverURL = `https://meeting-background-server.herokuapp.com/`;
@@ -203,7 +203,7 @@ export default function App() {
               className={`tab ${activeTab === 0 ? 'active-tab' : ''}`}
               id="user-generated-set-tab"
               onClick={() => {
-                setDisplayYourBackgroundsComponent(true);
+                set(true);
                 document.querySelector('.user-generated-set-heading').style.borderBottom = '2px solid #000';
                 document.querySelector('.curated-set-heading').style.borderBottom = '2px solid #fff';
                 document.querySelector('#user-generated-set-window').style.display = 'block';
@@ -238,7 +238,7 @@ export default function App() {
           preSelectedImages={preSelectedImages}
           selectedImagesCollection={selectedImagesCollection}
           displaySelectedImages={displaySelectedImages}
-          displayYourBackgroundsComponent={displayYourBackgroundsComponent}
+          // displayYourBackgroundsComponent={displayYourBackgroundsComponent}
           displayCuratedSetComponent={displayCuratedSetComponent}
           displaySearchResults={displaySearchResults}
           displayComputerImage={displayComputerImage}
@@ -254,7 +254,7 @@ export default function App() {
         <CuratedSetsComponent
           curatedSets={curatedSets}
           displayCuratedSetComponent={displayCuratedSetComponent}
-          displayYourBackgroundsComponent={displayYourBackgroundsComponent}
+          // displayYourBackgroundsComponent={displayYourBackgroundsComponent}
           // toggleCuratedSetImages={toggleCuratedSetImages}
         />
       </section>
