@@ -187,7 +187,7 @@ h3 {
   padding: .5rem;
 }
 
-.set-heading {
+.tab {
   color: #efefef;
   font-family: 'Bebas Neue', sans-serif;
   display: inline-block;
@@ -197,20 +197,14 @@ h3 {
   border-top: 2px solid #fff;
   border-left: 2px solid #fff;
   border-right: 2px solid #fff;
-  /*border-bottom: 2px solid #fff;*/
   background: #000;
   padding: .5rem 2rem;
   cursor: pointer;
 }
 
-.user-generated-set-heading {
+.active-tab {
   border-bottom: 2px solid #000;
 }
-
-.curated-set-heading {
-  border-bottom: 2px solid #fff;
-}
-
 
 
 /*==========================*/
@@ -286,11 +280,6 @@ button.filter-button {
   margin: 4px 2px;
 }
 
-
-/*input:hover {
-  background-color: rgba(0,0,0,.8);
-}*/
-
 button.active {
   color: #000;
   background: #efefef;
@@ -308,7 +297,7 @@ button.active {
 /*==============================
 Your Backgrounds
 ================================*/
-.user-generated-set-heading-div {
+#user-generated-set-heading-div {
   text-align: right;
 }
 
@@ -461,7 +450,7 @@ Selected Images
 /*==============================
 Curated Sets
 ================================*/
-.curated-set-heading-div {
+#curated-set-heading-div {
   text-align: right;
   cursor: pointer;
 }
@@ -575,7 +564,7 @@ h1.header {
   font-size: 3.5rem;
 }
 
-.set-heading {
+.tab {
   font-size: 1.25rem;
   margin: 0 .5rem 0 0;
   padding: .25rem 1rem;

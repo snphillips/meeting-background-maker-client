@@ -1,5 +1,5 @@
-import React from "react";
-import Masonry from "react-masonry-css";
+import React from 'react';
+import Masonry from 'react-masonry-css';
 
 /*
 This component takes an array called preSelectedImages 
@@ -64,9 +64,9 @@ export default function SearchResults({
     } else {
       buttonOrDivResult = (
         <button
-          type="button"
+          type='button'
           value={item.id}
-          className="results-button-add-to-collection"
+          className='results-button-add-to-collection'
           onClick={() => {
             addToCollection(item);
           }}
@@ -88,7 +88,7 @@ export default function SearchResults({
     }
     setSelectedImagesCollection( (array: any[]) => array.concat(item) );
   }
-  
+
   // For use with React Masonry CSS package
   const breakpointColumnsObj = {
     default: 3,
@@ -96,21 +96,17 @@ export default function SearchResults({
     650: 1,
   };
 
-
-  
   return (
-    <section className="component" id="results-component">
-
-      {/* Nifty way of knowing when to display a component */}
+    <section className='component' id='results-component'>
       { displaySearchResults &&
       <div>
         
         <h3>Search Results</h3>
 
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid curated-sets-list pre-selected-images-gallery results image-grid"
-          columnClassName="my-masonry-grid_column"
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className='my-masonry-grid curated-sets-list pre-selected-images-gallery results image-grid'
+            columnClassName='my-masonry-grid_column'
           >
 
           {preSelectedImages.map((item: any, index: number) => {         
@@ -122,21 +118,25 @@ export default function SearchResults({
               >
                   <img
                     key={item.id}
-                    className="result-img"
-                    src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + item.id + ".jpg"}
+                    className='result-img'
+                    src={
+                      `https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` +
+                      item.id +
+                      '.jpg'
+                    }
                     alt={item.title}
-                    onClick={ () => {
-                      // nothing going on now when user clicks
-                      // perhaps in the future? Like, a modal opens?     
+                    onClick={() => {
+                      // Nothing going on now when user clicks
+                      // perhaps in the future? Like, a modal opens?
                     }}
                   />
-                {whichButton(item)}
-              </div>
-            );
-          })}
-        </Masonry>
+                  {whichButton(item)}
+                </div>
+              );
+            })}
+          </Masonry>
         </div>
-        }
-      </section>
-    );
+      }
+    </section>
+  );
 }

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import _reject from 'lodash/reject';
-import Header from './components/Header';
-import CuratedSetsComponent from './components/CuratedSetsComponent';
-import Footer from './components/Footer';
-import YourBackgroundsComponent from './components/YourBackgroundsComponent';
+import _reject from 'lodash/reject.js';
+import Header from './components/Header.tsx';
+import CuratedSetsComponent from './components/CuratedSetsComponent.tsx';
+import Footer from './components/Footer.tsx';
+import YourBackgroundsComponent from './components/YourBackgroundsComponent.tsx';
 
 // Curated Sets
 import cocktailHour from './CuratedSets/cocktailHour.js';
@@ -13,21 +13,20 @@ import gardenParty from './CuratedSets/gardenParty.js';
 import gourmet from './CuratedSets/gourmet.js';
 import hermanMillerPicnic from './CuratedSets/hermanMillerPicnic.js';
 import photoMural from './CuratedSets/photoMural.js';
-import kolomanMoser from './CuratedSets/kolomanMoser';
+import kolomanMoser from './CuratedSets/kolomanMoser.js';
 const curatedSets = [cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser];
 
 export default function App() {
   const initialRender = useRef(true);
   const [loading, setLoading] = useState(false); // the loading spinner
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(); // the user select filter term
   const [displayComputerImage, setDisplayComputerImage] = useState(true);
   const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
-  const [displayCuratedSetComponent, setDisplayCuratedSetComponent] = useState(false);
-  const [displayYourBackgroundsComponent, setDisplayYourBackgroundsComponent] = useState(true);
   const [displaySearchResults, setDisplaySearchResults] = useState(false);
   const [preSelectedImages, setPreSelectedImages] = useState([]);
   const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
   const [activeButton, setActiveButton] = useState('button-id');
+  const [activeTab, setActiveTab] = useState(0);
 
   // const serverURL = `http://localhost:3001/`
   const serverURL = `https://meeting-background-server.herokuapp.com/`;
@@ -87,7 +86,7 @@ export default function App() {
       setDisplayComputerImage(false);
       setDisplaySearchResults(true);
     }
-  }, [value]);
+  }, [value, serverURL]);
 
   // Run this useEffect everytime selectedImagesCollection updates
   useEffect(() => {
@@ -146,10 +145,11 @@ export default function App() {
     
     All we are interested in is the item id, as that is what is
     used as file names in AWS. The frist step is to map over the
-    large object and push into an array the the key "id" and its
+    large object and push into an array the the key 'id' and its
     corresponding value. Now we have the imgJpegArray, which is
     being send in the request to the server,
-    which will then speak to AWS */
+    which will then speak to AWS
+    */
     const imgJpegArray = [];
     selectedImagesCollection.map((item) => {
       for (const [key, value] of Object.entries(item)) {
@@ -200,7 +200,8 @@ export default function App() {
         <ul id="nav-tabs">
           <li className="user-generated-set-div">
             <h2
-              className="set-heading user-generated-set-heading"
+              className={`tab ${activeTab === 0 ? 'active-tab' : ''}`}
+              id="user-generated-set-tab"
               onClick={() => {
                 setDisplayYourBackgroundsComponent(true);
                 document.querySelector('.user-generated-set-heading').style.borderBottom = '2px solid #000';
@@ -215,7 +216,8 @@ export default function App() {
 
           <li className="curated-set-heading-div">
             <h2
-              className="set-heading curated-set-heading"
+              className={`tab ${activeTab === 1 ? 'active-tab' : ''}`}
+              id="curated-set-tab"
               onClick={() => {
                 setDisplayCuratedSetComponent(true);
                 document.querySelector('.user-generated-set-heading').style.borderBottom = '2px solid #fff';

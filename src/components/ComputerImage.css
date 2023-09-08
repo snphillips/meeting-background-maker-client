@@ -1,0 +1,58 @@
+#computer-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 400px;
+  max-width: 100%;
+  height: 270px;
+  max-height: auto;
+  margin: 3rem auto;
+}
+
+#computer-screen {
+  display: block;
+  border: 3px solid white;
+  width: 70%;
+  height: 70%;
+  margin: 1rem auto 0 auto;
+  background: transparent;
+}
+
+#person {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+#head {
+  width: 80px;
+  height: 80px;
+  background: black;
+  display: flex;
+  border-radius: 50%;
+}
+
+#person-body {
+  width: 80px;
+  height: 80px;
+  background: black;
+  /* triangle */
+   /* width: 0;
+   height: 0;
+   borderLeft: 50px solid transparent;
+   borderRight: 50px solid transparent;
+   borderBottom: 100px solid black; */
+}
+
+#computer-keyboard {
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  border-left: 6px solid white;
+  border-right: 6px solid white;
+  width: 68%;
+  height: 20%;
+  transform: skew(54deg, 0deg) translate(42px, -2px);
+}
