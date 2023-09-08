@@ -1,7 +1,11 @@
 import './ComputerImage.css';
 import React from 'react';
 
-export default function ComputerImage({ displayComputerImage }) {
+type Props = {
+  displayComputerImage: boolean
+}
+
+export default function ComputerImage({ displayComputerImage }: Props) {
   return (
     <section id='computer-image-container'>
       {displayComputerImage && (

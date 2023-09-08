@@ -1,6 +1,6 @@
 import React from 'react';
 import FilterButtons from './FilterButtons.js';
-import ComputerImage from './ComputerImage.js';
+import ComputerImage from './ComputerImage.tsx';
 import SearchResults from './SearchResults.js';
 import SelectedCollection from './SelectedCollection.js';
 

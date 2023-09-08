@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import _reject from 'lodash/reject.js';
-import Header from './components/Header.js';
+import Header from './components/Header.tsx';
 import CuratedSetsComponent from './components/CuratedSetsComponent.js';
-import Footer from './components/Footer.js';
+import Footer from './components/Footer.tsx';
 import YourBackgroundsComponent from './components/YourBackgroundsComponent.js';
 
 // Curated Sets
@@ -176,10 +176,10 @@ Has [value] as dependency
   function zipDownloadFolderSelectedImages() {
     /*
     At this stage selectedImagesCollection is an array of
-    large object constaining interesting data about the items.
+    large object containing interesting data about the items.
     
     All we are interested in is the item id, as that is what is
-    used as file names in AWS. The frist step is to map over the
+    used as file names in AWS. The first step is to map over the
     large object and push into an array the the key 'id' and its
     corresponding value. Now we have the imgJpegArray, which is
     being send in the request to the server,
@@ -214,7 +214,7 @@ Has [value] as dependency
       })
       .catch(function (error) {
         // handle error
-        // TODO: indicate to user when somthing goes wrong
+        // TODO: indicate to user when something goes wrong
         console.log('downloadZip error:', error);
       });
   }

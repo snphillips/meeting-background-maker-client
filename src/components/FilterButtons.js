@@ -1,7 +1,8 @@
 import React from 'react';
 import filterTagButtons from '../filterTagButtons.js';
 import filterTagsAll from '../filterTagsAll.js';
-import LoadingSpinner from '../LoadingSpinner.js';
+// TODO: enable LoadingSpinner after converting to TS
+// import LoadingSpinner from '../LoadingSpinner.js';
 
 export default function FilterButtons({
   activeButton,
@@ -15,9 +16,7 @@ export default function FilterButtons({
         <p className='filter-message'>
           Select a search term to view images from the museum's collection.
         </p>
-        <div className='spinner-container'>
-          <LoadingSpinner loading={loading} />
-        </div>
+        <div className='spinner-container'>{/* <LoadingSpinner loading={loading} /> */}</div>
       </div>
 
       <section className='filter-button-section'>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { css } from '@emotion/react';
-// react-spinners is an npm package
 import BeatLoader from 'react-spinners/BeatLoader.js';
 
 const override = css`
