@@ -4,7 +4,7 @@ import _reject from 'lodash/reject.js';
 import Header from './components/Header.tsx';
 import CuratedSetsComponent from './components/CuratedSetsComponent.js';
 import Footer from './components/Footer.tsx';
-import YourBackgroundsComponent from './components/YourBackgroundsComponent.js';
+import YourBackgroundsComponent from './components/YourBackgroundsComponent.tsx';
 
 // Curated Sets
 import cocktailHour from './CuratedSets/cocktailHour.js';

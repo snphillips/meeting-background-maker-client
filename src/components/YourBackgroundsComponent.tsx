@@ -1,8 +1,29 @@
 import React from 'react';
-import FilterButtons from './FilterButtons.js';
+import FilterButtons from './FilterButtons.tsx';
 import ComputerImage from './ComputerImage.tsx';
-import SearchResults from './SearchResults.js';
-import SelectedCollection from './SelectedCollection.js';
+import SearchResults from './SearchResults.tsx';
+import SelectedCollection from './SelectedCollection.tsx';
+
+type Props = {
+  activeButton: any,
+  activeTab: any,
+  displayComputerImage: any,
+  displaySearchResults: any,
+  displaySelectedImages: any,
+  handleDropdownChange: any,
+  handleDropdownSubmit: any,
+  loading: any,
+  openModal: any,
+  preSelectedImages: any,
+  removeFromCollection: any,
+  selectedImagesCollection: any,
+  setDisplayDownloadButton: any,
+  setSelectedImagesCollection: any,
+  toggleFilterResultsPlaceholder: any,
+  userSelectFilterTerm: any,
+  value: any,
+  zipDownloadFolderSelectedImages: any,
+};
 
 export default function YourBackgroundsComponent({
   activeButton,
@@ -23,7 +44,7 @@ export default function YourBackgroundsComponent({
   userSelectFilterTerm,
   value,
   zipDownloadFolderSelectedImages,
-}) {
+}: Props) {
   return (
     <section
       id='user-generated-set-window'

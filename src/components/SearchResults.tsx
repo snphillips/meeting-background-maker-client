@@ -11,17 +11,24 @@ The button (whichButton) could say 'add to collection'
 or, 'in collection'. 
 */
 
+type Props = {
+  displaySearchResults: boolean;
+  preSelectedImages: any;
+  selectedImagesCollection: any;
+  setSelectedImagesCollection: any;
+}
+
 // export default function SearchResults(props) {
 export default function SearchResults({
   displaySearchResults,
   preSelectedImages,
   selectedImagesCollection,
   setSelectedImagesCollection,
-}) {
+}: Props) {
   // If the item is in user's collection, display 'in collection' label
   // If not, display 'add to collection' button
-  function whichButton(item) {
-    let buttonResult = '';
+  function whichButton(item: any) {
+    let buttonResult: any = '';
     // console.log('selectedImagesCollection:', selectedImagesCollection, 'item:',  item)
 
     /* 
@@ -32,7 +39,7 @@ export default function SearchResults({
     otherwise it returns false. It doesn't modify the array.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
     */
-    if (selectedImagesCollection.some((el) => el.id === item.id)) {
+    if (selectedImagesCollection.some((el: any) => el.id === item.id)) {
       // console.log('💋 item included', item.id)
       buttonResult = (
         <div type='' value={item.id} className='results-button-in-collection'>
@@ -57,13 +64,13 @@ export default function SearchResults({
     return buttonResult;
   }
 
-  function addToCollection(item) {
+  function addToCollection(item: any) {
     if (selectedImagesCollection.length >= 20) {
       console.log('Collection is full. Return.', selectedImagesCollection.length);
       alert('Collection full. Remove an image before adding another.');
       return;
     }
-    setSelectedImagesCollection((array) => array.concat(item));
+    setSelectedImagesCollection((array: any) => array.concat(item));
   }
 
   // For use with React Masonry CSS package
@@ -85,7 +92,7 @@ export default function SearchResults({
             className='my-masonry-grid curated-sets-list pre-selected-images-gallery results image-grid'
             columnClassName='my-masonry-grid_column'
           >
-            {preSelectedImages.map((item, index) => {
+            {preSelectedImages.map((item: any, index: number) => {
               return (
                 <div key={index} className='image-card card'>
                   <img

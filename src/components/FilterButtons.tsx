@@ -4,10 +4,17 @@ import filterTagsAll from '../filterTagsAll.js';
 // TODO: enable LoadingSpinner after converting to TS
 // import LoadingSpinner from '../LoadingSpinner.js';
 
+type Props = {
+  activeButton: any;
+  handleDropdownSubmit: any;
+  // loading: boolean;
+  userSelectFilterTerm: any;
+}
+
 export default function FilterButtons({
   activeButton,
   handleDropdownSubmit,
-  loading,
+  // loading,
   userSelectFilterTerm,
 }) {
   return (

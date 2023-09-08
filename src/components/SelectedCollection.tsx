@@ -1,12 +1,19 @@
 import React from 'react';
 import Masonry from 'react-masonry-css';
 
+type Props = {
+  displaySelectedImages: boolean;
+  removeFromCollection: any;
+  selectedImagesCollection: any;
+  zipDownloadFolderSelectedImages: any;
+}
+
 export default function SelectedCollection({
   displaySelectedImages,
   removeFromCollection,
   selectedImagesCollection,
   zipDownloadFolderSelectedImages,
-}) {
+}: Props) {
   // For use with Masonry package
   const breakpointColumnsObj = {
     default: 3,
