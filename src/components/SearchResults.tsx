@@ -33,8 +33,8 @@ export default function SearchResults({
   // If not, display "add to collection" button
   function whichButton(item: any) {
  
-    // TODO: type is button object
-    let buttonResult: any = "";
+    // TODO: type is button object or string | null
+    let buttonOrDivResult: any = null;
 
     /* 
     The some() method tests whether at least one element
@@ -51,17 +51,18 @@ export default function SearchResults({
 
 
     if (selectedImagesCollection.some(comparisonTest)) {
-      buttonResult = (
+      buttonOrDivResult = (
         <div
+          // TOOD: are type and value needed? I think not
           // type=""
           // value={item.id}
-          className="results-button-in-collection"
+          className="results-div-in-collection"
         >
           in collection
         </div>
       );
     } else {
-      buttonResult = (
+      buttonOrDivResult = (
         <button
           type="button"
           value={item.id}
@@ -74,9 +75,9 @@ export default function SearchResults({
         </button>
       );
     }
-    console.log( 'type buttonResult:', typeof buttonResult)
-    console.log( 'buttonResult:', buttonResult)
-    return buttonResult;
+    console.log( 'type buttonOrDivResult:', typeof buttonOrDivResult)
+    console.log( 'buttonOrDivResult:', buttonOrDivResult)
+    return buttonOrDivResult;
   }
 
   function addToCollection(item: any){
