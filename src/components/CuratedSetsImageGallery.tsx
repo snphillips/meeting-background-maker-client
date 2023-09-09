@@ -1,4 +1,5 @@
 import React from 'react';
+import { curatedSetsType, curatedBackgroundImageType }  from '../types.ts'
 
 /*
 This section contains the curated set images.
@@ -6,12 +7,15 @@ The 'download image set' button is in CuratedSetsComponent.
 */
 
 type Props = {
-  curatedSetsArray: any,
+  curatedSetsArray: curatedSetsType[],
   index: number,
 };
 
-export default function CuratedSetsImageGallery({ curatedSetsArray, index }: Props) {
-  let thisCuratedSet = curatedSetsArray[index];
+export default function CuratedSetsImageGallery({ 
+  curatedSetsArray,
+  index 
+}: Props) {
+  let thisCuratedSet: curatedSetsType = curatedSetsArray[index];
   let allTheSetImages = thisCuratedSet.images;
 
   return (
@@ -21,7 +25,7 @@ export default function CuratedSetsImageGallery({ curatedSetsArray, index }: Pro
         id={'curated-set-gallery-' + index}
         style={{ maxHeight: '4000px' }}
       >
-        {allTheSetImages.map((item: any, index: number) => {
+        {allTheSetImages.map((item: curatedBackgroundImageType, index: number) => {
           return (
             <div key={index} id={'-curated-image-' + index} className='curated-image'>
               <img

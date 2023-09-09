@@ -3,15 +3,17 @@ import CuratedSetsImageGallery from './CuratedSetsImageGallery.tsx';
 import Masonry from 'react-masonry-css';
 
 type Props = {
-  activeTab: any;
-  curatedSets: any;
+  activeTab: 0 | 1 | 2;
+  // type is an array of curated sets
+  curatedSetsArray: any[];
 }
+
 
 export default function CuratedSetComponent({ 
   activeTab,
-  curatedSets 
+  curatedSetsArray 
 }: Props) {
-  let curatedSetsArray = curatedSets;
+  console.log('curatedSetsArray', curatedSetsArray)
 
   // For use with Masonry package
   const breakpointColumnsObj = {
@@ -34,7 +36,7 @@ export default function CuratedSetComponent({
         className='my-masonry-grid curated-sets-list'
         columnClassName='my-masonry-grid_column'
       >
-        {curatedSetsArray.map((item, index) => {
+        {curatedSetsArray.map((item: any, index: number) => {
           return (
             <div key={index + '-card'} className='curated-set-card card' value={item.setName}>
               <h4 key={index + '-label'} className='curated-set-label' value={item.setName}>

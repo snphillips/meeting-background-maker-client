@@ -14,7 +14,7 @@ import gourmet from './CuratedSets/gourmet.js';
 import hermanMillerPicnic from './CuratedSets/hermanMillerPicnic.js';
 import photoMural from './CuratedSets/photoMural.js';
 import kolomanMoser from './CuratedSets/kolomanMoser.js';
-const curatedSets = [
+const curatedSetsArray = [
   cocktailHour,
   colorTheory,
   gardenParty,
@@ -277,7 +277,10 @@ Has [value] as dependency
           zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
         />
 
-        <CuratedSetsComponent activeTab={activeTab} curatedSets={curatedSets} />
+        <CuratedSetsComponent 
+          activeTab={activeTab}
+          curatedSetsArray={curatedSetsArray} 
+        />
       </section>
       <Footer />
     </div>
