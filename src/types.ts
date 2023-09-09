@@ -1,4 +1,4 @@
-export interface curatedBackgroundImageType {
+export interface CuratedBackgroundImageType {
   id: string; 
   imageURL: string; 
   originalImageURL: string; 
@@ -6,13 +6,53 @@ export interface curatedBackgroundImageType {
   url: string; 
 }
 
-export interface curatedSetsType {
-  images: curatedBackgroundImageType[];
+export interface CuratedSetsType {
+  images: CuratedBackgroundImageType[];
   machineName: string;
   setName: string;
 }
 
-export type filterTagsType = (
+export interface MuseumItemType {
+  accession_number: null | string;
+  creditline: null | string;
+  date: null | string;
+  decade: null | string;
+  department_id: null | string;
+  description: null | string;
+  dimensions: null | string;
+  dimensions_raw: null | any;
+  gallery_text: null | string;
+  has_no_known_copyright: null | string;
+  id: string;
+  images: null | any;
+  inscribed: null | string;
+  is_loan_object: null | 0 | 1;
+  justification: null | string;
+  label_text: null | string;
+  markings: null | string;
+  media_id: null | string;
+  medium: null | string;
+  on_display: null | string;
+  participants: null | any;
+  period_id: null | string;
+  provenance: null | string;
+  signed: null | string;
+  title: null | string;
+  title_raw: null | string;
+  'tms:id': null | string;
+  type: null | string;
+  type_id: null | string;
+  url: null | string;
+  videos: null | string;
+  'woe:country': null | string;
+  'woe:country_id': null | string;
+  'woe:country_name': null | string;
+  year_acquired: null | string;
+  year_end: null | number;
+  year_start: null | number;
+}
+
+export type FilterTagsType = (
   'African'|
   'abstract'|
   'abstraction'|

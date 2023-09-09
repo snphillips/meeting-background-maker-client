@@ -2,7 +2,7 @@ import './ComputerImage.css';
 import React from 'react';
 
 type Props = {
-  displayComputerImage: boolean
+  displayComputerImage: boolean;
 }
 
 export default function ComputerImage({ displayComputerImage }: Props) {

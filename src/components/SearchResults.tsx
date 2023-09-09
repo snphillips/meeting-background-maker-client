@@ -1,5 +1,6 @@
 import React from 'react';
 import Masonry from 'react-masonry-css';
+import { MuseumItemType }  from '../types.ts';
 
 /*
 This component takes an array called preSelectedImages 
@@ -7,15 +8,15 @@ This component takes an array called preSelectedImages
 maps over that array and displays each image and a button
 under each image. 
 
-The button (whichButton) could say 'add to collection'
-or, 'in collection'. 
+The button/div (buttonOrDiv) could be a button that says 'add to collection'
+or a div that says, 'in collection'. 
 */
 
 type Props = {
   displaySearchResults: boolean;
-  preSelectedImages: any;
-  selectedImagesCollection: any;
-  setSelectedImagesCollection: any;
+  preSelectedImages: MuseumItemType[] | [];
+  selectedImagesCollection: any[];
+  setSelectedImagesCollection: (param: any) => void;
 }
 
 // export default function SearchResults(props) {
@@ -25,10 +26,14 @@ export default function SearchResults({
   selectedImagesCollection,
   setSelectedImagesCollection,
 }: Props) {
+
+  console.log('preSelectedImages:', preSelectedImages)
   // If the item is in user's collection, display 'in collection' label
   // If not, display 'add to collection' button
-  function whichButton(item: any) {
-    let buttonResult: any = '';
+  function whichButton(item: MuseumItemType) {
+    console.log('whichButton item:', item)
+    // TODO: this is type html button, div or null
+    let buttonOrDiv: any = null;
     // console.log('selectedImagesCollection:', selectedImagesCollection, 'item:',  item)
 
     /* 
@@ -40,15 +45,15 @@ export default function SearchResults({
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
     */
     if (selectedImagesCollection.some((el: any) => el.id === item.id)) {
-      // console.log('💋 item included', item.id)
-      buttonResult = (
-        <div type='' value={item.id} className='results-button-in-collection'>
+      // console.log()
+      buttonOrDiv = (
+        <div 
+          className='results-button-in-collection'>
           in collection
         </div>
       );
     } else {
-      // console.log('👎 item NOT included', item.id)
-      buttonResult = (
+      buttonOrDiv = (
         <button
           type='button'
           value={item.id}
@@ -61,7 +66,7 @@ export default function SearchResults({
         </button>
       );
     }
-    return buttonResult;
+    return buttonOrDiv;
   }
 
   function addToCollection(item: any) {
@@ -70,7 +75,7 @@ export default function SearchResults({
       alert('Collection full. Remove an image before adding another.');
       return;
     }
-    setSelectedImagesCollection((array: any) => array.concat(item));
+    setSelectedImagesCollection((array: any[]) => array.concat(item));
   }
 
   // For use with React Masonry CSS package
