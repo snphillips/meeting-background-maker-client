@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import _reject from 'lodash/reject.js';
 import Header from './components/Header.tsx';
-import CuratedSetsComponent from './components/CuratedSetsComponent.js';
+import CuratedSetsComponent from './components/CuratedSetsComponent.tsx';
 import Footer from './components/Footer.tsx';
 import YourBackgroundsComponent from './components/YourBackgroundsComponent.tsx';
 
@@ -54,7 +54,7 @@ export default function App() {
     }
   }, []);
 
-  function userSelectFilterTerm(event) {
+  function userSelectFilterTerm(event: any) {
     event.preventDefault();
     console.log('userSelectFilterTerm:', event.target.value);
     setValue(event.target.value);
@@ -129,7 +129,7 @@ Has [value] as dependency
     }
   }, [selectedImagesCollection]);
 
-  function removeFromCollection(item) {
+  function removeFromCollection(item: any) {
     console.log('Remove ', item.title, ' this item from collection');
     let selectedImagesArray = selectedImagesCollection;
     // using the _Lodash library to remove the item from the
@@ -219,11 +219,11 @@ Has [value] as dependency
       });
   }
 
-  function handleDropdownChange(event) {
+  function handleDropdownChange(event: any) {
     setValue(event.target.value);
   }
 
-  function handleDropdownSubmit(event) {
+  function handleDropdownSubmit(event: any) {
     // TODO: what's this for? Get rid of it?
     console.log('handleDropdownSubmit clicked value is:', value);
   }

@@ -5,7 +5,12 @@ This section contains the curated set images.
 The 'download image set' button is in CuratedSetsComponent.
 */
 
-export default function CuratedSetsImageGallery({ curatedSetsArray, index }) {
+type Props = {
+  curatedSetsArray: any,
+  index: number,
+};
+
+export default function CuratedSetsImageGallery({ curatedSetsArray, index }: Props) {
   let thisCuratedSet = curatedSetsArray[index];
   let allTheSetImages = thisCuratedSet.images;
 
@@ -16,7 +21,7 @@ export default function CuratedSetsImageGallery({ curatedSetsArray, index }) {
         id={'curated-set-gallery-' + index}
         style={{ maxHeight: '4000px' }}
       >
-        {allTheSetImages.map((item, index) => {
+        {allTheSetImages.map((item: any, index: number) => {
           return (
             <div key={index} id={'-curated-image-' + index} className='curated-image'>
               <img

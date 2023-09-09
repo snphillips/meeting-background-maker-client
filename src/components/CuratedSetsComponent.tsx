@@ -1,8 +1,16 @@
 import React from 'react';
-import CuratedSetsImageGallery from './CuratedSetsImageGallery.js';
+import CuratedSetsImageGallery from './CuratedSetsImageGallery.tsx';
 import Masonry from 'react-masonry-css';
 
-export default function CuratedSetComponent({ activeTab, curatedSets }) {
+type Props = {
+  activeTab: any;
+  curatedSets: any;
+}
+
+export default function CuratedSetComponent({ 
+  activeTab,
+  curatedSets 
+}: Props) {
   let curatedSetsArray = curatedSets;
 
   // For use with Masonry package
