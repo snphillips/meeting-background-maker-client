@@ -16,7 +16,7 @@ export default function FilterButtons({
   handleDropdownSubmit,
   // loading,
   userSelectFilterTerm,
-}) {
+}: Props) {
   return (
     <div className='filters-component'>
       <div>
@@ -27,7 +27,7 @@ export default function FilterButtons({
       </div>
 
       <section className='filter-button-section'>
-        {filterTagButtons.map((item, index) => {
+        {filterTagButtons.map((item: any, index: any) => {
           return (
             <button
               key={index}
@@ -45,7 +45,7 @@ export default function FilterButtons({
           <select onChange={userSelectFilterTerm}>
             <option>more search terms</option>
 
-            {filterTagsAll.map((item, index) => (
+            {filterTagsAll.map((item: any, index: any) => (
               <option key={index} value={item}>
                 {item}
               </option>

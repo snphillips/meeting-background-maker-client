@@ -10,10 +10,8 @@ type Props = {
   displayComputerImage: any,
   displaySearchResults: any,
   displaySelectedImages: any,
-  handleDropdownChange: any,
   handleDropdownSubmit: any,
   loading: any,
-  openModal: any,
   preSelectedImages: any,
   removeFromCollection: any,
   selectedImagesCollection: any,
@@ -31,10 +29,8 @@ export default function YourBackgroundsComponent({
   displayComputerImage,
   displaySearchResults,
   displaySelectedImages,
-  handleDropdownChange,
   handleDropdownSubmit,
   loading,
-  openModal,
   preSelectedImages,
   removeFromCollection,
   selectedImagesCollection,
@@ -55,8 +51,7 @@ export default function YourBackgroundsComponent({
       <FilterButtons
         activeButton={activeButton}
         handleDropdownSubmit={handleDropdownSubmit}
-        loading={loading}
-        onChange={handleDropdownChange}
+        // loading={loading}
         userSelectFilterTerm={userSelectFilterTerm}
       />
 
@@ -64,7 +59,6 @@ export default function YourBackgroundsComponent({
 
       <SearchResults
         displaySearchResults={displaySearchResults}
-        openModal={openModal}
         preSelectedImages={preSelectedImages}
         selectedImagesCollection={selectedImagesCollection}
         setSelectedImagesCollection={setSelectedImagesCollection}

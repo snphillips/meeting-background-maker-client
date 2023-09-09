@@ -135,7 +135,7 @@ Has [value] as dependency
     // using the _Lodash library to remove the item from the
     // array of selected images
     // https://lodash.com/docs/#reject
-    selectedImagesArray = _reject(selectedImagesArray, (theObject) => {
+    selectedImagesArray = _reject(selectedImagesArray, (theObject: any) => {
       return theObject.id === item.id;
     });
     setSelectedImagesCollection(selectedImagesArray);
@@ -185,7 +185,7 @@ Has [value] as dependency
     being send in the request to the server,
     which will then speak to AWS
     */
-    const imgJpegArray = [];
+    const imgJpegArray: any[] = [];
     selectedImagesCollection.map((item) => {
       for (const [key, value] of Object.entries(item)) {
         if (key === 'id') {
@@ -219,9 +219,9 @@ Has [value] as dependency
       });
   }
 
-  function handleDropdownChange(event: any) {
-    setValue(event.target.value);
-  }
+  // function handleDropdownChange(event: any) {
+  //   setValue(event.target.value);
+  // }
 
   function handleDropdownSubmit(event: any) {
     // TODO: what's this for? Get rid of it?
@@ -269,7 +269,6 @@ Has [value] as dependency
           displaySelectedImages={displaySelectedImages}
           handleDropdownSubmit={handleDropdownSubmit}
           loading={loading}
-          onChange={handleDropdownChange}
           preSelectedImages={preSelectedImages}
           removeFromCollection={removeFromCollection}
           selectedImagesCollection={selectedImagesCollection}
