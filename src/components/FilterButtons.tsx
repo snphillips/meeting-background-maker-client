@@ -3,12 +3,13 @@ import filterTagButtons from '../filterTagButtons.js';
 import filterTagsAll from '../filterTagsAll.js';
 // TODO: enable LoadingSpinner after converting to TS
 // import LoadingSpinner from '../LoadingSpinner.js';
+import { filterTagsType }  from '../types.ts'
 
 type Props = {
-  activeButton: any;
-  handleDropdownSubmit: any;
+  activeButton: filterTagsType | 'button-id';
+  handleDropdownSubmit: () => void;
   // loading: boolean;
-  userSelectFilterTerm: any;
+  userSelectFilterTerm: () => void;
 }
 
 export default function FilterButtons({
@@ -17,17 +18,22 @@ export default function FilterButtons({
   // loading,
   userSelectFilterTerm,
 }: Props) {
+
+  console.log('activeButton:', activeButton)
   return (
     <div className='filters-component'>
       <div>
         <p className='filter-message'>
           Select a search term to view images from the museum's collection.
         </p>
-        <div className='spinner-container'>{/* <LoadingSpinner loading={loading} /> */}</div>
+        <div className='spinner-container'>
+          {/* <LoadingSpinner loading={loading} /> */}
+        </div>
       </div>
 
       <section className='filter-button-section'>
-        {filterTagButtons.map((item: any, index: any) => {
+        {filterTagButtons.map((item: filterTagsType, index: number) => {
+          console.log('filterTagButtons item:', item)
           return (
             <button
               key={index}
@@ -45,7 +51,8 @@ export default function FilterButtons({
           <select onChange={userSelectFilterTerm}>
             <option>more search terms</option>
 
-            {filterTagsAll.map((item: any, index: any) => (
+            {filterTagsAll.map((item: filterTagsType, index: number) => (
+              
               <option key={index} value={item}>
                 {item}
               </option>
