@@ -15,7 +15,7 @@ or a div that says, 'in collection'.
 type Props = {
   displaySearchResults: boolean;
   preSelectedImages: MuseumItemType[] | [];
-  selectedImagesCollection: any[];
+  selectedImagesCollection: MuseumItemType[] | [];
   setSelectedImagesCollection: (param: any) => void;
 }
 
@@ -27,14 +27,14 @@ export default function SearchResults({
   setSelectedImagesCollection,
 }: Props) {
 
-  console.log('preSelectedImages:', preSelectedImages)
+  console.log('selectedImagesCollection:', selectedImagesCollection)
+  // console.log('preSelectedImages:', preSelectedImages)
   // If the item is in user's collection, display 'in collection' label
   // If not, display 'add to collection' button
   function whichButton(item: MuseumItemType) {
-    console.log('whichButton item:', item)
     // TODO: this is type html button, div or null
     let buttonOrDiv: any = null;
-    // console.log('selectedImagesCollection:', selectedImagesCollection, 'item:',  item)
+    console.log('selectedImagesCollection:', selectedImagesCollection, 'item:',  item)
 
     /* 
     The some() method tests whether at least one element
@@ -44,8 +44,7 @@ export default function SearchResults({
     otherwise it returns false. It doesn't modify the array.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
     */
-    if (selectedImagesCollection.some((el: any) => el.id === item.id)) {
-      // console.log()
+    if (selectedImagesCollection.some((el: MuseumItemType) => el.id === item.id)) {
       buttonOrDiv = (
         <div 
           className='results-button-in-collection'>
@@ -69,7 +68,8 @@ export default function SearchResults({
     return buttonOrDiv;
   }
 
-  function addToCollection(item: any) {
+  function addToCollection(item: MuseumItemType) {
+
     if (selectedImagesCollection.length >= 20) {
       console.log('Collection is full. Return.', selectedImagesCollection.length);
       alert('Collection full. Remove an image before adding another.');
@@ -97,7 +97,7 @@ export default function SearchResults({
             className='my-masonry-grid curated-sets-list pre-selected-images-gallery results image-grid'
             columnClassName='my-masonry-grid_column'
           >
-            {preSelectedImages.map((item: any, index: number) => {
+            {preSelectedImages.map((item: MuseumItemType, index: number) => {
               return (
                 <div key={index} className='image-card card'>
                   <img

@@ -37,7 +37,7 @@ export interface MuseumItemType {
   period_id: null | string;
   provenance: null | string;
   signed: null | string;
-  title: null | string;
+  title: string;
   title_raw: null | string;
   'tms:id': null | string;
   type: null | string;
