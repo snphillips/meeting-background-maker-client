@@ -3,20 +3,20 @@ import filterTagButtons from '../filterTagButtons.js';
 import filterTagsAll from '../filterTagsAll.js';
 // TODO: enable LoadingSpinner after converting to TS
 // import LoadingSpinner from '../LoadingSpinner.js';
-import { FilterTagsType }  from '../types.ts'
+import { FilterTermType }  from '../types.ts'
 
 type Props = {
-  activeButton: FilterTagsType | 'button-id';
+  activeButton: FilterTermType | 'button-id';
   handleDropdownSubmit: () => void;
   // loading: boolean;
-  userSelectFilterTerm: () => void;
+  userSelectsFilterTerm: () => void;
 }
 
 export default function FilterButtons({
   activeButton,
   handleDropdownSubmit,
   // loading,
-  userSelectFilterTerm,
+  userSelectsFilterTerm,
 }: Props) {
 
   console.log('activeButton:', activeButton)
@@ -32,7 +32,7 @@ export default function FilterButtons({
       </div>
 
       <section className='filter-button-section'>
-        {filterTagButtons.map((item: FilterTagsType, index: number) => {
+        {filterTagButtons.map((item: FilterTermType, index: number) => {
           console.log('filterTagButtons item:', item)
           return (
             <button
@@ -41,17 +41,17 @@ export default function FilterButtons({
               id={'filter-button-' + item}
               type='button'
               value={item}
-              onClick={userSelectFilterTerm}
+              onClick={userSelectsFilterTerm}
             >
               {item}
             </button>
           );
         })}
         <form onSubmit={handleDropdownSubmit}>
-          <select onChange={userSelectFilterTerm}>
+          <select onChange={userSelectsFilterTerm}>
             <option>more search terms</option>
 
-            {filterTagsAll.map((item: FilterTagsType, index: number) => (
+            {filterTagsAll.map((item: FilterTermType, index: number) => (
               
               <option key={index} value={item}>
                 {item}

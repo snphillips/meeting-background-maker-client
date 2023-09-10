@@ -1,12 +1,12 @@
 import React from 'react';
 import CuratedSetsImageGallery from './CuratedSetsImageGallery.tsx';
 import Masonry from 'react-masonry-css';
-import { filterTagsType, curatedBackgroundImageType }  from '../types.ts'
+import { CuratedSetsType }  from '../types.ts'
 
 type Props = {
   activeTab: 0 | 1 | 2;
   // type is an array of curated sets
-  curatedSetsArray: any[];
+  curatedSetsArray: CuratedSetsType[];
 }
 
 
@@ -37,7 +37,8 @@ export default function CuratedSetComponent({
         className='my-masonry-grid curated-sets-list'
         columnClassName='my-masonry-grid_column'
       >
-        {curatedSetsArray.map((item: any, index: number) => {
+        {curatedSetsArray.map((item: CuratedSetsType, index: number) => {
+          console.log('curatedSetsArray item:', item)
           return (
             <div key={index + '-card'} className='curated-set-card card' value={item.setName}>
               <h4 key={index + '-label'} className='curated-set-label' value={item.setName}>
@@ -54,9 +55,9 @@ export default function CuratedSetComponent({
                 }
               >
                 <button
-                  key={item.setName + 'downlad-button'}
+                  key={item.setName + 'download-button'}
                   className='curated-set-download-button'
-                  type='download'
+                  // type='download'
                 >
                   <svg className='svg-icon' viewBox='0 0 20 20'>
                     <path
@@ -80,9 +81,9 @@ export default function CuratedSetComponent({
                 }
               >
                 <button
-                  key={item.setName + 'downlad-button'}
+                  key={item.setName + 'download-button'}
                   className='curated-set-download-button'
-                  type='download'
+                  // type='download'
                 >
                   <svg className='svg-icon' viewBox='0 0 20 20'>
                     <path

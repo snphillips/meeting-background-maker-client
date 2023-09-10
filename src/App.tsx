@@ -30,7 +30,7 @@ export default function App() {
 
   const initialRender = useRef(true);
   const [loading, setLoading] = useState(false); // the loading spinner
-  const [value, setValue] = useState(); // the user select filter term
+  const [value, setValue] = useState<null | string>(null); // the user select filter term
   const [displayComputerImage, setDisplayComputerImage] = useState(true);
   const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
   const [displaySearchResults, setDisplaySearchResults] = useState(false);
@@ -54,15 +54,16 @@ export default function App() {
     }
   }, []);
 
-  function userSelectFilterTerm(event: any) {
+  function userSelectsFilterTerm(event: Event) {
+    const target = event.target as HTMLInputElement;
     event.preventDefault();
-    console.log('userSelectFilterTerm:', event.target.value);
-    setValue(event.target.value);
+    console.log('userSelectsFilterTerm event.target.value:', target.value);
+    setValue(target.value);
     /*
     The 'active' filter button gets an inverted style
     We pass activeButton state to FilterButtons
     */
-    setActiveButton(event.target.value);
+    setActiveButton(target.value);
   }
 
   /*
@@ -129,7 +130,7 @@ Has [value] as dependency
     }
   }, [selectedImagesCollection]);
 
-  function removeFromCollection(item: any) {
+  function removeItemFromCollection(item: any) {
     console.log('Remove ', item.title, ' this item from collection');
     let selectedImagesArray = selectedImagesCollection;
     // using the _Lodash library to remove the item from the
@@ -270,10 +271,10 @@ Has [value] as dependency
           handleDropdownSubmit={handleDropdownSubmit}
           loading={loading}
           preSelectedImages={preSelectedImages}
-          removeFromCollection={removeFromCollection}
+          removeItemFromCollection={removeItemFromCollection}
           selectedImagesCollection={selectedImagesCollection}
           setSelectedImagesCollection={setSelectedImagesCollection}
-          userSelectFilterTerm={userSelectFilterTerm}
+          userSelectsFilterTerm={userSelectsFilterTerm}
           zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
         />
 

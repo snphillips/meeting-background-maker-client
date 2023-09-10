@@ -4,14 +4,14 @@ import { MuseumItemType }  from '../types.ts';
 
 type Props = {
   displaySelectedImages: boolean;
-  removeFromCollection: (param: MuseumItemType) => void;
+  removeItemFromCollection: (param: MuseumItemType) => void;
   selectedImagesCollection: MuseumItemType[];
   zipDownloadFolderSelectedImages: () => void;
 }
 
 export default function SelectedCollection({
   displaySelectedImages,
-  removeFromCollection,
+  removeItemFromCollection,
   selectedImagesCollection,
   zipDownloadFolderSelectedImages,
 }: Props) {
@@ -63,7 +63,7 @@ console.log('selectedImagesCollection:', selectedImagesCollection)
                       type='button'
                       className='results-button-remove-from-collection'
                       onClick={() => {
-                        removeFromCollection(item);
+                        removeItemFromCollection(item);
                       }}
                     >
                       remove

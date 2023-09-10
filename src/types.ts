@@ -52,7 +52,7 @@ export interface MuseumItemType {
   year_start: null | number;
 }
 
-export type FilterTagsType = (
+export type FilterTermType = (
   'African'|
   'abstract'|
   'abstraction'|

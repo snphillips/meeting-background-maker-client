@@ -3,24 +3,24 @@ import FilterButtons from './FilterButtons.tsx';
 import ComputerImage from './ComputerImage.tsx';
 import SearchResults from './SearchResults.tsx';
 import SelectedCollection from './SelectedCollection.tsx';
+import { MuseumItemType, FilterTermType }  from '../types.ts';
 
 type Props = {
-  activeButton: any,
-  activeTab: any,
-  displayComputerImage: any,
-  displaySearchResults: any,
-  displaySelectedImages: any,
-  handleDropdownSubmit: any,
-  loading: any,
-  preSelectedImages: any,
-  removeFromCollection: any,
-  selectedImagesCollection: any,
-  setDisplayDownloadButton: any,
-  setSelectedImagesCollection: any,
-  toggleFilterResultsPlaceholder: any,
-  userSelectFilterTerm: any,
-  value: any,
-  zipDownloadFolderSelectedImages: any,
+  activeButton: FilterTermType | 'button-id';
+  activeTab: 0 | 1 | 2;
+  displayComputerImage: boolean;
+  displaySearchResults: boolean;
+  displaySelectedImages: boolean;
+  handleDropdownSubmit: () => void;
+  loading: boolean;
+  preSelectedImages: MuseumItemType[] | [];
+  removeItemFromCollection: (param: MuseumItemType) => void;
+  selectedImagesCollection: MuseumItemType[];
+  setDisplayDownloadButton: () => void;
+  setSelectedImagesCollection: (param: any) => void;
+  userSelectsFilterTerm: () => void;
+  value: FilterTermType;
+  zipDownloadFolderSelectedImages: () => void;
 };
 
 export default function YourBackgroundsComponent({
@@ -32,12 +32,11 @@ export default function YourBackgroundsComponent({
   handleDropdownSubmit,
   loading,
   preSelectedImages,
-  removeFromCollection,
+  removeItemFromCollection,
   selectedImagesCollection,
   setDisplayDownloadButton,
   setSelectedImagesCollection,
-  toggleFilterResultsPlaceholder,
-  userSelectFilterTerm,
+  userSelectsFilterTerm,
   value,
   zipDownloadFolderSelectedImages,
 }: Props) {
@@ -52,7 +51,7 @@ export default function YourBackgroundsComponent({
         activeButton={activeButton}
         handleDropdownSubmit={handleDropdownSubmit}
         // loading={loading}
-        userSelectFilterTerm={userSelectFilterTerm}
+        userSelectsFilterTerm={userSelectsFilterTerm}
       />
 
       <ComputerImage displayComputerImage={displayComputerImage} />
@@ -62,15 +61,12 @@ export default function YourBackgroundsComponent({
         preSelectedImages={preSelectedImages}
         selectedImagesCollection={selectedImagesCollection}
         setSelectedImagesCollection={setSelectedImagesCollection}
-        toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
-        value={value}
       />
 
       <SelectedCollection
         displaySelectedImages={displaySelectedImages}
-        removeFromCollection={removeFromCollection}
+        removeItemFromCollection={removeItemFromCollection}
         selectedImagesCollection={selectedImagesCollection}
-        setDisplayDownloadButton={setDisplayDownloadButton}
         zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
       />
     </section>
