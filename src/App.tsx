@@ -55,7 +55,7 @@ export default function App() {
     }
   }, []);
 
-  function userSelectsFilterTerm(event: Event) {
+  function userSelectsFilterTerm(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const target = event.target as HTMLInputElement;
     event.preventDefault();
     console.log('userSelectsFilterTerm event.target.value:', target.value);
@@ -271,6 +271,7 @@ Has [value] as dependency
           selectedImagesCollection={selectedImagesCollection}
           setSelectedImagesCollection={setSelectedImagesCollection}
           userSelectsFilterTerm={userSelectsFilterTerm}
+          value={value}
           zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
         />
 

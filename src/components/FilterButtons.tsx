@@ -9,7 +9,7 @@ type Props = {
   activeButton: FilterTermType | 'button-id';
   handleDropdownSubmit: (arg: any) => void;
   // loading: boolean;
-  userSelectsFilterTerm: () => void;
+  userSelectsFilterTerm: (param: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export default function FilterButtons({
@@ -48,7 +48,9 @@ export default function FilterButtons({
           );
         })}
         <form onSubmit={handleDropdownSubmit}>
-          <select onChange={userSelectsFilterTerm}>
+          <select 
+              // onChange={userSelectsFilterTerm}
+          >
             <option>more search terms</option>
 
             {filterTagsAll.map((item: FilterTermType, index: number) => (
