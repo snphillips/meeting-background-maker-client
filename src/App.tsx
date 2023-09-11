@@ -183,18 +183,17 @@ Has [value] as dependency
     which will then speak to AWS
     */
     const imgJpegArray: any[] = [];
-    selectedImagesCollection.map((item) => {
-      for (const [key, value] of Object.entries(item)) {
-        if (key === 'id') {
-          console.log(`${key}: ${value}`);
-          return imgJpegArray.push(value + '.jpg');
-        }
+    selectedImagesCollection.forEach((item) => {
+      if ('id' in item) {
+        // console.log(`id: ${item.id}`);
+        imgJpegArray.push(item.id + '.jpg');
       }
     });
+    
 
     let request = {
       params: imgJpegArray,
-      responseType: 'blob',
+      responseType: 'blob' as 'blob',
     };
 
     axios
