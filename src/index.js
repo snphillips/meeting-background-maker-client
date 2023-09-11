@@ -2,7 +2,7 @@ import React from 'react';
 // import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import App from './App.js';
+import App from './App.tsx';
 import * as serviceWorker from './serviceWorker.js';
 
 const container = document.getElementById('app');

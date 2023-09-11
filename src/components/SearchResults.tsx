@@ -1,5 +1,6 @@
 import React from 'react';
 import Masonry from 'react-masonry-css';
+import { MuseumItemType }  from '../types.ts';
 
 /*
 This component takes an array called preSelectedImages 
@@ -7,9 +8,16 @@ This component takes an array called preSelectedImages
 maps over that array and displays each image and a button
 under each image. 
 
-The button (whichButton) could say 'add to collection'
-or, 'in collection'. 
+The button/div (buttonOrDiv) could be a button that says 'add to collection'
+or a div that says, 'in collection'. 
 */
+
+type Props = {
+  displaySearchResults: boolean;
+  preSelectedImages: MuseumItemType[] | [];
+  selectedImagesCollection: MuseumItemType[] | [];
+  setSelectedImagesCollection: (param: any) => void;
+}
 
 // export default function SearchResults(props) {
 export default function SearchResults({
@@ -17,12 +25,16 @@ export default function SearchResults({
   preSelectedImages,
   selectedImagesCollection,
   setSelectedImagesCollection,
-}) {
+}: Props) {
+
+  console.log('selectedImagesCollection:', selectedImagesCollection)
+  // console.log('preSelectedImages:', preSelectedImages)
   // If the item is in user's collection, display 'in collection' label
   // If not, display 'add to collection' button
-  function whichButton(item) {
-    let buttonResult = '';
-    // console.log('selectedImagesCollection:', selectedImagesCollection, 'item:',  item)
+  function whichButton(item: MuseumItemType) {
+    // TODO: this is type html button, div or null
+    let buttonOrDiv: any = null;
+    console.log('selectedImagesCollection:', selectedImagesCollection, 'item:',  item)
 
     /* 
     The some() method tests whether at least one element
@@ -32,16 +44,15 @@ export default function SearchResults({
     otherwise it returns false. It doesn't modify the array.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
     */
-    if (selectedImagesCollection.some((el) => el.id === item.id)) {
-      // console.log('💋 item included', item.id)
-      buttonResult = (
-        <div type='' value={item.id} className='results-button-in-collection'>
+    if (selectedImagesCollection.some((el: MuseumItemType) => el.id === item.id)) {
+      buttonOrDiv = (
+        <div 
+          className='results-button-in-collection'>
           in collection
         </div>
       );
     } else {
-      // console.log('👎 item NOT included', item.id)
-      buttonResult = (
+      buttonOrDiv = (
         <button
           type='button'
           value={item.id}
@@ -54,16 +65,17 @@ export default function SearchResults({
         </button>
       );
     }
-    return buttonResult;
+    return buttonOrDiv;
   }
 
-  function addToCollection(item) {
+  function addToCollection(item: MuseumItemType) {
+
     if (selectedImagesCollection.length >= 20) {
       console.log('Collection is full. Return.', selectedImagesCollection.length);
       alert('Collection full. Remove an image before adding another.');
       return;
     }
-    setSelectedImagesCollection((array) => array.concat(item));
+    setSelectedImagesCollection((array: any[]) => array.concat(item));
   }
 
   // For use with React Masonry CSS package
@@ -85,7 +97,7 @@ export default function SearchResults({
             className='my-masonry-grid curated-sets-list pre-selected-images-gallery results image-grid'
             columnClassName='my-masonry-grid_column'
           >
-            {preSelectedImages.map((item, index) => {
+            {preSelectedImages.map((item: MuseumItemType, index: number) => {
               return (
                 <div key={index} className='image-card card'>
                   <img

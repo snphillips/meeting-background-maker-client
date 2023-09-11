@@ -1,9 +1,20 @@
 import React from 'react';
-import CuratedSetsImageGallery from './CuratedSetsImageGallery.js';
+import CuratedSetsImageGallery from './CuratedSetsImageGallery.tsx';
 import Masonry from 'react-masonry-css';
+import { CuratedSetsType }  from '../types.ts'
 
-export default function CuratedSetComponent({ activeTab, curatedSets }) {
-  let curatedSetsArray = curatedSets;
+type Props = {
+  activeTab: 0 | 1;
+  // type is an array of curated sets
+  curatedSetsArray: CuratedSetsType[];
+}
+
+
+export default function CuratedSetComponent({ 
+  activeTab,
+  curatedSetsArray 
+}: Props) {
+  console.log('curatedSetsArray', curatedSetsArray)
 
   // For use with Masonry package
   const breakpointColumnsObj = {
@@ -26,7 +37,8 @@ export default function CuratedSetComponent({ activeTab, curatedSets }) {
         className='my-masonry-grid curated-sets-list'
         columnClassName='my-masonry-grid_column'
       >
-        {curatedSetsArray.map((item, index) => {
+        {curatedSetsArray.map((item: CuratedSetsType, index: number) => {
+          console.log('curatedSetsArray item:', item)
           return (
             <div key={index + '-card'} className='curated-set-card card' value={item.setName}>
               <h4 key={index + '-label'} className='curated-set-label' value={item.setName}>
@@ -43,9 +55,9 @@ export default function CuratedSetComponent({ activeTab, curatedSets }) {
                 }
               >
                 <button
-                  key={item.setName + 'downlad-button'}
+                  key={item.setName + 'download-button'}
                   className='curated-set-download-button'
-                  type='download'
+                  // type='download'
                 >
                   <svg className='svg-icon' viewBox='0 0 20 20'>
                     <path
@@ -69,9 +81,9 @@ export default function CuratedSetComponent({ activeTab, curatedSets }) {
                 }
               >
                 <button
-                  key={item.setName + 'downlad-button'}
+                  key={item.setName + 'download-button'}
                   className='curated-set-download-button'
-                  type='download'
+                  // type='download'
                 >
                   <svg className='svg-icon' viewBox='0 0 20 20'>
                     <path

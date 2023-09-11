@@ -1,8 +1,26 @@
 import React from 'react';
-import FilterButtons from './FilterButtons.js';
-import ComputerImage from './ComputerImage.js';
-import SearchResults from './SearchResults.js';
-import SelectedCollection from './SelectedCollection.js';
+import FilterButtons from './FilterButtons.tsx';
+import ComputerImage from './ComputerImage.tsx';
+import SearchResults from './SearchResults.tsx';
+import SelectedCollection from './SelectedCollection.tsx';
+import { MuseumItemType, FilterTermType }  from '../types.ts';
+
+type Props = {
+  activeButton: FilterTermType | 'button-id';
+  activeTab: 0 | 1;
+  displayComputerImage: boolean;
+  displaySearchResults: boolean;
+  displaySelectedImages: boolean;
+  handleDropdownSubmit: (arg: any) => void;
+  loading: boolean;
+  preSelectedImages: MuseumItemType[] | [];
+  removeItemFromCollection: (param: MuseumItemType) => void;
+  selectedImagesCollection: MuseumItemType[];
+  setSelectedImagesCollection: (param: any) => void;
+  userSelectsFilterTerm: (param: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  value: FilterTermType;
+  zipDownloadFolderSelectedImages: () => void;
+};
 
 export default function YourBackgroundsComponent({
   activeButton,
@@ -10,20 +28,16 @@ export default function YourBackgroundsComponent({
   displayComputerImage,
   displaySearchResults,
   displaySelectedImages,
-  handleDropdownChange,
   handleDropdownSubmit,
   loading,
-  openModal,
   preSelectedImages,
-  removeFromCollection,
+  removeItemFromCollection,
   selectedImagesCollection,
-  setDisplayDownloadButton,
   setSelectedImagesCollection,
-  toggleFilterResultsPlaceholder,
-  userSelectFilterTerm,
+  userSelectsFilterTerm,
   value,
   zipDownloadFolderSelectedImages,
-}) {
+}: Props) {
   return (
     <section
       id='user-generated-set-window'
@@ -34,28 +48,23 @@ export default function YourBackgroundsComponent({
       <FilterButtons
         activeButton={activeButton}
         handleDropdownSubmit={handleDropdownSubmit}
-        loading={loading}
-        onChange={handleDropdownChange}
-        userSelectFilterTerm={userSelectFilterTerm}
+        // loading={loading}
+        userSelectsFilterTerm={userSelectsFilterTerm}
       />
 
       <ComputerImage displayComputerImage={displayComputerImage} />
 
       <SearchResults
         displaySearchResults={displaySearchResults}
-        openModal={openModal}
         preSelectedImages={preSelectedImages}
         selectedImagesCollection={selectedImagesCollection}
         setSelectedImagesCollection={setSelectedImagesCollection}
-        toggleFilterResultsPlaceholder={toggleFilterResultsPlaceholder}
-        value={value}
       />
 
       <SelectedCollection
         displaySelectedImages={displaySelectedImages}
-        removeFromCollection={removeFromCollection}
+        removeItemFromCollection={removeItemFromCollection}
         selectedImagesCollection={selectedImagesCollection}
-        setDisplayDownloadButton={setDisplayDownloadButton}
         zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
       />
     </section>

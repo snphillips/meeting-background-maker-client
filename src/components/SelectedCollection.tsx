@@ -1,19 +1,27 @@
 import React from 'react';
 import Masonry from 'react-masonry-css';
+import { MuseumItemType }  from '../types.ts';
+
+type Props = {
+  displaySelectedImages: boolean;
+  removeItemFromCollection: (param: MuseumItemType) => void;
+  selectedImagesCollection: MuseumItemType[];
+  zipDownloadFolderSelectedImages: () => void;
+}
 
 export default function SelectedCollection({
   displaySelectedImages,
-  removeFromCollection,
+  removeItemFromCollection,
   selectedImagesCollection,
   zipDownloadFolderSelectedImages,
-}) {
+}: Props) {
   // For use with Masonry package
   const breakpointColumnsObj = {
     default: 3,
     960: 2,
     650: 1,
   };
-
+console.log('selectedImagesCollection:', selectedImagesCollection)
   /*
   Ternary to establish whether to display singular
   or plural word image
@@ -53,10 +61,9 @@ export default function SelectedCollection({
                     />
                     <button
                       type='button'
-                      value={item}
                       className='results-button-remove-from-collection'
                       onClick={() => {
-                        removeFromCollection(item);
+                        removeItemFromCollection(item);
                       }}
                     >
                       remove
@@ -68,7 +75,6 @@ export default function SelectedCollection({
           </section>
           <button
             className='download-button'
-            type='download'
             onClick={() => {
               zipDownloadFolderSelectedImages();
             }}

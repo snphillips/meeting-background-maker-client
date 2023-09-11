@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import _reject from 'lodash/reject.js';
-import Header from './components/Header.js';
-import CuratedSetsComponent from './components/CuratedSetsComponent.js';
-import Footer from './components/Footer.js';
-import YourBackgroundsComponent from './components/YourBackgroundsComponent.js';
+import Header from './components/Header.tsx';
+import CuratedSetsComponent from './components/CuratedSetsComponent.tsx';
+import Footer from './components/Footer.tsx';
+import YourBackgroundsComponent from './components/YourBackgroundsComponent.tsx';
 
 // Curated Sets
 import cocktailHour from './CuratedSets/cocktailHour.js';
@@ -14,7 +14,8 @@ import gourmet from './CuratedSets/gourmet.js';
 import hermanMillerPicnic from './CuratedSets/hermanMillerPicnic.js';
 import photoMural from './CuratedSets/photoMural.js';
 import kolomanMoser from './CuratedSets/kolomanMoser.js';
-const curatedSets = [
+import { MuseumItemType, FilterTermType }  from '../types.ts';
+const curatedSetsArray = [
   cocktailHour,
   colorTheory,
   gardenParty,
@@ -30,14 +31,14 @@ export default function App() {
 
   const initialRender = useRef(true);
   const [loading, setLoading] = useState(false); // the loading spinner
-  const [value, setValue] = useState(); // the user select filter term
+  const [value, setValue] = useState<FilterTermType | null>(null); // the user select filter term
   const [displayComputerImage, setDisplayComputerImage] = useState(true);
   const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
   const [displaySearchResults, setDisplaySearchResults] = useState(false);
-  const [preSelectedImages, setPreSelectedImages] = useState([]);
-  const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
-  const [activeButton, setActiveButton] = useState('button-id');
-  const [activeTab, setActiveTab] = useState(0);
+  const [preSelectedImages, setPreSelectedImages] = useState<[] | MuseumItemType[]>([]);
+  const [selectedImagesCollection, setSelectedImagesCollection] = useState<[] | MuseumItemType[]>([]);
+  const [activeButton, setActiveButton] = useState<FilterTermType | 'button-id'>('button-id');
+  const [activeTab, setActiveTab] = useState<0 | 1>(0);
 
   /*
   ===================================
@@ -54,15 +55,16 @@ export default function App() {
     }
   }, []);
 
-  function userSelectFilterTerm(event) {
+  function userSelectsFilterTerm(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    const target = event.target as HTMLInputElement;
     event.preventDefault();
-    console.log('userSelectFilterTerm:', event.target.value);
-    setValue(event.target.value);
+    console.log('userSelectsFilterTerm event.target.value:', target.value);
+    setValue(target.value);
     /*
     The 'active' filter button gets an inverted style
     We pass activeButton state to FilterButtons
     */
-    setActiveButton(event.target.value);
+    setActiveButton(target.value);
   }
 
   /*
@@ -89,11 +91,6 @@ Has [value] as dependency
           // );
 
           setPreSelectedImages(response.data);
-          /*
-          1) Stop the loading spinner
-          2) Show the component that displays the preSelected
-          results from the search
-          */
           setLoading(false);
           setDisplaySearchResults(true);
         } catch (error) {
@@ -129,13 +126,13 @@ Has [value] as dependency
     }
   }, [selectedImagesCollection]);
 
-  function removeFromCollection(item) {
+  function removeItemFromCollection(item: MuseumItemType) {
     console.log('Remove ', item.title, ' this item from collection');
     let selectedImagesArray = selectedImagesCollection;
     // using the _Lodash library to remove the item from the
     // array of selected images
     // https://lodash.com/docs/#reject
-    selectedImagesArray = _reject(selectedImagesArray, (theObject) => {
+    selectedImagesArray = _reject(selectedImagesArray, (theObject: MuseumItemType) => {
       return theObject.id === item.id;
     });
     setSelectedImagesCollection(selectedImagesArray);
@@ -144,60 +141,54 @@ Has [value] as dependency
   function shuffleBackgroundClipTextImage() {
     let numOfBackgroundImages = 31;
     let randomNumber = Math.floor(Math.random() * numOfBackgroundImages);
-    // console.log('random background image number is: ', randomNumber);
     let dir = `https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/`;
-    document
-      .querySelector('.clip-text')
-      .style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
-    document
-      .querySelector('body')
-      .style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
+    let clipTextElement = document.querySelector('.clip-text') as HTMLElement | null;
+    let bodyElement = document.querySelector('body') as HTMLElement;
+    let computerScreenElement = document.querySelector('#computer-screen') as HTMLElement | null;
+
+    // clipTextElement wont be null but if it is, we don't care for now
+    // as this feature is only window dressing
+    clipTextElement?.style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
+    bodyElement!.style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
 
     /*
       We change the background often for fun.
       Sometimes, we change the background and there is no computer screen icon.
       Only change the background of the computer icon, if it's there.
       */
-    let compyIcon = document.querySelector('#computer-screen') !== null;
-    if (compyIcon) {
-      document
-        .querySelector('#computer-screen')
-        .style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
+    if (computerScreenElement) {
+      computerScreenElement.style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
     }
 
-    document.querySelector('.clip-text').style.setProperty('color', '#fff;');
-    document
-      .querySelector('.clip-text')
-      .style.setProperty('-webkit-text-fill-color', 'transparent');
-    document.querySelector('.clip-text').style.setProperty('-webkit-background-clip', 'text');
-    // document.querySelector('.header').style.textShadow = '2px 2px 2px #fff';
+    clipTextElement?.style.setProperty('color', '#fff');
+    clipTextElement?.style.setProperty('-webkit-text-fill-color', 'transparent');
+    clipTextElement?.style.setProperty('-webkit-background-clip', 'text');
   }
 
   function zipDownloadFolderSelectedImages() {
     /*
     At this stage selectedImagesCollection is an array of
-    large object constaining interesting data about the items.
+    large object containing interesting data about the items.
     
     All we are interested in is the item id, as that is what is
-    used as file names in AWS. The frist step is to map over the
+    used as file names in AWS. The first step is to map over the
     large object and push into an array the the key 'id' and its
     corresponding value. Now we have the imgJpegArray, which is
     being send in the request to the server,
     which will then speak to AWS
     */
-    const imgJpegArray = [];
-    selectedImagesCollection.map((item) => {
-      for (const [key, value] of Object.entries(item)) {
-        if (key === 'id') {
-          console.log(`${key}: ${value}`);
-          return imgJpegArray.push(value + '.jpg');
-        }
+    const imgJpegArray: any[] = [];
+    selectedImagesCollection.forEach((item) => {
+      if ('id' in item) {
+        // console.log(`id: ${item.id}`);
+        imgJpegArray.push(item.id + '.jpg');
       }
     });
+    
 
     let request = {
       params: imgJpegArray,
-      responseType: 'blob',
+      responseType: 'blob' as 'blob',
     };
 
     axios
@@ -214,16 +205,18 @@ Has [value] as dependency
       })
       .catch(function (error) {
         // handle error
-        // TODO: indicate to user when somthing goes wrong
+        // TODO: indicate to user when something goes wrong
+        // perhaps a cute image from the museum?
+        // A message to view curated types?
         console.log('downloadZip error:', error);
       });
   }
 
-  function handleDropdownChange(event) {
-    setValue(event.target.value);
-  }
+  // function handleDropdownChange(event: any) {
+  //   setValue(event.target.value);
+  // }
 
-  function handleDropdownSubmit(event) {
+  function handleDropdownSubmit(event: any) {
     // TODO: what's this for? Get rid of it?
     console.log('handleDropdownSubmit clicked value is:', value);
   }
@@ -269,16 +262,19 @@ Has [value] as dependency
           displaySelectedImages={displaySelectedImages}
           handleDropdownSubmit={handleDropdownSubmit}
           loading={loading}
-          onChange={handleDropdownChange}
           preSelectedImages={preSelectedImages}
-          removeFromCollection={removeFromCollection}
+          removeItemFromCollection={removeItemFromCollection}
           selectedImagesCollection={selectedImagesCollection}
           setSelectedImagesCollection={setSelectedImagesCollection}
-          userSelectFilterTerm={userSelectFilterTerm}
+          userSelectsFilterTerm={userSelectsFilterTerm}
+          value={value}
           zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
         />
 
-        <CuratedSetsComponent activeTab={activeTab} curatedSets={curatedSets} />
+        <CuratedSetsComponent 
+          activeTab={activeTab}
+          curatedSetsArray={curatedSetsArray} 
+        />
       </section>
       <Footer />
     </div>
