@@ -126,13 +126,13 @@ Has [value] as dependency
     }
   }, [selectedImagesCollection]);
 
-  function removeItemFromCollection(item: any) {
+  function removeItemFromCollection(item: MuseumItemType) {
     console.log('Remove ', item.title, ' this item from collection');
     let selectedImagesArray = selectedImagesCollection;
     // using the _Lodash library to remove the item from the
     // array of selected images
     // https://lodash.com/docs/#reject
-    selectedImagesArray = _reject(selectedImagesArray, (theObject: any) => {
+    selectedImagesArray = _reject(selectedImagesArray, (theObject: MuseumItemType) => {
       return theObject.id === item.id;
     });
     setSelectedImagesCollection(selectedImagesArray);
@@ -141,33 +141,28 @@ Has [value] as dependency
   function shuffleBackgroundClipTextImage() {
     let numOfBackgroundImages = 31;
     let randomNumber = Math.floor(Math.random() * numOfBackgroundImages);
-    // console.log('random background image number is: ', randomNumber);
     let dir = `https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/`;
-    document
-      .querySelector('.clip-text')
-      .style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
-    document
-      .querySelector('body')
-      .style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
+    let clipTextElement = document.querySelector('.clip-text') as HTMLElement | null;
+    let bodyElement = document.querySelector('body') as HTMLElement;
+    let computerScreenElement = document.querySelector('#computer-screen') as HTMLElement | null;
+
+    // clipTextElement wont be null but if it is, we don't care for now
+    // as this feature is only window dressing
+    clipTextElement?.style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
+    bodyElement!.style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
 
     /*
       We change the background often for fun.
       Sometimes, we change the background and there is no computer screen icon.
       Only change the background of the computer icon, if it's there.
       */
-    let compyIcon = document.querySelector('#computer-screen') !== null;
-    if (compyIcon) {
-      document
-        .querySelector('#computer-screen')
-        .style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
+    if (computerScreenElement) {
+      computerScreenElement.style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
     }
 
-    document.querySelector('.clip-text').style.setProperty('color', '#fff;');
-    document
-      .querySelector('.clip-text')
-      .style.setProperty('-webkit-text-fill-color', 'transparent');
-    document.querySelector('.clip-text').style.setProperty('-webkit-background-clip', 'text');
-    // document.querySelector('.header').style.textShadow = '2px 2px 2px #fff';
+    clipTextElement?.style.setProperty('color', '#fff');
+    clipTextElement?.style.setProperty('-webkit-text-fill-color', 'transparent');
+    clipTextElement?.style.setProperty('-webkit-background-clip', 'text');
   }
 
   function zipDownloadFolderSelectedImages() {
@@ -211,6 +206,8 @@ Has [value] as dependency
       .catch(function (error) {
         // handle error
         // TODO: indicate to user when something goes wrong
+        // perhaps a cute image from the museum?
+        // A message to view curated types?
         console.log('downloadZip error:', error);
       });
   }
