@@ -14,6 +14,7 @@ import gourmet from './CuratedSets/gourmet.js';
 import hermanMillerPicnic from './CuratedSets/hermanMillerPicnic.js';
 import photoMural from './CuratedSets/photoMural.js';
 import kolomanMoser from './CuratedSets/kolomanMoser.js';
+import { MuseumItemType, FilterTermType }  from '../types.ts';
 const curatedSetsArray = [
   cocktailHour,
   colorTheory,
@@ -30,14 +31,14 @@ export default function App() {
 
   const initialRender = useRef(true);
   const [loading, setLoading] = useState(false); // the loading spinner
-  const [value, setValue] = useState<null | string>(null); // the user select filter term
+  const [value, setValue] = useState<FilterTermType | null>(null); // the user select filter term
   const [displayComputerImage, setDisplayComputerImage] = useState(true);
   const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
   const [displaySearchResults, setDisplaySearchResults] = useState(false);
-  const [preSelectedImages, setPreSelectedImages] = useState([]);
-  const [selectedImagesCollection, setSelectedImagesCollection] = useState([]);
-  const [activeButton, setActiveButton] = useState('button-id');
-  const [activeTab, setActiveTab] = useState(0);
+  const [preSelectedImages, setPreSelectedImages] = useState<[] | MuseumItemType[]>([]);
+  const [selectedImagesCollection, setSelectedImagesCollection] = useState<[] | MuseumItemType[]>([]);
+  const [activeButton, setActiveButton] = useState<FilterTermType | 'button-id'>('button-id');
+  const [activeTab, setActiveTab] = useState<0 | 1>(0);
 
   /*
   ===================================
@@ -90,11 +91,6 @@ Has [value] as dependency
           // );
 
           setPreSelectedImages(response.data);
-          /*
-          1) Stop the loading spinner
-          2) Show the component that displays the preSelected
-          results from the search
-          */
           setLoading(false);
           setDisplaySearchResults(true);
         } catch (error) {

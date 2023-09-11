@@ -7,7 +7,7 @@ import { FilterTermType }  from '../types.ts'
 
 type Props = {
   activeButton: FilterTermType | 'button-id';
-  handleDropdownSubmit: () => void;
+  handleDropdownSubmit: (arg: any) => void;
   // loading: boolean;
   userSelectsFilterTerm: () => void;
 }

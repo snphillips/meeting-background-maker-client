@@ -7,11 +7,11 @@ import { MuseumItemType, FilterTermType }  from '../types.ts';
 
 type Props = {
   activeButton: FilterTermType | 'button-id';
-  activeTab: 0 | 1 | 2;
+  activeTab: 0 | 1;
   displayComputerImage: boolean;
   displaySearchResults: boolean;
   displaySelectedImages: boolean;
-  handleDropdownSubmit: () => void;
+  handleDropdownSubmit: (arg: any) => void;
   loading: boolean;
   preSelectedImages: MuseumItemType[] | [];
   removeItemFromCollection: (param: MuseumItemType) => void;

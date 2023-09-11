@@ -4,7 +4,7 @@ import Masonry from 'react-masonry-css';
 import { CuratedSetsType }  from '../types.ts'
 
 type Props = {
-  activeTab: 0 | 1 | 2;
+  activeTab: 0 | 1;
   // type is an array of curated sets
   curatedSetsArray: CuratedSetsType[];
 }
