@@ -1,9 +1,9 @@
 import React from 'react';
-import FilterButtons from './FilterButtons.tsx';
-import ComputerImage from './ComputerImage.tsx';
-import SearchResults from './SearchResults.tsx';
-import SelectedCollection from './SelectedCollection.tsx';
-import { MuseumItemType, FilterTermType }  from '../types.ts';
+import FilterButtons from './FilterButtons';
+import ComputerImage from './ComputerImage';
+import SearchResults from './SearchResults';
+import SelectedCollection from './SelectedCollection';
+import { MuseumItemType, FilterTermType }  from '../types';
 
 type Props = {
   activeButton: FilterTermType | 'button-id';

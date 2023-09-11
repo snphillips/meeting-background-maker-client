@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import _reject from 'lodash/reject.js';
-import Header from './components/Header.tsx';
-import CuratedSetsComponent from './components/CuratedSetsComponent.tsx';
-import Footer from './components/Footer.tsx';
-import YourBackgroundsComponent from './components/YourBackgroundsComponent.tsx';
+import Header from './components/Header';
+import CuratedSetsComponent from './components/CuratedSetsComponent';
+import Footer from './components/Footer';
+import YourBackgroundsComponent from './components/YourBackgroundsComponent';
 
 // Curated Sets
 import cocktailHour from './CuratedSets/cocktailHour.js';
@@ -14,7 +14,7 @@ import gourmet from './CuratedSets/gourmet.js';
 import hermanMillerPicnic from './CuratedSets/hermanMillerPicnic.js';
 import photoMural from './CuratedSets/photoMural.js';
 import kolomanMoser from './CuratedSets/kolomanMoser.js';
-import { MuseumItemType, FilterTermType }  from '../types.ts';
+import { MuseumItemType, FilterTermType }  from './types';
 const curatedSetsArray = [
   cocktailHour,
   colorTheory,

@@ -1,6 +1,6 @@
 import React from 'react';
 import Masonry from 'react-masonry-css';
-import { MuseumItemType }  from '../types.ts';
+import { MuseumItemType }  from '../types';
 
 /*
 This component takes an array called preSelectedImages 

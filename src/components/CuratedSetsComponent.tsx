@@ -1,7 +1,7 @@
 import React from 'react';
-import CuratedSetsImageGallery from './CuratedSetsImageGallery.tsx';
+import CuratedSetsImageGallery from './CuratedSetsImageGallery';
 import Masonry from 'react-masonry-css';
-import { CuratedSetsType }  from '../types.ts'
+import { CuratedSetsType }  from '../types'
 
 type Props = {
   activeTab: 0 | 1;

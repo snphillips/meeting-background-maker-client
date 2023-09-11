@@ -3,7 +3,7 @@ import filterTagButtons from '../filterTagButtons.js';
 import filterTagsAll from '../filterTagsAll.js';
 // TODO: enable LoadingSpinner after converting to TS
 // import LoadingSpinner from '../LoadingSpinner.js';
-import { FilterTermType }  from '../types.ts'
+import { FilterTermType }  from '../types'
 
 type Props = {
   activeButton: FilterTermType | 'button-id';
