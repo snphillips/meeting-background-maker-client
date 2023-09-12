@@ -16,7 +16,7 @@ type Props = {
   displaySearchResults: boolean;
   preSelectedImages: MuseumItemType[] | [];
   selectedImagesCollection: MuseumItemType[] | [];
-  setSelectedImagesCollection: (param: any) => void;
+  setSelectedImagesCollection: (param: (param: MuseumItemType[]) => void) => void;
 }
 
 // export default function SearchResults(props) {
@@ -32,8 +32,7 @@ export default function SearchResults({
   // If the item is in user's collection, display 'in collection' label
   // If not, display 'add to collection' button
   function whichButton(item: MuseumItemType) {
-    // TODO: this is type html button, div or null
-    let buttonOrDiv: any = null;
+    let buttonOrDiv: JSX.Element | null = null;
     console.log('selectedImagesCollection:', selectedImagesCollection, 'item:',  item)
 
     /* 
@@ -69,13 +68,15 @@ export default function SearchResults({
   }
 
   function addToCollection(item: MuseumItemType) {
+    console.log('selectedImagesCollection:', selectedImagesCollection)
 
     if (selectedImagesCollection.length >= 20) {
       console.log('Collection is full. Return.', selectedImagesCollection.length);
       alert('Collection full. Remove an image before adding another.');
       return;
     }
-    setSelectedImagesCollection((array: any[]) => array.concat(item));
+    setSelectedImagesCollection((prevArray: MuseumItemType[]) => [...prevArray, item]);
+
   }
 
   // For use with React Masonry CSS package

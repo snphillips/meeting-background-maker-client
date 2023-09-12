@@ -252,6 +252,7 @@ Has [value] as dependency
           displayComputerImage={displayComputerImage}
           displaySearchResults={displaySearchResults}
           displaySelectedImages={displaySelectedImages}
+          // handleDropdownSubmit={handleDropdownSubmit}
           loading={loading}
           preSelectedImages={preSelectedImages}
           removeItemFromCollection={removeItemFromCollection}

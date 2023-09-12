@@ -40,8 +40,17 @@ export default function CuratedSetComponent({
         {curatedSetsArray.map((item: CuratedSetsType, index: number) => {
           console.log('curatedSetsArray item:', item)
           return (
-            <div key={index + '-card'} className='curated-set-card card' value={item.setName}>
-              <h4 key={index + '-label'} className='curated-set-label' value={item.setName}>
+            <div 
+              key={index + '-card'} 
+              className='curated-set-card card'
+              value={item.setName}
+              >
+
+              <h4 
+                key={index + '-label'}
+                className='curated-set-label'
+                value={item.setName}
+                >
                 {item.setName}
               </h4>
 

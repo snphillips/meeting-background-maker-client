@@ -15,7 +15,7 @@ type Props = {
   preSelectedImages: MuseumItemType[] | [];
   removeItemFromCollection: (param: MuseumItemType) => void;
   selectedImagesCollection: MuseumItemType[];
-  setSelectedImagesCollection: (param: any) => void;
+  setSelectedImagesCollection: (param: MuseumItemType) => void;
   userSelectsFilterTerm: (param: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   value: FilterTermType;
   zipDownloadFolderSelectedImages: () => void;
