@@ -177,10 +177,10 @@ Has [value] as dependency
     being send in the request to the server,
     which will then speak to AWS
     */
-    const imgJpegArray: any[] = [];
+    const imgJpegArray: string[] = [];
     selectedImagesCollection.forEach((item) => {
       if ('id' in item) {
-        // console.log(`id: ${item.id}`);
+        console.log(`id: ${item.id}`);
         imgJpegArray.push(item.id + '.jpg');
       }
     });
@@ -212,14 +212,6 @@ Has [value] as dependency
       });
   }
 
-  // function handleDropdownChange(event: any) {
-  //   setValue(event.target.value);
-  // }
-
-  function handleDropdownSubmit(event: any) {
-    // TODO: what's this for? Get rid of it?
-    console.log('handleDropdownSubmit clicked value is:', value);
-  }
 
   return (
     <div className='App app-container'>
@@ -260,7 +252,6 @@ Has [value] as dependency
           displayComputerImage={displayComputerImage}
           displaySearchResults={displaySearchResults}
           displaySelectedImages={displaySelectedImages}
-          handleDropdownSubmit={handleDropdownSubmit}
           loading={loading}
           preSelectedImages={preSelectedImages}
           removeItemFromCollection={removeItemFromCollection}

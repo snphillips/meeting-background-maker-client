@@ -7,14 +7,12 @@ import { FilterTermType }  from '../types'
 
 type Props = {
   activeButton: FilterTermType | 'button-id';
-  handleDropdownSubmit: (arg: any) => void;
   // loading: boolean;
   userSelectsFilterTerm: (param: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export default function FilterButtons({
   activeButton,
-  handleDropdownSubmit,
   // loading,
   userSelectsFilterTerm,
 }: Props) {
@@ -47,7 +45,7 @@ export default function FilterButtons({
             </button>
           );
         })}
-        <form onSubmit={handleDropdownSubmit}>
+        <form >
           <select 
               // onChange={userSelectsFilterTerm}
           >

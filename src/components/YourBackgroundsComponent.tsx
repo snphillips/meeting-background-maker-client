@@ -11,7 +11,6 @@ type Props = {
   displayComputerImage: boolean;
   displaySearchResults: boolean;
   displaySelectedImages: boolean;
-  handleDropdownSubmit: (arg: any) => void;
   loading: boolean;
   preSelectedImages: MuseumItemType[] | [];
   removeItemFromCollection: (param: MuseumItemType) => void;
@@ -28,7 +27,6 @@ export default function YourBackgroundsComponent({
   displayComputerImage,
   displaySearchResults,
   displaySelectedImages,
-  handleDropdownSubmit,
   loading,
   preSelectedImages,
   removeItemFromCollection,
@@ -47,7 +45,6 @@ export default function YourBackgroundsComponent({
     >
       <FilterButtons
         activeButton={activeButton}
-        handleDropdownSubmit={handleDropdownSubmit}
         // loading={loading}
         userSelectsFilterTerm={userSelectsFilterTerm}
       />

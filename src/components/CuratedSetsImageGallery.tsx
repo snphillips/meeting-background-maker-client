@@ -33,6 +33,7 @@ export default function CuratedSetsImageGallery({
                 src={item.imageURL}
                 alt={item.title}
                 onClick={(index) => {
+                  // TODO: open a modal?
                   console.log(index, 'clicked');
                 }}
               />
