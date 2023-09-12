@@ -2,22 +2,24 @@ import React from 'react';
 import { css } from '@emotion/react';
 import BeatLoader from 'react-spinners/BeatLoader.js';
 
-const override = css`
+const override: any  = css`
   display: block;
   margin: 0 auto;
   border-color: red;
 `;
 
-export default function LoadingSpinner({ loading }) {
+type Props = {
+  loading: boolean;
+};
+
+export default function LoadingSpinner({ loading }: Props) {
   return (
     <div className='loading-div'>
       <span className='sweet-loading'>
         <BeatLoader
           className={override}
           color={'#fff'}
-          height={32}
           loading={loading}
-          sizeunit={'px'}
         />
       </span>
     </div>

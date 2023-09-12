@@ -16,7 +16,7 @@ type Props = {
   displaySearchResults: boolean;
   preSelectedImages: MuseumItemType[] | [];
   selectedImagesCollection: MuseumItemType[] | [];
-  setSelectedImagesCollection: (param: (param: MuseumItemType[]) => void) => void;
+  setSelectedImagesCollection: React.Dispatch<React.SetStateAction<MuseumItemType[] | []>>;
 }
 
 // export default function SearchResults(props) {

@@ -59,12 +59,12 @@ export default function App() {
     const target = event.target as HTMLInputElement;
     event.preventDefault();
     console.log('userSelectsFilterTerm event.target.value:', target.value);
-    setValue(target.value);
+    setValue(target.value as FilterTermType);
     /*
     The 'active' filter button gets an inverted style
     We pass activeButton state to FilterButtons
     */
-    setActiveButton(target.value);
+    setActiveButton(target.value as FilterTermType);
   }
 
   /*
@@ -75,21 +75,12 @@ Has [value] as dependency
 */
   useEffect(() => {
     function searchByTag() {
-      // start the loading spinner
       setLoading(true);
-      // console.log('value is: ', value);
       shuffleBackgroundClipTextImage();
 
       const sendGetRequest = async () => {
         try {
           const response = await axios.get(serverURL + `searchbytag/` + value);
-          // console.log(`🍩 The search value is:`, value, `response.data:`, response.data);
-          // console.log(
-          //   response.data.map((item) => {
-          //     return item.id;
-          //   })
-          // );
-
           setPreSelectedImages(response.data);
           setLoading(false);
           setDisplaySearchResults(true);
@@ -111,7 +102,6 @@ Has [value] as dependency
     }
   }, [value, serverURL]);
 
-  // Run this useEffect every time selectedImagesCollection updates
   useEffect(() => {
     if (selectedImagesCollection.length < 1) {
       setDisplaySelectedImages(false);

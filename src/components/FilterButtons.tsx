@@ -2,18 +2,18 @@ import React from 'react';
 import filterTagButtons from '../filterTagButtons.js';
 import filterTagsAll from '../filterTagsAll.js';
 // TODO: enable LoadingSpinner after converting to TS
-// import LoadingSpinner from '../LoadingSpinner.js';
+import LoadingSpinner from '../LoadingSpinner';
 import { FilterTermType }  from '../types'
 
 type Props = {
   activeButton: FilterTermType | 'button-id';
-  // loading: boolean;
+  loading: boolean;
   userSelectsFilterTerm: (param: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export default function FilterButtons({
   activeButton,
-  // loading,
+  loading,
   userSelectsFilterTerm,
 }: Props) {
 
@@ -25,7 +25,7 @@ export default function FilterButtons({
           Select a search term to view images from the museum's collection.
         </p>
         <div className='spinner-container'>
-          {/* <LoadingSpinner loading={loading} /> */}
+          <LoadingSpinner loading={loading} />
         </div>
       </div>
 
@@ -46,9 +46,7 @@ export default function FilterButtons({
           );
         })}
         <form >
-          <select 
-              // onChange={userSelectsFilterTerm}
-          >
+          <select >
             <option>more search terms</option>
 
             {filterTagsAll.map((item: FilterTermType, index: number) => (

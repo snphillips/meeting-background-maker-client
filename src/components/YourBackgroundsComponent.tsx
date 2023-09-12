@@ -15,9 +15,9 @@ type Props = {
   preSelectedImages: MuseumItemType[] | [];
   removeItemFromCollection: (param: MuseumItemType) => void;
   selectedImagesCollection: MuseumItemType[];
-  setSelectedImagesCollection: (param: MuseumItemType) => void;
+  setSelectedImagesCollection: React.Dispatch<React.SetStateAction<MuseumItemType[] | []>>;
   userSelectsFilterTerm: (param: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  value: FilterTermType;
+  value: FilterTermType | null;
   zipDownloadFolderSelectedImages: () => void;
 };
 
@@ -45,7 +45,7 @@ export default function YourBackgroundsComponent({
     >
       <FilterButtons
         activeButton={activeButton}
-        // loading={loading}
+        loading={loading}
         userSelectsFilterTerm={userSelectsFilterTerm}
       />
 
