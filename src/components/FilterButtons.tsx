@@ -1,7 +1,6 @@
 import React from 'react';
-import filterTagButtons from '../filterTagButtons.js';
-import filterTagsAll from '../filterTagsAll.js';
-// TODO: enable LoadingSpinner after converting to TS
+import filterButtonTermsArray from '../filterButtonTermsArray';
+import filterTagsAllArray from '../filterTagsAllArray';
 import LoadingSpinner from '../LoadingSpinner';
 import { FilterTermType }  from '../types'
 
@@ -30,15 +29,15 @@ export default function FilterButtons({
       </div>
 
       <section className='filter-button-section'>
-        {filterTagButtons.map((item: FilterTermType, index: number) => {
-          console.log('filterTagButtons item:', item)
+        {filterButtonTermsArray.map((item: FilterTermType, index: number) => {
+          console.log('filterButtonTermsArray item:', item)
           return (
             <button
               key={index}
               className={activeButton === item ? 'filter-button active' : 'filter-button'}
               id={'filter-button-' + item}
               type='button'
-              value={item}
+              data-value={item}
               onClick={userSelectsFilterTerm}
             >
               {item}
@@ -49,9 +48,9 @@ export default function FilterButtons({
           <select >
             <option>more search terms</option>
 
-            {filterTagsAll.map((item: FilterTermType, index: number) => (
+            {filterTagsAllArray.map((item: FilterTermType, index: number) => (
               
-              <option key={index} value={item}>
+              <option key={index} data-value={item}>
                 {item}
               </option>
             ))}

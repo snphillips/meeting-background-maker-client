@@ -122,7 +122,7 @@ export type FilterTermType = (
   'figures'|
   'fish'|
   'floral'|
-   'flowers'|
+  'flowers'|
   'foliage'|
   'foliate'|
   'food'|
@@ -232,6 +232,7 @@ export type FilterTermType = (
   'textiles'|
   'texture'|
   'theater'|
+  'thistles'|
   'tool'|
   'traditional'|
   'transportation'|
@@ -254,3 +255,25 @@ export type FilterTermType = (
   'wood'|
   'writing'
 )
+
+export type FilterButtonTermArrayType = [
+  'thistles',
+  'art deco',
+  'art nouveau',
+  'bauhaus',
+  'bouquets',
+  'cubism',
+  'gradient',
+  'mid-century modern',
+  'modern',
+  'modernism',
+  'op art',
+  'palm trees',
+  'pattern',
+  'postmodern',
+  'sidewall',
+  'textile',
+  'textile design',
+  'wall decoration',
+  'wallpaper',
+]

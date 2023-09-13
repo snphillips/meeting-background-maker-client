@@ -43,13 +43,13 @@ export default function CuratedSetComponent({
             <div 
               key={index + '-card'} 
               className='curated-set-card card'
-              value={item.setName}
+              data-value={item.setName}
               >
 
               <h4 
                 key={index + '-label'}
                 className='curated-set-label'
-                value={item.setName}
+                data-value={item.setName}
                 >
                 {item.setName}
               </h4>
@@ -66,7 +66,6 @@ export default function CuratedSetComponent({
                 <button
                   key={item.setName + 'download-button'}
                   className='curated-set-download-button'
-                  // type='download'
                 >
                   <svg className='svg-icon' viewBox='0 0 20 20'>
                     <path
