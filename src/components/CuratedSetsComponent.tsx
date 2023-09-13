@@ -14,7 +14,6 @@ export default function CuratedSetComponent({
   activeTab,
   curatedSetsArray 
 }: Props) {
-  console.log('curatedSetsArray', curatedSetsArray)
 
   // For use with Masonry package
   const breakpointColumnsObj = {
@@ -38,7 +37,6 @@ export default function CuratedSetComponent({
         columnClassName='my-masonry-grid_column'
       >
         {curatedSetsArray.map((item: CuratedSetsType, index: number) => {
-          console.log('curatedSetsArray item:', item)
           return (
             <div 
               key={index + '-card'} 
@@ -91,7 +89,6 @@ export default function CuratedSetComponent({
                 <button
                   key={item.setName + 'download-button'}
                   className='curated-set-download-button'
-                  // type='download'
                 >
                   <svg className='svg-icon' viewBox='0 0 20 20'>
                     <path

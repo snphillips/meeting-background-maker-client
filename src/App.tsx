@@ -58,7 +58,6 @@ export default function App() {
   function userSelectsFilterTerm(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const target = event.target as HTMLInputElement;
     event.preventDefault();
-    console.log('userSelectsFilterTerm event.target.value:', target.value);
     setValue(target.value as FilterTermType);
     /*
     The 'active' filter button gets an inverted style
@@ -107,17 +106,10 @@ Has [value] as dependency
       setDisplaySelectedImages(false);
     } else {
       setDisplaySelectedImages(true);
-      console.log('selectedImagesCollection:', selectedImagesCollection);
-      console.log(
-        selectedImagesCollection.map((item) => {
-          return item.id;
-        })
-      );
     }
   }, [selectedImagesCollection]);
 
   function removeItemFromCollection(item: MuseumItemType) {
-    console.log('Remove ', item.title, ' this item from collection');
     let selectedImagesArray = selectedImagesCollection;
     // using the _Lodash library to remove the item from the
     // array of selected images
@@ -170,7 +162,6 @@ Has [value] as dependency
     const imgJpegArray: string[] = [];
     selectedImagesCollection.forEach((item) => {
       if ('id' in item) {
-        console.log(`id: ${item.id}`);
         imgJpegArray.push(item.id + '.jpg');
       }
     });
@@ -184,7 +175,6 @@ Has [value] as dependency
     axios
       .get(serverURL + `download/`, request)
       .then(function (response) {
-        console.log('response:', response);
         const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement('a');
         link.href = downloadUrl;

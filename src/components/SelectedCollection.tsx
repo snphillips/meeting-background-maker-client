@@ -1,6 +1,6 @@
 import React from 'react';
 import Masonry from 'react-masonry-css';
-import { MuseumItemType }  from '../types';
+import { MuseumItemType }  from '../types.ts';
 
 type Props = {
   displaySelectedImages: boolean;
@@ -21,7 +21,6 @@ export default function SelectedCollection({
     960: 2,
     650: 1,
   };
-console.log('selectedImagesCollection:', selectedImagesCollection)
   /*
   Ternary to establish whether to display singular
   or plural word image

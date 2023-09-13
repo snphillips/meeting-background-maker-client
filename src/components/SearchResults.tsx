@@ -27,13 +27,10 @@ export default function SearchResults({
   setSelectedImagesCollection,
 }: Props) {
 
-  console.log('selectedImagesCollection:', selectedImagesCollection)
-  // console.log('preSelectedImages:', preSelectedImages)
   // If the item is in user's collection, display 'in collection' label
   // If not, display 'add to collection' button
   function whichButton(item: MuseumItemType) {
     let buttonOrDiv: JSX.Element | null = null;
-    console.log('selectedImagesCollection:', selectedImagesCollection, 'item:',  item)
 
     /* 
     The some() method tests whether at least one element
@@ -68,10 +65,7 @@ export default function SearchResults({
   }
 
   function addToCollection(item: MuseumItemType) {
-    console.log('selectedImagesCollection:', selectedImagesCollection)
-
     if (selectedImagesCollection.length >= 20) {
-      console.log('Collection is full. Return.', selectedImagesCollection.length);
       alert('Collection full. Remove an image before adding another.');
       return;
     }

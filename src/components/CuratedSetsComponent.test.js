@@ -52,13 +52,4 @@ describe('CuratedSetsComponent component', () => {
     const buttons = screen.getAllByRole('button', 'download image set');
     expect(buttons[0]).toBeInTheDocument();
   });
-
-  // curatedSets.map((set, index) => {
-  //   it('uses correct src', async () => {
-  //     render(component);
-  //     console.log('set', set);
-  //     // const image = getByAltText();
-  //     // expect(image.src).toContain('the_url');
-  //   });
-  // });
 });

@@ -16,7 +16,6 @@ export default function FilterButtons({
   userSelectsFilterTerm,
 }: Props) {
 
-  console.log('activeButton:', activeButton)
   return (
     <div className='filters-component'>
       <div>
@@ -30,7 +29,6 @@ export default function FilterButtons({
 
       <section className='filter-button-section'>
         {filterButtonTermsArray.map((item: FilterTermType, index: number) => {
-          console.log('filterButtonTermsArray item:', item)
           return (
             <button
               key={index}
