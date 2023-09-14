@@ -15,6 +15,7 @@ type Props = {
   preSelectedImages: MuseumItemType[] | [];
   removeItemFromCollection: (param: MuseumItemType) => void;
   selectedImagesCollection: MuseumItemType[];
+  serverError: boolean;
   setSelectedImagesCollection: React.Dispatch<React.SetStateAction<MuseumItemType[] | []>>;
   userSelectsFilterTerm: (param: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   value: FilterTermType | null;
@@ -31,6 +32,7 @@ export default function YourBackgroundsComponent({
   preSelectedImages,
   removeItemFromCollection,
   selectedImagesCollection,
+  serverError,
   setSelectedImagesCollection,
   userSelectsFilterTerm,
   value,
@@ -55,6 +57,7 @@ export default function YourBackgroundsComponent({
         displaySearchResults={displaySearchResults}
         preSelectedImages={preSelectedImages}
         selectedImagesCollection={selectedImagesCollection}
+        serverError={serverError}
         setSelectedImagesCollection={setSelectedImagesCollection}
       />
 

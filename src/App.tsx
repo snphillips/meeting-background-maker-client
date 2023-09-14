@@ -31,6 +31,7 @@ export default function App() {
 
   const initialRender = useRef(true);
   const [loading, setLoading] = useState(false); // the loading spinner
+  const [serverError, setServerError] = useState(false);
   const [value, setValue] = useState<FilterTermType | null>(null); // the user select filter term
   const [displayComputerImage, setDisplayComputerImage] = useState(true);
   const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
@@ -81,11 +82,12 @@ Has [value] as dependency
         try {
           const response = await axios.get(serverURL + `searchbytag/` + value);
           setPreSelectedImages(response.data);
-          setLoading(false);
           setDisplaySearchResults(true);
         } catch (error) {
-          // TODO: communicate to user if error
-          console.log('axios api call catch error:', error);
+          console.log('axios api call error:', error);
+          setServerError(true);
+        } finally {
+          setLoading(false);
         }
       };
       sendGetRequest();
@@ -232,12 +234,12 @@ Has [value] as dependency
           displayComputerImage={displayComputerImage}
           displaySearchResults={displaySearchResults}
           displaySelectedImages={displaySelectedImages}
-          // handleDropdownSubmit={handleDropdownSubmit}
           loading={loading}
           preSelectedImages={preSelectedImages}
           removeItemFromCollection={removeItemFromCollection}
           selectedImagesCollection={selectedImagesCollection}
           setSelectedImagesCollection={setSelectedImagesCollection}
+          serverError={serverError}
           userSelectsFilterTerm={userSelectsFilterTerm}
           value={value}
           zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}

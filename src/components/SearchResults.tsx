@@ -16,6 +16,7 @@ type Props = {
   displaySearchResults: boolean;
   preSelectedImages: MuseumItemType[] | [];
   selectedImagesCollection: MuseumItemType[] | [];
+  serverError: boolean;
   setSelectedImagesCollection: React.Dispatch<React.SetStateAction<MuseumItemType[] | []>>;
 }
 
@@ -24,6 +25,7 @@ export default function SearchResults({
   displaySearchResults,
   preSelectedImages,
   selectedImagesCollection,
+  serverError,
   setSelectedImagesCollection,
 }: Props) {
 
@@ -82,8 +84,13 @@ export default function SearchResults({
 
   return (
     <section className='component' id='results-component'>
-      {/* Nifty way of knowing when to display a component */}
-      {displaySearchResults && (
+      {serverError && 
+        <div>
+          <p>There was an error getting results.</p>
+          <p>In the meantime, try viewing the curated sets.</p>
+        </div>
+      }
+      {displaySearchResults && !serverError && (
         <div>
           <h3>Search Results</h3>
 
