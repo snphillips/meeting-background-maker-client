@@ -35,7 +35,7 @@ export default function FilterButtons({
               className={activeButton === item ? 'filter-button active' : 'filter-button'}
               id={'filter-button-' + item}
               type='button'
-              data-value={item}
+              value={item}
               onClick={userSelectsFilterTerm}
             >
               {item}
@@ -48,7 +48,7 @@ export default function FilterButtons({
 
             {filterTagsAllArray.map((item: FilterTermType, index: number) => (
               
-              <option key={index} data-value={item}>
+              <option key={index} value={item}>
                 {item}
               </option>
             ))}

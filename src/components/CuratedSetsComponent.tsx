@@ -41,13 +41,13 @@ export default function CuratedSetComponent({
             <div 
               key={index + '-card'} 
               className='curated-set-card card'
-              data-value={item.setName}
+              value={item.setName}
               >
 
               <h4 
                 key={index + '-label'}
                 className='curated-set-label'
-                data-value={item.setName}
+                value={item.setName}
                 >
                 {item.setName}
               </h4>

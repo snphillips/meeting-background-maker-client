@@ -86,8 +86,8 @@ export default function SearchResults({
     <section className='component' id='results-component'>
       {serverError && 
         <div>
-          <p>There was an error getting results.</p>
-          <p>In the meantime, try viewing the curated sets.</p>
+          <p>There was an error getting images.</p>
+          <p>In the meantime, view the curated sets.</p>
         </div>
       }
       {displaySearchResults && !serverError && (
@@ -113,7 +113,7 @@ export default function SearchResults({
                     alt={item.title}
                     onClick={() => {
                       // Nothing going on now when user clicks
-                      // perhaps in the future? Like, a modal opens?
+                      // TODO: a modal opens?
                     }}
                   />
                   {whichButton(item)}

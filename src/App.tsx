@@ -32,7 +32,7 @@ export default function App() {
   const initialRender = useRef(true);
   const [loading, setLoading] = useState(false); // the loading spinner
   const [serverError, setServerError] = useState(false);
-  const [value, setValue] = useState<FilterTermType | null>(null); // the user select filter term
+  const [value, setValue] = useState<FilterTermType | null>('cubism'); // the user select filter term
   const [displayComputerImage, setDisplayComputerImage] = useState(true);
   const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
   const [displaySearchResults, setDisplaySearchResults] = useState(false);
@@ -75,12 +75,18 @@ Has [value] as dependency
 */
   useEffect(() => {
     function searchByTag() {
+      setServerError(false);
       setLoading(true);
       shuffleBackgroundClipTextImage();
-
       const sendGetRequest = async () => {
         try {
-          const response = await axios.get(serverURL + `searchbytag/` + value);
+          console.log('value', value)
+          const response = await axios({
+            method: 'get',
+            url: serverURL + `searchbytag/` + value,
+            timeout: 10000
+          });
+          console.log('axios response.data:', response.data)
           setPreSelectedImages(response.data);
           setDisplaySearchResults(true);
         } catch (error) {
@@ -101,7 +107,9 @@ Has [value] as dependency
       setDisplayComputerImage(false);
       setDisplaySearchResults(true);
     }
-  }, [value, serverURL]);
+  }, [serverURL, value]);
+
+
 
   useEffect(() => {
     if (selectedImagesCollection.length < 1) {
