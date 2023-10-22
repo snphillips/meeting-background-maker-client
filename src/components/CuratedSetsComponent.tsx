@@ -5,7 +5,6 @@ import { CuratedSetsType } from '../types';
 
 type Props = {
   activeTab: 0 | 1;
-  // type is an array of curated sets
   curatedSetsArray: CuratedSetsType[];
 };
 

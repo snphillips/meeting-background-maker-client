@@ -4,23 +4,15 @@ import '@testing-library/jest-dom';
 import CuratedSetsComponent from './CuratedSetsComponent';
 
 // Curated Sets
-import cocktailHour from '../CuratedSets/cocktailHour.js';
-import colorTheory from '../CuratedSets/colorTheory.js';
-import gardenParty from '../CuratedSets/gardenParty.js';
-import gourmet from '../CuratedSets/gourmet.js';
-import hermanMillerPicnic from '../CuratedSets/hermanMillerPicnic.js';
-import photoMural from '../CuratedSets/photoMural.js';
+import cocktailHour from '../CuratedSets/cocktailHour';
+import colorTheory from '../CuratedSets/colorTheory';
+import gardenParty from '../CuratedSets/gardenParty';
+import gourmet from '../CuratedSets/gourmet';
+import hermanMillerPicnic from '../CuratedSets/hermanMillerPicnic';
+import photoMural from '../CuratedSets/photoMural';
 import kolomanMoser from '../CuratedSets/kolomanMoser';
 
-const curatedSets = [
-  cocktailHour,
-  colorTheory,
-  gardenParty,
-  gourmet,
-  hermanMillerPicnic,
-  photoMural,
-  kolomanMoser,
-];
+const curatedSets = [cocktailHour, colorTheory, gardenParty, gourmet, hermanMillerPicnic, photoMural, kolomanMoser];
 
 const headings = [
   'cocktail hour',
