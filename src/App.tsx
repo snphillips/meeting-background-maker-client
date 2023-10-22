@@ -14,7 +14,7 @@ import gourmet from './CuratedSets/gourmet.js';
 import hermanMillerPicnic from './CuratedSets/hermanMillerPicnic.js';
 import photoMural from './CuratedSets/photoMural.js';
 import kolomanMoser from './CuratedSets/kolomanMoser.js';
-import { MuseumItemType, FilterTermType }  from './types';
+import { MuseumItemType, FilterTermType } from './types';
 const curatedSetsArray = [
   cocktailHour,
   colorTheory,
@@ -80,13 +80,13 @@ Has [value] as dependency
       shuffleBackgroundClipTextImage();
       const sendGetRequest = async () => {
         try {
-          console.log('value', value)
+          console.log('value', value);
           const response = await axios({
             method: 'get',
             url: serverURL + `searchbytag/` + value,
-            timeout: 10000
+            timeout: 10000,
           });
-          console.log('axios response.data:', response.data)
+          console.log('axios response.data:', response.data);
           setPreSelectedImages(response.data);
           setDisplaySearchResults(true);
         } catch (error) {
@@ -108,8 +108,6 @@ Has [value] as dependency
       setDisplaySearchResults(true);
     }
   }, [serverURL, value]);
-
-
 
   useEffect(() => {
     if (selectedImagesCollection.length < 1) {
@@ -175,7 +173,6 @@ Has [value] as dependency
         imgJpegArray.push(item.id + '.jpg');
       }
     });
-    
 
     let request = {
       params: imgJpegArray,
@@ -202,17 +199,16 @@ Has [value] as dependency
       });
   }
 
-
   return (
-    <div className='App app-container'>
+    <div className="App app-container">
       <Header />
 
-      <nav id='section-headers'>
-        <ul id='nav-tabs'>
-          <li className='user-generated-set-div'>
+      <nav id="section-headers">
+        <ul id="nav-tabs">
+          <li className="user-generated-set-div">
             <h2
               className={`tab ${activeTab === 0 ? 'active-tab' : ''}`}
-              id='user-generated-set-tab'
+              id="user-generated-set-tab"
               onClick={() => {
                 setActiveTab(0);
               }}
@@ -221,10 +217,10 @@ Has [value] as dependency
             </h2>
           </li>
 
-          <li className='curated-set-heading-div'>
+          <li className="curated-set-heading-div">
             <h2
               className={`tab ${activeTab === 1 ? 'active-tab' : ''}`}
-              id='curated-set-tab'
+              id="curated-set-tab"
               onClick={() => {
                 setActiveTab(1);
               }}
@@ -235,7 +231,7 @@ Has [value] as dependency
         </ul>
       </nav>
 
-      <section id='component-sections'>
+      <section id="component-sections">
         <YourBackgroundsComponent
           activeButton={activeButton}
           activeTab={activeTab}
@@ -253,10 +249,7 @@ Has [value] as dependency
           zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
         />
 
-        <CuratedSetsComponent 
-          activeTab={activeTab}
-          curatedSetsArray={curatedSetsArray} 
-        />
+        <CuratedSetsComponent activeTab={activeTab} curatedSetsArray={curatedSetsArray} />
       </section>
       <Footer />
     </div>
