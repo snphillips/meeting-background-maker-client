@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import _reject from 'lodash/reject';
 import Header from './components/Header';
@@ -78,16 +78,16 @@ export default function App() {
     }
   }, []);
 
-  const userSelectsFilterTerm = useCallback((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  function userSelectsFilterTerm(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const target = event.target as HTMLInputElement;
     event.preventDefault();
     setValue(target.value as FilterTermType);
     /*
-       The 'active' filter button gets an inverted style
-       We pass activeButton state to FilterButtons
-       */
+    The 'active' filter button gets an inverted style
+    We pass activeButton state to FilterButtons
+    */
     setActiveButton(target.value as FilterTermType);
-  }, []);
+  }
 
   /*
 ===================================
@@ -139,7 +139,7 @@ Has [value] as dependency
     }
   }, [selectedImagesCollection]);
 
-  const removeItemFromCollection = useCallback((item: MuseumItemType) => {
+  function removeItemFromCollection(item: MuseumItemType) {
     let selectedImagesArray = selectedImagesCollection;
     // using the _Lodash library to remove the item from the
     // array of selected images
@@ -148,7 +148,7 @@ Has [value] as dependency
       return theObject.id === item.id;
     });
     setSelectedImagesCollection(selectedImagesArray);
-  }, []);
+  }
 
   function shuffleBackgroundClipTextImage() {
     let numOfBackgroundImages = 31;
@@ -177,15 +177,15 @@ Has [value] as dependency
     clipTextElement?.style.setProperty('-webkit-background-clip', 'text');
   }
 
-  const zipDownloadFolderSelectedImages = useCallback(() => {
+  function zipDownloadFolderSelectedImages() {
     /*
-    selectedImagesCollection is now an array of
+    At this stage selectedImagesCollection is an array of
     large object containing interesting data about the items.
     
     All we are interested in is the item id, as that is what is
-    used as file names in AWS. First, map over the
-    large object and push into an array the key 'id' and its
-    corresponding value. Then we'll have the imgJpegArray, which is
+    used as file names in AWS. The first step is to map over the
+    large object and push into an array the the key 'id' and its
+    corresponding value. Now we have the imgJpegArray, which is
     being send in the request to the server,
     which will then speak to AWS
     */
@@ -219,7 +219,7 @@ Has [value] as dependency
         // A message to view curated types?
         console.log('downloadZip error:', error);
       });
-  }, []);
+  }
 
   return (
     <div className="App app-container">
