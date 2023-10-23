@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import _reject from 'lodash/reject';
 import Header from './components/Header';
-import CuratedSetsComponent from './components/CuratedSetsComponent';
 import Footer from './components/Footer';
+import CuratedSetsComponent from './components/CuratedSetsComponent';
 import YourBackgroundsComponent from './components/YourBackgroundsComponent';
 
 // Curated Sets

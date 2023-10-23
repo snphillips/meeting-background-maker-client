@@ -28,6 +28,7 @@ export default function SearchResults({
   serverError,
   setSelectedImagesCollection,
 }: Props) {
+  const imgBucketURL = 'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/';
   // If the item is in user's collection, display 'in collection' label
   // If not, display 'add to collection' button
   function whichButton(item: MuseumItemType) {
@@ -98,7 +99,7 @@ export default function SearchResults({
                   <img
                     key={item.id}
                     className="result-img"
-                    src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + item.id + '.jpg'}
+                    src={imgBucketURL + item.id + '.jpg'}
                     alt={item.title}
                     onClick={() => {
                       // Nothing happens when user clicks
