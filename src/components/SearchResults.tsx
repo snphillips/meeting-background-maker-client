@@ -1,6 +1,6 @@
 import React from 'react';
 import Masonry from 'react-masonry-css';
-import { MuseumItemType }  from '../types';
+import { MuseumItemType } from '../types';
 
 /*
 This component takes an array called preSelectedImages 
@@ -18,7 +18,7 @@ type Props = {
   selectedImagesCollection: MuseumItemType[] | [];
   serverError: boolean;
   setSelectedImagesCollection: React.Dispatch<React.SetStateAction<MuseumItemType[] | []>>;
-}
+};
 
 // export default function SearchResults(props) {
 export default function SearchResults({
@@ -28,7 +28,6 @@ export default function SearchResults({
   serverError,
   setSelectedImagesCollection,
 }: Props) {
-
   // If the item is in user's collection, display 'in collection' label
   // If not, display 'add to collection' button
   function whichButton(item: MuseumItemType) {
@@ -43,18 +42,13 @@ export default function SearchResults({
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
     */
     if (selectedImagesCollection.some((el: MuseumItemType) => el.id === item.id)) {
-      buttonOrDiv = (
-        <div 
-          className='results-button-in-collection'>
-          in collection
-        </div>
-      );
+      buttonOrDiv = <div className="results-button-in-collection">in collection</div>;
     } else {
       buttonOrDiv = (
         <button
-          type='button'
+          type="button"
           value={item.id}
-          className='results-button-add-to-collection'
+          className="results-button-add-to-collection"
           onClick={() => {
             addToCollection(item);
           }}
@@ -72,7 +66,6 @@ export default function SearchResults({
       return;
     }
     setSelectedImagesCollection((prevArray: MuseumItemType[]) => [...prevArray, item]);
-
   }
 
   // For use with React Masonry CSS package
@@ -83,37 +76,33 @@ export default function SearchResults({
   };
 
   return (
-    <section className='component' id='results-component'>
-      {serverError && 
+    <section className="component" id="results-component">
+      {serverError && (
         <div>
           <p>There was an error getting images.</p>
           <p>In the meantime, view the curated sets.</p>
         </div>
-      }
+      )}
       {displaySearchResults && !serverError && (
         <div>
           <h3>Search Results</h3>
 
           <Masonry
             breakpointCols={breakpointColumnsObj}
-            className='my-masonry-grid curated-sets-list pre-selected-images-gallery results image-grid'
-            columnClassName='my-masonry-grid_column'
+            className="my-masonry-grid curated-sets-list pre-selected-images-gallery results image-grid"
+            columnClassName="my-masonry-grid_column"
           >
             {preSelectedImages.map((item: MuseumItemType, index: number) => {
               return (
-                <div key={index} className='image-card card'>
+                <div key={index} className="image-card card">
                   <img
                     key={item.id}
-                    className='result-img'
-                    src={
-                      `https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` +
-                      item.id +
-                      '.jpg'
-                    }
+                    className="result-img"
+                    src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + item.id + '.jpg'}
                     alt={item.title}
                     onClick={() => {
-                      // Nothing going on now when user clicks
-                      // TODO: a modal opens?
+                      // Nothing happens when user clicks
+                      // TODO: a modal opens so they can get a better look at the image?
                     }}
                   />
                   {whichButton(item)}

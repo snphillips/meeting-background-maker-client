@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import CuratedSetsImageGallery from './CuratedSetsImageGallery';
 import Masonry from 'react-masonry-css';
 import { CuratedSetsType } from '../types';
@@ -8,7 +8,7 @@ type Props = {
   curatedSetsArray: CuratedSetsType[];
 };
 
-export default function CuratedSetComponent({ activeTab, curatedSetsArray }: Props) {
+function CuratedSetComponent({ activeTab, curatedSetsArray }: Props) {
   // For use with Masonry package
   const breakpointColumnsObj = {
     default: 3,
@@ -85,3 +85,5 @@ export default function CuratedSetComponent({ activeTab, curatedSetsArray }: Pro
     </section>
   );
 }
+
+export default memo(CuratedSetComponent);

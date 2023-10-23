@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import _reject from 'lodash/reject';
 import Header from './components/Header';
@@ -30,7 +30,7 @@ export default function App() {
   const serverURL = `https://meeting-background-server.herokuapp.com/`;
 
   const initialRender = useRef(true);
-  const [loading, setLoading] = useState(false); // the loading spinner
+  const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState(false);
   const [value, setValue] = useState<FilterTermType | null>('cubism'); // the user select filter term
   const [displayComputerImage, setDisplayComputerImage] = useState(true);
@@ -41,6 +41,7 @@ export default function App() {
   const [activeButton, setActiveButton] = useState<FilterTermType | 'button-id'>('button-id');
   const [activeTab, setActiveTab] = useState<0 | 1>(0);
 
+  // For Profiler
   function onRenderCallback(
     id: any, // the "id" prop of the Profiler tree that has just committed
     phase: any, // either "mount" (if the tree just mounted) or "update" (if it re-rendered)
@@ -77,16 +78,16 @@ export default function App() {
     }
   }, []);
 
-  function userSelectsFilterTerm(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  const userSelectsFilterTerm = useCallback((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const target = event.target as HTMLInputElement;
     event.preventDefault();
     setValue(target.value as FilterTermType);
     /*
-    The 'active' filter button gets an inverted style
-    We pass activeButton state to FilterButtons
-    */
+       The 'active' filter button gets an inverted style
+       We pass activeButton state to FilterButtons
+       */
     setActiveButton(target.value as FilterTermType);
-  }
+  }, []);
 
   /*
 ===================================
@@ -138,7 +139,7 @@ Has [value] as dependency
     }
   }, [selectedImagesCollection]);
 
-  function removeItemFromCollection(item: MuseumItemType) {
+  const removeItemFromCollection = useCallback((item: MuseumItemType) => {
     let selectedImagesArray = selectedImagesCollection;
     // using the _Lodash library to remove the item from the
     // array of selected images
@@ -147,7 +148,7 @@ Has [value] as dependency
       return theObject.id === item.id;
     });
     setSelectedImagesCollection(selectedImagesArray);
-  }
+  }, []);
 
   function shuffleBackgroundClipTextImage() {
     let numOfBackgroundImages = 31;
@@ -176,15 +177,15 @@ Has [value] as dependency
     clipTextElement?.style.setProperty('-webkit-background-clip', 'text');
   }
 
-  function zipDownloadFolderSelectedImages() {
+  const zipDownloadFolderSelectedImages = useCallback(() => {
     /*
-    At this stage selectedImagesCollection is an array of
+    selectedImagesCollection is now an array of
     large object containing interesting data about the items.
     
     All we are interested in is the item id, as that is what is
-    used as file names in AWS. The first step is to map over the
-    large object and push into an array the the key 'id' and its
-    corresponding value. Now we have the imgJpegArray, which is
+    used as file names in AWS. First, map over the
+    large object and push into an array the key 'id' and its
+    corresponding value. Then we'll have the imgJpegArray, which is
     being send in the request to the server,
     which will then speak to AWS
     */
@@ -218,7 +219,7 @@ Has [value] as dependency
         // A message to view curated types?
         console.log('downloadZip error:', error);
       });
-  }
+  }, []);
 
   return (
     <div className="App app-container">
