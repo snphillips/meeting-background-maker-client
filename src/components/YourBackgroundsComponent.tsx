@@ -3,7 +3,7 @@ import FilterButtons from './FilterButtons';
 import ComputerImage from './ComputerImage';
 import SearchResults from './SearchResults';
 import SelectedCollection from './SelectedCollection';
-import { MuseumItemType, FilterTermType }  from '../types';
+import { MuseumItemType, FilterTermType } from '../types';
 
 type Props = {
   activeButton: FilterTermType | 'button-id';
@@ -17,7 +17,10 @@ type Props = {
   selectedImagesCollection: MuseumItemType[];
   serverError: boolean;
   setSelectedImagesCollection: React.Dispatch<React.SetStateAction<MuseumItemType[] | []>>;
-  userSelectsFilterTerm: (param: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  // userSelectsFilterTerm: (param: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  userSelectsFilterTerm: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.ChangeEvent<HTMLSelectElement>,
+  ) => void;
   value: FilterTermType | null;
   zipDownloadFolderSelectedImages: () => void;
 };
@@ -40,16 +43,12 @@ export default function YourBackgroundsComponent({
 }: Props) {
   return (
     <section
-      id='user-generated-set-window'
+      id="user-generated-set-window"
       style={{
         display: activeTab === 0 ? 'block' : 'none',
       }}
     >
-      <FilterButtons
-        activeButton={activeButton}
-        loading={loading}
-        userSelectsFilterTerm={userSelectsFilterTerm}
-      />
+      <FilterButtons activeButton={activeButton} loading={loading} userSelectsFilterTerm={userSelectsFilterTerm} />
 
       <ComputerImage displayComputerImage={displayComputerImage} />
 

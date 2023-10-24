@@ -78,7 +78,9 @@ export default function App() {
     }
   }, []);
 
-  function userSelectsFilterTerm(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function userSelectsFilterTerm(
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.ChangeEvent<HTMLSelectElement>,
+  ) {
     const target = event.target as HTMLInputElement;
     event.preventDefault();
     setValue(target.value as FilterTermType);
