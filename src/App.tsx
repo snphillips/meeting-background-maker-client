@@ -42,26 +42,26 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<0 | 1>(0);
 
   // For Profiler
-  function onRenderCallback(
-    id: any, // the "id" prop of the Profiler tree that has just committed
-    phase: any, // either "mount" (if the tree just mounted) or "update" (if it re-rendered)
-    actualDuration: any, // time spent rendering the committed update
-    baseDuration: any, // estimated time to render the entire subtree without memoization
-    startTime: any, // when React began rendering this update
-    commitTime: any, // when React committed this update
-    interactions: any, // the Set of interactions belonging to this update
-  ) {
-    // Aggregate or log render timings...
-    console.log({
-      id,
-      phase,
-      actualDuration,
-      baseDuration,
-      startTime,
-      commitTime,
-      interactions,
-    });
-  }
+  // function onRenderCallback(
+  //   id: any, // the "id" prop of the Profiler tree that has just committed
+  //   phase: any, // either "mount" (if the tree just mounted) or "update" (if it re-rendered)
+  //   actualDuration: any, // time spent rendering the committed update
+  //   baseDuration: any, // estimated time to render the entire subtree without memoization
+  //   startTime: any, // when React began rendering this update
+  //   commitTime: any, // when React committed this update
+  //   interactions: any, // the Set of interactions belonging to this update
+  // ) {
+  //   // Aggregate or log render timings...
+  //   console.log({
+  //     id,
+  //     phase,
+  //     actualDuration,
+  //     baseDuration,
+  //     startTime,
+  //     commitTime,
+  //     interactions,
+  //   });
+  // }
 
   /*
   ===================================
@@ -165,7 +165,7 @@ Has [value] as dependency
 
     /*
       We change the background often for fun.
-      Sometimes, we change the background and there is no computer screen icon.
+      Sometimes, we change the background and there is no computer screen icon (like on mobile)
       Only change the background of the computer icon, if it's there.
       */
     if (computerScreenElement) {
@@ -175,6 +175,7 @@ Has [value] as dependency
     clipTextElement?.style.setProperty('color', '#fff');
     clipTextElement?.style.setProperty('-webkit-text-fill-color', 'transparent');
     clipTextElement?.style.setProperty('-webkit-background-clip', 'text');
+    // clipTextElement?.classList.add('clip-text-style');
   }
 
   function zipDownloadFolderSelectedImages() {
@@ -223,59 +224,59 @@ Has [value] as dependency
 
   return (
     <div className="App app-container">
-      <React.Profiler id="MyComponent" onRender={onRenderCallback}>
-        <Header />
+      {/* <React.Profiler id="MyComponent" onRender={onRenderCallback}> */}
+      <Header />
 
-        <nav id="section-headers">
-          <ul id="nav-tabs">
-            <li className="user-generated-set-div">
-              <h2
-                className={`tab ${activeTab === 0 ? 'active-tab' : ''}`}
-                id="user-generated-set-tab"
-                onClick={() => {
-                  setActiveTab(0);
-                }}
-              >
-                Your Backgrounds
-              </h2>
-            </li>
+      <nav id="section-headers">
+        <ul id="nav-tabs">
+          <li className="user-generated-set-div">
+            <h2
+              className={`tab ${activeTab === 0 ? 'active-tab' : ''}`}
+              id="user-generated-set-tab"
+              onClick={() => {
+                setActiveTab(0);
+              }}
+            >
+              Your Backgrounds
+            </h2>
+          </li>
 
-            <li className="curated-set-heading-div">
-              <h2
-                className={`tab ${activeTab === 1 ? 'active-tab' : ''}`}
-                id="curated-set-tab"
-                onClick={() => {
-                  setActiveTab(1);
-                }}
-              >
-                Curated Sets
-              </h2>
-            </li>
-          </ul>
-        </nav>
+          <li className="curated-set-heading-div">
+            <h2
+              className={`tab ${activeTab === 1 ? 'active-tab' : ''}`}
+              id="curated-set-tab"
+              onClick={() => {
+                setActiveTab(1);
+              }}
+            >
+              Curated Sets
+            </h2>
+          </li>
+        </ul>
+      </nav>
 
-        <section id="component-sections">
-          <YourBackgroundsComponent
-            activeButton={activeButton}
-            activeTab={activeTab}
-            displayComputerImage={displayComputerImage}
-            displaySearchResults={displaySearchResults}
-            displaySelectedImages={displaySelectedImages}
-            loading={loading}
-            preSelectedImages={preSelectedImages}
-            removeItemFromCollection={removeItemFromCollection}
-            selectedImagesCollection={selectedImagesCollection}
-            setSelectedImagesCollection={setSelectedImagesCollection}
-            serverError={serverError}
-            userSelectsFilterTerm={userSelectsFilterTerm}
-            value={value}
-            zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
-          />
+      <section id="component-sections">
+        <YourBackgroundsComponent
+          activeButton={activeButton}
+          activeTab={activeTab}
+          displayComputerImage={displayComputerImage}
+          displaySearchResults={displaySearchResults}
+          displaySelectedImages={displaySelectedImages}
+          loading={loading}
+          preSelectedImages={preSelectedImages}
+          removeItemFromCollection={removeItemFromCollection}
+          selectedImagesCollection={selectedImagesCollection}
+          setSelectedImagesCollection={setSelectedImagesCollection}
+          serverError={serverError}
+          userSelectsFilterTerm={userSelectsFilterTerm}
+          value={value}
+          zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
+        />
 
-          <CuratedSetsComponent activeTab={activeTab} curatedSetsArray={curatedSetsArray} />
-        </section>
-        <Footer />
-      </React.Profiler>
+        <CuratedSetsComponent activeTab={activeTab} curatedSetsArray={curatedSetsArray} />
+      </section>
+      <Footer />
+      {/* </React.Profiler> */}
     </div>
   );
 }

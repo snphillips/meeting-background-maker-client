@@ -498,6 +498,146 @@ Footer
   background-color: #000 !important;
 }
 
+/*==============================
+Background Images
+Yes, we're repeating ourselves here but this is 
+way faster than the JS strategy I was using before
+================================*/
+/* .clip-text-style {
+  color: #fff;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+} */
+
+/* .background-1 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/1.png');
+}
+
+.background-2 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/2.png');
+}
+
+.background-3 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/3.png');
+}
+
+.background-4 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/4.png');
+}
+
+.background-5 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/5.png');
+}
+
+.background-6 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/6.png');
+}
+
+.background-7 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/7.png');
+}
+
+.background-8 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/8.png');
+}
+
+.background-9 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/9.png');
+}
+
+.background-10 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/10.png');
+}
+
+.background-11 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/11.png');
+}
+
+.background-12 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/12.png');
+}
+
+.background-13 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/13.png');
+}
+
+.background-14 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/14.png');
+}
+
+.background-15 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/15.png');
+}
+
+.background-16 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds16.png');
+}
+
+.background-17 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/17.png');
+}
+
+.background-18 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/18.png');
+}
+
+.background-19 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/19.png');
+}
+
+.background-20 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/20.png');
+}
+
+.background-21 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/21.png');
+}
+
+.background-22 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/22.png');
+}
+
+.background-23 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/23.png');
+}
+
+.background-24 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/24.png');
+}
+
+.background-25 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/25.png');
+}
+
+.background-26 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/26.png');
+}
+
+.background-27 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/27.png');
+}
+
+.background-28 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/28.png');
+}
+
+.background-29 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/29.png');
+}
+
+.background-30 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/30.png');
+}
+
+.background-31 {
+  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/31.png');
+} */
+
+/*==============================
+Footer
+================================*/
+
 /******************************************************************/
 /*=========================
 Media Queries - computer
@@ -506,7 +646,7 @@ Media Queries - computer
 @media (max-width: 1400px) {
   .image-grid {
     /*display: grid;*/
-    /* 4 colums, all the same width */
+    /* 4 columns, all the same width */
     /*grid-template-columns: auto auto auto auto;*/
     /*grid-template-rows: auto;*/
   }
@@ -527,7 +667,7 @@ Media Queries - small computer
 
   .image-grid {
     /*display: grid;*/
-    /* 3 colums, all the same width */
+    /* 3 columns, all the same width */
     /*grid-template-columns: auto auto auto;*/
     /*grid-template-rows: auto;*/
   }
