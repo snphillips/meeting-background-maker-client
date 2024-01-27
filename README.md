@@ -53,10 +53,10 @@ Voila! 🥂
 
 ### Made With
 * Cooper Hewitt Museum API
-* Create-React-App
+* Vite
 * react-masonry-css
 * Axios
-* React-Ppinners
+* React-Spinners
 
 ### Server Made With
 * Node
