@@ -46,7 +46,9 @@ cd meeting-background-maker-client
 `````````
 `npm start`
 `````````
-Your browser should open to http://localhost:3000/ Voila! 🥂
+Vite will suggest you open a url like http://127.0.0.1:5173/ 
+
+Voila! 🥂
 
 
 ### Made With
