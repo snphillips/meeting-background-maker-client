@@ -2,7 +2,7 @@
 
 See project deployed here: https://meeting-background-maker.surge.sh/ 
 
-_Companion to Meeting Background Maker Server: https://github.com/snphillips/meeting-background-maker-server_
+_This repo is a companion to the Meeting Background Maker Server repo: https://github.com/snphillips/meeting-background-maker-server_
 
 This web app allows users to select images of items from the Cooper Hewitt Design Museum's collection to be used as backgrounds for online meetings. The user may browse through the museum's collection using keywords such as "bauhaus" or "modernism", or the user may download existing sets curated by me.
 
