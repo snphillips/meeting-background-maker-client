@@ -17,7 +17,7 @@ When users are satisfied with a collection of images they've curated, they may d
 
 ### Getting Started
 
-This app assumes you have an aws s3 bucket to save images in. 
+This app assumes you have an aws s3 bucket to save images in. This app only works when the server is running. You can install this client without the server however the app won't retrieve images.
 
 Follow the instructions to install the server first: https://github.com/snphillips/meeting-background-maker-server,
 then come back here to install this repo.
