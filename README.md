@@ -26,7 +26,7 @@ then come back here to install this repo.
 After you've set up the server, clone this repo:
 
 `````````
-`git clone https://github.com/snphillips/meeting-background-maker-client.git`
+git clone https://github.com/snphillips/meeting-background-maker-client.git
 `````````
  
 Change directories into the project folder:
@@ -39,13 +39,13 @@ cd meeting-background-maker-client
 🛠 Run npm to install all the dependencies:
 
 `````````
-`npm install`
+npm install
 `````````
 
 🪄 Start the React server:
 
 `````````
-`npm start`
+npm start
 `````````
 Vite will suggest you open a url like http://127.0.0.1:5173/ 
 
