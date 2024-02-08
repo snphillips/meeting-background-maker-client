@@ -23,6 +23,7 @@ type Props = {
   ) => void;
   value: FilterTermType | null;
   zipDownloadFolderSelectedImages: () => void;
+  openModal: (arg: number) => void;
 };
 
 export default function YourBackgroundsComponent({
@@ -40,6 +41,7 @@ export default function YourBackgroundsComponent({
   userSelectsFilterTerm,
   value,
   zipDownloadFolderSelectedImages,
+  openModal
 }: Props) {
   return (
     <section
@@ -58,6 +60,7 @@ export default function YourBackgroundsComponent({
         selectedImagesCollection={selectedImagesCollection}
         serverError={serverError}
         setSelectedImagesCollection={setSelectedImagesCollection}
+        openModal={openModal}
       />
 
       <SelectedCollection

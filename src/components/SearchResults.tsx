@@ -18,6 +18,7 @@ type Props = {
   selectedImagesCollection: MuseumItemType[] | [];
   serverError: boolean;
   setSelectedImagesCollection: React.Dispatch<React.SetStateAction<MuseumItemType[] | []>>;
+  openModal: (arg: number) => void;
 };
 
 // export default function SearchResults(props) {
@@ -27,6 +28,7 @@ export default function SearchResults({
   selectedImagesCollection,
   serverError,
   setSelectedImagesCollection,
+  openModal
 }: Props) {
   const imgBucketURL = 'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/';
   // If the item is in user's collection, display 'in collection' label
@@ -104,6 +106,7 @@ export default function SearchResults({
                     onClick={() => {
                       // Nothing happens when user clicks
                       // TODO: a modal opens so they can get a better look at the image?
+                      openModal(index);
                     }}
                   />
                   {whichButton(item)}

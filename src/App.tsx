@@ -4,6 +4,7 @@ import _reject from 'lodash/reject';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CuratedSetsComponent from './components/CuratedSetsComponent';
+import Modal from './components/Modal';
 import YourBackgroundsComponent from './components/YourBackgroundsComponent';
 
 // Curated Sets
@@ -40,6 +41,22 @@ export default function App() {
   const [selectedImagesCollection, setSelectedImagesCollection] = useState<[] | MuseumItemType[]>([]);
   const [activeButton, setActiveButton] = useState<FilterTermType | 'button-id'>('button-id');
   const [activeTab, setActiveTab] = useState<0 | 1>(0);
+
+  const [displayModal, setDisplayModal] = useState(false);
+  const [displayModalNextButton, setDisplayModalNextButton] = useState(false);
+  const [displayModalBackButton, setDisplayModalBackButton] = useState(false);
+  const [modalPropertiesMaxWidth, setModalPropertiesMaxWidth] = useState<ModalPropertiesMaxWidthType>('500px');
+  const [modalImageIndex, setModalImageIndex] = useState(0);
+  const [modalState, setModalState] = useState<ModalStateType>({
+    modalImageOrientation: 'landscape',
+    modalImageURL: '',
+    modalTitle: '',
+    modalYear: '',
+    modalMedia: '',
+    modalDims: '',
+    modalPrice: '',
+    modalStatement: '',
+  });
 
   // For Profiler
   // function onRenderCallback(
@@ -104,7 +121,7 @@ Has [value] as dependency
       shuffleBackgroundClipTextImage();
       const sendGetRequest = async () => {
         try {
-          console.log('value', value);
+          console.log('value:', value);
           const response = await axios({
             method: 'get',
             url: serverURL + `searchbytag/` + value,
@@ -140,6 +157,52 @@ Has [value] as dependency
       setDisplaySelectedImages(true);
     }
   }, [selectedImagesCollection]);
+
+
+
+ /*
+ ==================================
+ modal: the expanded image
+ ==================================
+ 1) In openModal, indicate which image the user has clicked and display modal
+ 2) In the useEffect(), update a bunch of information
+    accompanying each image 
+ */
+    function openModal(imageIndex: number) {
+      console.log("modal clicked")
+      setModalImageIndex(imageIndex);
+      setDisplayModal(true);
+    }
+  
+    // useEffect(() => {
+    //   if (firstUpdate.current) {
+    //     firstUpdate.current = false;
+    //     return;
+    //   } else {
+    //     setModalState(() => {
+    //       return {
+    //         modalImageOrientation: filteredArt[modalImageIndex].imageShape,
+    //       };
+    //     });
+  
+    //     if (modalImageIndex === filteredArt.length - 1) {
+    //       setDisplayModalBackButton(true);
+    //       setDisplayModalNextButton(false);
+    //     } else if (modalImageIndex === 0) {
+    //       setDisplayModalBackButton(false);
+    //       setDisplayModalNextButton(true);
+    //     } else {
+    //       setDisplayModalBackButton(true);
+    //       setDisplayModalNextButton(true);
+    //     }
+    //   }
+    // }, [modalImageIndex]);
+
+
+
+
+
+
 
   function removeItemFromCollection(item: MuseumItemType) {
     let selectedImagesArray = selectedImagesCollection;
@@ -273,7 +336,20 @@ Has [value] as dependency
           userSelectsFilterTerm={userSelectsFilterTerm}
           value={value}
           zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
+          openModal={openModal}
         />
+
+        {/* <Modal
+          modalImageIndex={modalImageIndex}
+          modalPreviousImage={modalPreviousImage}
+          modalNextImage={modalNextImage}
+          displayModal={displayModal}
+          closeModal={closeModal}
+          modalState={modalState}
+          modalPropertiesMaxWidth={modalPropertiesMaxWidth}
+          displayModalNextButton={displayModalNextButton}
+          displayModalBackButton={displayModalBackButton}
+        /> */}
 
         <CuratedSetsComponent activeTab={activeTab} curatedSetsArray={curatedSetsArray} />
       </section>
