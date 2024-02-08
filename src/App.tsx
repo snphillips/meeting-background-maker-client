@@ -181,11 +181,11 @@ Has [value] as dependency
     //   } else {
     //     setModalState(() => {
     //       return {
-    //         modalImageOrientation: filteredArt[modalImageIndex].imageShape,
+    //         modalImageOrientation: preSelectedImages[modalImageIndex].imageShape,
     //       };
     //     });
   
-    //     if (modalImageIndex === filteredArt.length - 1) {
+    //     if (modalImageIndex === preSelectedImages.length - 1) {
     //       setDisplayModalBackButton(true);
     //       setDisplayModalNextButton(false);
     //     } else if (modalImageIndex === 0) {
@@ -199,7 +199,39 @@ Has [value] as dependency
     // }, [modalImageIndex]);
 
 
+  /*
+This function applies both to the arrow buttons on the site &
+the arrow buttons on the keyboard.
+If the user hits the back arrow on their keyboard on the
+first image, the modal closes.
+*/
+function modalPreviousImage() {
+  let previousImageIndex = modalImageIndex - 1;
+  if (previousImageIndex < 0) {
+    closeModal();
+  } else {
+    setModalImageIndex(previousImageIndex);
+  }
+}
 
+/* 
+this function applies both to the modal arrow buttons &
+the arrow buttons on the keyboard.
+If the user hits the forward arrow on their keyboard on the last image,
+the modal closes.
+*/
+function modalNextImage() {
+  let nextImageIndex = modalImageIndex + 1;
+  if (nextImageIndex > preSelectedImages.length - 1) {
+    closeModal();
+  } else {
+    setModalImageIndex(nextImageIndex);
+  }
+}
+
+function closeModal() {
+  setDisplayModal(false);
+}
 
 
 
@@ -339,7 +371,7 @@ Has [value] as dependency
           openModal={openModal}
         />
 
-        {/* <Modal
+        <Modal
           modalImageIndex={modalImageIndex}
           modalPreviousImage={modalPreviousImage}
           modalNextImage={modalNextImage}
@@ -349,7 +381,7 @@ Has [value] as dependency
           modalPropertiesMaxWidth={modalPropertiesMaxWidth}
           displayModalNextButton={displayModalNextButton}
           displayModalBackButton={displayModalBackButton}
-        /> */}
+        />
 
         <CuratedSetsComponent activeTab={activeTab} curatedSetsArray={curatedSetsArray} />
       </section>

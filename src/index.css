@@ -499,140 +499,146 @@ Footer
 }
 
 /*==============================
-Background Images
-Yes, we're repeating ourselves here but this is 
-way faster than the JS strategy I was using before
+ Modal
 ================================*/
-/* .clip-text-style {
-  color: #fff;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-} */
-
-/* .background-1 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/1.png');
+.modal-background {
+  /* display: none; */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 5vh; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(119, 119, 119, .5);
+/* Add Animation - Zoom in the Modal */
+  animation-name: zoombig;
+  animation-duration: 0.3s;
 }
 
-.background-2 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/2.png');
+@keyframes zoombig {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
 }
 
-.background-3 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/3.png');
+.modal-content-container {
+  display: flex;
+  position: relative;
+  padding: 1rem;
+  background: #fff;
+  margin: 0 auto;
+  max-width: 800px;
 }
 
-.background-4 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/4.png');
+#modal-next-button:hover,
+#modal-back-button:hover,
+.modal-close-button:hover {
+  color: #777;
 }
 
-.background-5 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/5.png');
+/*==============================
+ Modal - left container/back button
+================================*/
+section.modal-left-container {
+  display: block;
+  width: 3rem;
+  /*border: 1px solid purple;*/
 }
 
-.background-6 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/6.png');
+#modal-back-button {
+  cursor: pointer;
+  position: relative;
+  top: 40%;
+  top: 299px;
+  color: #aaa;
+  transition: .2s;
+  margin-right: .75rem;
+  /*z-index: 1;*/
 }
 
-.background-7 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/7.png');
+
+/*==============================
+ Modal - image container
+================================*/
+section.modal-image-and-info-container {
+  display: block;
+  max-width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  transition: .3s;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.background-8 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/8.png');
+
+#modal-image {
+  width: 100%;
+  max-width: 700px;
+  display: block;
+  margin-bottom: .5rem;
+  margin: 0 auto;
 }
 
-.background-9 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/9.png');
+
+.modal-info-container {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  text-align: left;
+  animation-name: nextimage;
+  animation-duration: 1s;
 }
 
-.background-10 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/10.png');
+.modal-info-container p {
+  margin-block-start: .1rem;
+  margin-block-end: .1rem;
+  font-size: .8rem;
 }
 
-.background-11 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/11.png');
+.modal-statement {
+  margin-top: .5rem !important;
 }
 
-.background-12 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/12.png');
+
+/*==============================
+ Modal - right container/close & next button
+================================*/
+section.modal-right-container {
+  display: block;
+  width: 3rem;
 }
 
-.background-13 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/13.png');
+.modal-close-button {
+  cursor: pointer;
+  color: #aaa;
+  transition: .2s;
+  margin-left: .75rem;
 }
 
-.background-14 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/14.png');
+#modal-next-button {
+  cursor: pointer;
+  position: relative;
+  top: 33%;
+  top: 260px;
+  color: #aaa;
+  transition: .2s;
+  margin-left: .75rem;
+  animation-name: nextimage;
+  animation-duration: 1s;
 }
 
-.background-15 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/15.png');
-}
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
 
-.background-16 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds16.png');
-}
-
-.background-17 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/17.png');
-}
-
-.background-18 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/18.png');
-}
-
-.background-19 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/19.png');
-}
-
-.background-20 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/20.png');
-}
-
-.background-21 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/21.png');
-}
-
-.background-22 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/22.png');
-}
-
-.background-23 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/23.png');
-}
-
-.background-24 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/24.png');
-}
-
-.background-25 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/25.png');
-}
-
-.background-26 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/26.png');
-}
-
-.background-27 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/27.png');
-}
-
-.background-28 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/28.png');
-}
-
-.background-29 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/29.png');
-}
-
-.background-30 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/30.png');
-}
-
-.background-31 {
-  background: url('https://meeting-background-maker.s3.amazonaws.com/app-backgrounds/31.png');
-} */
+/
 
 /*==============================
 Footer
