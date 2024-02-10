@@ -15,7 +15,7 @@ import gourmet from './CuratedSets/gourmet';
 import hermanMillerPicnic from './CuratedSets/hermanMillerPicnic';
 import photoMural from './CuratedSets/photoMural';
 import kolomanMoser from './CuratedSets/kolomanMoser';
-import { MuseumItemType, FilterTermType } from './types';
+import { ModalStateType, MuseumItemType, FilterTermType } from './types';
 const curatedSetsArray = [
   cocktailHour,
   colorTheory,
@@ -29,6 +29,7 @@ const curatedSetsArray = [
 export default function App() {
   // const serverURL = `http://localhost:3001/`
   const serverURL = `https://meeting-background-server.herokuapp.com/`;
+  const imgBucketURL = 'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/';
 
   const initialRender = useRef(true);
   const [loading, setLoading] = useState(false);
@@ -45,19 +46,21 @@ export default function App() {
   const [displayModal, setDisplayModal] = useState(false);
   const [displayModalNextButton, setDisplayModalNextButton] = useState(false);
   const [displayModalBackButton, setDisplayModalBackButton] = useState(false);
-  const [modalPropertiesMaxWidth, setModalPropertiesMaxWidth] = useState<ModalPropertiesMaxWidthType>('500px');
+  const [modalPropertiesMaxWidth, setModalPropertiesMaxWidth] = useState<ModalPropertiesMaxWidthType>('800px');
   const [modalImageIndex, setModalImageIndex] = useState(0);
-  const [modalState, setModalState] = useState<ModalStateType>({
-    modalImageOrientation: 'landscape',
-    modalImageURL: '',
-    modalTitle: '',
-    modalYear: '',
-    modalMedia: '',
-    modalDims: '',
-    modalPrice: '',
-    modalStatement: '',
-  });
+  const [modalImageURL, setModalImageURL] = useState(imgBucketURL + '18620781.jpg');
 
+
+  /*
+  We can make a useEffect hook not run on initial render
+  by creating a variable with useRef hook to keep tracking
+  of when the first render is done.
+  Set the variable’s value to true initially.
+  When the component is rendered the first time,
+  set the variable to false.
+  */
+  const firstUpdate = useRef(true);
+  
   // For Profiler
   // function onRenderCallback(
   //   id: any, // the "id" prop of the Profiler tree that has just committed
@@ -94,6 +97,7 @@ export default function App() {
       shuffleBackgroundClipTextImage();
     }
   }, []);
+
 
   function userSelectsFilterTerm(
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.ChangeEvent<HTMLSelectElement>,
@@ -174,29 +178,25 @@ Has [value] as dependency
       setDisplayModal(true);
     }
   
-    // useEffect(() => {
-    //   if (firstUpdate.current) {
-    //     firstUpdate.current = false;
-    //     return;
-    //   } else {
-    //     setModalState(() => {
-    //       return {
-    //         modalImageOrientation: preSelectedImages[modalImageIndex].imageShape,
-    //       };
-    //     });
-  
-    //     if (modalImageIndex === preSelectedImages.length - 1) {
-    //       setDisplayModalBackButton(true);
-    //       setDisplayModalNextButton(false);
-    //     } else if (modalImageIndex === 0) {
-    //       setDisplayModalBackButton(false);
-    //       setDisplayModalNextButton(true);
-    //     } else {
-    //       setDisplayModalBackButton(true);
-    //       setDisplayModalNextButton(true);
-    //     }
-    //   }
-    // }, [modalImageIndex]);
+    useEffect(() => {
+      if (firstUpdate.current) {
+        firstUpdate.current = false;
+        return;
+      } else {
+        setModalImageURL(imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg');
+
+        if (modalImageIndex === preSelectedImages.length - 1) {
+          setDisplayModalBackButton(true);
+          setDisplayModalNextButton(false);
+        } else if (modalImageIndex === 0) {
+          setDisplayModalBackButton(false);
+          setDisplayModalNextButton(true);
+        } else {
+          setDisplayModalBackButton(true);
+          setDisplayModalNextButton(true);
+        }
+      }
+    }, [modalImageIndex]);
 
 
   /*
@@ -377,10 +377,10 @@ function closeModal() {
           modalNextImage={modalNextImage}
           displayModal={displayModal}
           closeModal={closeModal}
-          modalState={modalState}
           modalPropertiesMaxWidth={modalPropertiesMaxWidth}
           displayModalNextButton={displayModalNextButton}
           displayModalBackButton={displayModalBackButton}
+          modalImageURL={modalImageURL}
         />
 
         <CuratedSetsComponent activeTab={activeTab} curatedSetsArray={curatedSetsArray} />

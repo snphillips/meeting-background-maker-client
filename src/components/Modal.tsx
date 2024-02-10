@@ -20,6 +20,7 @@ type Props = {
   modalPropertiesMaxWidth: ModalPropertiesMaxWidthType;
   displayModalNextButton: boolean;
   displayModalBackButton: boolean;
+  modalImageURL: any;
 };
 
 export default function Modal({
@@ -31,8 +32,11 @@ export default function Modal({
   modalNextImage,
   modalPropertiesMaxWidth,
   displayModalNextButton,
-  displayModalBackButton
+  displayModalBackButton,
+  modalImageURL
 }: Props) {
+
+  console.log('modalImageURL', modalImageURL)
 
   return (
     <>
@@ -71,7 +75,7 @@ export default function Modal({
               <div className='modal-image-container'>
                 <img 
                 id='modal-image'
-                src={modalState.modalImageURL}
+                src={modalImageURL}
                 alt=''
                 style={{'maxWidth': modalPropertiesMaxWidth}}
                 />
@@ -81,12 +85,6 @@ export default function Modal({
               className='modal-info-container'
               style={{'maxWidth': modalPropertiesMaxWidth}}
               >
-                <p><i>{modalState.modalTitle}</i></p>
-                <p>{modalState.modalYear}</p>
-                <p>{modalState.modalMedia}</p>
-                <p>{modalState.modalDims}</p>
-                <p>{modalState.modalPrice}</p>
-                <p className='modal-statement'>{modalState.modalStatement}</p>
               </div>
             </section>
 
