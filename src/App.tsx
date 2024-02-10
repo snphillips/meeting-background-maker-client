@@ -185,7 +185,9 @@ Has [value] as dependency
         firstUpdate.current = false;
         return;
       } else {
-        setModalImageURL(imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg');
+        setModalImageURL( () => {
+          return imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg'
+        })
 
         if (modalImageIndex === preSelectedImages.length - 1) {
           setDisplayModalBackButton(true);
