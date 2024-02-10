@@ -15,7 +15,7 @@ import gourmet from './CuratedSets/gourmet';
 import hermanMillerPicnic from './CuratedSets/hermanMillerPicnic';
 import photoMural from './CuratedSets/photoMural';
 import kolomanMoser from './CuratedSets/kolomanMoser';
-import { ModalStateType, MuseumItemType, FilterTermType } from './types';
+import { MuseumItemType, FilterTermType } from './types';
 const curatedSetsArray = [
   cocktailHour,
   colorTheory,
@@ -50,7 +50,6 @@ export default function App() {
   const [modalImageIndex, setModalImageIndex] = useState(0);
   const [modalImageURL, setModalImageURL] = useState<undefined | string>();
 
-
   /*
   We can make a useEffect hook not run on initial render
   by creating a variable with useRef hook to keep tracking
@@ -60,7 +59,7 @@ export default function App() {
   set the variable to false.
   */
   const firstUpdate = useRef(true);
-  
+
   // For Profiler
   // function onRenderCallback(
   //   id: any, // the "id" prop of the Profiler tree that has just committed
@@ -90,16 +89,8 @@ export default function App() {
   ===================================
   */
   useEffect(() => {
-    // TODO: why do we have this here?
-    // I thought it was b/c otherwise the background would shuffle too much
-    // Only runs once per app load
-    // let didInit = false;
-    // if (!didInit) {
-    //   didInit = true;
-      shuffleBackgroundClipTextImage();
-    // }
+    shuffleBackgroundClipTextImage();
   }, []);
-
 
   function userSelectsFilterTerm(
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.ChangeEvent<HTMLSelectElement>,
@@ -125,7 +116,7 @@ Has [value] as dependency
       setServerError(false);
       setLoading(true);
       shuffleBackgroundClipTextImage();
-      const sendGetRequest = async () => {
+      const getData = async () => {
         try {
           console.log('value:', value);
           const response = await axios({
@@ -143,10 +134,11 @@ Has [value] as dependency
           setLoading(false);
         }
       };
-      sendGetRequest();
+      getData();
     }
 
-    // don't run on initial render
+    // Don't run on initial render
+    // TODO: explain why we don't run on initial render
     if (initialRender.current) {
       initialRender.current = false;
     } else {
@@ -164,9 +156,7 @@ Has [value] as dependency
     }
   }, [selectedImagesCollection]);
 
-
-
- /*
+  /*
  ==================================
  modal: the expanded image
  ==================================
@@ -174,34 +164,33 @@ Has [value] as dependency
  2) In the useEffect(), update a bunch of information
     accompanying each image 
  */
-    function openModal(imageIndex: number) {
-      console.log("modal clicked with imageIndex", imageIndex)
-      setModalImageIndex(imageIndex);
-      setDisplayModal(true);
-    }
-  
-    useEffect(() => {
-      if (firstUpdate.current) {
-        firstUpdate.current = false;
-        return;
+  function openModal(imageIndex: number) {
+    console.log('modal clicked with imageIndex', imageIndex);
+    setModalImageIndex(imageIndex);
+    setDisplayModal(true);
+  }
+
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    } else {
+      setModalImageURL(() => {
+        return imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg';
+      });
+
+      if (modalImageIndex === preSelectedImages.length - 1) {
+        setDisplayModalBackButton(true);
+        setDisplayModalNextButton(false);
+      } else if (modalImageIndex === 0) {
+        setDisplayModalBackButton(false);
+        setDisplayModalNextButton(true);
       } else {
-        setModalImageURL( () => {
-          return imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg'
-        })
-
-        if (modalImageIndex === preSelectedImages.length - 1) {
-          setDisplayModalBackButton(true);
-          setDisplayModalNextButton(false);
-        } else if (modalImageIndex === 0) {
-          setDisplayModalBackButton(false);
-          setDisplayModalNextButton(true);
-        } else {
-          setDisplayModalBackButton(true);
-          setDisplayModalNextButton(true);
-        }
+        setDisplayModalBackButton(true);
+        setDisplayModalNextButton(true);
       }
-    }, [modalImageIndex]);
-
+    }
+  }, [modalImageIndex]);
 
   /*
 This function applies both to the arrow buttons on the site &
@@ -209,36 +198,33 @@ the arrow buttons on the keyboard.
 If the user hits the back arrow on their keyboard on the
 first image, the modal closes.
 */
-function modalPreviousImage() {
-  let previousImageIndex = modalImageIndex - 1;
-  if (previousImageIndex < 0) {
-    closeModal();
-  } else {
-    setModalImageIndex(previousImageIndex);
+  function onPreviousImageModal() {
+    let previousImageIndex = modalImageIndex - 1;
+    if (previousImageIndex < 0) {
+      onCloseModal();
+    } else {
+      setModalImageIndex(previousImageIndex);
+    }
   }
-}
 
-/* 
+  /* 
 this function applies both to the modal arrow buttons &
 the arrow buttons on the keyboard.
 If the user hits the forward arrow on their keyboard on the last image,
 the modal closes.
 */
-function modalNextImage() {
-  let nextImageIndex = modalImageIndex + 1;
-  if (nextImageIndex > preSelectedImages.length - 1) {
-    closeModal();
-  } else {
-    setModalImageIndex(nextImageIndex);
+  function onNextImageModal() {
+    let nextImageIndex = modalImageIndex + 1;
+    if (nextImageIndex > preSelectedImages.length - 1) {
+      onCloseModal();
+    } else {
+      setModalImageIndex(nextImageIndex);
+    }
   }
-}
 
-function closeModal() {
-  setDisplayModal(false);
-}
-
-
-
+  function onCloseModal() {
+    setDisplayModal(false);
+  }
 
   function removeItemFromCollection(item: MuseumItemType) {
     let selectedImagesArray = selectedImagesCollection;
@@ -377,10 +363,10 @@ function closeModal() {
 
         <Modal
           modalImageIndex={modalImageIndex}
-          modalPreviousImage={modalPreviousImage}
-          modalNextImage={modalNextImage}
+          onPreviousImageModal={onPreviousImageModal}
+          onNextImageModal={onNextImageModal}
           displayModal={displayModal}
-          closeModal={closeModal}
+          onCloseModal={onCloseModal}
           modalPropertiesMaxWidth={modalPropertiesMaxWidth}
           displayModalNextButton={displayModalNextButton}
           displayModalBackButton={displayModalBackButton}
