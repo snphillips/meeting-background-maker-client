@@ -175,10 +175,12 @@ Has [value] as dependency
       firstUpdate.current = false;
       return;
     } else {
-      setModalImageURL(() => {
-        return imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg';
-      });
-
+      // Check if preSelectedImages is not empty and modalImageIndex is within bounds
+      if (preSelectedImages.length > 0 && modalImageIndex >= 0 && modalImageIndex < preSelectedImages.length) {
+        setModalImageURL(() => {
+          return imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg';
+        });
+      }
       if (modalImageIndex === preSelectedImages.length - 1) {
         setDisplayModalBackButton(true);
         setDisplayModalNextButton(false);
@@ -190,14 +192,14 @@ Has [value] as dependency
         setDisplayModalNextButton(true);
       }
     }
-  }, [modalImageIndex]);
+  }, [modalImageIndex, preSelectedImages]);
 
   /*
-This function applies both to the arrow buttons on the site &
-the arrow buttons on the keyboard.
-If the user hits the back arrow on their keyboard on the
-first image, the modal closes.
-*/
+  This function applies both to the arrow buttons on the site &
+  the arrow buttons on the keyboard.
+  If the user hits the back arrow on their keyboard on the
+  first image, the modal closes.
+  */
   function onPreviousImageModal() {
     let previousImageIndex = modalImageIndex - 1;
     if (previousImageIndex < 0) {
@@ -208,11 +210,11 @@ first image, the modal closes.
   }
 
   /* 
-this function applies both to the modal arrow buttons &
-the arrow buttons on the keyboard.
-If the user hits the forward arrow on their keyboard on the last image,
-the modal closes.
-*/
+  this function applies both to the modal arrow buttons &
+  the arrow buttons on the keyboard.
+  If the user hits the forward arrow on their keyboard on the last image,
+  the modal closes.
+  */
   function onNextImageModal() {
     let nextImageIndex = modalImageIndex + 1;
     if (nextImageIndex > preSelectedImages.length - 1) {

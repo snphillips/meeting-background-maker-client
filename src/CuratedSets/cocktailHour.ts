@@ -1,8 +1,7 @@
 // note: creating imageURL key & value with getter
 // https://www.programiz.com/javascript/getter-setter
 
-const awsURLCurated =
-  'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds-curated-sets/';
+const awsURLCurated = 'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds-curated-sets/';
 const setName = 'cocktailHour/';
 
 const cocktailHour = {

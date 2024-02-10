@@ -41,7 +41,7 @@ export default function YourBackgroundsComponent({
   userSelectsFilterTerm,
   value,
   zipDownloadFolderSelectedImages,
-  openModal
+  openModal,
 }: Props) {
   return (
     <section

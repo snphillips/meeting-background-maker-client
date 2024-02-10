@@ -33,6 +33,9 @@ export default function Modal({
   displayModalBackButton,
   modalImageURL,
 }: Props) {
+  console.log('modal modalImageIndex', modalImageIndex);
+  console.log('modalImageURL', modalImageURL);
+
   return (
     <>
       {displayModal && (

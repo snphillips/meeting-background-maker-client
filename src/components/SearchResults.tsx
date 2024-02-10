@@ -28,7 +28,7 @@ export default function SearchResults({
   selectedImagesCollection,
   serverError,
   setSelectedImagesCollection,
-  openModal
+  openModal,
 }: Props) {
   const imgBucketURL = 'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/';
   // If the item is in user's collection, display 'in collection' label
