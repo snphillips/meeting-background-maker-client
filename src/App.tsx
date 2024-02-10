@@ -48,7 +48,7 @@ export default function App() {
   const [displayModalBackButton, setDisplayModalBackButton] = useState(false);
   const [modalPropertiesMaxWidth, setModalPropertiesMaxWidth] = useState<ModalPropertiesMaxWidthType>('800px');
   const [modalImageIndex, setModalImageIndex] = useState(0);
-  const [modalImageURL, setModalImageURL] = useState(imgBucketURL + '18620781.jpg');
+  const [modalImageURL, setModalImageURL] = useState<undefined | string>();
 
 
   /*
@@ -90,12 +90,14 @@ export default function App() {
   ===================================
   */
   useEffect(() => {
+    // TODO: why do we have this here?
+    // I thought it was b/c otherwise the background would shuffle too much
     // Only runs once per app load
-    let didInit = false;
-    if (!didInit) {
-      didInit = true;
+    // let didInit = false;
+    // if (!didInit) {
+    //   didInit = true;
       shuffleBackgroundClipTextImage();
-    }
+    // }
   }, []);
 
 
@@ -173,7 +175,7 @@ Has [value] as dependency
     accompanying each image 
  */
     function openModal(imageIndex: number) {
-      console.log("modal clicked")
+      console.log("modal clicked with imageIndex", imageIndex)
       setModalImageIndex(imageIndex);
       setDisplayModal(true);
     }

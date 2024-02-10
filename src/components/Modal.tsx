@@ -14,7 +14,6 @@ type Props = {
   displayModal: boolean;
   closeModal: () => void;
   modalImageIndex: number;
-  modalState: ModalStateType;
   modalNextImage: (parameter: number) => void;
   modalPreviousImage: (parameter: number) => void;
   modalPropertiesMaxWidth: ModalPropertiesMaxWidthType;
@@ -28,7 +27,6 @@ export default function Modal({
   closeModal,
   modalImageIndex,
   modalPreviousImage,
-  modalState,
   modalNextImage,
   modalPropertiesMaxWidth,
   displayModalNextButton,
