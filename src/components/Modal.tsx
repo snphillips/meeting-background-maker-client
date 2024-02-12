@@ -1,5 +1,4 @@
 import React from 'react';
-import { ModalStateType, ModalPropertiesMaxWidthType } from '../types';
 
 /* 
 =========================================================
@@ -16,7 +15,6 @@ type Props = {
   modalImageIndex: number;
   onNextImageModal: (parameter: number) => void;
   onPreviousImageModal: (parameter: number) => void;
-  modalPropertiesMaxWidth: ModalPropertiesMaxWidthType;
   displayModalNextButton: boolean;
   displayModalBackButton: boolean;
   modalImageURL: any;
@@ -28,14 +26,10 @@ export default function Modal({
   modalImageIndex,
   onPreviousImageModal,
   onNextImageModal,
-  modalPropertiesMaxWidth,
   displayModalNextButton,
   displayModalBackButton,
   modalImageURL,
 }: Props) {
-  console.log('modal modalImageIndex', modalImageIndex);
-  console.log('modalImageURL', modalImageURL);
-
   return (
     <>
       {displayModal && (
@@ -71,10 +65,8 @@ export default function Modal({
 
             <section className="modal-image-and-info-container" onClick={onCloseModal}>
               <div className="modal-image-container">
-                <img id="modal-image" src={modalImageURL} alt="" style={{ maxWidth: modalPropertiesMaxWidth }} />
+                <img id="modal-image" src={modalImageURL} alt="" />
               </div>
-
-              <div className="modal-info-container" style={{ maxWidth: modalPropertiesMaxWidth }}></div>
             </section>
 
             <section className="modal-right-container">

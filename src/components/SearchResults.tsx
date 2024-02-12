@@ -31,8 +31,10 @@ export default function SearchResults({
   openModal,
 }: Props) {
   const imgBucketURL = 'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/';
-  // If the item is in user's collection, display 'in collection' label
-  // If not, display 'add to collection' button
+  /*
+  If the item is in user's collection, display 'in collection' label
+  If not, display 'add to collection' button
+  */
   function whichButton(item: MuseumItemType) {
     let buttonOrDiv: JSX.Element | null = null;
 

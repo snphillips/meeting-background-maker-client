@@ -46,7 +46,6 @@ export default function App() {
   const [displayModal, setDisplayModal] = useState(false);
   const [displayModalNextButton, setDisplayModalNextButton] = useState(false);
   const [displayModalBackButton, setDisplayModalBackButton] = useState(false);
-  const [modalPropertiesMaxWidth, setModalPropertiesMaxWidth] = useState<ModalPropertiesMaxWidthType>('800px');
   const [modalImageIndex, setModalImageIndex] = useState(0);
   const [modalImageURL, setModalImageURL] = useState<undefined | string>();
 
@@ -176,6 +175,7 @@ Has [value] as dependency
       return;
     } else {
       // Check if preSelectedImages is not empty and modalImageIndex is within bounds
+      // Otherwise, the first modal opens after render had no image
       if (preSelectedImages.length > 0 && modalImageIndex >= 0 && modalImageIndex < preSelectedImages.length) {
         setModalImageURL(() => {
           return imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg';
@@ -369,7 +369,6 @@ Has [value] as dependency
           onNextImageModal={onNextImageModal}
           displayModal={displayModal}
           onCloseModal={onCloseModal}
-          modalPropertiesMaxWidth={modalPropertiesMaxWidth}
           displayModalNextButton={displayModalNextButton}
           displayModalBackButton={displayModalBackButton}
           modalImageURL={modalImageURL}
