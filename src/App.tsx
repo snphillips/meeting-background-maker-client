@@ -105,11 +105,11 @@ export default function App() {
   }
 
   /*
-===================================
-Runs Whenever 'value' changes
-Has [value] as dependency
-===================================
-*/
+  ===================================
+  Runs Whenever 'value' changes
+  Has [value] as dependency
+  ===================================
+  */
   useEffect(() => {
     function searchByTag() {
       setServerError(false);
@@ -138,6 +138,7 @@ Has [value] as dependency
 
     // Don't run on initial render
     // TODO: explain why we don't run on initial render
+    // b/c I forgot why
     if (initialRender.current) {
       initialRender.current = false;
     } else {
@@ -156,13 +157,13 @@ Has [value] as dependency
   }, [selectedImagesCollection]);
 
   /*
- ==================================
- modal: the expanded image
- ==================================
- 1) In openModal, indicate which image the user has clicked and display modal
- 2) In the useEffect(), update a bunch of information
-    accompanying each image 
- */
+  ==================================
+  modal: the expanded image
+  ==================================
+  1) In openModal, indicate which image the user has clicked and display modal
+  2) In the useEffect(), update a bunch of information
+      accompanying each image 
+  */
   function openModal(imageIndex: number) {
     console.log('modal clicked with imageIndex', imageIndex);
     setModalImageIndex(imageIndex);
@@ -174,8 +175,10 @@ Has [value] as dependency
       firstUpdate.current = false;
       return;
     } else {
-      // Check if preSelectedImages is not empty and modalImageIndex is within bounds
-      // Otherwise, the first modal opens after render had no image
+      /*
+      Check if preSelectedImages is not empty and modalImageIndex is within bounds
+      Otherwise, the first modal opens after render had no image.
+      */
       if (preSelectedImages.length > 0 && modalImageIndex >= 0 && modalImageIndex < preSelectedImages.length) {
         setModalImageURL(() => {
           return imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg';
@@ -230,9 +233,11 @@ Has [value] as dependency
 
   function removeItemFromCollection(item: MuseumItemType) {
     let selectedImagesArray = selectedImagesCollection;
-    // using the _Lodash library to remove the item from the
-    // array of selected images
-    // https://lodash.com/docs/#reject
+    /*
+    Using _Lodash _reject to remove the item from the
+    array of selected images
+    https://lodash.com/docs/#reject
+    */
     selectedImagesArray = _reject(selectedImagesArray, (theObject: MuseumItemType) => {
       return theObject.id === item.id;
     });
@@ -253,10 +258,10 @@ Has [value] as dependency
     bodyElement!.style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
 
     /*
-      We change the background often for fun.
-      Sometimes, we change the background and there is no computer screen icon (like on mobile)
-      Only change the background of the computer icon, if it's there.
-      */
+    We change the background often for fun.
+    Sometimes, we change the background and there is no computer screen icon (like on mobile)
+    Only change the background of the computer icon, if it's there.
+    */
     if (computerScreenElement) {
       computerScreenElement.style.setProperty('background', `url(` + dir + randomNumber + `.png)`);
     }
@@ -264,13 +269,12 @@ Has [value] as dependency
     clipTextElement?.style.setProperty('color', '#fff');
     clipTextElement?.style.setProperty('-webkit-text-fill-color', 'transparent');
     clipTextElement?.style.setProperty('-webkit-background-clip', 'text');
-    // clipTextElement?.classList.add('clip-text-style');
   }
 
   function zipDownloadFolderSelectedImages() {
     /*
     At this stage selectedImagesCollection is an array of
-    large object containing interesting data about the items.
+    large objects containing interesting data about the items.
     
     All we are interested in is the item id, as that is what is
     used as file names in AWS. The first step is to map over the
