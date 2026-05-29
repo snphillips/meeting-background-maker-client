@@ -27,8 +27,9 @@ const curatedSetsArray = [
 ];
 
 export default function App() {
-  // const serverURL = `http://localhost:3001/`
-  const serverURL = `https://meeting-background-server.herokuapp.com/`;
+  // const serverURL = `http://localhost:3001/`;
+  // const serverURL = `https://meeting-background-server.herokuapp.com/`;
+  const serverURL = `https://meeting-background-maker-server.netlify.app/`;
   const imgBucketURL = 'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/';
 
   const initialRender = useRef(true);
@@ -122,6 +123,7 @@ export default function App() {
             method: 'get',
             url: serverURL + `searchbytag/` + value,
             timeout: 10000,
+            headers: { Accept: 'application/json' },
           });
           console.log('axios response.data:', response.data);
           setPreSelectedImages(response.data);
@@ -137,8 +139,7 @@ export default function App() {
     }
 
     // Don't run on initial render
-    // TODO: explain why we don't run on initial render
-    // b/c I forgot why
+    // b/c the user hasn't selected a search term yet
     if (initialRender.current) {
       initialRender.current = false;
     } else {
