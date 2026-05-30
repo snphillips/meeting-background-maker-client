@@ -29,7 +29,7 @@ const curatedSetsArray = [
 export default function App() {
   // const serverURL = `http://localhost:3001/`;
   // const serverURL = `https://meeting-background-server.herokuapp.com/`;
-  const serverURL = `https://meeting-background-maker-server.netlify.app/`;
+  const serverURL = `https://meeting-background-maker-server.netlify.app/api/`;
   const imgBucketURL = 'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/';
 
   const initialRender = useRef(true);
@@ -59,29 +59,6 @@ export default function App() {
   set the variable to false.
   */
   const firstUpdate = useRef(true);
-
-  // For Profiler
-  // function onRenderCallback(
-  //   id: any, // the "id" prop of the Profiler tree that has just committed
-  //   phase: any, // either "mount" (if the tree just mounted) or "update" (if it re-rendered)
-  //   actualDuration: any, // time spent rendering the committed update
-  //   baseDuration: any, // estimated time to render the entire subtree without memoization
-  //   startTime: any, // when React began rendering this update
-  //   commitTime: any, // when React committed this update
-  //   interactions: any, // the Set of interactions belonging to this update
-  // ) {
-  //   // Aggregate or log render timings...
-  //   console.log({
-  //     id,
-  //     phase,
-  //     actualDuration,
-  //     baseDuration,
-  //     startTime,
-  //     commitTime,
-  //     interactions,
-  //   });
-  // }
-
   /*
   ===================================
   Runs on first render
