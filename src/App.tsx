@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import _reject from 'lodash/reject';
 import Header from './components/Header';
@@ -36,8 +36,8 @@ export default function App() {
   const [serverError, setServerError] = useState(false);
   const [value, setValue] = useState<FilterTermType | null>('cubism'); // the user select filter term
   const [displayComputerImage, setDisplayComputerImage] = useState(true);
-  const [preSelectedImages, setPreSelectedImages] = useState<[] | MuseumItemType[]>([]);
-  const [selectedImagesCollection, setSelectedImagesCollection] = useState<[] | MuseumItemType[]>([]);
+  const [preSelectedImages, setPreSelectedImages] = useState<MuseumItemType[]>([]);
+  const [selectedImagesCollection, setSelectedImagesCollection] = useState<MuseumItemType[]>([]);
   const [activeButton, setActiveButton] = useState<FilterTermType | 'button-id'>('button-id');
   const [activeTab, setActiveTab] = useState<0 | 1>(0);
 
@@ -95,14 +95,14 @@ export default function App() {
       shuffleBackgroundClipTextImage();
       const getData = async () => {
         try {
-          console.log('value:', value);
+          // console.log('value:', value);
           const response = await axios({
             method: 'get',
             url: serverURL + `searchbytag/` + value,
             timeout: 10000,
             headers: { Accept: 'application/json' },
           });
-          console.log('axios response.data:', response.data);
+          // console.log('axios response.data:', response.data);
           setPreSelectedImages(response.data);
         } catch (error) {
           console.log('axios api call error:', error);
@@ -133,7 +133,7 @@ export default function App() {
       accompanying each image 
   */
   function openModal(imageIndex: number) {
-    console.log('modal clicked with imageIndex', imageIndex);
+    // console.log('modal clicked with imageIndex', imageIndex);
     setModalImageIndex(imageIndex);
     setDisplayModal(true);
   }
