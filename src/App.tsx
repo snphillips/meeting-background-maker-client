@@ -36,34 +36,29 @@ export default function App() {
   const [serverError, setServerError] = useState(false);
   const [value, setValue] = useState<FilterTermType | null>('cubism'); // the user select filter term
   const [displayComputerImage, setDisplayComputerImage] = useState(true);
-  const [displaySearchResults, setDisplaySearchResults] = useState(false);
   const [preSelectedImages, setPreSelectedImages] = useState<[] | MuseumItemType[]>([]);
   const [selectedImagesCollection, setSelectedImagesCollection] = useState<[] | MuseumItemType[]>([]);
   const [activeButton, setActiveButton] = useState<FilterTermType | 'button-id'>('button-id');
   const [activeTab, setActiveTab] = useState<0 | 1>(0);
 
   const [displayModal, setDisplayModal] = useState(false);
-  const [displayModalNextButton, setDisplayModalNextButton] = useState(false);
-  const [displayModalBackButton, setDisplayModalBackButton] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
-  const [modalImageURL, setModalImageURL] = useState<undefined | string>();
+  const modalImageURL =
+    preSelectedImages.length > 0 && modalImageIndex >= 0 && modalImageIndex < preSelectedImages.length
+      ? imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg'
+      : undefined;
+
+  const displayModalBackButton = modalImageIndex > 0;
+  const displayModalNextButton = modalImageIndex < preSelectedImages.length - 1;
 
   /*
-  displaySelectedImages is always just a derived value of
-  selectedImagesCollection — it's never set independently.
-  So you can compute it inline:
+  The below consts are just a derived value of other states- 
+  they're never set independently.
+  So we compute them inline:
   */
   const displaySelectedImages = selectedImagesCollection.length > 0;
+  const displaySearchResults = preSelectedImages.length > 0;
 
-  /*
-  We can make a useEffect hook not run on initial render
-  by creating a variable with useRef hook to keep tracking
-  of when the first render is done.
-  Set the variable’s value to true initially.
-  When the component is rendered the first time,
-  set the variable to false.
-  */
-  const firstUpdate = useRef(true);
   /*
   ===================================
   Runs on first render
@@ -109,7 +104,6 @@ export default function App() {
           });
           console.log('axios response.data:', response.data);
           setPreSelectedImages(response.data);
-          setDisplaySearchResults(true);
         } catch (error) {
           console.log('axios api call error:', error);
           setServerError(true);
@@ -127,17 +121,8 @@ export default function App() {
     } else {
       searchByTag();
       setDisplayComputerImage(false);
-      setDisplaySearchResults(true);
     }
   }, [serverURL, value]);
-
-  // useEffect(() => {
-  //   if (selectedImagesCollection.length < 1) {
-  //     setDisplaySelectedImages(false);
-  //   } else {
-  //     setDisplaySelectedImages(true);
-  //   }
-  // }, [selectedImagesCollection]);
 
   /*
   ==================================
@@ -152,33 +137,6 @@ export default function App() {
     setModalImageIndex(imageIndex);
     setDisplayModal(true);
   }
-
-  useEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false;
-      return;
-    } else {
-      /*
-      Check if preSelectedImages is not empty and modalImageIndex is within bounds
-      Otherwise, the first modal opens after render had no image.
-      */
-      if (preSelectedImages.length > 0 && modalImageIndex >= 0 && modalImageIndex < preSelectedImages.length) {
-        setModalImageURL(() => {
-          return imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg';
-        });
-      }
-      if (modalImageIndex === preSelectedImages.length - 1) {
-        setDisplayModalBackButton(true);
-        setDisplayModalNextButton(false);
-      } else if (modalImageIndex === 0) {
-        setDisplayModalBackButton(false);
-        setDisplayModalNextButton(true);
-      } else {
-        setDisplayModalBackButton(true);
-        setDisplayModalNextButton(true);
-      }
-    }
-  }, [modalImageIndex, preSelectedImages]);
 
   /*
   This function applies both to the arrow buttons on the site &
