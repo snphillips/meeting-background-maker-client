@@ -36,7 +36,6 @@ export default function App() {
   const [serverError, setServerError] = useState(false);
   const [value, setValue] = useState<FilterTermType | null>('cubism'); // the user select filter term
   const [displayComputerImage, setDisplayComputerImage] = useState(true);
-  const [displaySelectedImages, setDisplaySelectedImages] = useState(false);
   const [displaySearchResults, setDisplaySearchResults] = useState(false);
   const [preSelectedImages, setPreSelectedImages] = useState<[] | MuseumItemType[]>([]);
   const [selectedImagesCollection, setSelectedImagesCollection] = useState<[] | MuseumItemType[]>([]);
@@ -48,6 +47,13 @@ export default function App() {
   const [displayModalBackButton, setDisplayModalBackButton] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
   const [modalImageURL, setModalImageURL] = useState<undefined | string>();
+
+  /*
+  displaySelectedImages is always just a derived value of
+  selectedImagesCollection — it's never set independently.
+  So you can compute it inline:
+  */
+  const displaySelectedImages = selectedImagesCollection.length > 0;
 
   /*
   We can make a useEffect hook not run on initial render
@@ -125,13 +131,13 @@ export default function App() {
     }
   }, [serverURL, value]);
 
-  useEffect(() => {
-    if (selectedImagesCollection.length < 1) {
-      setDisplaySelectedImages(false);
-    } else {
-      setDisplaySelectedImages(true);
-    }
-  }, [selectedImagesCollection]);
+  // useEffect(() => {
+  //   if (selectedImagesCollection.length < 1) {
+  //     setDisplaySelectedImages(false);
+  //   } else {
+  //     setDisplaySelectedImages(true);
+  //   }
+  // }, [selectedImagesCollection]);
 
   /*
   ==================================
