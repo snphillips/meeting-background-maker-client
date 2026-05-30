@@ -1,6 +1,6 @@
-import React from 'react';
+// import React from 'react';
 import { css } from '@emotion/react';
-import BeatLoader from 'react-spinners/BeatLoader.js';
+import { BeatLoader }  from 'react-spinners';
 
 const override: any  = css`
   display: block;
