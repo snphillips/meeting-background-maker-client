@@ -29,7 +29,8 @@ const curatedSetsArray = [
 export default function App() {
   // const serverURL = `http://localhost:3001/`;
   // const serverURL = `https://meeting-background-server.herokuapp.com/`;
-  const serverURL = `https://meeting-background-maker-server.netlify.app/api/`;
+  // const serverURL = `https://meeting-background-maker-server.netlify.app/api/`;
+  const serverURL = `https://meeting-background-maker-server.netlify.app/.netlify/functions/api/`;
   const imgBucketURL = 'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/';
 
   const initialRender = useRef(true);
