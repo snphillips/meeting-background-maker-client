@@ -17,7 +17,6 @@ type Props = {
   selectedImagesCollection: MuseumItemType[];
   serverError: boolean;
   setSelectedImagesCollection: React.Dispatch<React.SetStateAction<MuseumItemType[] | []>>;
-  // userSelectsFilterTerm: (param: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   userSelectsFilterTerm: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.ChangeEvent<HTMLSelectElement>,
   ) => void;

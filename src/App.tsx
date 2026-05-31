@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
 import _reject from 'lodash/reject';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -87,40 +86,36 @@ export default function App() {
   Has [value] as dependency
   ===================================
   */
-  useEffect(() => {
-    function searchByTag() {
-      setServerError(false);
-      setLoading(true);
-      shuffleBackgroundClipTextImage();
-      const getData = async () => {
-        try {
-          // console.log('value:', value);
-          const response = await axios({
-            method: 'get',
-            url: serverURL + `searchbytag/` + value,
-            timeout: 10000,
-            headers: { Accept: 'application/json' },
-          });
-          // console.log('axios response.data:', response.data);
-          setPreSelectedImages(response.data);
-        } catch (error) {
-          console.log('axios api call error:', error);
-          setServerError(true);
-        } finally {
-          setLoading(false);
-        }
-      };
-      getData();
-    }
 
-    // Don't run on initial render
-    // b/c the user hasn't selected a search term yet
+  useEffect(() => {
     if (initialRender.current) {
       initialRender.current = false;
-    } else {
-      searchByTag();
-      setDisplayComputerImage(false);
+      return;
     }
+
+    async function searchByTag() {
+      setServerError(false);
+      setLoading(true);
+      setDisplayComputerImage(false);
+      shuffleBackgroundClipTextImage();
+
+      try {
+        // console.log('value:', value);
+        const response = await fetch(`${serverURL}searchbytag/${value}`, {
+          headers: { Accept: 'application/json' },
+        });
+        if (!response.ok) throw new Error(`Server error: ${response.status}`);
+        const data = await response.json();
+        setPreSelectedImages(data);
+      } catch (error) {
+        console.log('api call error:', error);
+        setServerError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    searchByTag();
   }, [value]);
 
   /*
@@ -211,11 +206,11 @@ export default function App() {
     clipTextElement?.style.setProperty('-webkit-background-clip', 'text');
   }
 
-  function zipDownloadFolderSelectedImages() {
+  async function zipDownloadFolderSelectedImages() {
     /*
     At this stage selectedImagesCollection is an array of
     large objects containing interesting data about the items.
-    
+
     All we are interested in is the item id, as that is what is
     used as file names in AWS. The first step is to map over the
     large object and push into an array the the key 'id' and its
@@ -223,36 +218,31 @@ export default function App() {
     being send in the request to the server,
     which will then speak to AWS
     */
-    const imgJpegArray: string[] = [];
-    selectedImagesCollection.forEach((item) => {
-      if ('id' in item) {
-        imgJpegArray.push(item.id + '.jpg');
-      }
-    });
+    const imgJpegArray = selectedImagesCollection.map((item) => item.id + '.jpg');
 
-    let request = {
-      params: imgJpegArray,
-      responseType: 'blob' as 'blob',
-    };
+    const params = new URLSearchParams();
+    imgJpegArray.forEach((jpeg) => params.append('params', jpeg));
 
-    axios
-      .get(serverURL + `download/`, request)
-      .then(function (response) {
-        const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement('a');
-        link.href = downloadUrl;
-        link.setAttribute('download', 'meeting-backgrounds.zip');
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-      })
-      .catch(function (error) {
-        // handle error
-        // TODO: indicate to user when something goes wrong
-        // perhaps a cute image from the museum?
-        // A message to view curated types?
-        console.log('downloadZip error:', error);
-      });
+    try {
+      const response = await fetch(`${serverURL}download/?${params.toString()}`);
+      if (!response.ok) throw new Error(`Server error: ${response.status}`);
+
+      const blob = await response.blob();
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.setAttribute('download', 'meeting-backgrounds.zip');
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(downloadUrl);
+    } catch (error) {
+      // handle error
+      // TODO: indicate to user when something goes wrong
+      // perhaps a cute image from the museum?
+      // A message to view curated types?
+      console.log('downloadZip error:', error);
+    }
   }
 
   return (

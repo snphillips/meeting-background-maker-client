@@ -1,5 +1,3 @@
-import React from 'react';
-
 /* 
 =========================================================
 When the user clicks on an image, a modal opens up.
