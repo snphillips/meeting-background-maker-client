@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import Masonry from 'react-masonry-css';
 import { MuseumItemType } from '../types';
 
@@ -41,7 +42,7 @@ export default function SearchResults({
   If not, display 'add to collection' button
   */
   function whichButton(item: MuseumItemType) {
-    let buttonOrDiv: JSX.Element | null = null;
+    let buttonOrDiv: ReactElement | null = null;
 
     /* 
     The some() method tests whether at least one element
