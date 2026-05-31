@@ -1,4 +1,3 @@
-import React from 'react';
 import Masonry from 'react-masonry-css';
 import { MuseumItemType } from '../types';
 
@@ -9,18 +8,20 @@ type Props = {
   zipDownloadFolderSelectedImages: () => void;
 };
 
+// For use with Masonry package
+const breakpointColumnsObj = {
+  default: 3,
+  960: 2,
+  650: 1,
+};
+const imgBucketURL = 'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/';
+
 export default function SelectedCollection({
   displaySelectedImages,
   removeItemFromCollection,
   selectedImagesCollection,
   zipDownloadFolderSelectedImages,
 }: Props) {
-  // For use with Masonry package
-  const breakpointColumnsObj = {
-    default: 3,
-    960: 2,
-    650: 1,
-  };
   /*
   Ternary to establish whether to display singular
   or plural word image
@@ -47,13 +48,8 @@ export default function SelectedCollection({
             >
               {selectedImagesCollection.map((item, index) => {
                 return (
-                  <div className="image-card card" key={index}>
-                    <img
-                      key={index}
-                      className="selected-img"
-                      src={`https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/` + item.id + '.jpg'}
-                      alt={item.title}
-                    />
+                  <div className="image-card card" key={item.id}>
+                    <img className="selected-img" src={imgBucketURL + item.id + '.jpg'} alt={item.title} />
                     <button
                       type="button"
                       className="results-button-remove-from-collection"
@@ -68,12 +64,7 @@ export default function SelectedCollection({
               })}
             </Masonry>
           </section>
-          <button
-            className="download-button"
-            onClick={() => {
-              zipDownloadFolderSelectedImages();
-            }}
-          >
+          <button className="download-button" onClick={zipDownloadFolderSelectedImages}>
             <svg className="svg-icon" viewBox="0 0 20 20">
               <path
                 fill="none"

@@ -1,3 +1,4 @@
+// import React from 'react';
 import Masonry from 'react-masonry-css';
 import { MuseumItemType } from '../types';
 
@@ -13,8 +14,8 @@ or a div that says, 'in collection'.
 
 type Props = {
   displaySearchResults: boolean;
-  preSelectedImages: MuseumItemType[];
-  selectedImagesCollection: MuseumItemType[];
+  preSelectedImages: MuseumItemType[] | [];
+  selectedImagesCollection: MuseumItemType[] | [];
   serverError: boolean;
   setSelectedImagesCollection: React.Dispatch<React.SetStateAction<MuseumItemType[] | []>>;
   openModal: (arg: number) => void;
@@ -51,11 +52,18 @@ export default function SearchResults({
     otherwise it returns false. It doesn't modify the array.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
     */
-    {
-      selectedImagesCollection.some((el) => el.id === item.id) ? (
-        <div className="results-button-in-collection">in collection</div>
-      ) : (
-        <button type="button" className="results-button-add-to-collection" onClick={() => addToCollection(item)}>
+    if (selectedImagesCollection.some((el: MuseumItemType) => el.id === item.id)) {
+      buttonOrDiv = <div className="results-button-in-collection">in collection</div>;
+    } else {
+      buttonOrDiv = (
+        <button
+          type="button"
+          value={item.id}
+          className="results-button-add-to-collection"
+          onClick={() => {
+            addToCollection(item);
+          }}
+        >
           add to collection
         </button>
       );
@@ -90,7 +98,7 @@ export default function SearchResults({
           >
             {preSelectedImages.map((item: MuseumItemType, index: number) => {
               return (
-                <div key={item.id} className="image-card card">
+                <div key={index} className="image-card card">
                   <img
                     key={item.id}
                     className="result-img"

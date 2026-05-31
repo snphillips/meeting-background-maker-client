@@ -12,11 +12,12 @@ type Props = {
   displaySearchResults: boolean;
   displaySelectedImages: boolean;
   loading: boolean;
-  preSelectedImages: MuseumItemType[];
+  preSelectedImages: MuseumItemType[] | [];
   removeItemFromCollection: (param: MuseumItemType) => void;
   selectedImagesCollection: MuseumItemType[];
   serverError: boolean;
-  setSelectedImagesCollection: React.Dispatch<React.SetStateAction<MuseumItemType[]>>;
+  setSelectedImagesCollection: React.Dispatch<React.SetStateAction<MuseumItemType[] | []>>;
+  // userSelectsFilterTerm: (param: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   userSelectsFilterTerm: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.ChangeEvent<HTMLSelectElement>,
   ) => void;
