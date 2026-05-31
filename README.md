@@ -1,6 +1,6 @@
 ## About Meeting Background Maker Client
 
-See project deployed here: https://meeting-background-maker.surge.sh/ 
+See project deployed here: https://meeting-background-maker.surge.sh/
 
 _This repo is a companion to the Meeting Background Maker Server repo: https://github.com/snphillips/meeting-background-maker-server_
 
@@ -24,44 +24,42 @@ then come back here to install this repo.
 
 After you've set up the server, clone this repo:
 
-`````````
+```
 git clone https://github.com/snphillips/meeting-background-maker-client.git
-`````````
- 
+```
+
 Change directories into the project folder:
 
-`````````
+```
 cd meeting-background-maker-client
-`````````
-
+```
 
 🛠 Run npm to install all the dependencies:
 
-`````````
+```
 npm install
-`````````
+```
 
 🪄 Start the React server:
 
-`````````
+```
 npm start
-`````````
-Vite will suggest you open a url like http://127.0.0.1:5173/ 
+```
+
+Vite will suggest you open a url like http://127.0.0.1:5173/
 
 Voila! 🥂
 
-
 ### Made With
-* Cooper Hewitt Museum API
-* Vite
-* react-masonry-css
-* Axios
-* React-Spinners
+
+- Cooper Hewitt Museum API
+- Vite
+- react-masonry-css
+- React-Spinners
 
 ### Server Made With
-* Node
-* Express
-* Axios
-* Jimp (server-side image processing library)
-* s3-zip (saves selected images in s3 bucket to zip)
 
+- Node
+- Express
+- Jimp (server-side image processing library)
+- s3-zip (saves selected images in s3 bucket to zip)
