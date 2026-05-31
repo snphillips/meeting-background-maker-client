@@ -40,8 +40,9 @@ General Styling
 ================================*/
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 1rem;
@@ -511,15 +512,19 @@ Footer
   width: 100%;
   height: 100%;
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0, .3);
-/* Add Animation - Zoom in the Modal */
+  background-color: rgba(0, 0, 0, 0.3);
+  /* Add Animation - Zoom in the Modal */
   animation-name: zoombig;
   animation-duration: 0.3s;
 }
 
 @keyframes zoombig {
-    from {transform:scale(0)}
-    to {transform:scale(1)}
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .modal-content-container {
@@ -553,11 +558,10 @@ section.modal-left-container {
   top: 40%;
   top: 299px;
   color: #aaa;
-  transition: .2s;
-  margin-right: .75rem;
+  transition: 0.2s;
+  margin-right: 0.75rem;
   /*z-index: 1;*/
 }
-
 
 /*==============================
  Modal - image container
@@ -567,7 +571,7 @@ section.modal-image-and-info-container {
   max-width: 100%;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  transition: .3s;
+  transition: 0.3s;
   margin-left: auto;
   margin-right: auto;
 }
@@ -576,7 +580,7 @@ section.modal-image-and-info-container {
   width: 100%;
   max-width: 700px;
   display: block;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   margin: 0 auto;
 }
 
@@ -591,15 +595,14 @@ section.modal-image-and-info-container {
 }
 
 .modal-info-container p {
-  margin-block-start: .1rem;
-  margin-block-end: .1rem;
-  font-size: .8rem;
+  margin-block-start: 0.1rem;
+  margin-block-end: 0.1rem;
+  font-size: 0.8rem;
 }
 
 .modal-statement {
-  margin-top: .5rem !important;
+  margin-top: 0.5rem !important;
 }
-
 
 /*==============================
  Modal - right container/close & next button
@@ -612,8 +615,8 @@ section.modal-right-container {
 .modal-close-button {
   cursor: pointer;
   color: #aaa;
-  transition: .2s;
-  margin-left: .75rem;
+  transition: 0.2s;
+  margin-left: 0.75rem;
 }
 
 #modal-next-button {
@@ -622,8 +625,8 @@ section.modal-right-container {
   top: 33%;
   top: 260px;
   color: #aaa;
-  transition: .2s;
-  margin-left: .75rem;
+  transition: 0.2s;
+  margin-left: 0.75rem;
   animation-name: nextimage;
   animation-duration: 1s;
 }
@@ -636,8 +639,6 @@ section.modal-right-container {
 /************************************************/
 /************************************************/
 /************************************************/
-
-/
 
 /*==============================
 Footer
