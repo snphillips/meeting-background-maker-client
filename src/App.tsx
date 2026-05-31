@@ -16,6 +16,11 @@ import hermanMillerPicnic from './CuratedSets/hermanMillerPicnic';
 import photoMural from './CuratedSets/photoMural';
 import kolomanMoser from './CuratedSets/kolomanMoser';
 import { MuseumItemType, FilterTermType } from './types';
+
+// const serverURL = `http://localhost:3001/`;
+const serverURL = `https://meeting-background-maker-server.netlify.app/.netlify/functions/api/`;
+const imgBucketURL = 'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/';
+
 const curatedSetsArray = [
   cocktailHour,
   colorTheory,
@@ -27,10 +32,6 @@ const curatedSetsArray = [
 ];
 
 export default function App() {
-  // const serverURL = `http://localhost:3001/`;
-  const serverURL = `https://meeting-background-maker-server.netlify.app/.netlify/functions/api/`;
-  const imgBucketURL = 'https://meeting-background-maker.s3.amazonaws.com/meeting-backgrounds/';
-
   const initialRender = useRef(true);
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState(false);
@@ -40,24 +41,22 @@ export default function App() {
   const [selectedImagesCollection, setSelectedImagesCollection] = useState<MuseumItemType[]>([]);
   const [activeButton, setActiveButton] = useState<FilterTermType | 'button-id'>('button-id');
   const [activeTab, setActiveTab] = useState<0 | 1>(0);
-
   const [displayModal, setDisplayModal] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
-  const modalImageURL =
-    preSelectedImages.length > 0 && modalImageIndex >= 0 && modalImageIndex < preSelectedImages.length
-      ? imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg'
-      : undefined;
-
-  const displayModalBackButton = modalImageIndex > 0;
-  const displayModalNextButton = modalImageIndex < preSelectedImages.length - 1;
 
   /*
-  The below consts are just a derived value of other states- 
-  they're never set independently.
+  The below consts are just derived value of other states. 
+  They're never set independently.
   So we compute them inline:
   */
   const displaySelectedImages = selectedImagesCollection.length > 0;
   const displaySearchResults = preSelectedImages.length > 0;
+  const displayModalBackButton = modalImageIndex > 0;
+  const displayModalNextButton = modalImageIndex < preSelectedImages.length - 1;
+  const modalImageURL =
+    preSelectedImages.length > 0 && modalImageIndex >= 0 && modalImageIndex < preSelectedImages.length
+      ? imgBucketURL + preSelectedImages[modalImageIndex].id + '.jpg'
+      : undefined;
 
   /*
   ===================================
@@ -122,7 +121,7 @@ export default function App() {
       searchByTag();
       setDisplayComputerImage(false);
     }
-  }, [serverURL, value]);
+  }, [value]);
 
   /*
   ==================================
