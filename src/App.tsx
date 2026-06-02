@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, MouseEvent, ChangeEvent } from 'react';
 import _reject from 'lodash/reject';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -67,9 +67,7 @@ export default function App() {
     shuffleBackgroundClipTextImage();
   }, []);
 
-  function userSelectsFilterTerm(
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.ChangeEvent<HTMLSelectElement>,
-  ) {
+  function userSelectsFilterTerm(event: MouseEvent<HTMLButtonElement> | ChangeEvent<HTMLSelectElement>) {
     const target = event.target as HTMLInputElement;
     event.preventDefault();
     setValue(target.value as FilterTermType);
@@ -139,7 +137,7 @@ export default function App() {
   first image, the modal closes.
   */
   function onPreviousImageModal() {
-    let previousImageIndex = modalImageIndex - 1;
+    const previousImageIndex = modalImageIndex - 1;
     if (previousImageIndex < 0) {
       onCloseModal();
     } else {
@@ -154,7 +152,7 @@ export default function App() {
   the modal closes.
   */
   function onNextImageModal() {
-    let nextImageIndex = modalImageIndex + 1;
+    const nextImageIndex = modalImageIndex + 1;
     if (nextImageIndex > preSelectedImages.length - 1) {
       onCloseModal();
     } else {
@@ -167,16 +165,7 @@ export default function App() {
   }
 
   function removeItemFromCollection(item: MuseumItemType) {
-    let selectedImagesArray = selectedImagesCollection;
-    /*
-    Using _Lodash _reject to remove the item from the
-    array of selected images
-    https://lodash.com/docs/#reject
-    */
-    selectedImagesArray = _reject(selectedImagesArray, (theObject: MuseumItemType) => {
-      return theObject.id === item.id;
-    });
-    setSelectedImagesCollection(selectedImagesArray);
+    setSelectedImagesCollection((prev) => _reject(prev, (theObject: MuseumItemType) => theObject.id === item.id));
   }
 
   function shuffleBackgroundClipTextImage() {
