@@ -1,6 +1,6 @@
 ## About Meeting Background Maker Client
 
-See project deployed here: https://meeting-background-maker-client.netlify.app/
+See project deployed here: meeting-background-maker.netlify.app
 
 _This repo is a companion to the Meeting Background Maker Server repo: https://github.com/snphillips/meeting-background-maker-server_
 
