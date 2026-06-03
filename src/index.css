@@ -80,7 +80,8 @@ a:hover {
 }
 
 button,
-select {
+select,
+.curated-set-download-button {
   display: block;
   margin: 0.5rem auto;
   color: #efefef;
