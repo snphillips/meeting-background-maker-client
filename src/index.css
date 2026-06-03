@@ -96,6 +96,10 @@ select,
   transition: 0.3s;
 }
 
+select {
+  display: inline-block;
+}
+
 button:hover,
 button.active {
   color: #000;
