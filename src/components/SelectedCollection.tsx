@@ -26,42 +26,36 @@ export default function SelectedCollection({
   Ternary to establish whether to display singular
   or plural word image
   */
-  let num = selectedImagesCollection.length;
-  let imageSingularOrPlural = num <= 1 ? 'image' : 'images';
-  let collectionFull = num >= 20 ? '  -  collection full' : '';
+  const num = selectedImagesCollection.length;
+  const imageSingularOrPlural = num <= 1 ? 'image' : 'images';
+  const collectionFull = num >= 20 ? '  -  collection full' : '';
 
   return (
     <div className="component" id="selected-images-component">
       {displaySelectedImages && (
         <div>
           <section>
-            <div>
-              <h3>
-                Your collection: {num} {imageSingularOrPlural} {collectionFull}
-              </h3>
-            </div>
+            <h3>
+              Your collection: {num} {imageSingularOrPlural} {collectionFull}
+            </h3>
 
             <Masonry
               breakpointCols={breakpointColumnsObj}
               className="my-masonry-grid curated-sets-list selected-images-gallery image-grid"
               columnClassName="my-masonry-grid_column"
             >
-              {selectedImagesCollection.map((item, index) => {
-                return (
-                  <div className="image-card card" key={item.id}>
-                    <img className="selected-img" src={imgBucketURL + item.id + '.jpg'} alt={item.title} />
-                    <button
-                      type="button"
-                      className="results-button-remove-from-collection"
-                      onClick={() => {
-                        removeItemFromCollection(item);
-                      }}
-                    >
-                      remove
-                    </button>
-                  </div>
-                );
-              })}
+              {selectedImagesCollection.map((item) => (
+                <div className="image-card card" key={item.id}>
+                  <img className="selected-img" src={`${imgBucketURL}${item.id}.jpg`} alt={item.title} />
+                  <button
+                    type="button"
+                    className="results-button-remove-from-collection"
+                    onClick={() => removeItemFromCollection(item)}
+                  >
+                    remove
+                  </button>
+                </div>
+              ))}
             </Masonry>
           </section>
           <button className="download-button" onClick={zipDownloadFolderSelectedImages}>
