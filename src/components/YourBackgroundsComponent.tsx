@@ -1,4 +1,4 @@
-import React from 'react';
+import { Dispatch, SetStateAction, MouseEvent, ChangeEvent } from 'react';
 import FilterButtons from './FilterButtons';
 import ComputerImage from './ComputerImage';
 import SearchResults from './SearchResults';
@@ -12,14 +12,12 @@ type Props = {
   displaySearchResults: boolean;
   displaySelectedImages: boolean;
   loading: boolean;
-  preSelectedImages: MuseumItemType[] | [];
+  preSelectedImages: MuseumItemType[];
   removeItemFromCollection: (param: MuseumItemType) => void;
   selectedImagesCollection: MuseumItemType[];
   serverError: boolean;
-  setSelectedImagesCollection: React.Dispatch<React.SetStateAction<MuseumItemType[] | []>>;
-  userSelectsFilterTerm: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.ChangeEvent<HTMLSelectElement>,
-  ) => void;
+  setSelectedImagesCollection: Dispatch<SetStateAction<MuseumItemType[]>>;
+  userSelectsFilterTerm: (event: MouseEvent<HTMLButtonElement, MouseEvent> | ChangeEvent<HTMLSelectElement>) => void;
   value: FilterTermType | null;
   zipDownloadFolderSelectedImages: () => void;
   openModal: (arg: number) => void;
@@ -38,7 +36,6 @@ export default function YourBackgroundsComponent({
   serverError,
   setSelectedImagesCollection,
   userSelectsFilterTerm,
-  value,
   zipDownloadFolderSelectedImages,
   openModal,
 }: Props) {

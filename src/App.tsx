@@ -281,7 +281,7 @@ export default function App() {
           setSelectedImagesCollection={setSelectedImagesCollection}
           serverError={serverError}
           userSelectsFilterTerm={userSelectsFilterTerm}
-          value={value}
+          // value={value}
           zipDownloadFolderSelectedImages={zipDownloadFolderSelectedImages}
           openModal={openModal}
         />
