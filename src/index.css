@@ -566,6 +566,11 @@ section.modal-left-container {
   transition: 0.2s;
   margin-right: 0.75rem;
   /*z-index: 1;*/
+  border: unset;
+}
+
+#modal-back-button:hover {
+  background-color: unset;
 }
 
 /*==============================
@@ -622,6 +627,8 @@ section.modal-right-container {
   color: #aaa;
   transition: 0.2s;
   margin-left: 0.75rem;
+  border: unset;
+  padding: unset;
 }
 
 #modal-next-button {
@@ -634,6 +641,12 @@ section.modal-right-container {
   margin-left: 0.75rem;
   animation-name: nextimage;
   animation-duration: 1s;
+  border: unset;
+  padding: unset;
+}
+
+#modal-next-button:hover {
+  background-color: unset;
 }
 
 /************************************************/
