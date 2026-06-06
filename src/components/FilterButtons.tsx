@@ -35,8 +35,8 @@ export default function FilterButtons({ activeButton, loading, userSelectsFilter
         ))}
         <select onChange={userSelectsFilterTerm}>
           <option>more search terms</option>
-          {filterTagsAllArray.map((item: FilterTermType) => (
-            <option key={item} value={item}>
+          {filterTagsAllArray.map((item: FilterTermType, index: number) => (
+            <option key={`option-${index}-${item}`} value={item}>
               {item}
             </option>
           ))}
