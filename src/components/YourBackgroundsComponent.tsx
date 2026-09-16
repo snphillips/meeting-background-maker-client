@@ -17,8 +17,8 @@ type Props = {
   selectedImagesCollection: MuseumItemType[];
   serverError: boolean;
   setSelectedImagesCollection: Dispatch<SetStateAction<MuseumItemType[]>>;
-  userSelectsFilterTerm: (event: MouseEvent<HTMLButtonElement, MouseEvent> | ChangeEvent<HTMLSelectElement>) => void;
-  value: FilterTermType | null;
+  userSelectsFilterTerm: (event: MouseEvent<HTMLButtonElement> | ChangeEvent<HTMLSelectElement>) => void;
+  // value: FilterTermType | null;
   zipDownloadFolderSelectedImages: () => void;
   openModal: (arg: number) => void;
 };

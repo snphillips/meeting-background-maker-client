@@ -199,7 +199,7 @@ export default function App() {
     /*
     At this stage selectedImagesCollection is an array of
     large objects containing interesting data about the items.
-
+    
     All we are interested in is the item id, as that is what is
     used as file names in AWS. The first step is to map over the
     large object and push into an array the the key 'id' and its
@@ -208,9 +208,11 @@ export default function App() {
     which will then speak to AWS
     */
     const imgJpegArray = selectedImagesCollection.map((item) => item.id + '.jpg');
+    console.log('imgJpegArray:', imgJpegArray);
 
     const params = new URLSearchParams();
     imgJpegArray.forEach((jpeg) => params.append('params', jpeg));
+    console.log('params string:', params.toString());
 
     try {
       const response = await fetch(`${serverURL}download/?${params.toString()}`);
